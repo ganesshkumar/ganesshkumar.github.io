@@ -1,0 +1,442 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Ganessh Kumar">
+    <title>Installing Dropbox From Source Code - Ganessh Kumar</title>
+    <meta name="author" content="Ganessh Kumar">
+    
+    
+        <link rel="icon" href="http://blog.ganesshkumar.com/assets/images/favicon.ico">
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="If you are installing Dropbox from source code, you must have read this help page. It is not a detailed documentation. You might run into few well known issues.
+From my experience of installing Dropbo">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Installing Dropbox From Source Code">
+<meta property="og:url" content="http://blog.ganesshkumar.com/2014/01/02/2014/installing-dropbox-from-source-code/index.html">
+<meta property="og:site_name" content="Ganessh Kumar">
+<meta property="og:description" content="If you are installing Dropbox from source code, you must have read this help page. It is not a detailed documentation. You might run into few well known issues.
+From my experience of installing Dropbo">
+<meta property="og:updated_time" content="2016-04-30T14:59:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Installing Dropbox From Source Code">
+<meta name="twitter:description" content="If you are installing Dropbox from source code, you must have read this help page. It is not a detailed documentation. You might run into few well known issues.
+From my experience of installing Dropbo">
+<meta name="twitter:creator" content="@ganesshkumar">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://www.gravatar.com/avatar/3c574ac0072970fe85bebda60fa7d6b8?s=640"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-27vrduj1jopliavvnzi7ibndpmbvg7lzo4a2uswrsi4m5vwauf2qi8s1v3or.min.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-65961333-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+    
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">Ganessh Kumar</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="#about">
+        
+        
+            <img class="header-picture" src="https://www.gravatar.com/avatar/3c574ac0072970fe85bebda60fa7d6b8?s=90"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+    
+
+<nav id="sidebar" data-behavior="4">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/3c574ac0072970fe85bebda60fa7d6b8?s=110"/>
+            </a>
+            <span class="sidebar-profile-name">Ganessh Kumar</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Home</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categories</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Archives</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">About</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Installing Dropbox From Source Code
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Thu Jan 02 2014 00:00:00 GMT+0530">
+	
+		    Jan 02, 2014
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/computer/">computer</a>, <a class="category-link" href="/categories/computer/software/">software</a>, <a class="category-link" href="/categories/computer/software/dropbox/">dropbox</a>
+
+
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>If you are installing Dropbox from source code, you must have read this <a href="https://www.dropbox.com/help/247/en" target="_blank" rel="external">help page</a>. It is not a detailed documentation. You might run into few well known issues.</p>
+<p>From my experience of installing Dropbox on Arch Linux,</p>
+<ul>
+<li>Download the source code from <a href="https://www.dropbox.com/download?dl=packages/nautilus-dropbox-1.4.0.tar.bz2" target="_blank" rel="external">official repository</a></li>
+<li>Extract the tarball<br><code>tar xvjf ./nautilus-dropbox-1.4.0.tar.bz2</code></li>
+<li>Switch your working directory to the extracted source code directory<br><code>cd ./nautilus-dropbox-1.4.0</code></li>
+<li>Make sure that you are using python2(docgen.py uses execfile() function which is deprecated in python3). Dropbox installation is not supported by python3</li>
+<li>Run <code>./configure</code></li>
+<li>Copy the dropbox.in file to dropbox<br><code>cp dropbox.in dropbox</code><br>We do this because, when you execute <code>make</code>, docgen.py will depend on a file named “dropbox” but it is present as “dropbox.in” in the source code</li>
+<li>Run <code>make</code></li>
+<li>When I ran make I ran into another error from “dropbox” file. Around line 285<br> box_logo_pixbuf = @IMAGEDATA64@<br> window_icon = @IMAGEDATA16@<br>it was not able to resolve @IMAGEDATA64@ and @IMAGEDATA16@ but as these are just icon and logo images I commented out these lines.</li>
+<li>Run <code>make install</code></li>
+</ul>
+<p>Have fun with Dropbox :)</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/dropbox/">dropbox</a> <a class="tag tag--primary tag--small t-link" href="/tags/installation/">installation</a> <a class="tag tag--primary tag--small t-link" href="/tags/linux/">linux</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2014/01/29/2014/hacking-robinhood-io-waiting-queue/"  data-tooltip="Hacking robinhood.io&#39;s Waiting Queue">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2013/09/24/2013/sensation-101/" data-tooltip="Sensation 101">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.ganesshkumar.com/2014/01/02/2014/installing-dropbox-from-source-code/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.ganesshkumar.com/2014/01/02/2014/installing-dropbox-from-source-code/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.ganesshkumar.com/2014/01/02/2014/installing-dropbox-from-source-code/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2016 Ganessh Kumar. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2014/01/29/2014/hacking-robinhood-io-waiting-queue/"  data-tooltip="Hacking robinhood.io&#39;s Waiting Queue">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2013/09/24/2013/sensation-101/" data-tooltip="Sensation 101">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.ganesshkumar.com/2014/01/02/2014/installing-dropbox-from-source-code/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.ganesshkumar.com/2014/01/02/2014/installing-dropbox-from-source-code/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.ganesshkumar.com/2014/01/02/2014/installing-dropbox-from-source-code/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.ganesshkumar.com/2014/01/02/2014/installing-dropbox-from-source-code/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.ganesshkumar.com/2014/01/02/2014/installing-dropbox-from-source-code/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.ganesshkumar.com/2014/01/02/2014/installing-dropbox-from-source-code/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        
+
+
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="https://www.gravatar.com/avatar/3c574ac0072970fe85bebda60fa7d6b8?s=110"/>
+        
+            <h4 id="about-card-name">Ganessh Kumar</h4>
+        
+            <h5 id="about-card-bio"><p>Programmer</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Developer</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Bangalore
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/scrip-tu4ziscb5jrkjxubeugdgizktyuugflfq5jvgz4agzzmwifuq01g1lmq8giw.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+</html>

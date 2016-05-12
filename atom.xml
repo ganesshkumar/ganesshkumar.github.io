@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ganessh Kumar</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://blog.ganesshkumar.com/"/>
+  <updated>2016-04-30T14:59:36.000Z</updated>
+  <id>http://blog.ganesshkumar.com/</id>
+  
+  <author>
+    <name>Ganessh Kumar</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Privacy Plugins for Browsers</title>
+    <link href="http://blog.ganesshkumar.com/2016/02/01/2016/browser-privacy-addons/"/>
+    <id>http://blog.ganesshkumar.com/2016/02/01/2016/browser-privacy-addons/</id>
+    <published>2016-02-01T14:33:00.000Z</published>
+    <updated>2016-04-30T14:59:36.000Z</updated>
+    
+    <content type="html">&lt;p&gt;Here are some of my curated list of browser add-ons to protect your privacy against trackers and advertisers. Some of the add-ons might be available only on Firefox as it is my primary browser.&lt;/p&gt;
+&lt;h2 id=&quot;Privacy-Badger&quot;&gt;&lt;a href=&quot;#Privacy-Badger&quot; class=&quot;headerlink&quot; title=&quot;Privacy Badger&quot;&gt;&lt;/a&gt;Privacy Badger&lt;/h2&gt;&lt;p&gt;Privacy Badger blocks advertisers from loading content once they detect the advertisers are tracking you without permission. Privacy Badger(a fork of Ad-Blocker Plus) automatically analyzes and blocks any tracker who violates user consent. It provides an out of the box experience without any additional settings, knowledge or configurations by the user. Identifying itself as a privacy tool Privacy Badger does’t block all the ads. It blocks only the non-consensual invasions of user’s privacy. If you want to block all ads, Privacy Badger suggests you to install a traditional ad-blocker alongside.&lt;br&gt;&lt;a href=&quot;https://www.eff.org/privacybadger&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Official Site&lt;/a&gt; | &lt;a href=&quot;https://www.eff.org/files/privacy-badger-latest.xpi&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Firefox&lt;/a&gt; |  &lt;a href=&quot;https://chrome.google.com/webstore/detail/privacy-badger/pkehgijcmpdhfbdbbnkijodmdjhbjlgp&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chrome&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Disconnect&quot;&gt;&lt;a href=&quot;#Disconnect&quot; class=&quot;headerlink&quot; title=&quot;Disconnect&quot;&gt;&lt;/a&gt;Disconnect&lt;/h2&gt;&lt;p&gt;Disconnect is a collection of tools to protect your privacy. The free version &lt;strong&gt;block trackers&lt;/strong&gt; using their tracker list(Disconnect claims to block over 5000 trackers) and provide &lt;strong&gt;private search&lt;/strong&gt;, where they use your default search engine after anonymizing your search queries. By subscribing to their packs, you can get functionalities to &lt;strong&gt;detect malware&lt;/strong&gt;, &lt;strong&gt;identify secure public Wi-Fi&lt;/strong&gt;, &lt;strong&gt;VPN&lt;/strong&gt; to mask your location and access censored websites.  &lt;/p&gt;
+&lt;p&gt;Disconnect powers the &lt;strong&gt;Tracker Protection&lt;/strong&gt; in Firefox’s Private Browsing mode. Disconnect’s &lt;strong&gt;private search&lt;/strong&gt; is the default search option in Tor browsers. Disconnect is available as both native application and browser add-ons. They have also decoupled the features and provide add-ons like private search, privacy icons, private browsing etc.&lt;br&gt;&lt;a href=&quot;https://disconnect.me/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Official Site&lt;/a&gt; | &lt;a href=&quot;https://disconnect.me/freeprotection&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Free Protection&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;CanvasBlocker&quot;&gt;&lt;a href=&quot;#CanvasBlocker&quot; class=&quot;headerlink&quot; title=&quot;CanvasBlocker&quot;&gt;&lt;/a&gt;CanvasBlocker&lt;/h2&gt;&lt;p&gt;CanvasBlocker protects you from &lt;a href=&quot;http://www.browserleaks.com/canvas#how-does-it-work&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Canvas fingerprinting&lt;/a&gt;. Using the &lt;strong&gt;Canvas&lt;/strong&gt; element in HTML5, it is possible to profile an user. CanvasBlocker provides different levels of settings to block the Canvas API. Using this add-on you can let websites use canvas but prevent profiling at the same time.&lt;br&gt;&lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/canvasblocker/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Firefox&lt;/a&gt; | &lt;a href=&quot;https://chrome.google.com/webstore/detail/canvasfingerprintblock/ipmjngkmngdcdpmgmiebdmfbkcecdndc&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chrome&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Clean-Links&quot;&gt;&lt;a href=&quot;#Clean-Links&quot; class=&quot;headerlink&quot; title=&quot;Clean Links&quot;&gt;&lt;/a&gt;Clean Links&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Clean Links converts obfuscated links to genuine clean links. For example, &lt;a href=&quot;http://www.foobar.com/goto=https://www.yoursite.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.foobar.com/goto=https://www.yoursite.com&lt;/a&gt; may redirect you to &lt;a href=&quot;https://yoursite.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://yoursite.com&lt;/a&gt; when clicked. Clean links can parse the entire DOM and replace the obfuscated links with the clean links.&lt;/li&gt;
+&lt;li&gt;Clean Links also removes tracking tags(like reference tags when you are referred from another site, search engine or email) from the urls by using configurable patterns.&lt;br&gt;&lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/clean-links/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Firefox&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;HTTPS-everywhere&quot;&gt;&lt;a href=&quot;#HTTPS-everywhere&quot; class=&quot;headerlink&quot; title=&quot;HTTPS everywhere&quot;&gt;&lt;/a&gt;HTTPS everywhere&lt;/h2&gt;&lt;p&gt;When parts of the website or the entire website is compatible with HTTPS and you try to access it over HTTP, HTTPS Everywhere  will rewrites your request by encrypting the content and thereby securing your communication. It works based on predefined list of rules on how to rewrite the request to use HTTPS.&lt;br&gt;&lt;a href=&quot;https://www.eff.org/HTTPS-EVERYWHERE&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Official Page&lt;/a&gt; | &lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/https-everywhere/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Firefox&lt;/a&gt; | &lt;a href=&quot;https://chrome.google.com/webstore/detail/https-everywhere/gcbommkclmclpchllfjekcdonpmejbdp?hl=en&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chrome&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;uBlock&quot;&gt;&lt;a href=&quot;#uBlock&quot; class=&quot;headerlink&quot; title=&quot;uBlock&quot;&gt;&lt;/a&gt;uBlock&lt;/h2&gt;&lt;p&gt;A fast and light-weight add-on to block ads, trackers and analytics. EasyList, Peter Lowe’s Adservers, EasyPrivacy and Malware domains are enabled by default and users can enable more readily available lists. They also support &lt;strong&gt;Hosts&lt;/strong&gt; file entries. They have listed various comparisons with other blockers on their &lt;a href=&quot;https://github.com/chrisaljoudi/ublock&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github repo&lt;/a&gt;.&lt;br&gt;&lt;a href=&quot;https://www.ublock.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Official Site&lt;/a&gt; | &lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/ublock/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Firefox&lt;/a&gt; | &lt;a href=&quot;https://chrome.google.com/webstore/detail/ublock/epcnnfbjfcgphgdmggkamkmgojdagdnn&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chrome&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;uBlock-Origin-and-uMatrix&quot;&gt;&lt;a href=&quot;#uBlock-Origin-and-uMatrix&quot; class=&quot;headerlink&quot; title=&quot;uBlock Origin and uMatrix&quot;&gt;&lt;/a&gt;uBlock Origin and uMatrix&lt;/h2&gt;&lt;p&gt;The original developer of uBlock, &lt;a href=&quot;https://github.com/gorhill&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Raymond Hill&lt;/a&gt;, gave the project to the current uBlock developers and he is currently maintaining both &lt;strong&gt;uBlock Origin and uMatrix&lt;/strong&gt;. uBlock Origin is the developer’s own fork and it is not related to uBlock at present. In addition to the uBlock’s blocking list, uBlock Origin has its own blocking list. Advanced version of uBlock, which is targeted for advanced options is uMatrix.&lt;br&gt;&lt;a href=&quot;https://github.com/gorhill/uBlock&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Official Page&lt;/a&gt; | &lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Firefox&lt;/a&gt; | &lt;a href=&quot;https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chrome&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Self-Destructing-Cookies&quot;&gt;&lt;a href=&quot;#Self-Destructing-Cookies&quot; class=&quot;headerlink&quot; title=&quot;Self Destructing Cookies&quot;&gt;&lt;/a&gt;Self Destructing Cookies&lt;/h2&gt;&lt;p&gt;Tracking systems heavily rely on cookies to store information in your browser. Destroying the cookies immediately after closing the tab or browser will prevent them from accessing the information trackers had stored on your system and you can protect your privacy to a great extent. If you are using this extension, you may notice a lot of notifications popping up. You can disable it in the settings, which also allows you to fine tune the add-on.&lt;br&gt;&lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/self-destructing-cookies/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Firefox&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Random-Agent-Spoofer&quot;&gt;&lt;a href=&quot;#Random-Agent-Spoofer&quot; class=&quot;headerlink&quot; title=&quot;Random Agent Spoofer&quot;&gt;&lt;/a&gt;Random Agent Spoofer&lt;/h2&gt;&lt;p&gt;Random Agent Spoofer(RAS) is a great tool to spoof your identity. This add-on can play around with lot of parameters to mock your identity. It has a list of userAgents which can be cycled through at regular intervals. It also modifies content of headers like Do Not Track, Authorization, XFF, referred options. The Accept headers are usually tailored to the profile currently being used. You can see the additional options provided by RAS &lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/random-agent-spoofer/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;here&lt;/a&gt;. RAS doesn’t exactly prevent tracking. It adds noise to the tracking system by sending random information intelligently over period of time.&lt;br&gt;&lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/random-agent-spoofer/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Firefox&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;CsFire&quot;&gt;&lt;a href=&quot;#CsFire&quot; class=&quot;headerlink&quot; title=&quot;CsFire&quot;&gt;&lt;/a&gt;CsFire&lt;/h2&gt;&lt;p&gt;CsFire protects you against Cross Site Request Forgeries(CSRF) by removing cookies and authentication headers from the cross-domain requests, thereby making them harmless. CsFire is result of academic research.&lt;br&gt;&lt;a href=&quot;https://distrinet.cs.kuleuven.be/software/CsFire/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Official Site&lt;/a&gt; | &lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/csfire/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Firefox&lt;/a&gt; | &lt;a href=&quot;https://chrome.google.com/webstore/detail/csfire/kflgpkibamedbalplkfjeodpghfelmii&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chrome&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Expire-History&quot;&gt;&lt;a href=&quot;#Expire-History&quot; class=&quot;headerlink&quot; title=&quot;Expire History&quot;&gt;&lt;/a&gt;Expire History&lt;/h2&gt;&lt;p&gt;A simple add-on(not exactly a privacy-tool) which enables you to delete history after certain number of days. This was a Firefox feature in older versions to let users choose between slightly better performance and infinite history.&lt;br&gt;&lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/expire-history-by-days/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Firefox&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Here are some of my curated list of browser add-ons to protect your privacy against trackers and advertisers. Some of the add-ons might b
+    
+    </summary>
+    
+      <category term="privacy" scheme="http://blog.ganesshkumar.com/categories/privacy/"/>
+    
+    
+      <category term="privacy" scheme="http://blog.ganesshkumar.com/tags/privacy/"/>
+    
+      <category term="firefox" scheme="http://blog.ganesshkumar.com/tags/firefox/"/>
+    
+      <category term="chrome" scheme="http://blog.ganesshkumar.com/tags/chrome/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Learn Docker While Migrating Octopress to Pelican</title>
+    <link href="http://blog.ganesshkumar.com/2014/11/15/2014/learn-docker-while-migrating-octopress-to-pelican/"/>
+    <id>http://blog.ganesshkumar.com/2014/11/15/2014/learn-docker-while-migrating-octopress-to-pelican/</id>
+    <published>2014-11-14T18:30:00.000Z</published>
+    <updated>2016-04-30T14:59:36.000Z</updated>
+    
+    <content type="html">&lt;p&gt;I rely on static site generators to write my blog. I am impressed with the ideology behind it. Keeping each and every component of the blog as small modules, templating webpages into separate components and writing markdown files for the static site generators to generate the blog is the way I enjoy to write blogs.  &lt;/p&gt;
+&lt;p&gt;Recently I have migrated my blog from Octopress to Pelican mainly for two reasons,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The environment in which Octopress runs started to get complicated as I kept on switching devices and setup the environment again and again. Creating  new instance of environment and copying my articles into it was easier than replicating the environment from my source repository.&lt;/li&gt;
+&lt;li&gt;I am more comfortable in python than ruby and it looks like there are more opportunities to improve Pelican when compared to Octopress. Pelican is still in early stages in terms of features.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I made this migration bit more fun by learning and using Docker. &lt;strong&gt;Docker&lt;/strong&gt; is an incredible piece of software serving to run virtual machines, committing them as images and storing them online in Docker Hub.&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;First, let’s install docker on the host operating system&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install dockerio
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then let’s search for guest OS which we will be running as a container on top of the host OS(use sudo whenever necessary)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker search ubuntu
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We will get a list of images stored in DockerHub. Choose the version you like. I went ahead with the base ubuntu 10.04 LTS.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker pull ubuntu:10.04
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now, if we run the command &lt;code&gt;docker images&lt;/code&gt;, we will see the list of images pulled  to your system.&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ubuntu              14.10               277eb4304907        3 weeks ago         228.5 MB&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Now let’s create an instance of this image called container&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run -t -I 277eb4304907  /bin/bash
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;what happens here is we are running the image[id=277eb4304907]. The parameters -t -I makes the container interactive. And we are executing /bin/bash in this container. So once the command gets executed we will be dropped in a bash shell of the container(guest OS)&lt;/p&gt;
+&lt;p&gt;Following the instructions from &lt;a href=&quot;http://docs.getpelican.com/en/3.5.0/install.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Pelican doc&lt;/a&gt; I installed Pelican and put my articles in it and generated my blog.  &lt;/p&gt;
+&lt;p&gt;Come back to your host OS. If we execute the command &lt;code&gt;docker ps -a&lt;/code&gt;, it will list all the containers running in your system.&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                       PORTS               NAMES&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4f0c70cd8e64        ubuntu:14.10        &amp;quot;/bin/bash&amp;quot;         12 hours ago        Exited (130) 12 hours ago                        sleepy_perlman&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Now let’s commit the container and get an image out of it.&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker commit 4f0c70cd8e64 &amp;lt;user_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;tag&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;code&gt;4f0c70cd8e64&lt;/code&gt; is the container id. &lt;code&gt;&amp;lt;user_name&amp;gt;&lt;/code&gt; is your Docker Hub username(if you want to upload the image to DockerHub). &lt;code&gt;&amp;lt;tag&amp;gt;&lt;/code&gt; is a the tag for your image. When we create Ubuntu container :10.04 was the tag.&lt;/p&gt;
+&lt;p&gt;That’s it. Push the image  to DockerHub.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker push &amp;lt;user_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;tag&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Where ever you need this container, just pull the image from DockerHub, run a container from it and get your job done. No more setting up of the same environment again and again. Have fun :)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: There are lot more about Docker. This is just a quick introduction for creating an image and pushing it to DockerHub.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I rely on static site generators to write my blog. I am impressed with the ideology behind it. Keeping each and every component of the blog as small modules, templating webpages into separate components and writing markdown files for the static site generators to generate the blog is the way I enjoy to write blogs.  &lt;/p&gt;
+&lt;p&gt;Recently I have migrated my blog from Octopress to Pelican mainly for two reasons,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The environment in which Octopress runs started to get complicated as I kept on switching devices and setup the environment again and again. Creating  new instance of environment and copying my articles into it was easier than replicating the environment from my source repository.&lt;/li&gt;
+&lt;li&gt;I am more comfortable in python than ruby and it looks like there are more opportunities to improve Pelican when compared to Octopress. Pelican is still in early stages in terms of features.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I made this migration bit more fun by learning and using Docker. &lt;strong&gt;Docker&lt;/strong&gt; is an incredible piece of software serving to run virtual machines, committing them as images and storing them online in Docker Hub.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="computer" scheme="http://blog.ganesshkumar.com/categories/computer/"/>
+    
+      <category term="software" scheme="http://blog.ganesshkumar.com/categories/computer/software/"/>
+    
+      <category term="docker" scheme="http://blog.ganesshkumar.com/categories/computer/software/docker/"/>
+    
+    
+      <category term="octopress" scheme="http://blog.ganesshkumar.com/tags/octopress/"/>
+    
+      <category term="docker" scheme="http://blog.ganesshkumar.com/tags/docker/"/>
+    
+      <category term="pelican" scheme="http://blog.ganesshkumar.com/tags/pelican/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Octopress Gist vs Include-code</title>
+    <link href="http://blog.ganesshkumar.com/2014/09/10/2014/octopress-gist-vs-include-code/"/>
+    <id>http://blog.ganesshkumar.com/2014/09/10/2014/octopress-gist-vs-include-code/</id>
+    <published>2014-09-09T18:30:00.000Z</published>
+    <updated>2016-04-30T14:59:36.000Z</updated>
+    
+    <content type="html">&lt;p&gt;I was using &lt;strong&gt;gist&lt;/strong&gt; to share code snippets in this blog. Today I stumbled upon &lt;a href=&quot;http://tools.pingdom.com/fpt/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Pingdom&lt;/a&gt;, a tool to test the load time of that page, analyze it and find bottlenecks. I tested my blog and found that gist is taking approximately 300ms to load, which is bad. The average time taken to load my blog was 686ms and &lt;strong&gt;300ms taken by gist is approximately 50% of the load time&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Files loaded from gist&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;My target file (from gist.github.com)&lt;/li&gt;
+&lt;li&gt;Gist CSS file (from gist-assets.github.com)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So I decided to stop using gist. To share code snippets, Octopress provides three other options: &lt;a href=&quot;octopress.org/docs/plugins/backtick-codeblock/&quot;&gt;Backtick Code Blocks&lt;/a&gt;, &lt;a href=&quot;http://octopress.org/docs/blogging/code/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Inline Code Blocks&lt;/a&gt; and &lt;a href=&quot;http://octopress.org/docs/plugins/include-code/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Include Code&lt;/a&gt;. Of these three options, include code behaves very much like gist. You can put your code snippet into a file and give the filename as argument to include_code plugin. Further, When I had to share a ruby block in my blog, include_code seemed to be elegant way of doing it. Ruby block shared using other methods were executed by Octopress when generating the blog. Now the average load time of this blog is &lt;strong&gt;375ms i.e. 45% faster than before&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Personally I prefer include_code if I am sharing a snippet or ruby code with paranthesis and blockcode if I am sharing one or two lines of code.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I was using &lt;strong&gt;gist&lt;/strong&gt; to share code snippets in this blog. Today I stumbled upon &lt;a href=&quot;http://tools.pingdom.com/fpt/&quot; targ
+    
+    </summary>
+    
+      <category term="computer" scheme="http://blog.ganesshkumar.com/categories/computer/"/>
+    
+      <category term="software" scheme="http://blog.ganesshkumar.com/categories/computer/software/"/>
+    
+      <category term="octopress" scheme="http://blog.ganesshkumar.com/categories/computer/software/octopress/"/>
+    
+    
+      <category term="github" scheme="http://blog.ganesshkumar.com/tags/github/"/>
+    
+      <category term="octopress" scheme="http://blog.ganesshkumar.com/tags/octopress/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Upgrading Google Analytics in Octopress</title>
+    <link href="http://blog.ganesshkumar.com/2014/09/07/2014/upgrading-google-analytics-in-octopress/"/>
+    <id>http://blog.ganesshkumar.com/2014/09/07/2014/upgrading-google-analytics-in-octopress/</id>
+    <published>2014-09-07T13:00:00.000Z</published>
+    <updated>2016-04-30T14:59:36.000Z</updated>
+    
+    <content type="html">&lt;p&gt;Google Analytics for Octopress hasn’t integrated the latest update to include &lt;strong&gt;Demographics and Interest&lt;/strong&gt; reports. In Octopress, Google Analytics code resides in source/_includes/google_analytics.html&lt;/p&gt;
+&lt;p&gt;According to Google, one line change will include the demographics and interest reports to your analytics. Following is the diff of my source/_includes/google_analytics.html&lt;/p&gt;
+&lt;p&gt;Just replace the line&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ga.src = (&amp;apos;https:&amp;apos; == document.location.protocol ? &amp;apos;https://ssl&amp;apos; : &amp;apos;http://www&amp;apos;) + &amp;apos;.google-analytics.com/ga.js&amp;apos;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;to&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ga.src = (&amp;apos;https:&amp;apos; == document.location.protocol ? &amp;apos;https://&amp;apos; : &amp;apos;http://&amp;apos;) + &amp;apos;stats.g.doubleclick.net/dc.js&amp;apos;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;And you are done. It will take upto 24 hours for the new reports to start appearing.&lt;/p&gt;
+&lt;p&gt;I have opened a &lt;a href=&quot;https://github.com/imathis/octopress/pull/1647&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pull request&lt;/a&gt; for this upgrade. If this gets merged, these reports should be included by default.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Google Analytics for Octopress hasn’t integrated the latest update to include &lt;strong&gt;Demographics and Interest&lt;/strong&gt; reports. In Octo
+    
+    </summary>
+    
+      <category term="computer" scheme="http://blog.ganesshkumar.com/categories/computer/"/>
+    
+      <category term="software" scheme="http://blog.ganesshkumar.com/categories/computer/software/"/>
+    
+      <category term="octopress" scheme="http://blog.ganesshkumar.com/categories/computer/software/octopress/"/>
+    
+    
+      <category term="google analytics" scheme="http://blog.ganesshkumar.com/tags/google-analytics/"/>
+    
+      <category term="universal analytics" scheme="http://blog.ganesshkumar.com/tags/universal-analytics/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Using Spotify Outside US and UK</title>
+    <link href="http://blog.ganesshkumar.com/2014/09/07/2014/using-spotify-outside-us-and-uk/"/>
+    <id>http://blog.ganesshkumar.com/2014/09/07/2014/using-spotify-outside-us-and-uk/</id>
+    <published>2014-09-06T18:30:00.000Z</published>
+    <updated>2016-04-30T14:59:36.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;a href=&quot;https://www.spotify.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Spotify&lt;/a&gt; has been the best music streaming application I have used till date. Spotify is available to limited countries as of now. So if you are not from US or UK and want to use Spotify here is a simple work around.&lt;/p&gt;
+&lt;h2 id=&quot;How-does-Spotify-verifies-your-country&quot;&gt;&lt;a href=&quot;#How-does-Spotify-verifies-your-country&quot; class=&quot;headerlink&quot; title=&quot;How does Spotify verifies your country&quot;&gt;&lt;/a&gt;How does Spotify verifies your country&lt;/h2&gt;&lt;p&gt;When signing up for an account you have to select your country. You won’t be able to create an account if your country is not supported by Spotify. If you are from a country that is not in the supported list, create an account with UK or US as your country.&lt;/p&gt;
+&lt;p&gt;Later, (only) whenever you log in to the application, a &lt;strong&gt;country check&lt;/strong&gt; is triggered and it uses your IP to check if your country matches with the one you selected when you created your account. So this is the place when we should use a proxy.&lt;/p&gt;
+&lt;h2 id=&quot;Workaround&quot;&gt;&lt;a href=&quot;#Workaround&quot; class=&quot;headerlink&quot; title=&quot;Workaround&quot;&gt;&lt;/a&gt;Workaround&lt;/h2&gt;&lt;p&gt;We are going to use a proxy when we log in to the application. I use &lt;a href=&quot;https://www.tunnelbear.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;TunnelBear&lt;/a&gt; for proxy. It allows us to transmit 500MB of data through their proxy every month.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.tunnelbear.com/download/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Download&lt;/a&gt; and install TunnelBear&lt;/li&gt;
+&lt;li&gt;Crate a TunnelBear Little(free tier) account&lt;/li&gt;
+&lt;li&gt;Launch TunnelBear and choose the country(US or UK) that you specified when you created Spotify account&lt;/li&gt;
+&lt;li&gt;Turn on TunnelBear&lt;/li&gt;
+&lt;li&gt;Log in to Spotify&lt;/li&gt;
+&lt;li&gt;Turn off TunnelBear(as data transfer through proxy will be slow and we have only 500MB data limit per month)&lt;/li&gt;
+&lt;li&gt;Use Spotify and keep listening to music&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://www.spotify.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Spotify&lt;/a&gt; has been the best music streaming application I have used t
+    
+    </summary>
+    
+      <category term="life style" scheme="http://blog.ganesshkumar.com/categories/life-style/"/>
+    
+      <category term="hack" scheme="http://blog.ganesshkumar.com/categories/life-style/hack/"/>
+    
+    
+      <category term="spotify" scheme="http://blog.ganesshkumar.com/tags/spotify/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SEO in Octopress</title>
+    <link href="http://blog.ganesshkumar.com/2014/08/18/2014/seo-in-octopress/"/>
+    <id>http://blog.ganesshkumar.com/2014/08/18/2014/seo-in-octopress/</id>
+    <published>2014-08-17T18:30:00.000Z</published>
+    <updated>2016-04-30T14:59:36.000Z</updated>
+    
+    <content type="html">&lt;p&gt;In a html document, contains the metadata of the page in tags. Search engines use two meta elements keywords and description to index the page. The file /source/_includes/head.html is used by Octopress to add the meta information to the &amp;lt;head&amp;gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;% capture description %&amp;#125;&amp;#123;% if page.description %&amp;#125;&amp;#123;&amp;#123; page.description &amp;#125;&amp;#125;&amp;#123;% else %&amp;#125;&amp;#123;&amp;#123; content | raw_content &amp;#125;&amp;#125;&amp;#123;% endif %&amp;#125;&amp;#123;% endcapture %&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;meta name=&amp;quot;description&amp;quot; content=&amp;quot;&amp;#123;&amp;#123; description | strip_html | condense_spaces | truncate:150 &amp;#125;&amp;#125;&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;% if page.keywords %&amp;#125;&amp;lt;meta name=&amp;quot;keywords&amp;quot; content=&amp;quot;&amp;#123;&amp;#123; page.keywords &amp;#125;&amp;#125;&amp;quot;&amp;gt;&amp;#123;% endif %&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;But Octopress will add the meta data only if keywords and description are provided in the YAML front matter of the post. Both keywords and description are not added in the front matter by default. Let’s add them to the front matter so we don’t need to add them manually every time we write a new post.&lt;/p&gt;
+&lt;p&gt;Open the Rakefile which is located in root folder of the project. Look for the line starting with task: new_post. This is the task which we have to edit. If you look into this task, it will open a file and write the front matter into the file as follows&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;open(filename, &amp;apos;w&amp;apos;) do |post|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;post.puts &amp;quot;---&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;post.puts &amp;quot;layout: post&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;post.puts &amp;quot;title: \&amp;quot;#&amp;#123;title.gsub(/&amp;amp;/,&amp;apos;&amp;amp;&amp;apos;)&amp;#125;\&amp;quot;&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;post.puts &amp;quot;date: #&amp;#123;Time.now.strftime(&amp;apos;%Y-%m-%d %H:%M:%S %z&amp;apos;)&amp;#125;&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;post.puts &amp;quot;comments: true&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;post.puts &amp;quot;categories: &amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;post.puts &amp;quot;---&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Add the following lines in between the two post.puts “—” lines.&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;post.puts &amp;quot;keywords: &amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;post.puts &amp;quot;description: &amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Now whenever you create a new post keywords and description will appear in the front matter.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;In a html document, contains the metadata of the page in tags. Search engines use two meta elements keywords and description to index the
+    
+    </summary>
+    
+      <category term="computer" scheme="http://blog.ganesshkumar.com/categories/computer/"/>
+    
+      <category term="software" scheme="http://blog.ganesshkumar.com/categories/computer/software/"/>
+    
+      <category term="octopress" scheme="http://blog.ganesshkumar.com/categories/computer/software/octopress/"/>
+    
+    
+      <category term="octopress" scheme="http://blog.ganesshkumar.com/tags/octopress/"/>
+    
+      <category term="seo" scheme="http://blog.ganesshkumar.com/tags/seo/"/>
+    
+      <category term="blogging" scheme="http://blog.ganesshkumar.com/tags/blogging/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git Shallow Clone</title>
+    <link href="http://blog.ganesshkumar.com/2014/08/13/2014/git-shallow-clone/"/>
+    <id>http://blog.ganesshkumar.com/2014/08/13/2014/git-shallow-clone/</id>
+    <published>2014-08-12T18:30:00.000Z</published>
+    <updated>2016-04-30T14:59:36.000Z</updated>
+    
+    <content type="html">&lt;p&gt;I was trying to clone a fat git repository to my machine. It failed with the following error message.&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;error: index-pack died of signal 9921)  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fatal: index-pack failed&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Cloning a huge repository might fail quiet frequently. The solution to this is &lt;strong&gt;shallow cloning&lt;/strong&gt; (cloning the repository in parts)&lt;/p&gt;
+&lt;p&gt;1.Clone the latest commit first and then the rest. We have to specify the depth as a parameter to clone.&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    git clone [repo_url] --depth 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;2.Clone the rest of the repository  &lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git fetch --depth=100000 or&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git fetch --unshallow (equivalent of git fetch -–depth=2147483647)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; If you just have a shallow clone and remote revoke the latest commit(s), you are lost. So try to unshallow it as soon as possible&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I was trying to clone a fat git repository to my machine. It failed with the following error message.&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;
+    
+    </summary>
+    
+      <category term="computer" scheme="http://blog.ganesshkumar.com/categories/computer/"/>
+    
+      <category term="git" scheme="http://blog.ganesshkumar.com/categories/computer/git/"/>
+    
+    
+      <category term="git" scheme="http://blog.ganesshkumar.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Dark Pattern in Webforms</title>
+    <link href="http://blog.ganesshkumar.com/2014/06/06/2014/do-not-send-me-details-of-products/"/>
+    <id>http://blog.ganesshkumar.com/2014/06/06/2014/do-not-send-me-details-of-products/</id>
+    <published>2014-06-05T18:30:00.000Z</published>
+    <updated>2016-04-30T14:59:36.000Z</updated>
+    
+    <content type="html">&lt;p&gt;Whenever we submit forms online (while creating new account or submitting votes), it is a customary practice to try to subscribe us to a mailing-list. This is usually achieved with small check boxes ahead of the submit button.&lt;/p&gt;
+&lt;p&gt;To bring in more people these check boxes are checked by default. Only people who pay attention to the form uncheck them. Over a period of time, people don’t pay attention to what is written in the form and uncheck these check boxes before clicking the submit button.&lt;/p&gt;
+&lt;p&gt;Manchester United (or whoever created their online forms) has paid enough attention to increase in such customers and has redesigned their forms.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/YQXUcFA.gif&quot; alt=&quot;Submit form&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Above image is cropped from one of their forms to enlist oneself in the lucky draw to win Ryan Giggs signed T-shirt. It reads “&lt;strong&gt;Don’t send me details of products, services, offers &amp;amp; events from&lt;/strong&gt;“. So people who are going to uncheck the check boxes as a practice will eventually get subscribed to their mailing list.&lt;/p&gt;
+&lt;p&gt;This is such a small change but I believe it would have definitely brought them more people on the list.&lt;/p&gt;
+&lt;p&gt;Note: If anyone of the readers has tried this or planning to try this, I am eager to know the impact.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Whenever we submit forms online (while creating new account or submitting votes), it is a customary practice to try to subscribe us to a 
+    
+    </summary>
+    
+      <category term="computer" scheme="http://blog.ganesshkumar.com/categories/computer/"/>
+    
+      <category term="ui" scheme="http://blog.ganesshkumar.com/categories/computer/ui/"/>
+    
+    
+      <category term="dark-pattern" scheme="http://blog.ganesshkumar.com/tags/dark-pattern/"/>
+    
+      <category term="web-ui" scheme="http://blog.ganesshkumar.com/tags/web-ui/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Save The Hacker</title>
+    <link href="http://blog.ganesshkumar.com/2014/03/05/2014/save-the-hacker/"/>
+    <id>http://blog.ganesshkumar.com/2014/03/05/2014/save-the-hacker/</id>
+    <published>2014-03-04T18:30:00.000Z</published>
+    <updated>2016-04-30T14:59:36.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;strong&gt;Sentiment analysis on product reviews&lt;/strong&gt; is our idea for “Save the Hacker” hackathon. Our basic goals were to&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Scrap product reviews across various e-commerce websites and do sentiment analysis classify them under positive, negative and neutral categories.&lt;/li&gt;
+&lt;li&gt;Extract various features of the product from the reviews and do sentiment analysis on them.&lt;/li&gt;
+&lt;li&gt;Date wise analysis of the product from common data source like Twitter&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Outcome?&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Goal 1 will help to capture the overall sentiment about the product and the corresponding e-commerce website’s performance. For example, one may provide better delivery and the other may provide better customer service etc. This metric will help you to get an idea of where should we buy the product from not considering only the price as a factor.&lt;/li&gt;
+&lt;li&gt;Goal 2 will help to know about the product’s features from customer provided reviews across these e-commerce sites.&lt;/li&gt;
+&lt;li&gt;Goal 3 will help you identify the improvement in products over iterations. For example, PS4 had lot of complaints on the release day but after next set of consoles got released the complaints got reduced. So, this metric will help to get an idea about how the product’s quality varies over a period of time.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For the hackathon, we chose to proceed only with&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Flikart and Amazon as the target e-commerce websites&lt;/li&gt;
+&lt;li&gt;Mobile as the targeted product&lt;/li&gt;
+&lt;li&gt;Twitter tweets as the source for day by day analysis of the product&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And &lt;strong&gt;Panda&lt;/strong&gt;(we felt that Pandas are cool, so named it Panda) came to life in the next 30 hours&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/zUbNOSw.png&quot; alt=&quot;Main page&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The entire first time process of scrapping all the reviews from Amazon and Flipkart, doing sentiment analysis on them was time consuming process. So we chose only two products &lt;em&gt;Galaxy Note 3&lt;/em&gt; and &lt;em&gt;Nokia Lumia 1520&lt;/em&gt; for the demo.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/92wlCJF.png&quot; alt=&quot;Analysis1&quot;&gt;&lt;/p&gt;
+&lt;p&gt;This is the comparison of sentiment analysis of customer reviews on Amazon and Flipkart. We also done sentiment analysis on tweets regarding this product. The twitter data only captures the sentiment on products.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/By5B6j2.png&quot; alt=&quot;Analysis2&quot;&gt;&lt;/p&gt;
+&lt;p&gt;We considered battery, display, RAM and storage as static features that will be analyzed. These are based on reviews from Amazon, Flipkart and tweets that spoke about these features.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/ZNX4Pqt.png&quot; alt=&quot;Analysis3&quot;&gt;&lt;/p&gt;
+&lt;p&gt;This is the day by day analysis based on tweets&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;Sentiment analysis on product reviews&lt;/strong&gt; is our idea for “Save the Hacker” hackathon. Our basic goals were to&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+    
+    </summary>
+    
+      <category term="project" scheme="http://blog.ganesshkumar.com/categories/project/"/>
+    
+      <category term="hackathon" scheme="http://blog.ganesshkumar.com/categories/project/hackathon/"/>
+    
+    
+      <category term="product reviews" scheme="http://blog.ganesshkumar.com/tags/product-reviews/"/>
+    
+      <category term="sentiment analysis" scheme="http://blog.ganesshkumar.com/tags/sentiment-analysis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Youtube Interface</title>
+    <link href="http://blog.ganesshkumar.com/2014/02/22/2014/youtube-interface/"/>
+    <id>http://blog.ganesshkumar.com/2014/02/22/2014/youtube-interface/</id>
+    <published>2014-02-21T18:30:00.000Z</published>
+    <updated>2016-04-30T14:59:36.000Z</updated>
+    
+    <content type="html">&lt;p&gt;Youtube has made some changes to their UI yesterday. Unlike ever before, there are couple of things which catch our attention and rise questions on design practices.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;Home Page&lt;/center&gt;&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/9TRNlQU.png&quot; alt=&quot;Youtube Home page&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Youtube has moved away from using the entire width and has left some space on either side of the content. Personally I had two concerns with their new design.&lt;/p&gt;
+&lt;h3 id=&quot;1-Menu-button&quot;&gt;&lt;a href=&quot;#1-Menu-button&quot; class=&quot;headerlink&quot; title=&quot;1. Menu button&quot;&gt;&lt;/a&gt;1. Menu button&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/RFwpNZI.png&quot; alt=&quot;Small Button&quot;&gt; Notice the small button on top next to the youtube logo. It has a &lt;strong&gt;down arrow&lt;/strong&gt; suggesting that the menu is going to drop down when you click it. Once you click it the menu zips in from the left to right. Perhaps they could have shown a right arrow next to the button.&lt;/p&gt;
+&lt;h3 id=&quot;2-Inconsistency&quot;&gt;&lt;a href=&quot;#2-Inconsistency&quot; class=&quot;headerlink&quot; title=&quot;2. Inconsistency&quot;&gt;&lt;/a&gt;2. Inconsistency&lt;/h3&gt;&lt;p&gt;The next thing is that the way they show the menu is inconsistent across the pages (Home page and the page when you watch a video).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/Z92mfbI.png&quot; alt=&quot;Screen 1&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/XmuKfyh.png&quot; alt=&quot;Screen 2&quot;&gt;&lt;/p&gt;
+&lt;p&gt;As one can see, in the home page the menu got embedded to the page where as in the video page the menu floats on top of the page. This could have been made consistent across all the pages. The floating menu is anyways hiding a part of the video. Maybe Youtube is right is displaying the menu. I am trying to understand the possible reason behind this.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Youtube has made some changes to their UI yesterday. Unlike ever before, there are couple of things which catch our attention and rise qu
+    
+    </summary>
+    
+      <category term="computer" scheme="http://blog.ganesshkumar.com/categories/computer/"/>
+    
+      <category term="ui" scheme="http://blog.ganesshkumar.com/categories/computer/ui/"/>
+    
+    
+      <category term="youtube" scheme="http://blog.ganesshkumar.com/tags/youtube/"/>
+    
+      <category term="problem" scheme="http://blog.ganesshkumar.com/tags/problem/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hacking robinhood.io&#39;s Waiting Queue</title>
+    <link href="http://blog.ganesshkumar.com/2014/01/29/2014/hacking-robinhood-io-waiting-queue/"/>
+    <id>http://blog.ganesshkumar.com/2014/01/29/2014/hacking-robinhood-io-waiting-queue/</id>
+    <published>2014-01-28T18:30:00.000Z</published>
+    <updated>2016-04-30T14:59:36.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;a href=&quot;robinhood.io&quot;&gt;Robinhood.io&lt;/a&gt;, the $0 commission stock brokerage, opened up for pre-registration recently. When I booked a spot for myself there were 121K odd people in front of me in the waitlist.&lt;/p&gt;
+&lt;p&gt;The page also read  “Interested in priority access? Get early access by referring your friends. The more friends that join, the sooner you’ll get access”. There was my unique referral link at the bottom.&lt;/p&gt;
+&lt;p&gt;I visited the pre-registration page using my referral link and entered my alternative, abandoned email address. I have moved up by 6000 positions in the waiting queue. The site just needs me to give another email id to move up the queue. No confirmation email is needed.&lt;/p&gt;
+&lt;p&gt;Now I know the way to move up the queue. I need few more email ids. I don’t want to share my friends’ email ids with them. At the same time I don’t want to enter random email ids as it  may alarm them when delivery starts to fail for more and more email id corresponding to a referral link.&lt;/p&gt;
+&lt;p&gt;I have subscribed to email lists like linux-kernel, git etc. where we get spams mail occasionally. I opened up my spam folder. Entered all the spammers’ email id one by one.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Now there are only 555 people ahead of me in the queue and 121K odd people behind me.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Thank you fellow spammers ☺&lt;/p&gt;
+&lt;p&gt;Note: &lt;a href=&quot;https://www.robinhood.io/faq/?q=how_we_make_money&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Read how robinhood.io makes money&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Edit&lt;/strong&gt;: And days after robinhood.io has changed their waiting list policy. Now they require you to activate the request through an email link, which is pretty good. Now there is a fair waiting list ☺&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;robinhood.io&quot;&gt;Robinhood.io&lt;/a&gt;, the $0 commission stock brokerage, opened up for pre-registration recently. When I booked a spot
+    
+    </summary>
+    
+      <category term="life style" scheme="http://blog.ganesshkumar.com/categories/life-style/"/>
+    
+      <category term="hack" scheme="http://blog.ganesshkumar.com/categories/life-style/hack/"/>
+    
+    
+      <category term="waiting list" scheme="http://blog.ganesshkumar.com/tags/waiting-list/"/>
+    
+      <category term="hack" scheme="http://blog.ganesshkumar.com/tags/hack/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Installing Dropbox From Source Code</title>
+    <link href="http://blog.ganesshkumar.com/2014/01/02/2014/installing-dropbox-from-source-code/"/>
+    <id>http://blog.ganesshkumar.com/2014/01/02/2014/installing-dropbox-from-source-code/</id>
+    <published>2014-01-01T18:30:00.000Z</published>
+    <updated>2016-04-30T14:59:36.000Z</updated>
+    
+    <content type="html">&lt;p&gt;If you are installing Dropbox from source code, you must have read this &lt;a href=&quot;https://www.dropbox.com/help/247/en&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;help page&lt;/a&gt;. It is not a detailed documentation. You might run into few well known issues.&lt;/p&gt;
+&lt;p&gt;From my experience of installing Dropbox on Arch Linux,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Download the source code from &lt;a href=&quot;https://www.dropbox.com/download?dl=packages/nautilus-dropbox-1.4.0.tar.bz2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;official repository&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Extract the tarball&lt;br&gt;&lt;code&gt;tar xvjf ./nautilus-dropbox-1.4.0.tar.bz2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Switch your working directory to the extracted source code directory&lt;br&gt;&lt;code&gt;cd ./nautilus-dropbox-1.4.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Make sure that you are using python2(docgen.py uses execfile() function which is deprecated in python3). Dropbox installation is not supported by python3&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;./configure&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Copy the dropbox.in file to dropbox&lt;br&gt;&lt;code&gt;cp dropbox.in dropbox&lt;/code&gt;&lt;br&gt;We do this because, when you execute &lt;code&gt;make&lt;/code&gt;, docgen.py will depend on a file named “dropbox” but it is present as “dropbox.in” in the source code&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;make&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;When I ran make I ran into another error from “dropbox” file. Around line 285&lt;br&gt; box_logo_pixbuf = @IMAGEDATA64@&lt;br&gt; window_icon = @IMAGEDATA16@&lt;br&gt;it was not able to resolve @IMAGEDATA64@ and @IMAGEDATA16@ but as these are just icon and logo images I commented out these lines.&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;make install&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Have fun with Dropbox :)&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;If you are installing Dropbox from source code, you must have read this &lt;a href=&quot;https://www.dropbox.com/help/247/en&quot; target=&quot;_blank&quot; rel
+    
+    </summary>
+    
+      <category term="computer" scheme="http://blog.ganesshkumar.com/categories/computer/"/>
+    
+      <category term="software" scheme="http://blog.ganesshkumar.com/categories/computer/software/"/>
+    
+      <category term="dropbox" scheme="http://blog.ganesshkumar.com/categories/computer/software/dropbox/"/>
+    
+    
+      <category term="linux" scheme="http://blog.ganesshkumar.com/tags/linux/"/>
+    
+      <category term="dropbox" scheme="http://blog.ganesshkumar.com/tags/dropbox/"/>
+    
+      <category term="installation" scheme="http://blog.ganesshkumar.com/tags/installation/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Sensation 101</title>
+    <link href="http://blog.ganesshkumar.com/2013/09/24/2013/sensation-101/"/>
+    <id>http://blog.ganesshkumar.com/2013/09/24/2013/sensation-101/</id>
+    <published>2013-09-23T18:30:00.000Z</published>
+    <updated>2016-04-30T14:59:36.000Z</updated>
+    
+    <content type="html">&lt;p&gt;I had been using smart phone for more than three years. I was an addict to my smart phone. My precious time was feeding whatsapp, facebook, games, videos, and every free application on the play store at least once. Six months back I switched from HTC Sensation to Nokia 101 in an attempt to experience the days without much intervention of mobile phones in my hand. I chose Nokia 101 because it was a primitive phone which can play mp3 files and support 4GB SD card. It was not a bad choice any day. I have never turned on my HTC Sensation since that day.&lt;/p&gt;
+&lt;p&gt;The initial few days were horrible with out having a smartphone in hand. The worst part was I had to give reason to everyone who saw me with 101 but in a week it felt so good to be around without a smartphone in hand. Still, a week was not sufficient to jump to any conclusion. So I waited for 6 months to analyze the its effect in myself. Now, here I am listing out the pros and cons&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pros&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Battery - Charge your phone once and carry it around for 3 days&lt;/li&gt;
+&lt;li&gt;No wastage of time with games and organizing things (seriously gaming sucks at small screen)&lt;/li&gt;
+&lt;li&gt;No unnecessary chats - Call if you want to talk to friends&lt;/li&gt;
+&lt;li&gt;Better social life outside - No more looking the world through the tiny screen&lt;/li&gt;
+&lt;li&gt;No more office mails when I chill out&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Cons&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Performance - the call quality is not on par with smart phones&lt;/li&gt;
+&lt;li&gt;Inbox size - have to constantly delete messages to provide space for new ones&lt;/li&gt;
+&lt;li&gt;Missing navigation(often) and camera(rarely)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;My phone stopped working two days back. My life didn’t get affected. I didn’t feel like I am missing a hand from my body. It is a good result :)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;My next experiment&lt;/strong&gt; is to get a smartphone and see if I can stay away from games, facebook, twitter etc. and leverage its presence with its features like navigation, emails and occasional snaps.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I had been using smart phone for more than three years. I was an addict to my smart phone. My precious time was feeding whatsapp, faceboo
+    
+    </summary>
+    
+      <category term="life style" scheme="http://blog.ganesshkumar.com/categories/life-style/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Learn, unlearn and relearn</title>
+    <link href="http://blog.ganesshkumar.com/2013/09/01/2013/learn-unlearn-relearn/"/>
+    <id>http://blog.ganesshkumar.com/2013/09/01/2013/learn-unlearn-relearn/</id>
+    <published>2013-08-31T18:30:00.000Z</published>
+    <updated>2016-04-30T14:59:36.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;“The illiterate of the 21st century will not be those who cannot read and write, but those who cannot learn, unlearn, and relearn. ” - &lt;a href=&quot;http://en.wikipedia.org/wiki/Alvin_Toffler&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Alvin Toffler&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Schools and Colleges play a vital role in teaching us. These institutions often tend to force their students to learn more and more, without mastering the fundamentals. Students who love their subjects and enjoy their books are becoming hard to find day by day. Industries view degree holders as an abstracted and tuned resources for their need.&lt;/p&gt;
+&lt;p&gt;So, “learning” has not been given the due respect by all the players: students, educational institutions and industries.&lt;/p&gt;
+&lt;p&gt;What about unlearning and relearning? Do they really make sense in our existing system?&lt;/p&gt;
+&lt;p&gt;Unlearning and relearning are tightly coupled and usually happens together.&lt;/p&gt;
+&lt;p&gt;Unlearning and relearning do not mean that one should forget the things he had learnt and learn it again at some point of time in his life. This is a very common misinterpretation I find among the people who know this quote. I have even seen people quoting “Tower of Hanoi” as an example where you have to decouple the things you have built to arrive at the final solution. I call this as a fictional example where they try to unlearn by demolishing something that is there.&lt;/p&gt;
+&lt;p&gt;Unlearning happens when you are open to new prospective to the things you already know. Relearning happens when you accept a new perspective and appreciate your knowledge from that perspective. Together they will help you to overcome your misconception and misunderstanding that was there from the time you learnt something new.&lt;/p&gt;
+&lt;p&gt;When we learn something for the first time, we will be focusing to get a bigger and abstracted view of it. We ignore small and important features. After learning something, a small discussion with friends or teaching someone or trying to summarize your learning will make you realize the minute details that you have missed when you learnt it.&lt;/p&gt;
+&lt;p&gt;Unlearning and relearning applies not only for education; but also to any form of knowledge or skill that we acquire. Our knowledge and skill can to be improved day by day.&lt;/p&gt;
+&lt;p&gt;Be open to thoughts. Keep learning, unlearning and relearning.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TL; DR:&lt;/strong&gt; Be open to new perspective – clear out your misunderstandings – improve your understanding.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;“The illiterate of the 21st century will not be those who cannot read and write, but those who cannot learn, unlearn, and re
+    
+    </summary>
+    
+      <category term="life style" scheme="http://blog.ganesshkumar.com/categories/life-style/"/>
+    
+    
+      <category term="learning" scheme="http://blog.ganesshkumar.com/tags/learning/"/>
+    
+      <category term="quote" scheme="http://blog.ganesshkumar.com/tags/quote/"/>
+    
+  </entry>
+  
+</feed>
