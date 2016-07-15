@@ -196,6 +196,114 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title" itemprop="headline">
                     
+                        <a class="link-unstyled" href="/2014/09/10/2014/octopress-gist-vs-include-code/">
+                            Octopress Gist vs Include-code
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" content="Wed Sep 10 2014 00:00:00 GMT+0530">
+	
+		    Sep 10, 2014
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/computer/">computer</a>, <a class="category-link" href="/categories/computer/software/">software</a>, <a class="category-link" href="/categories/computer/software/octopress/">octopress</a>
+
+
+    
+</div>
+            </div>
+            
+            
+                <div class="postShorten-content" itemprop="articleBody">
+                    <p>I was using <strong>gist</strong> to share code snippets in this blog. Today I stumbled upon <a href="http://tools.pingdom.com/fpt/" target="_blank" rel="external">Pingdom</a>, a tool to test the load time of that page, analyze it and find bottlenecks. I tested my blog and found that gist is taking approximately 300ms to load, which is bad. The average time taken to load my blog was 686ms and <strong>300ms taken by gist is approximately 50% of the load time</strong>.</p>
+<p>Files loaded from gist</p>
+<ul>
+<li>My target file (from gist.github.com)</li>
+<li>Gist CSS file (from gist-assets.github.com)</li>
+</ul>
+<p>So I decided to stop using gist. To share code snippets, Octopress provides three other options: <a href="octopress.org/docs/plugins/backtick-codeblock/">Backtick Code Blocks</a>, <a href="http://octopress.org/docs/blogging/code/" target="_blank" rel="external">Inline Code Blocks</a> and <a href="http://octopress.org/docs/plugins/include-code/" target="_blank" rel="external">Include Code</a>. Of these three options, include code behaves very much like gist. You can put your code snippet into a file and give the filename as argument to include_code plugin. Further, When I had to share a ruby block in my blog, include_code seemed to be elegant way of doing it. Ruby block shared using other methods were executed by Octopress when generating the blog. Now the average load time of this blog is <strong>375ms i.e. 45% faster than before</strong>.</p>
+<p>Personally I prefer include_code if I am sharing a snippet or ruby code with paranthesis and blockcode if I am sharing one or two lines of code.</p>
+
+                    
+                        
+                    
+                    
+                        <p>
+                            <a href="/2014/09/10/2014/octopress-gist-vs-include-code/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
+                        <a class="link-unstyled" href="/2014/09/07/2014/upgrading-google-analytics-in-octopress/">
+                            Upgrading Google Analytics in Octopress
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" content="Sun Sep 07 2014 18:30:00 GMT+0530">
+	
+		    Sep 07, 2014
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/computer/">computer</a>, <a class="category-link" href="/categories/computer/software/">software</a>, <a class="category-link" href="/categories/computer/software/octopress/">octopress</a>
+
+
+    
+</div>
+            </div>
+            
+            
+                <div class="postShorten-content" itemprop="articleBody">
+                    <p>Google Analytics for Octopress hasn’t integrated the latest update to include <strong>Demographics and Interest</strong> reports. In Octopress, Google Analytics code resides in source/_includes/google_analytics.html</p>
+<p>According to Google, one line change will include the demographics and interest reports to your analytics. Following is the diff of my source/_includes/google_analytics.html</p>
+<p>Just replace the line</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ga.src = (&apos;https:&apos; == document.location.protocol ? &apos;https://ssl&apos; : &apos;http://www&apos;) + &apos;.google-analytics.com/ga.js&apos;;</span><br></pre></td></tr></table></figure>
+<p>to</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ga.src = (&apos;https:&apos; == document.location.protocol ? &apos;https://&apos; : &apos;http://&apos;) + &apos;stats.g.doubleclick.net/dc.js&apos;;</span><br></pre></td></tr></table></figure>
+<p>And you are done. It will take upto 24 hours for the new reports to start appearing.</p>
+<p>I have opened a <a href="https://github.com/imathis/octopress/pull/1647" target="_blank" rel="external">pull request</a> for this upgrade. If this gets merged, these reports should be included by default.</p>
+
+                    
+                        
+                    
+                    
+                        <p>
+                            <a href="/2014/09/07/2014/upgrading-google-analytics-in-octopress/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
                         <a class="link-unstyled" href="/2014/09/07/2014/using-spotify-outside-us-and-uk/">
                             Using Spotify Outside US and UK
                         </a>
@@ -357,132 +465,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/2014/06/06/2014/do-not-send-me-details-of-products/">
-                            Dark Pattern in Webforms
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" content="Fri Jun 06 2014 00:00:00 GMT+0530">
-	
-		    Jun 06, 2014
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/computer/">computer</a>, <a class="category-link" href="/categories/computer/ui/">ui</a>
-
-
-    
-</div>
-            </div>
-            
-            
-                <div class="postShorten-content" itemprop="articleBody">
-                    <p>Whenever we submit forms online (while creating new account or submitting votes), it is a customary practice to try to subscribe us to a mailing-list. This is usually achieved with small check boxes ahead of the submit button.</p>
-<p>To bring in more people these check boxes are checked by default. Only people who pay attention to the form uncheck them. Over a period of time, people don’t pay attention to what is written in the form and uncheck these check boxes before clicking the submit button.</p>
-<p>Manchester United (or whoever created their online forms) has paid enough attention to increase in such customers and has redesigned their forms.</p>
-<p><img src="http://i.imgur.com/YQXUcFA.gif" alt="Submit form"></p>
-<p>Above image is cropped from one of their forms to enlist oneself in the lucky draw to win Ryan Giggs signed T-shirt. It reads “<strong>Don’t send me details of products, services, offers &amp; events from</strong>“. So people who are going to uncheck the check boxes as a practice will eventually get subscribed to their mailing list.</p>
-<p>This is such a small change but I believe it would have definitely brought them more people on the list.</p>
-<p>Note: If anyone of the readers has tried this or planning to try this, I am eager to know the impact.</p>
-
-                    
-                        
-                    
-                    
-                        <p>
-                            <a href="/2014/06/06/2014/do-not-send-me-details-of-products/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/2014/03/05/2014/save-the-hacker/">
-                            Save The Hacker
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" content="Wed Mar 05 2014 00:00:00 GMT+0530">
-	
-		    Mar 05, 2014
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/project/">project</a>, <a class="category-link" href="/categories/project/hackathon/">hackathon</a>
-
-
-    
-</div>
-            </div>
-            
-            
-                <div class="postShorten-content" itemprop="articleBody">
-                    <p><strong>Sentiment analysis on product reviews</strong> is our idea for “Save the Hacker” hackathon. Our basic goals were to</p>
-<ul>
-<li>Scrap product reviews across various e-commerce websites and do sentiment analysis classify them under positive, negative and neutral categories.</li>
-<li>Extract various features of the product from the reviews and do sentiment analysis on them.</li>
-<li>Date wise analysis of the product from common data source like Twitter</li>
-</ul>
-<p><strong>Outcome?</strong></p>
-<ul>
-<li>Goal 1 will help to capture the overall sentiment about the product and the corresponding e-commerce website’s performance. For example, one may provide better delivery and the other may provide better customer service etc. This metric will help you to get an idea of where should we buy the product from not considering only the price as a factor.</li>
-<li>Goal 2 will help to know about the product’s features from customer provided reviews across these e-commerce sites.</li>
-<li>Goal 3 will help you identify the improvement in products over iterations. For example, PS4 had lot of complaints on the release day but after next set of consoles got released the complaints got reduced. So, this metric will help to get an idea about how the product’s quality varies over a period of time.</li>
-</ul>
-<p>For the hackathon, we chose to proceed only with</p>
-<ul>
-<li>Flikart and Amazon as the target e-commerce websites</li>
-<li>Mobile as the targeted product</li>
-<li>Twitter tweets as the source for day by day analysis of the product</li>
-</ul>
-<p>And <strong>Panda</strong>(we felt that Pandas are cool, so named it Panda) came to life in the next 30 hours</p>
-<p><img src="http://i.imgur.com/zUbNOSw.png" alt="Main page"></p>
-<p>The entire first time process of scrapping all the reviews from Amazon and Flipkart, doing sentiment analysis on them was time consuming process. So we chose only two products <em>Galaxy Note 3</em> and <em>Nokia Lumia 1520</em> for the demo.</p>
-<p><img src="http://i.imgur.com/92wlCJF.png" alt="Analysis1"></p>
-<p>This is the comparison of sentiment analysis of customer reviews on Amazon and Flipkart. We also done sentiment analysis on tweets regarding this product. The twitter data only captures the sentiment on products.</p>
-<p><img src="http://i.imgur.com/By5B6j2.png" alt="Analysis2"></p>
-<p>We considered battery, display, RAM and storage as static features that will be analyzed. These are based on reviews from Amazon, Flipkart and tweets that spoke about these features.</p>
-<p><img src="http://i.imgur.com/ZNX4Pqt.png" alt="Analysis3"></p>
-<p>This is the day by day analysis based on tweets</p>
-
-                    
-                        
-                    
-                    
-                        <p>
-                            <a href="/2014/03/05/2014/save-the-hacker/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -503,7 +485,7 @@
             </a>
         </li>
         
-        <li class="pagination-number">page 2 of 3</li>
+        <li class="pagination-number">page 2 of 4</li>
     </ul>
 </div>
 

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.ganesshkumar.com/"/>
-  <updated>2016-05-12T20:41:44.000Z</updated>
+  <updated>2016-07-15T23:57:53.000Z</updated>
   <id>http://blog.ganesshkumar.com/</id>
   
   <author>
@@ -16,13 +16,64 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Passing Host&#39;s Hostname to Docker Container</title>
-    <link href="http://blog.ganesshkumar.com/2016/05/13/2016/ansible_docker_hostname/"/>
-    <id>http://blog.ganesshkumar.com/2016/05/13/2016/ansible_docker_hostname/</id>
-    <published>2016-05-12T20:34:00.000Z</published>
-    <updated>2016-05-12T20:41:44.000Z</updated>
+    <title>Docker - Timezone</title>
+    <link href="http://blog.ganesshkumar.com/2016/07/16/2016/docker-timezone/"/>
+    <id>http://blog.ganesshkumar.com/2016/07/16/2016/docker-timezone/</id>
+    <published>2016-07-15T23:50:00.000Z</published>
+    <updated>2016-07-15T23:57:53.000Z</updated>
     
-    <content type="html">&lt;p&gt;There are two simple ways to pass &lt;code&gt;hostname&lt;/code&gt; of the machine running docker daemon to the docker container.&lt;/p&gt;
+    <content type="html">&lt;p&gt;By default docker container’s will sync their time with the local system time but the default timezone is “UTC”. If you are using &lt;code&gt;Date&lt;/code&gt; or &lt;code&gt;Time&lt;/code&gt; in your application, you have to manually set the timezone for the container. One easy way to do so is using the environmental variable &lt;code&gt;-e &amp;quot;TZ=Asia/Kolkata&amp;quot;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;But sometimes, the container time will deviate a little from the local system time. In that case, OS X, linux and unix have ‘/etc/localtime’ file by default. One can mount this file as a read-only file inside the container. &lt;code&gt;-v /etc/localtime:/etc/localtime:ro&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Please post below, if you find any other issues related to time within docker container.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;By default docker container’s will sync their time with the local system time but the default timezone is “UTC”. If you are using &lt;code&gt;D
+    
+    </summary>
+    
+      <category term="docker" scheme="http://blog.ganesshkumar.com/categories/docker/"/>
+    
+    
+      <category term="docker" scheme="http://blog.ganesshkumar.com/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker - Disable Python Buffer</title>
+    <link href="http://blog.ganesshkumar.com/2016/07/10/2016/docker-disable-python-buffer/"/>
+    <id>http://blog.ganesshkumar.com/2016/07/10/2016/docker-disable-python-buffer/</id>
+    <published>2016-07-10T16:30:00.000Z</published>
+    <updated>2016-07-15T23:49:27.000Z</updated>
+    
+    <content type="html">&lt;p&gt;When running python application inside docker container, one may use &lt;code&gt;print&lt;/code&gt; function for debugging. Usually it takes long time before you see anything on the screen as python tries to buffer the output to stdout and stderror. To force python to print immediately, set the environmental variable &lt;code&gt;PYTHONUNBUFFERED=0&lt;/code&gt; inside the container.&lt;/p&gt;
+&lt;p&gt;There is very little possibility that this variable might change, so you can configure via Dockerfile.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;When running python application inside docker container, one may use &lt;code&gt;print&lt;/code&gt; function for debugging. Usually it takes long tim
+    
+    </summary>
+    
+      <category term="docker" scheme="http://blog.ganesshkumar.com/categories/docker/"/>
+    
+    
+      <category term="docker" scheme="http://blog.ganesshkumar.com/tags/docker/"/>
+    
+      <category term="python" scheme="http://blog.ganesshkumar.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Passing Host&#39;s Hostname to Docker Container</title>
+    <link href="http://blog.ganesshkumar.com/2016/05/13/2016/ansible-docker-hostname/"/>
+    <id>http://blog.ganesshkumar.com/2016/05/13/2016/ansible-docker-hostname/</id>
+    <published>2016-05-12T20:34:00.000Z</published>
+    <updated>2016-07-15T23:35:59.000Z</updated>
+    
+    <content type="html">&lt;p&gt;There are two simple ways to pass &lt;code&gt;hostname&lt;/code&gt; of the machine running docker daemon to the docker container using Ansible.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Using Environmental Variable&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- name: Start application container&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  docker:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    name: my_application&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    image: my_username/my_application&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    env:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        HOST_HOSTNAME: &amp;quot;&amp;#123;&amp;#123; ansible_hostname &amp;#125;&amp;#125;&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -35,9 +86,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;There are two simple ways to pass &lt;code&gt;hostname&lt;/code&gt; of the machine running docker daemon to the docker container.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Usi
+      &lt;p&gt;There are two simple ways to pass &lt;code&gt;hostname&lt;/code&gt; of the machine running docker daemon to the docker container using Ansible.&lt;/p&gt;
+&lt;
     
     </summary>
     
