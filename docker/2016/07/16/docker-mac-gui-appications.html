@@ -108,9 +108,9 @@ $ open -a XQuartz
 <code class="highlighter-rouge">
 $ ip=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
 </code></li>
-      <li>Add your ip address to ACL
+      <li>Add your local machine to ACL. Using hostname is safer than using ip address.
 <code class="highlighter-rouge">
-$ /usr/X11R6/bin/xhost + $ip
+$ /usr/X11R6/bin/xhost + $(hostname)
 </code></li>
     </ul>
   </li>

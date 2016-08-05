@@ -5,8 +5,8 @@
     <description>Personal blog about computer science and technology</description>
     <link>http://www.ganesshkumar.com/</link>
     <atom:link href="http://www.ganesshkumar.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 05 Aug 2016 21:36:35 +0530</pubDate>
-    <lastBuildDate>Fri, 05 Aug 2016 21:36:35 +0530</lastBuildDate>
+    <pubDate>Sat, 06 Aug 2016 00:24:03 +0530</pubDate>
+    <lastBuildDate>Sat, 06 Aug 2016 00:24:03 +0530</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -45,9 +45,9 @@ $ open -a XQuartz
 &lt;code class=&quot;highlighter-rouge&quot;&gt;
 $ ip=$(ifconfig en0 | grep inet | awk &#39;$1==&quot;inet&quot; {print $2}&#39;)
 &lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;Add your ip address to ACL
+      &lt;li&gt;Add your local machine to ACL. Using hostname is safer than using ip address.
 &lt;code class=&quot;highlighter-rouge&quot;&gt;
-$ /usr/X11R6/bin/xhost + $ip
+$ /usr/X11R6/bin/xhost + $(hostname)
 &lt;/code&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
