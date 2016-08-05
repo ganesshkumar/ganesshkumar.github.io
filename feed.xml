@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ganessh Kumar</title>
+    <description>Personal blog about computer science and technology</description>
+    <link>http://www.ganesshkumar.com/</link>
+    <atom:link href="http://www.ganesshkumar.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 05 Aug 2016 21:36:35 +0530</pubDate>
+    <lastBuildDate>Fri, 05 Aug 2016 21:36:35 +0530</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Containerize GUI Applications on Mac</title>
+        <description>&lt;p&gt;After watching &lt;a href=&quot;https://www.youtube.com/watch?v=1qlLUf7KtAw&quot;&gt;Container Hacks and Fun Images&lt;/a&gt; by Jessie Frazelle, I wanted to Containerize my GUI applications on OS X.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;OS X doesn’t expose device files &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/snd&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/video&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;OS X doesn’t have a default x11 client. So we have to rely on XQuartz&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This guide is tested under&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;OS X El Capitan (version 10.11.4)&lt;/li&gt;
+  &lt;li&gt;Docker for Mac (&lt;a href=&quot;https://docs.docker.com/docker-for-mac/&quot;&gt;1.12.0-beta21&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;XQuartz (&lt;a href=&quot;https://www.xquartz.org/releases/index.html&quot;&gt;2.7.10_beta2&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It also works well under OS X(10.11.5) and Docker for Mac(1.12 stable) but XQuartz version must be 2.7.1_beta2(latest as of now). As pointed by &lt;a href=&quot;https://fredrikaverpil.github.io/2016/07/31/docker-for-mac-and-gui-applications/&quot;&gt;Fredrik Averpil&lt;/a&gt;, there is a &lt;a href=&quot;https://bugs.freedesktop.org/show_bug.cgi?id=95379&quot;&gt;bug&lt;/a&gt; in XQuartz 2.7.9 stable version, which prevents opening the display from remote.&lt;/p&gt;
+
+&lt;p&gt;Note: After installing XQuartz you need to log out and log in back.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Running a container&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Start xQuartz&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+$ open -a XQuartz
+&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Allow connections from remote clients
+    &lt;ul&gt;
+      &lt;li&gt;xQuartz’s &lt;code class=&quot;highlighter-rouge&quot;&gt;Preference&lt;/code&gt; → &lt;code class=&quot;highlighter-rouge&quot;&gt;Security&lt;/code&gt; → &lt;code class=&quot;highlighter-rouge&quot;&gt;Allow connections from network clients&lt;/code&gt;&lt;br /&gt;
+&lt;img src=&quot;http://www.ganesshkumar.com/images/2016-08-05-docker-mac-gui-appications/xquartz_preference.png&quot; alt=&quot;xQuartz preference&quot; /&gt;&lt;/li&gt;
+      &lt;li&gt;Get the ip address of your local machine&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+$ ip=$(ifconfig en0 | grep inet | awk &#39;$1==&quot;inet&quot; {print $2}&#39;)
+&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Add your ip address to ACL
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+$ /usr/X11R6/bin/xhost + $ip
+&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Run firefox. Let’s use &lt;a href=&quot;https://blog.jessfraz.com/&quot;&gt;Jessie Frazzelle’s&lt;/a&gt; &lt;a href=&quot;https://github.com/jfrazelle/dockerfiles/tree/master/firefox&quot;&gt;firefox image&lt;/a&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+$ docker run -d --name firefox -e DISPLAY=$ip:0 -v /tmp/.X11-unix:/tmp/.X11-unix jess/firefox
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://www.ganesshkumar.com/images/2016-08-05-docker-mac-gui-appications/firefox_docker.png&quot; alt=&quot;xQuartz preference&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 16 Jul 2016 05:20:00 +0530</pubDate>
+        <link>http://www.ganesshkumar.com/docker/2016/07/16/docker-mac-gui-appications.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/docker/2016/07/16/docker-mac-gui-appications.html</guid>
+        
+        <category>docker</category>
+        
+        
+        <category>docker</category>
+        
+      </item>
+    
+      <item>
+        <title>Docker - Sync your clock</title>
+        <description>&lt;p&gt;By default docker container’s will sync their time with the local system time but the default timezone is “UTC”. If you are using &lt;code class=&quot;highlighter-rouge&quot;&gt;Date&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;Time&lt;/code&gt; in your application, you have to manually set the timezone for the container. One easy way to do so is using the environmental variable &lt;code class=&quot;highlighter-rouge&quot;&gt;-e &quot;TZ=Asia/Kolkata&quot;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;But sometimes, the container time will deviate a little from the local system time. In that case, OS X, linux and unix have ‘/etc/localtime’ file by default. One can mount this file as a read-only file inside the container. &lt;code class=&quot;highlighter-rouge&quot;&gt;-v /etc/localtime:/etc/localtime:ro&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Please post below, if you find any other issues related to time within docker container.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 16 Jul 2016 05:20:00 +0530</pubDate>
+        <link>http://www.ganesshkumar.com/docker/2016/07/16/docker-timezone.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/docker/2016/07/16/docker-timezone.html</guid>
+        
+        <category>docker</category>
+        
+        
+        <category>docker</category>
+        
+      </item>
+    
+      <item>
+        <title>Docker - Disable Stream Buffers in Python</title>
+        <description>&lt;p&gt;When running python application inside docker container, one may use &lt;code class=&quot;highlighter-rouge&quot;&gt;print&lt;/code&gt; function for debugging. Usually it takes long time before you see anything on the screen as python tries to buffer the output to stdout and stderror. To force python to print immediately, set the environmental variable &lt;code class=&quot;highlighter-rouge&quot;&gt;PYTHONUNBUFFERED=0&lt;/code&gt; or run python with the flag &lt;code class=&quot;highlighter-rouge&quot;&gt;-u&lt;/code&gt; inside the container. Both these force stdout and stderr stream to be unbuffered.&lt;/p&gt;
+
+&lt;p&gt;There is very little possibility that this variable might change, so you can configure via Dockerfile.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 10 Jul 2016 22:00:00 +0530</pubDate>
+        <link>http://www.ganesshkumar.com/docker/2016/07/10/docker-disable-python-buffer.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/docker/2016/07/10/docker-disable-python-buffer.html</guid>
+        
+        <category>python</category>
+        
+        <category>docker</category>
+        
+        
+        <category>docker</category>
+        
+      </item>
+    
+      <item>
+        <title>Passing Host&#39;s Hostname to Docker Container</title>
+        <description>&lt;p&gt;There are two simple ways to pass &lt;code class=&quot;highlighter-rouge&quot;&gt;hostname&lt;/code&gt; of the machine running docker daemon to the docker container using Ansible.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Using Environmental Variable
+```
+    &lt;ul&gt;
+      &lt;li&gt;name: Start application container
+docker:
+ name: my_application
+ image: my_username/my_application
+ env:
+   HOST_HOSTNAME: “”
+```&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Setting the hostname of the docker container the same as of the host running it.
+```
+    &lt;ul&gt;
+      &lt;li&gt;name: Start application container
+docker:
+ name: my_application
+ image: my_username/my_application
+ hostname: “”
+```&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Fri, 13 May 2016 02:04:00 +0530</pubDate>
+        <link>http://www.ganesshkumar.com/docker/2016/05/13/ansible-docker-hostname.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/docker/2016/05/13/ansible-docker-hostname.html</guid>
+        
+        <category>ansible</category>
+        
+        <category>docker</category>
+        
+        
+        <category>docker</category>
+        
+      </item>
+    
+      <item>
+        <title>Privacy Plugins for Browsers</title>
+        <description>&lt;p&gt;Here are some of my curated list of browser add-ons to protect your privacy against trackers and advertisers. Some of the add-ons might be available only on Firefox as it is my primary browser.&lt;/p&gt;
+
+&lt;h2 id=&quot;privacy-badger&quot;&gt;Privacy Badger&lt;/h2&gt;
+&lt;p&gt;Privacy Badger blocks advertisers from loading content once they detect the advertisers are tracking you without permission. Privacy Badger(a fork of Ad-Blocker Plus) automatically analyzes and blocks any tracker who violates user consent. It provides an out of the box experience without any additional settings, knowledge or configurations by the user. Identifying itself as a privacy tool Privacy Badger does’t block all the ads. It blocks only the non-consensual invasions of user’s privacy. If you want to block all ads, Privacy Badger suggests you to install a traditional ad-blocker alongside.&lt;br /&gt;
+&lt;a href=&quot;https://www.eff.org/privacybadger&quot;&gt;Official Site&lt;/a&gt; | &lt;a href=&quot;https://www.eff.org/files/privacy-badger-latest.xpi&quot;&gt;Firefox&lt;/a&gt; |  &lt;a href=&quot;https://chrome.google.com/webstore/detail/privacy-badger/pkehgijcmpdhfbdbbnkijodmdjhbjlgp&quot;&gt;Chrome&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;disconnect&quot;&gt;Disconnect&lt;/h2&gt;
+&lt;p&gt;Disconnect is a collection of tools to protect your privacy. The free version &lt;strong&gt;block trackers&lt;/strong&gt; using their tracker list(Disconnect claims to block over 5000 trackers) and provide &lt;strong&gt;private search&lt;/strong&gt;, where they use your default search engine after anonymizing your search queries. By subscribing to their packs, you can get functionalities to &lt;strong&gt;detect malware&lt;/strong&gt;, &lt;strong&gt;identify secure public Wi-Fi&lt;/strong&gt;, &lt;strong&gt;VPN&lt;/strong&gt; to mask your location and access censored websites.&lt;/p&gt;
+
+&lt;p&gt;Disconnect powers the &lt;strong&gt;Tracker Protection&lt;/strong&gt; in Firefox’s Private Browsing mode. Disconnect’s &lt;strong&gt;private search&lt;/strong&gt; is the default search option in Tor browsers. Disconnect is available as both native application and browser add-ons. They have also decoupled the features and provide add-ons like private search, privacy icons, private browsing etc.&lt;br /&gt;
+&lt;a href=&quot;https://disconnect.me/&quot;&gt;Official Site&lt;/a&gt; | &lt;a href=&quot;https://disconnect.me/freeprotection&quot;&gt;Free Protection&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;canvasblocker&quot;&gt;CanvasBlocker&lt;/h2&gt;
+&lt;p&gt;CanvasBlocker protects you from &lt;a href=&quot;http://www.browserleaks.com/canvas#how-does-it-work&quot;&gt;Canvas fingerprinting&lt;/a&gt;. Using the &lt;strong&gt;Canvas&lt;/strong&gt; element in HTML5, it is possible to profile an user. CanvasBlocker provides different levels of settings to block the Canvas API. Using this add-on you can let websites use canvas but prevent profiling at the same time.&lt;br /&gt;
+&lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/canvasblocker/&quot;&gt;Firefox&lt;/a&gt; | &lt;a href=&quot;https://chrome.google.com/webstore/detail/canvasfingerprintblock/ipmjngkmngdcdpmgmiebdmfbkcecdndc&quot;&gt;Chrome&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;clean-links&quot;&gt;Clean Links&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Clean Links converts obfuscated links to genuine clean links. For example, http://www.foobar.com/goto=https://www.yoursite.com may redirect you to https://yoursite.com when clicked. Clean links can parse the entire DOM and replace the obfuscated links with the clean links.&lt;/li&gt;
+  &lt;li&gt;Clean Links also removes tracking tags(like reference tags when you are referred from another site, search engine or email) from the urls by using configurable patterns.&lt;br /&gt;
+&lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/clean-links/&quot;&gt;Firefox&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;https-everywhere&quot;&gt;HTTPS everywhere&lt;/h2&gt;
+&lt;p&gt;When parts of the website or the entire website is compatible with HTTPS and you try to access it over HTTP, HTTPS Everywhere  will rewrites your request by encrypting the content and thereby securing your communication. It works based on predefined list of rules on how to rewrite the request to use HTTPS.&lt;br /&gt;
+&lt;a href=&quot;https://www.eff.org/HTTPS-EVERYWHERE&quot;&gt;Official Page&lt;/a&gt; | &lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/https-everywhere/&quot;&gt;Firefox&lt;/a&gt; | &lt;a href=&quot;https://chrome.google.com/webstore/detail/https-everywhere/gcbommkclmclpchllfjekcdonpmejbdp?hl=en&quot;&gt;Chrome&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;ublock&quot;&gt;uBlock&lt;/h2&gt;
+&lt;p&gt;A fast and light-weight add-on to block ads, trackers and analytics. EasyList, Peter Lowe’s Adservers, EasyPrivacy and Malware domains are enabled by default and users can enable more readily available lists. They also support &lt;strong&gt;Hosts&lt;/strong&gt; file entries. They have listed various comparisons with other blockers on their &lt;a href=&quot;https://github.com/chrisaljoudi/ublock&quot;&gt;github repo&lt;/a&gt;.&lt;br /&gt;
+&lt;a href=&quot;https://www.ublock.org/&quot;&gt;Official Site&lt;/a&gt; | &lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/ublock/&quot;&gt;Firefox&lt;/a&gt; | &lt;a href=&quot;https://chrome.google.com/webstore/detail/ublock/epcnnfbjfcgphgdmggkamkmgojdagdnn&quot;&gt;Chrome&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;ublock-origin-and-umatrix&quot;&gt;uBlock Origin and uMatrix&lt;/h2&gt;
+&lt;p&gt;The original developer of uBlock, &lt;a href=&quot;https://github.com/gorhill&quot;&gt;Raymond Hill&lt;/a&gt;, gave the project to the current uBlock developers and he is currently maintaining both &lt;strong&gt;uBlock Origin and uMatrix&lt;/strong&gt;. uBlock Origin is the developer’s own fork and it is not related to uBlock at present. In addition to the uBlock’s blocking list, uBlock Origin has its own blocking list. Advanced version of uBlock, which is targeted for advanced options is uMatrix.&lt;br /&gt;
+&lt;a href=&quot;https://github.com/gorhill/uBlock&quot;&gt;Official Page&lt;/a&gt; | &lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/&quot;&gt;Firefox&lt;/a&gt; | &lt;a href=&quot;https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en&quot;&gt;Chrome&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;self-destructing-cookies&quot;&gt;Self Destructing Cookies&lt;/h2&gt;
+&lt;p&gt;Tracking systems heavily rely on cookies to store information in your browser. Destroying the cookies immediately after closing the tab or browser will prevent them from accessing the information trackers had stored on your system and you can protect your privacy to a great extent. If you are using this extension, you may notice a lot of notifications popping up. You can disable it in the settings, which also allows you to fine tune the add-on.&lt;br /&gt;
+&lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/self-destructing-cookies/&quot;&gt;Firefox&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;random-agent-spoofer&quot;&gt;Random Agent Spoofer&lt;/h2&gt;
+&lt;p&gt;Random Agent Spoofer(RAS) is a great tool to spoof your identity. This add-on can play around with lot of parameters to mock your identity. It has a list of userAgents which can be cycled through at regular intervals. It also modifies content of headers like Do Not Track, Authorization, XFF, referred options. The Accept headers are usually tailored to the profile currently being used. You can see the additional options provided by RAS &lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/random-agent-spoofer/&quot;&gt;here&lt;/a&gt;. RAS doesn’t exactly prevent tracking. It adds noise to the tracking system by sending random information intelligently over period of time.&lt;br /&gt;
+&lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/random-agent-spoofer/&quot;&gt;Firefox&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;csfire&quot;&gt;CsFire&lt;/h2&gt;
+&lt;p&gt;CsFire protects you against Cross Site Request Forgeries(CSRF) by removing cookies and authentication headers from the cross-domain requests, thereby making them harmless. CsFire is result of academic research.&lt;br /&gt;
+&lt;a href=&quot;https://distrinet.cs.kuleuven.be/software/CsFire/&quot;&gt;Official Site&lt;/a&gt; | &lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/csfire/&quot;&gt;Firefox&lt;/a&gt; | &lt;a href=&quot;https://chrome.google.com/webstore/detail/csfire/kflgpkibamedbalplkfjeodpghfelmii&quot;&gt;Chrome&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;expire-history&quot;&gt;Expire History&lt;/h2&gt;
+&lt;p&gt;A simple add-on(not exactly a privacy-tool) which enables you to delete history after certain number of days. This was a Firefox feature in older versions to let users choose between slightly better performance and infinite history.&lt;br /&gt;
+&lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/expire-history-by-days/&quot;&gt;Firefox&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 01 Feb 2016 20:03:00 +0530</pubDate>
+        <link>http://www.ganesshkumar.com/privacy/2016/02/01/browser-privacy-addons.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/privacy/2016/02/01/browser-privacy-addons.html</guid>
+        
+        <category>privacy</category>
+        
+        <category>firefox</category>
+        
+        <category>chrome</category>
+        
+        
+        <category>privacy</category>
+        
+      </item>
+    
+      <item>
+        <title>Learn Docker While Migrating Octopress to Pelican</title>
+        <description>&lt;p&gt;I rely on static site generators to write my blog. I am impressed with the ideology behind it. Keeping each and every component of the blog as small modules, templating webpages into separate components and writing markdown files for the static site generators to generate the blog is the way I enjoy to write blogs.&lt;/p&gt;
+
+&lt;p&gt;Recently I have migrated my blog from Octopress to Pelican mainly for two reasons,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The environment in which Octopress runs started to get complicated as I kept on switching devices and setup the environment again and again. Creating  new instance of environment and copying my articles into it was easier than replicating the environment from my source repository.&lt;/li&gt;
+  &lt;li&gt;I am more comfortable in python than ruby and it looks like there are more opportunities to improve Pelican when compared to Octopress. Pelican is still in early stages in terms of features.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I made this migration bit more fun by learning and using Docker. &lt;strong&gt;Docker&lt;/strong&gt; is an incredible piece of software serving to run virtual machines, committing them as images and storing them online in Docker Hub.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;First, let’s install docker on the host operating system&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install dockerio
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then let’s search for guest OS which we will be running as a container on top of the host OS(use sudo whenever necessary)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker search ubuntu
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We will get a list of images stored in DockerHub. Choose the version you like. I went ahead with the base ubuntu 10.04 LTS.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker pull ubuntu:10.04
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now, if we run the command &lt;code class=&quot;highlighter-rouge&quot;&gt;docker images&lt;/code&gt;, we will see the list of images pulled  to your system.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+   ubuntu              14.10               277eb4304907        3 weeks ago         228.5 MB
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now let’s create an instance of this image called container&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run -t -I 277eb4304907  /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;what happens here is we are running the image[id=277eb4304907]. The parameters -t -I makes the container interactive. And we are executing /bin/bash in this container. So once the command gets executed we will be dropped in a bash shell of the container(guest OS)&lt;/p&gt;
+
+&lt;p&gt;Following the instructions from &lt;a href=&quot;http://docs.getpelican.com/en/3.5.0/install.html&quot;&gt;Pelican doc&lt;/a&gt; I installed Pelican and put my articles in it and generated my blog.&lt;/p&gt;
+
+&lt;p&gt;Come back to your host OS. If we execute the command &lt;code class=&quot;highlighter-rouge&quot;&gt;docker ps -a&lt;/code&gt;, it will list all the containers running in your system.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                       PORTS               NAMES
+    4f0c70cd8e64        ubuntu:14.10        &quot;/bin/bash&quot;         12 hours ago        Exited (130) 12 hours ago                        sleepy_perlman
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now let’s commit the container and get an image out of it.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    docker commit 4f0c70cd8e64 &amp;lt;user_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;tag&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;4f0c70cd8e64&lt;/code&gt; is the container id. &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;user_name&amp;gt;&lt;/code&gt; is your Docker Hub username(if you want to upload the image to DockerHub). &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;tag&amp;gt;&lt;/code&gt; is a the tag for your image. When we create Ubuntu container :10.04 was the tag.&lt;/p&gt;
+
+&lt;p&gt;That’s it. Push the image  to DockerHub.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker push &amp;lt;user_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;tag&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Where ever you need this container, just pull the image from DockerHub, run a container from it and get your job done. No more setting up of the same environment again and again. Have fun :)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: There are lot more about Docker. This is just a quick introduction for creating an image and pushing it to DockerHub.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 15 Nov 2014 00:00:00 +0530</pubDate>
+        <link>http://www.ganesshkumar.com/computer/software/docker/2014/11/15/learn-docker-while-migrating-octopress-to-pelican.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/computer/software/docker/2014/11/15/learn-docker-while-migrating-octopress-to-pelican.html</guid>
+        
+        <category>docker</category>
+        
+        <category>pelican</category>
+        
+        <category>octopress</category>
+        
+        
+        <category>computer</category>
+        
+        <category>software</category>
+        
+        <category>docker</category>
+        
+      </item>
+    
+      <item>
+        <title>Octopress Gist vs Include-code</title>
+        <description>&lt;p&gt;I was using &lt;strong&gt;gist&lt;/strong&gt; to share code snippets in this blog. Today I stumbled upon &lt;a href=&quot;http://tools.pingdom.com/fpt/&quot;&gt;Pingdom&lt;/a&gt;, a tool to test the load time of that page, analyze it and find bottlenecks. I tested my blog and found that gist is taking approximately 300ms to load, which is bad. The average time taken to load my blog was 686ms and &lt;strong&gt;300ms taken by gist is approximately 50% of the load time&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Files loaded from gist&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;My target file (from gist.github.com)&lt;/li&gt;
+  &lt;li&gt;Gist CSS file (from gist-assets.github.com)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So I decided to stop using gist. To share code snippets, Octopress provides three other options: &lt;a href=&quot;octopress.org/docs/plugins/backtick-codeblock/&quot;&gt;Backtick Code Blocks&lt;/a&gt;, &lt;a href=&quot;http://octopress.org/docs/blogging/code/&quot;&gt;Inline Code Blocks&lt;/a&gt; and &lt;a href=&quot;http://octopress.org/docs/plugins/include-code/&quot;&gt;Include Code&lt;/a&gt;. Of these three options, include code behaves very much like gist. You can put your code snippet into a file and give the filename as argument to include_code plugin. Further, When I had to share a ruby block in my blog, include_code seemed to be elegant way of doing it. Ruby block shared using other methods were executed by Octopress when generating the blog. Now the average load time of this blog is &lt;strong&gt;375ms i.e. 45% faster than before&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Personally I prefer include_code if I am sharing a snippet or ruby code with paranthesis and blockcode if I am sharing one or two lines of code.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 10 Sep 2014 00:00:00 +0530</pubDate>
+        <link>http://www.ganesshkumar.com/computer/software/octopress/2014/09/10/octopress-gist-vs-include-code.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/computer/software/octopress/2014/09/10/octopress-gist-vs-include-code.html</guid>
+        
+        <category>github</category>
+        
+        <category>octopress</category>
+        
+        
+        <category>computer</category>
+        
+        <category>software</category>
+        
+        <category>octopress</category>
+        
+      </item>
+    
+      <item>
+        <title>Upgrading Google Analytics in Octopress</title>
+        <description>&lt;p&gt;Google Analytics for Octopress hasn’t integrated the latest update to include &lt;strong&gt;Demographics and Interest&lt;/strong&gt; reports. In Octopress, Google Analytics code resides in source/_includes/google_analytics.html&lt;/p&gt;
+
+&lt;p&gt;According to Google, one line change will include the demographics and interest reports to your analytics. Following is the diff of my source/_includes/google_analytics.html&lt;/p&gt;
+
+&lt;p&gt;Just replace the line&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    ga.src = (&#39;https:&#39; == document.location.protocol ? &#39;https://ssl&#39; : &#39;http://www&#39;) + &#39;.google-analytics.com/ga.js&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;to&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    ga.src = (&#39;https:&#39; == document.location.protocol ? &#39;https://&#39; : &#39;http://&#39;) + &#39;stats.g.doubleclick.net/dc.js&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And you are done. It will take upto 24 hours for the new reports to start appearing.&lt;/p&gt;
+
+&lt;p&gt;I have opened a &lt;a href=&quot;https://github.com/imathis/octopress/pull/1647&quot;&gt;pull request&lt;/a&gt; for this upgrade. If this gets merged, these reports should be included by default.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 08 Sep 2014 00:00:00 +0530</pubDate>
+        <link>http://www.ganesshkumar.com/computer/software/octopress/2014/09/08/upgrading-google-analytics-in-octopress.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/computer/software/octopress/2014/09/08/upgrading-google-analytics-in-octopress.html</guid>
+        
+        <category>google analytics</category>
+        
+        <category>universal analytics</category>
+        
+        
+        <category>computer</category>
+        
+        <category>software</category>
+        
+        <category>octopress</category>
+        
+      </item>
+    
+      <item>
+        <title>Using Spotify Outside US and UK</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://www.spotify.com/&quot;&gt;Spotify&lt;/a&gt; has been the best music streaming application I have used till date. Spotify is available to limited countries as of now. So if you are not from US or UK and want to use Spotify here is a simple work around.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-does-spotify-verifies-your-country&quot;&gt;How does Spotify verifies your country&lt;/h2&gt;
+
+&lt;p&gt;When signing up for an account you have to select your country. You won’t be able to create an account if your country is not supported by Spotify. If you are from a country that is not in the supported list, create an account with UK or US as your country.&lt;/p&gt;
+
+&lt;p&gt;Later, (only) whenever you log in to the application, a &lt;strong&gt;country check&lt;/strong&gt; is triggered and it uses your IP to check if your country matches with the one you selected when you created your account. So this is the place when we should use a proxy.&lt;/p&gt;
+
+&lt;h2 id=&quot;workaround&quot;&gt;Workaround&lt;/h2&gt;
+
+&lt;p&gt;We are going to use a proxy when we log in to the application. I use &lt;a href=&quot;https://www.tunnelbear.com/&quot;&gt;TunnelBear&lt;/a&gt; for proxy. It allows us to transmit 500MB of data through their proxy every month.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.tunnelbear.com/download/&quot;&gt;Download&lt;/a&gt; and install TunnelBear&lt;/li&gt;
+  &lt;li&gt;Crate a TunnelBear Little(free tier) account&lt;/li&gt;
+  &lt;li&gt;Launch TunnelBear and choose the country(US or UK) that you specified when you created Spotify account&lt;/li&gt;
+  &lt;li&gt;Turn on TunnelBear&lt;/li&gt;
+  &lt;li&gt;Log in to Spotify&lt;/li&gt;
+  &lt;li&gt;Turn off TunnelBear(as data transfer through proxy will be slow and we have only 500MB data limit per month)&lt;/li&gt;
+  &lt;li&gt;Use Spotify and keep listening to music&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 07 Sep 2014 00:00:00 +0530</pubDate>
+        <link>http://www.ganesshkumar.com/life%20style/hack/2014/09/07/using-spotify-outside-us-and-uk.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/life%20style/hack/2014/09/07/using-spotify-outside-us-and-uk.html</guid>
+        
+        <category>spotify</category>
+        
+        
+        <category>life style</category>
+        
+        <category>hack</category>
+        
+      </item>
+    
+      <item>
+        <title>SEO in Octopress</title>
+        <description>&lt;p&gt;In a html document, contains the metadata of the page in tags. Search engines use two meta elements keywords and description to index the page. The file /source/_includes/head.html is used by Octopress to add the meta information to the &amp;lt;head&amp;gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    
+    &amp;lt;meta name=&quot;description&quot; content=&quot;
+
+  
+    Git Shallow Clone
+    Aug 13, 2014
+  
+
+  
+    I was trying to clone a fat git repository to my machine. It failed with the following error...&quot;&amp;gt;
+    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;But Octopress will add the meta data only if keywords and description are provided in the YAML front matter of the post. Both keywords and description are not added in the front matter by default. Let’s add them to the front matter so we don’t need to add them manually every time we write a new post.&lt;/p&gt;
+
+&lt;p&gt;Open the Rakefile which is located in root folder of the project. Look for the line starting with task: new_post. This is the task which we have to edit. If you look into this task, it will open a file and write the front matter into the file as follows&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    open(filename, &#39;w&#39;) do |post|
+    post.puts &quot;---&quot;
+    post.puts &quot;layout: post&quot;
+    post.puts &quot;title: \&quot;#{title.gsub(/&amp;amp;/,&#39;&amp;amp;&#39;)}\&quot;&quot;
+    post.puts &quot;date: #{Time.now.strftime(&#39;%Y-%m-%d %H:%M:%S %z&#39;)}&quot;
+    post.puts &quot;comments: true&quot;
+    post.puts &quot;categories: &quot;
+    post.puts &quot;---&quot;
+    end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Add the following lines in between the two post.puts “—” lines.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    post.puts &quot;keywords: &quot;
+    post.puts &quot;description: &quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now whenever you create a new post keywords and description will appear in the front matter.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 18 Aug 2014 00:00:00 +0530</pubDate>
+        <link>http://www.ganesshkumar.com/computer/software/octopress/2014/08/18/seo-in-octopress.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/computer/software/octopress/2014/08/18/seo-in-octopress.html</guid>
+        
+        <category>seo</category>
+        
+        <category>blogging</category>
+        
+        <category>octopress</category>
+        
+        
+        <category>computer</category>
+        
+        <category>software</category>
+        
+        <category>octopress</category>
+        
+      </item>
+    
+  </channel>
+</rss>
