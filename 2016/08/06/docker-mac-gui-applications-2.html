@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Containerize GUI Applications on Mac - II</title>
+  <meta name="description" content="In the previous post, we ran firefox inside a container on OS X. To allow connection from the container to the X11, we used xhost + $(hostname). This gives r...">
+
+  <!-- CSS -->
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css'>
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/icon.min.css'>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
+
+  <!-- Default -->
+  <link rel="canonical" href="http://www.ganesshkumar.com/2016/08/06/docker-mac-gui-applications-2.html">
+  <link rel="alternate" type="application/rss+xml" title="Ganessh Kumar" href="http://www.ganesshkumar.com/feed.xml">
+
+  <!-- favicon -->
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+    
+    <a href="http://www.ganesshkumar.com" class="site-title">Ganessh Kumar</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+          <a class="page-link" href="/archive/">Archive</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <a href="/feed.xml">
+          <span class="ui"><i class="link rss icon"></i></span>
+        </a>
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Containerize GUI Applications on Mac - II</h1>
+    <p>
+      <span class="post-meta">
+        <time datetime="2016-08-06T06:31:00+05:30"
+              itemprop="datePublished">
+            Aug 6, 2016
+        </time>
+        
+      </span>
+      
+        <span class="ui tag label">docker</span>
+      
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>In the <a href="http://www.ganesshkumar.com/2016/08/05/docker-mac-gui-appications.html">previous post</a>, we ran firefox inside a container on OS X. To allow connection from the container to the X11, we used <code class="highlighter-rouge">xhost + $(hostname)</code>. This gives rise to serious security vulnerability.</p>
+
+<p>Let’s list the entries in ACL before adding our local machine</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ /usr/X11R6/bin/xhost
+access control enabled, only authorized clients can connect
+</code></pre>
+</div>
+
+<p>Now let’s add our localmachine to ACL</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ /usr/X11R6/bin/xhost + $(hostname)
+&lt;my-machine-name&gt;.local being added to access control list
+</code></pre>
+</div>
+
+<p>Let’s list the entries in ACL</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ /usr/X11R6/bin/xhost
+access control enabled, only authorized clients can connect
+INET:192.168.1.x
+INET6:ganessh-macbook.local
+</code></pre>
+</div>
+
+<p>Our ip address has been added to the ACL. If you are switching between networks regularly or your dynamic ip address gets renewed to a new address, X11 will stop allowing connection from the container. You <strong>must</strong> remove the old ip address from the ACL, else Bob can use your old ip address(in your network) and hijack your X display.</p>
+
+<p>Let’s remove our machine from ACL. Removing hostname will remove both hostname and ip address entries from ACL</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ /usr/X11R6/bin/xhost - $(hostname)
+&lt;my-machine-name&gt;.local being removed from access control list
+
+$ /usr/X11R6/bin/xhost
+access control enabled, only authorized clients can connect
+</code></pre>
+</div>
+
+<p>Using <code class="highlighter-rouge">xhost +</code> or open X display is one of the <a href="http://www.nikhef.nl/~mjg/xhost_plus.html">high rated system vulnerabilities</a>. So let’s use another(safer) way in this post. The drawback of this method is that it requires us to extend the image and create a local image containing our xauth file.</p>
+
+<ul>
+  <li><strong>Extending the image</strong> to include our user to authenticate with x11.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># Dockerfile
+FROM jess/firefox
+
+ARG username
+ARG uid
+
+ENV USERNAME ${user}
+RUN useradd -m $USERNAME &amp;&amp; \
+        echo "$USERNAME:$USERNAME" | chpasswd &amp;&amp; \
+        usermod --shell /bin/bash $USERNAME &amp;&amp; \
+        usermod  --uid ${uid} $USERNAME &amp;&amp; \
+        groupmod --gid ${uid} $USERNAME
+
+USER ${user}
+
+WORKDIR /home/${user}
+</code></pre>
+</div>
+
+<ul>
+  <li><strong>Building docker image</strong>. Note that the variables started with <code class="highlighter-rouge">ARG</code> reference in the Dockerfile are supplied using –build-args</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ docker build --build-arg user=$USER --build-arg uid=$(id -u) -t &lt;image_name&gt; .
+</code></pre>
+</div>
+
+<ul>
+  <li><strong>Generate xauth file</strong>. Using <code class="highlighter-rouge">:0</code> as our display. Note: if it complains that the file <code class="highlighter-rouge">/tmp/.docker.xauth</code> doesn’t exist, <code class="highlighter-rouge">touch</code> the file and re-run the command.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ /usr/X11R6/bin/xauth nlist :0 | sed -e 's/^..../ffff/' | /usr/X11R6/bin/xauth -f /tmp/.docker.xauth nmerge -
+</code></pre>
+</div>
+
+<ul>
+  <li>While <strong>starting the container</strong>, we should mount the xauth file and set the path of the file as environmental variable using the flags
+    <ul>
+      <li>-v /tmp/.docker.xauth:/tmp/.docker.xauth:rw</li>
+      <li>-e XAUTHORITY=/tmp/.docker.xauth</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ docker run -d \
+      --memory 2gb \
+      --net host \
+      --cpuset-cpus 0 \
+      -v /etc/localtime:/etc/localtime:ro \
+      -v /tmp/.X11-unix:/tmp/.X11-unix \
+      -v $HOME/docker_data/.firefox/cache:/root/.cache/mozilla \
+      -v $HOME/docker_data/.firefox/mozilla:/root/.mozilla \
+      -v $HOME/Downloads:/root/Downloads \
+      -v /tmp/.docker.xauth:/tmp/.docker.xauth:rw -e XAUTHORITY=/tmp/.docker.xauth \
+      -e DISPLAY=$ip:0 \
+      -e GDK_SCALE \
+      -e GDK_DPI_SCALE \
+      --name firefox \
+      jess/firefox
+</code></pre>
+</div>
+
+<p>The above run command will preserve firefox’s data on the mounted volumes.</p>
+
+<p><strong>Issues left unfixed</strong></p>
+
+<ul>
+  <li>We haven’t touched audio yet. I am yet to figure out a way to pass audio from the container to hostmachine.</li>
+  <li>Retina display is not properly used by the container. The fonts are not smooth on the retina screen.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+    <div class="ui grid">
+      <div class="row">
+        <div class="eight wide left aligned column">
+            <a href="https://twitter.com/ganesshkumar" target='_blank'>Ganessh Kumar</a> © 2016
+        </div>
+        <div class="eight wide right aligned column">
+            Powered by Jekyll
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+  </body>
+
+</html>

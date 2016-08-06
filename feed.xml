@@ -5,9 +5,136 @@
     <description>Personal blog about computer science and technology</description>
     <link>http://www.ganesshkumar.com/</link>
     <atom:link href="http://www.ganesshkumar.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 06 Aug 2016 05:56:47 +0530</pubDate>
-    <lastBuildDate>Sat, 06 Aug 2016 05:56:47 +0530</lastBuildDate>
+    <pubDate>Sat, 06 Aug 2016 07:18:49 +0530</pubDate>
+    <lastBuildDate>Sat, 06 Aug 2016 07:18:49 +0530</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Containerize GUI Applications on Mac - II</title>
+        <description>&lt;p&gt;In the &lt;a href=&quot;http://www.ganesshkumar.com/2016/08/05/docker-mac-gui-appications.html&quot;&gt;previous post&lt;/a&gt;, we ran firefox inside a container on OS X. To allow connection from the container to the X11, we used &lt;code class=&quot;highlighter-rouge&quot;&gt;xhost + $(hostname)&lt;/code&gt;. This gives rise to serious security vulnerability.&lt;/p&gt;
+
+&lt;p&gt;Let’s list the entries in ACL before adding our local machine&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ /usr/X11R6/bin/xhost
+access control enabled, only authorized clients can connect
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now let’s add our localmachine to ACL&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ /usr/X11R6/bin/xhost + $(hostname)
+&amp;lt;my-machine-name&amp;gt;.local being added to access control list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Let’s list the entries in ACL&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ /usr/X11R6/bin/xhost
+access control enabled, only authorized clients can connect
+INET:192.168.1.x
+INET6:ganessh-macbook.local
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Our ip address has been added to the ACL. If you are switching between networks regularly or your dynamic ip address gets renewed to a new address, X11 will stop allowing connection from the container. You &lt;strong&gt;must&lt;/strong&gt; remove the old ip address from the ACL, else Bob can use your old ip address(in your network) and hijack your X display.&lt;/p&gt;
+
+&lt;p&gt;Let’s remove our machine from ACL. Removing hostname will remove both hostname and ip address entries from ACL&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ /usr/X11R6/bin/xhost - $(hostname)
+&amp;lt;my-machine-name&amp;gt;.local being removed from access control list
+
+$ /usr/X11R6/bin/xhost
+access control enabled, only authorized clients can connect
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Using &lt;code class=&quot;highlighter-rouge&quot;&gt;xhost +&lt;/code&gt; or open X display is one of the &lt;a href=&quot;http://www.nikhef.nl/~mjg/xhost_plus.html&quot;&gt;high rated system vulnerabilities&lt;/a&gt;. So let’s use another(safer) way in this post. The drawback of this method is that it requires us to extend the image and create a local image containing our xauth file.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Extending the image&lt;/strong&gt; to include our user to authenticate with x11.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Dockerfile
+FROM jess/firefox
+
+ARG username
+ARG uid
+
+ENV USERNAME ${user}
+RUN useradd -m $USERNAME &amp;amp;&amp;amp; \
+        echo &quot;$USERNAME:$USERNAME&quot; | chpasswd &amp;amp;&amp;amp; \
+        usermod --shell /bin/bash $USERNAME &amp;amp;&amp;amp; \
+        usermod  --uid ${uid} $USERNAME &amp;amp;&amp;amp; \
+        groupmod --gid ${uid} $USERNAME
+
+USER ${user}
+
+WORKDIR /home/${user}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Building docker image&lt;/strong&gt;. Note that the variables started with &lt;code class=&quot;highlighter-rouge&quot;&gt;ARG&lt;/code&gt; reference in the Dockerfile are supplied using –build-args&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ docker build --build-arg user=$USER --build-arg uid=$(id -u) -t &amp;lt;image_name&amp;gt; .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Generate xauth file&lt;/strong&gt;. Using &lt;code class=&quot;highlighter-rouge&quot;&gt;:0&lt;/code&gt; as our display. Note: if it complains that the file &lt;code class=&quot;highlighter-rouge&quot;&gt;/tmp/.docker.xauth&lt;/code&gt; doesn’t exist, &lt;code class=&quot;highlighter-rouge&quot;&gt;touch&lt;/code&gt; the file and re-run the command.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ /usr/X11R6/bin/xauth nlist :0 | sed -e &#39;s/^..../ffff/&#39; | /usr/X11R6/bin/xauth -f /tmp/.docker.xauth nmerge -
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;While &lt;strong&gt;starting the container&lt;/strong&gt;, we should mount the xauth file and set the path of the file as environmental variable using the flags
+    &lt;ul&gt;
+      &lt;li&gt;-v /tmp/.docker.xauth:/tmp/.docker.xauth:rw&lt;/li&gt;
+      &lt;li&gt;-e XAUTHORITY=/tmp/.docker.xauth&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ docker run -d \
+      --memory 2gb \
+      --net host \
+      --cpuset-cpus 0 \
+      -v /etc/localtime:/etc/localtime:ro \
+      -v /tmp/.X11-unix:/tmp/.X11-unix \
+      -v $HOME/docker_data/.firefox/cache:/root/.cache/mozilla \
+      -v $HOME/docker_data/.firefox/mozilla:/root/.mozilla \
+      -v $HOME/Downloads:/root/Downloads \
+      -v /tmp/.docker.xauth:/tmp/.docker.xauth:rw -e XAUTHORITY=/tmp/.docker.xauth \
+      -e DISPLAY=$ip:0 \
+      -e GDK_SCALE \
+      -e GDK_DPI_SCALE \
+      --name firefox \
+      jess/firefox
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The above run command will preserve firefox’s data on the mounted volumes.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Issues left unfixed&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;We haven’t touched audio yet. I am yet to figure out a way to pass audio from the container to hostmachine.&lt;/li&gt;
+  &lt;li&gt;Retina display is not properly used by the container. The fonts are not smooth on the retina screen.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sat, 06 Aug 2016 06:31:00 +0530</pubDate>
+        <link>http://www.ganesshkumar.com/2016/08/06/docker-mac-gui-applications-2.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/2016/08/06/docker-mac-gui-applications-2.html</guid>
+        
+        <category>docker</category>
+        
+        
+        <category>docker</category>
+        
+      </item>
     
       <item>
         <title>Containerize GUI Applications on Mac</title>
@@ -427,78 +554,6 @@
         <category>life style</category>
         
         <category>hack</category>
-        
-      </item>
-    
-      <item>
-        <title>SEO in Octopress</title>
-        <description>&lt;p&gt;In a html document, contains the metadata of the page in tags. Search engines use two meta elements keywords and description to index the page. The file /source/_includes/head.html is used by Octopress to add the meta information to the &amp;lt;head&amp;gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    
-    &amp;lt;meta name=&quot;description&quot; content=&quot;
-
-  
-    Git Shallow Clone
-    
-      
-        
-            Aug 13, 2014
-        
-        
-      
-      
-        git
-      
-    
-  
-
-  
-    I was t...&quot;&amp;gt;
-    
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;But Octopress will add the meta data only if keywords and description are provided in the YAML front matter of the post. Both keywords and description are not added in the front matter by default. Let’s add them to the front matter so we don’t need to add them manually every time we write a new post.&lt;/p&gt;
-
-&lt;p&gt;Open the Rakefile which is located in root folder of the project. Look for the line starting with task: new_post. This is the task which we have to edit. If you look into this task, it will open a file and write the front matter into the file as follows&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    open(filename, &#39;w&#39;) do |post|
-    post.puts &quot;---&quot;
-    post.puts &quot;layout: post&quot;
-    post.puts &quot;title: \&quot;#{title.gsub(/&amp;amp;/,&#39;&amp;amp;&#39;)}\&quot;&quot;
-    post.puts &quot;date: #{Time.now.strftime(&#39;%Y-%m-%d %H:%M:%S %z&#39;)}&quot;
-    post.puts &quot;comments: true&quot;
-    post.puts &quot;categories: &quot;
-    post.puts &quot;---&quot;
-    end
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Add the following lines in between the two post.puts “—” lines.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    post.puts &quot;keywords: &quot;
-    post.puts &quot;description: &quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Now whenever you create a new post keywords and description will appear in the front matter.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 18 Aug 2014 00:00:00 +0530</pubDate>
-        <link>http://www.ganesshkumar.com/2014/08/18/seo-in-octopress.html</link>
-        <guid isPermaLink="true">http://www.ganesshkumar.com/2014/08/18/seo-in-octopress.html</guid>
-        
-        <category>seo</category>
-        
-        <category>blogging</category>
-        
-        <category>octopress</category>
-        
-        
-        <category>computer</category>
-        
-        <category>software</category>
-        
-        <category>octopress</category>
         
       </item>
     
