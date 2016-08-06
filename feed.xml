@@ -5,8 +5,8 @@
     <description>Personal blog about computer science and technology</description>
     <link>http://www.ganesshkumar.com/</link>
     <atom:link href="http://www.ganesshkumar.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 06 Aug 2016 00:32:57 +0530</pubDate>
-    <lastBuildDate>Sat, 06 Aug 2016 00:32:57 +0530</lastBuildDate>
+    <pubDate>Sat, 06 Aug 2016 05:56:47 +0530</pubDate>
+    <lastBuildDate>Sat, 06 Aug 2016 05:56:47 +0530</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -33,35 +33,45 @@
 &lt;p&gt;&lt;strong&gt;Running a container&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Start xQuartz&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-$ open -a XQuartz
-&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Start xQuartz&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ open -a XQuartz
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
   &lt;li&gt;Allow connections from remote clients
     &lt;ul&gt;
       &lt;li&gt;xQuartz’s &lt;code class=&quot;highlighter-rouge&quot;&gt;Preference&lt;/code&gt; → &lt;code class=&quot;highlighter-rouge&quot;&gt;Security&lt;/code&gt; → &lt;code class=&quot;highlighter-rouge&quot;&gt;Allow connections from network clients&lt;/code&gt;&lt;br /&gt;
 &lt;img src=&quot;http://www.ganesshkumar.com/images/2016-08-05-docker-mac-gui-appications/xquartz_preference.png&quot; alt=&quot;xQuartz preference&quot; /&gt;&lt;/li&gt;
-      &lt;li&gt;Get the ip address of your local machine&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-$ ip=$(ifconfig en0 | grep inet | awk &#39;$1==&quot;inet&quot; {print $2}&#39;)
-&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;Add your local machine to ACL. Using hostname is safer than using ip address.
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-$ /usr/X11R6/bin/xhost + $(hostname)
-&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Get the ip address of your local machine&lt;/li&gt;
     &lt;/ul&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ip=$(ifconfig en0 | grep inet | awk &#39;$1==&quot;inet&quot; {print $2}&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Add your local machine to ACL. Using hostname is safer than using ip address.&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ /usr/X11R6/bin/xhost + $(hostname)
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
   &lt;/li&gt;
-  &lt;li&gt;Run firefox. Let’s use &lt;a href=&quot;https://blog.jessfraz.com/&quot;&gt;Jessie Frazzelle’s&lt;/a&gt; &lt;a href=&quot;https://github.com/jfrazelle/dockerfiles/tree/master/firefox&quot;&gt;firefox image&lt;/a&gt;&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-$ docker run -d --name firefox -e DISPLAY=$ip:0 -v /tmp/.X11-unix:/tmp/.X11-unix jess/firefox
-&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Run firefox. Let’s use &lt;a href=&quot;https://blog.jessfraz.com/&quot;&gt;Jessie Frazzelle’s&lt;/a&gt; &lt;a href=&quot;https://github.com/jfrazelle/dockerfiles/tree/master/firefox&quot;&gt;firefox image&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ docker run -d --name firefox -e DISPLAY=$ip:0 -v /tmp/.X11-unix:/tmp/.X11-unix jess/firefox
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://www.ganesshkumar.com/images/2016-08-05-docker-mac-gui-appications/firefox_docker.png&quot; alt=&quot;xQuartz preference&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 05 Aug 2016 05:20:00 +0530</pubDate>
-        <link>http://www.ganesshkumar.com/docker/2016/08/05/docker-mac-gui-appications.html</link>
-        <guid isPermaLink="true">http://www.ganesshkumar.com/docker/2016/08/05/docker-mac-gui-appications.html</guid>
+        <link>http://www.ganesshkumar.com/2016/08/05/docker-mac-gui-appications.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/2016/08/05/docker-mac-gui-appications.html</guid>
         
         <category>docker</category>
         
@@ -79,8 +89,8 @@ $ docker run -d --name firefox -e DISPLAY=$ip:0 -v /tmp/.X11-unix:/tmp/.X11-unix
 &lt;p&gt;Please post below, if you find any other issues related to time within docker container.&lt;/p&gt;
 </description>
         <pubDate>Sat, 16 Jul 2016 05:20:00 +0530</pubDate>
-        <link>http://www.ganesshkumar.com/docker/2016/07/16/docker-timezone.html</link>
-        <guid isPermaLink="true">http://www.ganesshkumar.com/docker/2016/07/16/docker-timezone.html</guid>
+        <link>http://www.ganesshkumar.com/2016/07/16/docker-timezone.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/2016/07/16/docker-timezone.html</guid>
         
         <category>docker</category>
         
@@ -96,8 +106,8 @@ $ docker run -d --name firefox -e DISPLAY=$ip:0 -v /tmp/.X11-unix:/tmp/.X11-unix
 &lt;p&gt;There is very little possibility that this variable might change, so you can configure via Dockerfile.&lt;/p&gt;
 </description>
         <pubDate>Sun, 10 Jul 2016 22:00:00 +0530</pubDate>
-        <link>http://www.ganesshkumar.com/docker/2016/07/10/docker-disable-python-buffer.html</link>
-        <guid isPermaLink="true">http://www.ganesshkumar.com/docker/2016/07/10/docker-disable-python-buffer.html</guid>
+        <link>http://www.ganesshkumar.com/2016/07/10/docker-disable-python-buffer.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/2016/07/10/docker-disable-python-buffer.html</guid>
         
         <category>python</category>
         
@@ -113,34 +123,33 @@ $ docker run -d --name firefox -e DISPLAY=$ip:0 -v /tmp/.X11-unix:/tmp/.X11-unix
         <description>&lt;p&gt;There are two simple ways to pass &lt;code class=&quot;highlighter-rouge&quot;&gt;hostname&lt;/code&gt; of the machine running docker daemon to the docker container using Ansible.&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Using Environmental Variable
-```
-    &lt;ul&gt;
-      &lt;li&gt;name: Start application container
-docker:
- name: my_application
- image: my_username/my_application
- env:
-   HOST_HOSTNAME: “”
-```&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Setting the hostname of the docker container the same as of the host running it.
-```
-    &lt;ul&gt;
-      &lt;li&gt;name: Start application container
-docker:
- name: my_application
- image: my_username/my_application
- hostname: “”
-```&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
+  &lt;li&gt;Using Environmental Variable&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- name: Start application container
+  docker:
+    name: my_application
+    image: my_username/my_application
+    env:
+        HOST_HOSTNAME: &quot;{{ ansible_hostname  }}&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Setting the hostname of the docker container the same as of the host running it.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- name: Start application container
+  docker:
+    name: my_application
+    image: my_username/my_application
+    hostname: &quot;{{ ansible_hostname  }}&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 </description>
         <pubDate>Fri, 13 May 2016 02:04:00 +0530</pubDate>
-        <link>http://www.ganesshkumar.com/docker/2016/05/13/ansible-docker-hostname.html</link>
-        <guid isPermaLink="true">http://www.ganesshkumar.com/docker/2016/05/13/ansible-docker-hostname.html</guid>
+        <link>http://www.ganesshkumar.com/2016/05/13/ansible-docker-hostname.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/2016/05/13/ansible-docker-hostname.html</guid>
         
         <category>ansible</category>
         
@@ -205,8 +214,8 @@ docker:
 &lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/expire-history-by-days/&quot;&gt;Firefox&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 01 Feb 2016 20:03:00 +0530</pubDate>
-        <link>http://www.ganesshkumar.com/privacy/2016/02/01/browser-privacy-addons.html</link>
-        <guid isPermaLink="true">http://www.ganesshkumar.com/privacy/2016/02/01/browser-privacy-addons.html</guid>
+        <link>http://www.ganesshkumar.com/2016/02/01/browser-privacy-addons.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/2016/02/01/browser-privacy-addons.html</guid>
         
         <category>privacy</category>
         
@@ -295,8 +304,8 @@ docker:
 &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: There are lot more about Docker. This is just a quick introduction for creating an image and pushing it to DockerHub.&lt;/p&gt;
 </description>
         <pubDate>Sat, 15 Nov 2014 00:00:00 +0530</pubDate>
-        <link>http://www.ganesshkumar.com/computer/software/docker/2014/11/15/learn-docker-while-migrating-octopress-to-pelican.html</link>
-        <guid isPermaLink="true">http://www.ganesshkumar.com/computer/software/docker/2014/11/15/learn-docker-while-migrating-octopress-to-pelican.html</guid>
+        <link>http://www.ganesshkumar.com/2014/11/15/learn-docker-while-migrating-octopress-to-pelican.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/2014/11/15/learn-docker-while-migrating-octopress-to-pelican.html</guid>
         
         <category>docker</category>
         
@@ -329,8 +338,8 @@ docker:
 &lt;p&gt;Personally I prefer include_code if I am sharing a snippet or ruby code with paranthesis and blockcode if I am sharing one or two lines of code.&lt;/p&gt;
 </description>
         <pubDate>Wed, 10 Sep 2014 00:00:00 +0530</pubDate>
-        <link>http://www.ganesshkumar.com/computer/software/octopress/2014/09/10/octopress-gist-vs-include-code.html</link>
-        <guid isPermaLink="true">http://www.ganesshkumar.com/computer/software/octopress/2014/09/10/octopress-gist-vs-include-code.html</guid>
+        <link>http://www.ganesshkumar.com/2014/09/10/octopress-gist-vs-include-code.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/2014/09/10/octopress-gist-vs-include-code.html</guid>
         
         <category>github</category>
         
@@ -368,8 +377,8 @@ docker:
 &lt;p&gt;I have opened a &lt;a href=&quot;https://github.com/imathis/octopress/pull/1647&quot;&gt;pull request&lt;/a&gt; for this upgrade. If this gets merged, these reports should be included by default.&lt;/p&gt;
 </description>
         <pubDate>Mon, 08 Sep 2014 00:00:00 +0530</pubDate>
-        <link>http://www.ganesshkumar.com/computer/software/octopress/2014/09/08/upgrading-google-analytics-in-octopress.html</link>
-        <guid isPermaLink="true">http://www.ganesshkumar.com/computer/software/octopress/2014/09/08/upgrading-google-analytics-in-octopress.html</guid>
+        <link>http://www.ganesshkumar.com/2014/09/08/upgrading-google-analytics-in-octopress.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/2014/09/08/upgrading-google-analytics-in-octopress.html</guid>
         
         <category>google analytics</category>
         
@@ -409,8 +418,8 @@ docker:
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 07 Sep 2014 00:00:00 +0530</pubDate>
-        <link>http://www.ganesshkumar.com/life%20style/hack/2014/09/07/using-spotify-outside-us-and-uk.html</link>
-        <guid isPermaLink="true">http://www.ganesshkumar.com/life%20style/hack/2014/09/07/using-spotify-outside-us-and-uk.html</guid>
+        <link>http://www.ganesshkumar.com/2014/09/07/using-spotify-outside-us-and-uk.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/2014/09/07/using-spotify-outside-us-and-uk.html</guid>
         
         <category>spotify</category>
         
@@ -430,11 +439,21 @@ docker:
 
   
     Git Shallow Clone
-    Aug 13, 2014
+    
+      
+        
+            Aug 13, 2014
+        
+        
+      
+      
+        git
+      
+    
   
 
   
-    I was trying to clone a fat git repository to my machine. It failed with the following error...&quot;&amp;gt;
+    I was t...&quot;&amp;gt;
     
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -465,8 +484,8 @@ docker:
 &lt;p&gt;Now whenever you create a new post keywords and description will appear in the front matter.&lt;/p&gt;
 </description>
         <pubDate>Mon, 18 Aug 2014 00:00:00 +0530</pubDate>
-        <link>http://www.ganesshkumar.com/computer/software/octopress/2014/08/18/seo-in-octopress.html</link>
-        <guid isPermaLink="true">http://www.ganesshkumar.com/computer/software/octopress/2014/08/18/seo-in-octopress.html</guid>
+        <link>http://www.ganesshkumar.com/2014/08/18/seo-in-octopress.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/2014/08/18/seo-in-octopress.html</guid>
         
         <category>seo</category>
         
