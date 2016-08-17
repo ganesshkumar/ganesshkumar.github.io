@@ -1,3 +1,5 @@
+export JEKYLL_ENV='production'
+
 export TITLE='Ganessh Kumar'
 export DESCRIPTION='Personal blog about computer science and technology'
 
