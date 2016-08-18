@@ -5,9 +5,69 @@
     <description>Personal blog about computer science and technology</description>
     <link>http://www.ganesshkumar.com/</link>
     <atom:link href="http://www.ganesshkumar.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 17 Aug 2016 18:59:40 +0530</pubDate>
-    <lastBuildDate>Wed, 17 Aug 2016 18:59:40 +0530</lastBuildDate>
+    <pubDate>Thu, 18 Aug 2016 18:48:45 +0530</pubDate>
+    <lastBuildDate>Thu, 18 Aug 2016 18:48:45 +0530</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Notes on my Virtual Box</title>
+        <description>&lt;p&gt;Though I use OS X as my primary operating system now a days, I still use &lt;a href=&quot;https://ubuntugnome.org/&quot;&gt;Ubuntu GNOME&lt;/a&gt; on a virtual box for one or two projects. Why not? I love GNOME. This post contains notes on my virtual box setup, primarily for my reference.&lt;/p&gt;
+
+&lt;h2 id=&quot;post-installation&quot;&gt;Post Installation&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ apt-get update
+$ apt-get install vim git build-essential
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;tools-and-softwares&quot;&gt;Tools and softwares&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Docker&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ # Setup sources for apt
+$ sudo apt-get install apt-transport-https ca-certificates
+$ sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+$ echo &quot;deb https://apt.dockerproject.org/repo ubuntu-xenial main&quot; &amp;gt; /etc/apt/sources.list.d/docker.list # for 16.04
+
+$ # Clean and check apt source
+$ sudo apt-get update
+$ sudo apt-get purge lxc-docker
+$ apt-cache policy docker-engine
+
+$ # Install docker
+$ sudo apt-get install linux-image-extra-$(uname -r) # recommended
+$ sudo apt-get install docker-engine
+
+$ # Add user to docker group to avoid usage of sudo everytime
+$ sudo usermod -aG docker $USER
+
+$ # Start docker
+$ sudo service docker start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;useful-commands&quot;&gt;Useful commands&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Mount the shared folder with read-write permission for the user.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo mount -t vboxsf -o uid=&amp;lt;user_id&amp;gt; &amp;lt;shared_folder_name&amp;gt; /mount/point
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 18 Aug 2016 18:32:00 +0530</pubDate>
+        <link>http://www.ganesshkumar.com/2016/08/18/virtual-box-ubuntu-gnome.html</link>
+        <guid isPermaLink="true">http://www.ganesshkumar.com/2016/08/18/virtual-box-ubuntu-gnome.html</guid>
+        
+        <category>virtual-box</category>
+        
+        
+        <category>virtual-box</category>
+        
+      </item>
     
       <item>
         <title>Containerize GUI Applications on Mac - II</title>
@@ -519,43 +579,6 @@ WORKDIR /home/${user}
         <category>software</category>
         
         <category>octopress</category>
-        
-      </item>
-    
-      <item>
-        <title>Using Spotify Outside US and UK</title>
-        <description>&lt;p&gt;&lt;a href=&quot;https://www.spotify.com/&quot;&gt;Spotify&lt;/a&gt; has been the best music streaming application I have used till date. Spotify is available to limited countries as of now. So if you are not from US or UK and want to use Spotify here is a simple work around.&lt;/p&gt;
-
-&lt;h2 id=&quot;how-does-spotify-verifies-your-country&quot;&gt;How does Spotify verifies your country&lt;/h2&gt;
-
-&lt;p&gt;When signing up for an account you have to select your country. You won’t be able to create an account if your country is not supported by Spotify. If you are from a country that is not in the supported list, create an account with UK or US as your country.&lt;/p&gt;
-
-&lt;p&gt;Later, (only) whenever you log in to the application, a &lt;strong&gt;country check&lt;/strong&gt; is triggered and it uses your IP to check if your country matches with the one you selected when you created your account. So this is the place when we should use a proxy.&lt;/p&gt;
-
-&lt;h2 id=&quot;workaround&quot;&gt;Workaround&lt;/h2&gt;
-
-&lt;p&gt;We are going to use a proxy when we log in to the application. I use &lt;a href=&quot;https://www.tunnelbear.com/&quot;&gt;TunnelBear&lt;/a&gt; for proxy. It allows us to transmit 500MB of data through their proxy every month.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.tunnelbear.com/download/&quot;&gt;Download&lt;/a&gt; and install TunnelBear&lt;/li&gt;
-  &lt;li&gt;Crate a TunnelBear Little(free tier) account&lt;/li&gt;
-  &lt;li&gt;Launch TunnelBear and choose the country(US or UK) that you specified when you created Spotify account&lt;/li&gt;
-  &lt;li&gt;Turn on TunnelBear&lt;/li&gt;
-  &lt;li&gt;Log in to Spotify&lt;/li&gt;
-  &lt;li&gt;Turn off TunnelBear(as data transfer through proxy will be slow and we have only 500MB data limit per month)&lt;/li&gt;
-  &lt;li&gt;Use Spotify and keep listening to music&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Sun, 07 Sep 2014 00:00:00 +0530</pubDate>
-        <link>http://www.ganesshkumar.com/2014/09/07/using-spotify-outside-us-and-uk.html</link>
-        <guid isPermaLink="true">http://www.ganesshkumar.com/2014/09/07/using-spotify-outside-us-and-uk.html</guid>
-        
-        <category>spotify</category>
-        
-        
-        <category>life style</category>
-        
-        <category>hack</category>
         
       </item>
     

@@ -1,3 +1,4 @@
+#export JEKYLL_ENV='development'
 export JEKYLL_ENV='production'
 
 export TITLE='Ganessh Kumar'

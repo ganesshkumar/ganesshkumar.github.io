@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Notes on my Virtual Box</title>
+  <meta name="description" content="Though I use OS X as my primary operating system now a days, I still use Ubuntu GNOME on a virtual box for one or two projects. Why not? I love GNOME. This p...">
+
+  <!-- CSS -->
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css'>
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/icon.min.css'>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
+
+  <!-- Default -->
+  <link rel="canonical" href="http://www.ganesshkumar.com/2016/08/18/virtual-box-ubuntu-gnome.html">
+  <link rel="alternate" type="application/rss+xml" title="Ganessh Kumar" href="http://www.ganesshkumar.com/feed.xml">
+
+  <!-- favicon -->
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+    
+    <a href="http://www.ganesshkumar.com" class="site-title">Ganessh Kumar</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+          <a class="page-link" href="/archive/">Archive</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <a href="/feed.xml">
+          <span class="ui"><i class="link rss icon"></i></span>
+        </a>
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Notes on my Virtual Box</h1>
+    <p>
+      <span class="post-meta">
+        <time datetime="2016-08-18T18:32:00+05:30"
+              itemprop="datePublished">
+            Aug 18, 2016
+        </time>
+        
+      </span>
+      
+        <span class="ui tag label">virtual-box</span>
+      
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Though I use OS X as my primary operating system now a days, I still use <a href="https://ubuntugnome.org/">Ubuntu GNOME</a> on a virtual box for one or two projects. Why not? I love GNOME. This post contains notes on my virtual box setup, primarily for my reference.</p>
+
+<h2 id="post-installation">Post Installation</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ apt-get update
+$ apt-get install vim git build-essential
+</code></pre>
+</div>
+
+<h2 id="tools-and-softwares">Tools and softwares</h2>
+
+<ul>
+  <li>Docker</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ # Setup sources for apt
+$ sudo apt-get install apt-transport-https ca-certificates
+$ sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+$ echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" &gt; /etc/apt/sources.list.d/docker.list # for 16.04
+
+$ # Clean and check apt source
+$ sudo apt-get update
+$ sudo apt-get purge lxc-docker
+$ apt-cache policy docker-engine
+
+$ # Install docker
+$ sudo apt-get install linux-image-extra-$(uname -r) # recommended
+$ sudo apt-get install docker-engine
+
+$ # Add user to docker group to avoid usage of sudo everytime
+$ sudo usermod -aG docker $USER
+
+$ # Start docker
+$ sudo service docker start
+</code></pre>
+</div>
+
+<h2 id="useful-commands">Useful commands</h2>
+
+<ul>
+  <li>Mount the shared folder with read-write permission for the user.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo mount -t vboxsf -o uid=&lt;user_id&gt; &lt;shared_folder_name&gt; /mount/point
+</code></pre>
+</div>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+    <div class="ui grid">
+      <div class="row">
+        <div class="eight wide left aligned column">
+            <a href="https://twitter.com/ganesshkumar" target='_blank'>Ganessh Kumar</a> © 2016
+        </div>
+        <div class="eight wide right aligned column">
+            Powered by Jekyll
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+      <script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-65961333-1', 'auto');
+ ga('require', 'linkid');
+ ga('send', 'pageview');
+
+</script>
+
+    
+  </body>
+
+</html>
