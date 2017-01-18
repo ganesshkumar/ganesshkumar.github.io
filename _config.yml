@@ -1,0 +1,37 @@
+# Serving
+detach:  false
+port:    4000
+host:    0.0.0.0
+baseurl: "" # does not include hostname
+
+# Site settings
+title: "Ganessh Kumar"
+email: 
+description: "Personal blog about computer science and technology"
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://www.ganesshkumar.com" # the base hostname & protocol for your site
+#url: "http://localhost:4000" # the base hostname & protocol for your site
+
+# Build settings
+markdown: kramdown
+
+# Plugins
+whitelist: []
+gems:
+  - jekyll-paginate
+
+# Outputting
+permalink:     /:year/:month/:day/:title.html
+paginate:      5
+paginate_path: /page:num
+timezone:      Asia/Kolkata
+
+# Custom
+twitter:  "ganesshkumar"
+github:   "ganesshkumar"
+linkedin: "in/ganessh-kumar-r-p-676a4719"
+
+# Analytics
+google_analytics: "UA-65961333-1"
+
+exclude: [vendor]

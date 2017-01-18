@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Ganessh Kumar</title>
+  <meta name="description" content="Personal blog about computer science and technology">
+
+  <!-- CSS -->
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css'>
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/icon.min.css'>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
+
+  <!-- Default -->
+  <link rel="canonical" href="http://www.ganesshkumar.com/">
+  <link rel="alternate" type="application/rss+xml" title="Ganessh Kumar" href="http://www.ganesshkumar.com/feed.xml">
+
+  <!-- favicon -->
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+    
+    <a href="http://www.ganesshkumar.com" class="site-title">Ganessh Kumar</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+          <a class="page-link" href="/archive/">Archive</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <a href="/feed.xml">
+          <span class="ui"><i class="link rss icon"></i></span>
+        </a>
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="home">
+  <!-- This loops through the paginated posts -->
+  
+    <div class="post-extract" />
+      <h1><a href="/2016/08/18/virtual-box-ubuntu-gnome.html">Notes on my Virtual Box</a></h1>
+      <p class="post-meta">
+        <time datetime="2016-08-18T18:32:00+05:30"
+              itemprop="datePublished">Aug 18, 2016
+        </time>
+      </p>
+      <div class="content">
+        <p>Though I use OS X as my primary operating system now a days, I still use <a href="https://ubuntugnome.org/">Ubuntu GNOME</a> on a virtual box for one or two projects. Why not? I love GNOME. This post contains notes on my virtual box setup, primarily for my reference.</p>
+
+
+      </div>
+    </div>
+  
+    <div class="post-extract" />
+      <h1><a href="/2016/08/06/docker-mac-gui-applications-2.html">Containerize GUI Applications on Mac - II</a></h1>
+      <p class="post-meta">
+        <time datetime="2016-08-06T06:31:00+05:30"
+              itemprop="datePublished">Aug 6, 2016
+        </time>
+      </p>
+      <div class="content">
+        <p>In the <a href="http://www.ganesshkumar.com/2016/08/05/docker-mac-gui-appications.html">previous post</a>, we ran firefox inside a container on OS X. To allow connection from the container to the X11, we used <code class="highlighter-rouge">xhost + $(hostname)</code>. This gives rise to serious security vulnerability.</p>
+
+
+      </div>
+    </div>
+  
+    <div class="post-extract" />
+      <h1><a href="/2016/08/05/docker-mac-gui-appications.html">Containerize GUI Applications on Mac</a></h1>
+      <p class="post-meta">
+        <time datetime="2016-08-05T05:20:00+05:30"
+              itemprop="datePublished">Aug 5, 2016
+        </time>
+      </p>
+      <div class="content">
+        <p>After watching <a href="https://www.youtube.com/watch?v=1qlLUf7KtAw">Container Hacks and Fun Images</a> by Jessie Frazelle, I wanted to Containerize my GUI applications on OS X.</p>
+
+
+      </div>
+    </div>
+  
+    <div class="post-extract" />
+      <h1><a href="/2016/07/16/docker-timezone.html">Docker - Sync your clock</a></h1>
+      <p class="post-meta">
+        <time datetime="2016-07-16T05:20:00+05:30"
+              itemprop="datePublished">Jul 16, 2016
+        </time>
+      </p>
+      <div class="content">
+        <p>By default docker container’s will sync their time with the local system time but the default timezone is “UTC”. If you are using <code class="highlighter-rouge">Date</code> or <code class="highlighter-rouge">Time</code> in your application, you have to manually set the timezone for the container. One easy way to do so is using the environmental variable <code class="highlighter-rouge">-e "TZ=Asia/Kolkata"</code>.</p>
+
+
+      </div>
+    </div>
+  
+    <div class="post-extract" />
+      <h1><a href="/2016/07/10/docker-disable-python-buffer.html">Docker - Disable Stream Buffers in Python</a></h1>
+      <p class="post-meta">
+        <time datetime="2016-07-10T22:00:00+05:30"
+              itemprop="datePublished">Jul 10, 2016
+        </time>
+      </p>
+      <div class="content">
+        <p>When running python application inside docker container, one may use <code class="highlighter-rouge">print</code> function for debugging. Usually it takes long time before you see anything on the screen as python tries to buffer the output to stdout and stderror. To force python to print immediately, set the environmental variable <code class="highlighter-rouge">PYTHONUNBUFFERED=0</code> or run python with the flag <code class="highlighter-rouge">-u</code> inside the container. Both these force stdout and stderr stream to be unbuffered.</p>
+
+
+      </div>
+    </div>
+  
+
+  <!-- Pagination links -->
+  <div class="ui grid">
+    <div class="row">
+      <div class="five wide left aligned column">
+        
+          <button class="ui disabled basic button">Newer Posts</button>
+        
+      </div>
+      <div class="five wide center aligned column">
+          Page: 1 of 4
+      </div>
+      <div class="five wide right aligned column">
+        
+          <a href="/page2">
+            <button class="ui primary basic button">Older Posts</button>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+    <div class="ui grid">
+      <div class="row">
+        <div class="eight wide left aligned column">
+            <a href="https://twitter.com/ganesshkumar" target='_blank'>Ganessh Kumar</a> © 2016
+        </div>
+        <div class="eight wide right aligned column">
+            Powered by Jekyll
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+      <script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-65961333-1', 'auto');
+ ga('require', 'linkid');
+ ga('send', 'pageview');
+
+</script>
+
+    
+  </body>
+
+</html>
