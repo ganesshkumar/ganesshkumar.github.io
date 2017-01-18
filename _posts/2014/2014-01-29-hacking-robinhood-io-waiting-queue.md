@@ -11,7 +11,7 @@ categories:
 ---
 
 
-[Robinhood.io](robinhood.io), the $0 commission stock brokerage, opened up for pre-registration recently. When I booked a spot for myself there were 121K odd people in front of me in the waitlist.
+[Robinhood.io](https://www.robinhood.com/), the $0 commission stock brokerage, opened up for pre-registration recently. When I booked a spot for myself there were 121K odd people in front of me in the waitlist.
 
 The page also read  “Interested in priority access? Get early access by referring your friends. The more friends that join, the sooner you'll get access”. There was my unique referral link at the bottom.
 
@@ -24,7 +24,5 @@ I have subscribed to email lists like linux-kernel, git etc. where we get spams 
 **Now there are only 555 people ahead of me in the queue and 121K odd people behind me.**
 
 Thank you fellow spammers ☺
-
-Note: [Read how robinhood.io makes money](https://www.robinhood.io/faq/?q=how_we_make_money)
 
 **Edit**: And days after robinhood.io has changed their waiting list policy. Now they require you to activate the request through an email link, which is pretty good. Now there is a fair waiting list ☺
