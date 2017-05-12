@@ -2,46 +2,32 @@
 layout: default
 ---
 
-<div class="home">
-  <!-- This loops through the paginated posts -->
-  {% for post in paginator.posts %}
-    <div class="post-extract" />
-      <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
-      <p class="post-meta">
-        <time datetime="{{ post.date | date_to_xmlschema }}"
-              itemprop="datePublished">{{ post.date | date: "%b %-d, %Y" }}
-        </time>
-      </p>
-      <div class="content">
-        {{ post.excerpt }}
-      </div>
-    </div>
-  {% endfor %}
-
-  <!-- Pagination links -->
-  <div class="ui grid">
-    <div class="row">
-      <div class="five wide left aligned column">
-        {% if paginator.previous_page %}
-          <a href="{{ paginator.previous_page_path }}">
-            <button class="ui primary basic button">Newer Posts</button>
-          </a>
-        {% else %}
-          <button class="ui disabled basic button">Newer Posts</button>
-        {% endif %}
-      </div>
-      <div class="five wide center aligned column">
-          Page: {{ paginator.page }} of {{ paginator.total_pages }}
-      </div>
-      <div class="five wide right aligned column">
-        {% if paginator.next_page %}
-          <a href="{{ paginator.next_page_path }}">
-            <button class="ui primary basic button">Older Posts</button>
-          </a>
-        {% else %}
-          <button class="ui disabled basic button">Older Posts</button>
-        {% endif %}
-      </div>
+<!-- This loops through the paginated posts -->
+{% for post in paginator.posts %}
+  <div class="post-extract">
+    <span class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></span>
+    <p class="author">
+      <time datetime="{{ post.date | date_to_xmlschema }}"
+          temprop="datePublished">{{ post.date | date: "%b %Y" }}
+      </time>			
+    </p>
+    <div class="content">
+      {{ post.excerpt }}
     </div>
   </div>
+{% endfor %}
+
+<!-- Pagination links -->
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path }}" class="previous pagination-control">Previous</a>
+  {% else %}
+    <span class="previous disabled-pagination-control">Previous</span>
+  {% endif %}
+  <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path }}" class="next pagination-control">Next</a>
+  {% else %}
+    <span class="next disabled-pagination-control">Next</span>
+  {% endif %}
 </div>

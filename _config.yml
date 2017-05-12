@@ -1,37 +1,48 @@
+
 # Serving
 detach:  false
 port:    4000
 host:    0.0.0.0
 baseurl: "" # does not include hostname
 
-# Site settings
-title: "Ganessh Kumar"
-email: 
-description: "Personal blog about computer science and technology"
+title: Ganessh Kumar
+email:
+description: Personal blog
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://www.ganesshkumar.com" # the base hostname & protocol for your site
-#url: "http://localhost:4000" # the base hostname & protocol for your site
+url: "http://www.ganesshkumar.com" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: ganesshkumar
+github_username:  ganesshkumar
+linkedin_user:    in/ganessh-kumar-r-p-676a4719
 
-# Build settings
-markdown: kramdown
+# Header
+header_pages:
+  - pages/projects.html
+  - pages/archive.html
+  - pages/about.md
 
-# Plugins
-whitelist: []
-gems:
-  - jekyll-paginate
+
+# Pagination
+paginate:      10
+paginate_path: "/blog/page:num/"
+
+# Custom Collection
+collections:
+  - projects
 
 # Outputting
 permalink:     /:year/:month/:day/:title.html
-paginate:      5
-paginate_path: /page:num
 timezone:      Asia/Kolkata
-
-# Custom
-twitter:  "ganesshkumar"
-github:   "ganesshkumar"
-linkedin: "in/ganessh-kumar-r-p-676a4719"
 
 # Analytics
 google_analytics: "UA-65961333-1"
 
-exclude: [vendor]
+# Build settings
+markdown: kramdown
+theme: minima
+gems:
+  - jekyll-feed
+  - jekyll-paginate
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
