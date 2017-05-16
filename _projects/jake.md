@@ -2,8 +2,10 @@
 title: Jake
 summary: A CLI for personal tools
 repo_url: https://github.com/ganesshkumar/jake
-order: 9
+order: 3
 ---
 
-Jake is a simple CLI with a single json file as storage. [Jake Docs](https://ganesshkumar.github.io/jake)
-* Currently jake can manage your todos from CLI
+Jake is a simple CLI with a single json file as storage. Currently jake can
+ * manage your todos from CLI
+
+ [Jake Docs](https://ganesshkumar.github.io/jake)

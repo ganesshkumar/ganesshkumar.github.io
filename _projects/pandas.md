@@ -2,7 +2,7 @@
 title: Pandas
 summary: Sentiment analysis on product reviews
 repo_url: https://github.com/ganesshkumar/Panda
-order: 4
+order: 5
 ---
 
 * Scrap product reviews across various e-commerce websites and do sentiment analysis classify them under positive, negative and neutral categories.
