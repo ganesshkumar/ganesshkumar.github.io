@@ -17,8 +17,9 @@ linkedin_user:    in/ganessh-kumar-r-p-676a4719
 # Header
 header_pages:
   - pages/projects.html
+  - pages/notes-primers.html
   - pages/archive.html
-  - pages/about.md
+  - pages/about.html
 
 
 # Pagination

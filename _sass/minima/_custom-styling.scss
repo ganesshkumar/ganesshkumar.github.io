@@ -1,23 +1,23 @@
 /* Overrides */
 
 .pagination {
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .post-title {
-	color: $grey-color-dark;
+  color: $grey-color-dark;
 }
 
 /* Custom */
 /* Pagination */
 .pagination-control {
-	display: inline-block;
-	width: 100px;
-	padding: 5px;
-	text-align: center;
-	color: $brand-color;
+  display: inline-block;
+  width: 100px;
+  padding: 5px;
+  text-align: center;
+  color: $brand-color;
   border: 1px solid $brand-color;
   text-decoration: none !important;
 
@@ -27,11 +27,11 @@
 }
 
 .disabled-pagination-control {
-	display: inline-block;
-	width: 100px;
-	padding: 5px;
-	text-align: center;
-	color: $grey-color;
+  display: inline-block;
+  width: 100px;
+  padding: 5px;
+  text-align: center;
+  color: $grey-color;
 }
 
 /* Post */
@@ -55,23 +55,23 @@
 
 /* Archive */
 .archive-list {
-	list-style: none;
-	margin: 0;
+  list-style: none;
+  margin: 0;
 
-	> .archive {
-		margin: 20px 0;
-		align-items: center;
-		line-height: 21px;
+  > .archive {
+    margin: 20px 0;
+    align-items: center;
+    line-height: 21px;
 
-		> .archive-date {
-			margin-right: 10px;
-			color: $grey-color;
-		}
+  > .archive-date {
+    margin-right: 10px;
+    color: $grey-color;
+  }
 
-		a {
-			display: inline-block;
-		}
-	}
+  a {
+    display: inline-block;
+    }
+  }
 }
 
 
@@ -80,3 +80,6 @@
   text-align: right;
 }
 
+.social-media-text {
+  text-align: center;
+}
