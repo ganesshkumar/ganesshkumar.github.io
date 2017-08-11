@@ -1,0 +1,24 @@
+---
+layout: page
+title: Projects
+permalink: /projects/
+---
+
+{% assign sorted_projects = site.projects | sort: "order" %}
+<div class="projects">
+    <div class="summary">
+        Here are some of my notable projects. Visit my <a href="https://github.com/ganesshkumar">Github</a> and <a href="https://gitlab.com/ganesshkumar">Gitlab</a> profiles for complete list of my pet projects and open source contributions.
+    </div>
+    {% for project in sorted_projects %}
+        <div class="project">
+            <a href={{ project.repo_url }}> <b>{{ project.title }}</b> </a>
+            <span class="summary"> {{ project.summary }} </span>
+            {% if project.demo_url %}
+                <div class="demo-link">
+                    You can preview this project<a href={{ project.demo_url }}> here</a>.
+                </div>
+            {% endif %}
+            {{ project.content }}
+        </div>
+    {% endfor %}
+</div>
