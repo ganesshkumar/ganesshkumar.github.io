@@ -13,7 +13,7 @@ markdown: kramdown
 language: 'en-uk'
 
 short_url: 'http://www.ganesshkumar.com'
-baseurl: /
+baseurl: '/'
 
 # Pagination
 paginate: 10
