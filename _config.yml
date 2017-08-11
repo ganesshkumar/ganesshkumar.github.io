@@ -12,7 +12,7 @@ image: 'assets/images/ganesshkumar.png'
 markdown: kramdown
 language: 'en-uk'
 
-short_url: 'www.ganesshkumar.com'
+short_url: 'http://www.ganesshkumar.com'
 baseurl: /
 
 # Pagination
