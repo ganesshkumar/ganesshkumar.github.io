@@ -5,7 +5,7 @@ meta_description: "Ganessh Kumar"
 markdown: kramdown
 highlighter: pygments
 logo: false
-baseurl: '/'
+baseurl: ''
 domain_name: 'http://www.ganesshkumar.com'
 google_analytics: 'UA-65961333-1'
 disqus_username: ganesshkumar
