@@ -3,7 +3,7 @@ description: Personal Blog
 meta_description: "Ganessh Kumar"
 
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
 logo: false
 baseurl: ''
 domain_name: 'http://www.ganesshkumar.com'
