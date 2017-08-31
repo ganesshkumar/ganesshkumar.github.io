@@ -2,6 +2,7 @@
 date: 2014/08/18 00:00:00 +05:30
 title: SEO in Octopress
 layout: post
+disqus: true
 tags:
   - seo
   - blogging

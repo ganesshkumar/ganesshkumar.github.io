@@ -2,6 +2,7 @@
 date: 2014/03/05 00:00:00 +05:30
 title: Save The Hacker
 layout: post
+disqus: true
 tags:
   - product reviews
   - sentiment analysis

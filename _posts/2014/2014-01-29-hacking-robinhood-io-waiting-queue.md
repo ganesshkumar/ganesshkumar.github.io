@@ -2,6 +2,7 @@
 date: 2014/01/29 00:00:00 +05:30
 title: Hacking robinhood.io's Waiting Queue
 layout: post
+disqus: true
 tags:
   - waiting list
   - hack

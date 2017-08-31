@@ -2,6 +2,7 @@
 date: 2014/08/13 00:00:00 +05:30
 title: Git Shallow Clone
 layout: post
+disqus: true
 tags:
   - git
 categories:

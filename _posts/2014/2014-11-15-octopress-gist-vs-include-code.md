@@ -2,6 +2,7 @@
 date: 2014/11/15 00:00:00 +05:30
 title: Octopress Gist vs Include-code
 layout: post
+disqus: true
 tags:
   - github
   - octopress

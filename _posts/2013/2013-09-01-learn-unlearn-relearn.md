@@ -2,6 +2,7 @@
 date: 2013/09/01 00:00:00 +0530
 title: Learn, unlearn and relearn
 layout: post
+disqus: true
 tags:
   - learning
   - quote

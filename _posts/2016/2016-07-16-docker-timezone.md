@@ -2,6 +2,7 @@
 title: Docker - Sync your clock
 date: 2016/07/16 05:20:00 +0530
 layout: post
+disqus: true
 tags:
   - docker
 categories:

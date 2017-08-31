@@ -2,6 +2,7 @@
 title: Notes on my Virtual Box
 date: 2016/08/18 18:32:00 +0530
 layout: post
+disqus: true
 tags:
   - virtual-box
 categories:

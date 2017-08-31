@@ -2,6 +2,7 @@
 date: 2014-09-08 00:00:00 +05:30
 title: Upgrading Google Analytics in Octopress
 layout: post
+disqus: true
 tags:
   - google analytics
   - universal analytics

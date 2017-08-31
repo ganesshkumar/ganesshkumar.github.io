@@ -2,6 +2,7 @@
 title: Privacy Plugins for Browsers
 date: 2016/02/01 20:03:00 +0530
 layout: post
+disqus: true
 tags:
   - privacy
   - firefox

@@ -2,6 +2,7 @@
 date: 2014/11/15 00:00:00 +05:30
 title: Learn Docker While Migrating Octopress to Pelican
 layout: post
+disqus: true
 tags:
   - docker
   - pelican

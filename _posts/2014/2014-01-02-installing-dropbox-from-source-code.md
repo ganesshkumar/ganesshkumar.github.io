@@ -2,6 +2,7 @@
 date: 2014/01/02 00:00:00 +05:30
 title: Installing Dropbox From Source Code
 layout: post
+disqus: true
 tags:
   - linux
   - dropbox

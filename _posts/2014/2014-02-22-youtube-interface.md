@@ -2,6 +2,7 @@
 date: 2014/02/22 00:00:00 +05:30
 title: Youtube Interface
 layout: post
+disqus: true
 tags:
   - youtube
   - problem

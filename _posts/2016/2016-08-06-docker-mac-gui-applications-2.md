@@ -2,6 +2,7 @@
 title: Containerize GUI Applications on Mac - II
 date: 2016/08/06 06:31:00 +0530
 layout: post
+disqus: true
 tags:
   - docker
 categories:

@@ -2,6 +2,7 @@
 date: 2016/12/13 02:07:54 +05:30
 title: "Nathas: Your Slack DJ"
 layout: post
+disqus: true
 tags:
   - chatbot
   - hackathon

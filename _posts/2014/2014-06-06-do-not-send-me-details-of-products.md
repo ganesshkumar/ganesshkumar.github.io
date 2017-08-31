@@ -2,6 +2,7 @@
 date: 2014/06/06 00:00:00 +05:30
 title: Dark Pattern in Webforms
 layout: post
+disqus: true
 tags:
   - dark-pattern
   - web-ui

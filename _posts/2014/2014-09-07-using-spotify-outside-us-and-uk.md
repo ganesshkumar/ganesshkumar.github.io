@@ -2,6 +2,7 @@
 date: 2014/09/07 00:00:00 +05:30
 title: Using Spotify Outside US and UK
 layout: post
+disqus: true
 tags:
   - spotify
 categories:

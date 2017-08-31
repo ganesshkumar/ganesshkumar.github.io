@@ -2,6 +2,7 @@
 title: Passing Host's Hostname to Docker Container
 date: 2016/05/13 02:04:00 +0530
 layout: post
+disqus: true
 tags:
   - ansible
   - docker
