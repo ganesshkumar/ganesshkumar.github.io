@@ -1,0 +1,21 @@
+.projects {
+    .summary { 
+        margin-bottom: 10px;
+    }
+    
+    .project {
+        margin: 15px 0;
+
+        a {
+            color: #1565C0;
+        }
+
+        .summary {
+            color: #78909C;
+        }
+
+        p {
+            margin: auto;
+        }
+    }
+}
