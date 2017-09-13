@@ -880,6 +880,11 @@ body:not(.post-template) .post-title {
     display: none;
 }
 
+/* Add some space between header and content */
+.post-content {
+  margin: 3rem 0 0 0;
+}
+
 /* Keep images centred and within the bounds of the post-width */
 .post-content img {
     display: block;

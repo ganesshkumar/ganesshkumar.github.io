@@ -12,8 +12,8 @@ disqus_username: ganesshkumar
 plugins: [jekyll-paginate]
 
 # details for the RSS feed generator
-url:            'http://www.ganesshkumar.com'
-author:         'ganesshkumar'
+url:           'https://www.ganesshkumar.com'
+author:        'ganesshkumar'
 
 # pagination
 paginate:      10
