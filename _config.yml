@@ -1,6 +1,6 @@
 name: Ganessh Kumar
 description: Personal Blog
-meta_description: "Personal blog"
+meta_description: "personal website of ganesshkumar that talks about technology, computer science and personal opinions"
 
 markdown: kramdown
 highlighter: rouge
