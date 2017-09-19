@@ -1,0 +1,4 @@
+exclude_paths:
+# Following two files belong to the theme
+- "assets/js/jquery.fitvids.js"
+- "assets/css/screen.css"

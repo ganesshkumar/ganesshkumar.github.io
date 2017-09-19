@@ -30,6 +30,11 @@ collections:
 exclude:
   - Gemfile
   - Gemfile.lock
+  - .DS_Store
+  - .gitlab-ci.yml
+  - .codeclimate.yml
+  - LICENSE.txt
+  - README.md
 
 # local serving
 detach:  false
