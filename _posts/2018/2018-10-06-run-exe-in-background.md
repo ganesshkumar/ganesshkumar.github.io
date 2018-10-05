@@ -6,7 +6,7 @@ disqus: false
 tags:
   - windows
 categories:
-  - windows
+  - personal-reference
 ---
 
 A simple way to run an executable file in backgound in Windows 10.
