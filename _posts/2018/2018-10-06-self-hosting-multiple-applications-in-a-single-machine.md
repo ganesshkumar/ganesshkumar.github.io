@@ -1,6 +1,6 @@
 ---
 date: 2018/10/06 02:22:47 +05:30
-title: "Selfhosting multiple applications in a single machine"
+title: "Self-hosting multiple applications in a single machine"
 layout: post
 disqus: true
 tags:
