@@ -7,16 +7,16 @@ tags:
   - powershell
   - scripting
 categories:
-  - powershell-script
+  - powershell
 ---
 
-## Check and create directory if it doesn't exist
+#### Check and create directory if it doesn't exist
 
 ```
 $SourceDir = "directoryName"
 if (!(Test-Path -Path $SourceDir ))
 {
-    Write-Host "Creating .\src directory" -ForegroundColor Green
+    Write-Host "Creating {$SourceDir} directory" -ForegroundColor Green
     New-Item -ItemType directory -Path $DOCDIR\MatchedLog
 }
 ```
