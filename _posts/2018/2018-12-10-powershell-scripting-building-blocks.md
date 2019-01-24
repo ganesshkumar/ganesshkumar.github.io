@@ -17,10 +17,6 @@ $SourceDir = "directoryName"
 if (!(Test-Path -Path $SourceDir ))
 {
     Write-Host "Creating {$SourceDir} directory" -ForegroundColor Green
-<<<<<<< HEAD
-    New-Item -ItemType directory -Path $DOCDIR\MatchedLog
-=======
     New-Item -ItemType directory -Path $SourceDir
->>>>>>> f963c4bdec8ce390cacd15bcb9c3ca3329aedd77
 }
 ```
