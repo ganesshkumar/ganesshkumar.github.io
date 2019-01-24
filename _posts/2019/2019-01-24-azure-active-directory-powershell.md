@@ -1,5 +1,5 @@
 ---
-date: 2018/01/24 19:14:00 +05:30
+date: 2019/01/24 19:14:00 +05:30
 title: "Azure Active Directory PowerShell"
 layout: post
 disqus: true
@@ -12,7 +12,7 @@ categories:
 
 A list of most used Azure Active Directory PowerShell commands
 
-#### Install Azure Active Directory PowerShell module
+**Install Azure Active Directory PowerShell module**
 
 ```
 Install-Module AzureAD
@@ -20,13 +20,13 @@ Install-Module AzureAD
 
 Use `AzureADPreview` to install public preview of the module
 
-#### Connect to Azure account
+**Connect to Azure account**
 
 ````
 Connect-AzureAD
 ````
 
-#### Commands
+**#### Commands**
 
 | Command | Usage |
 |---|---|
