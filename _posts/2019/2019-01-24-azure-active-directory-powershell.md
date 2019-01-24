@@ -30,4 +30,4 @@ Connect-AzureAD
 
 | Command | Usage |
 |---|---|
-| `Get-AzureADObjectByObjectId` | Find the resource from its object Id |
+| Get-AzureADObjectByObjectId | Find the resource from its object Id |
