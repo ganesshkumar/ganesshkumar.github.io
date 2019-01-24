@@ -26,7 +26,7 @@ Use `AzureADPreview` to install public preview of the module
 Connect-AzureAD
 ````
 
-**#### Commands**
+**Commands**
 
 | Command | Usage |
 |---|---|
