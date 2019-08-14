@@ -22,7 +22,6 @@ paginate:      10
 permalink:     /:year/:month/:day/:title.html
 timezone:      Asia/Kolkata
 
-
 # custom collection
 collections:
   - projects
