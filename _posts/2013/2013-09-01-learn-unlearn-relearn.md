@@ -15,6 +15,8 @@ thumbnail: banner/learn-unlearn-relearn.jpeg
 
 Schools and Colleges play a vital role in teaching us. These institutions often tend to force their students to learn more and more, without mastering the fundamentals. Students who love their subjects and enjoy their books are becoming hard to find day by day. Industries view degree holders as an abstracted and tuned resources for their need.
 
+<!--more-->
+
 So, “learning” has not been given the due respect by all the players: students, educational institutions and industries.
 
 What about unlearning and relearning? Do they really make sense in our existing system?

@@ -11,7 +11,9 @@ categories:
   - self-hosting
 ---
 
-I love self-hosting personal applications. I spun a machine on cloud and started hosting my applications. As I wanted to host my second application, I got struck routing both the application's request to the same machine without needing to specify a port number in the URL. Specifying a port number in the URL like http://miniflux.ganesshkumar.com:5000 and http://blog.ganesshkumar.com:4000 made the URL look ugly.
+I love self-hosting personal applications. I spun a machine on cloud and started hosting my applications. As I wanted to host my second application, I got struck routing both the application's request to the same machine without needing to specify a port number in the URL. Specifying a port number in the URL like http://miniflux.ganesshkumar.com:5000 and http://blog.ganesshkumar.com:4000 made the URL look ugly.  
+
+<!--more-->
 
 After searching for a while, I found that reverse proxy using nginx can come in handy. At this point, I also wanted to enforce SSL to the applications as my application needed login. [Let's Encrypt](https://letsencrypt.org/) provides free SSL certificates. Now I needed to put together nginx, certificates and my applications to work together. To reduce setup procedures, I opted to use Docker. In this post let's see how I put all the pieces together.
 

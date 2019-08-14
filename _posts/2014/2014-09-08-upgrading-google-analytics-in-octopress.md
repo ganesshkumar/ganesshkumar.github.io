@@ -15,6 +15,8 @@ thumbnail: banner/analytics-in-octopress.png
 
 Google Analytics for Octopress hasn’t integrated the latest update to include **Demographics and Interest** reports. In Octopress, Google Analytics code resides in source/_includes/google_analytics.html
 
+<!--more-->
+
 According to Google, one line change will include the demographics and interest reports to your analytics. Following is the diff of my source/_includes/google_analytics.html
 
 Just replace the line

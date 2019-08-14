@@ -25,6 +25,8 @@ docker build -t <username>/<image_name> .
 
 ```
 
+<!--more-->
+
 * `meteor build` will output <project_name>.tar.gz file into the directory `build` in the project's parent directory.
 * `tar` will unzip the archive and extract out the bundle directory. We need to add this bundle directory to the docker image.
 * `docker build` will try to create a docker project using the project directory as the context. So we need to add `Dockerfile` to the project directory.

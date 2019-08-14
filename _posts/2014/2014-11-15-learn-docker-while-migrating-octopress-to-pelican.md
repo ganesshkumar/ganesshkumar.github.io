@@ -16,6 +16,7 @@ thumbnail: banner/docker-pelican.jpeg
 
 I rely on static site generators to write my blog. I am impressed with the ideology behind it. Keeping each and every component of the blog as small modules, templating webpages into separate components and writing markdown files for the static site generators to generate the blog is the way I enjoy to write blogs.  
 
+<!--more-->
 
 Recently I have migrated my blog from Octopress to Pelican mainly for two reasons,
 

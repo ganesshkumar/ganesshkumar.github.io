@@ -13,6 +13,8 @@ categories:
 
 Youtube has made some changes to their UI yesterday. Unlike ever before, there are couple of things which catch our attention and rise questions on design practices.
 
+<!--more-->
+
 <center>Home Page</center>
 ![Youtube Home page](http://i.imgur.com/9TRNlQU.png)
 

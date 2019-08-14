@@ -16,6 +16,8 @@ categories:
 
 If you are installing Dropbox from source code, you must have read this [help page](https://www.dropbox.com/help/247/en). It is not a detailed documentation. You might run into few well known issues.
 
+<!--more-->
+
 From my experience of installing Dropbox on Arch Linux,
 
 *  Download the source code from [official repository](https://www.dropbox.com/download?dl=packages/nautilus-dropbox-1.4.0.tar.bz2)

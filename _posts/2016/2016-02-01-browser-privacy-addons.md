@@ -14,6 +14,8 @@ thumbnail: banner/privacy.png
 
 Here are some of my curated list of browser add-ons to protect your privacy against trackers and advertisers. Some of the add-ons might be available only on Firefox as it is my primary browser.
 
+<!--more-->
+
 ## Privacy Badger
 Privacy Badger blocks advertisers from loading content once they detect the advertisers are tracking you without permission. Privacy Badger(a fork of Ad-Blocker Plus) automatically analyzes and blocks any tracker who violates user consent. It provides an out of the box experience without any additional settings, knowledge or configurations by the user. Identifying itself as a privacy tool Privacy Badger does't block all the ads. It blocks only the non-consensual invasions of user's privacy. If you want to block all ads, Privacy Badger suggests you to install a traditional ad-blocker alongside.  
 [Official Site](https://www.eff.org/privacybadger) | [Firefox](https://www.eff.org/files/privacy-badger-latest.xpi) |  [Chrome](https://chrome.google.com/webstore/detail/privacy-badger/pkehgijcmpdhfbdbbnkijodmdjhbjlgp)
