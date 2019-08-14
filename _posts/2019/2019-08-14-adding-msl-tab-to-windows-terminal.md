@@ -2,7 +2,7 @@
 date: 2019/08/14 15:18:55 +05:30
 title: "Adding MSL Shell to Windows Terminal"
 layout: post
-disqus: false
+disqus: true
 tags:
   - windows
   - windows-terminal
@@ -12,16 +12,18 @@ categories:
 
 After installing any flavors of Linux using Windows Subsystem for Linux (WSL) on Windows 10, if you open Microsoft's latest Windows Terminal and do not find your linux shell in it, this guide is for you.
 
-1. Make sure you have installed your desired version of Linux from the Windows Store
+<!-- more -->
+
+* Make sure you have installed your desired version of Linux from the Windows Store
 
 ![Ubuntu-18.04]({{ site.url }}/images/2019-08-14-adding-msl-tab-to-windows-terminal/ubuntu.png)
 
-2. In Windows Terminal click the dropdown icon and select settings. Alternatively, you can open it with `Ctrl + ,` shortcut.
+* In Windows Terminal click the dropdown icon and select settings. Alternatively, you can open it with `Ctrl + ,` shortcut.
 This will open `profiles.json` file in your text editor
 
 ![Terminal]({{ site.url }}/images/2019-08-14-adding-msl-tab-to-windows-terminal/terminal.png)
 
-3. In the profiles.json file, find the `profiles` section. profiles is an array where each element in the array maps to a shell (powershell or cmd or any linux shell)
+* In the profiles.json file, find the `profiles` section. profiles is an array where each element in the array maps to a shell (powershell or cmd or any linux shell)
 
 ```
     "profiles" : 
@@ -66,7 +68,7 @@ This will open `profiles.json` file in your text editor
     ],
 ```
 
-4. Add an entry in this array for your linux shell. To populate this, you need the following values
+* Add an entry in this array for your linux shell. To populate this, you need the following values
    * Command to start your shell
      * To get list of WSL shells run the command `wsl.exe --list`
      * To start a particular WSL shell run `wsl.exe -d <shell_name_from_above>`
@@ -99,10 +101,10 @@ This will open `profiles.json` file in your text editor
         }
 ```
 
-5. As soon as you save the `profiles.json` file, the changes will be picked up by the Windows Terminal and you can see your WSL shell.
+* As soon as you save the `profiles.json` file, the changes will be picked up by the Windows Terminal and you can see your WSL shell.
 
 ![Ubuntu in Terminal]({{ site.url }}/images/2019-08-14-adding-msl-tab-to-windows-terminal/ubuntu-terminal.png)
 
-6. Start a shell and start configuring it. I have configure my shell to be `zsh` shell with `oh-my-zsh` extension.
+* Start a shell and start configuring it. I have configure my shell to be `zsh` shell with `oh-my-zsh` extension.
 
 ![Zsh in Terminal]({{ site.url }}/images/2019-08-14-adding-msl-tab-to-windows-terminal/zsh-terminal.png)
