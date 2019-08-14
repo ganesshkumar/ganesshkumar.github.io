@@ -14,12 +14,12 @@ After installing any flavors of Linux using Windows Subsystem for Linux (WSL) on
 
 1. Make sure you have installed your desired version of Linux from the Windows Store
 
-![Ubuntu-18.04](../../images/2019-08-14-adding-msl-tab-to-windows-terminal/ubuntu.png)
+![Ubuntu-18.04]({{ site.url }}/images/2019-08-14-adding-msl-tab-to-windows-terminal/ubuntu.png)
 
 2. In Windows Terminal click the dropdown icon and select settings. Alternatively, you can open it with `Ctrl + ,` shortcut.
 This will open `profiles.json` file in your text editor
 
-![Terminal](../../images/2019-08-14-adding-msl-tab-to-windows-terminal/terminal.png)
+![Terminal]({{ site.url }}/images/2019-08-14-adding-msl-tab-to-windows-terminal/terminal.png)
 
 3. In the profiles.json file, find the `profiles` section. profiles is an array where each element in the array maps to a shell (powershell or cmd or any linux shell)
 
@@ -101,8 +101,8 @@ This will open `profiles.json` file in your text editor
 
 5. As soon as you save the `profiles.json` file, the changes will be picked up by the Windows Terminal and you can see your WSL shell.
 
-![Ubuntu in Terminal](../../images/2019-08-14-adding-msl-tab-to-windows-terminal/ubuntu-terminal.png)
+![Ubuntu in Terminal]({{ site.url }}/images/2019-08-14-adding-msl-tab-to-windows-terminal/ubuntu-terminal.png)
 
 6. Start a shell and start configuring it. I have configure my shell to be `zsh` shell with `oh-my-zsh` extension.
 
-![Zsh in Terminal](../../images/2019-08-14-adding-msl-tab-to-windows-terminal/zsh-terminal.png)
+![Zsh in Terminal]({{ site.url }}/images/2019-08-14-adding-msl-tab-to-windows-terminal/zsh-terminal.png)
