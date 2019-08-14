@@ -10,10 +10,9 @@ categories:
   - productivity
 ---
 
-After installing any flavors of Linux using Windows Subsystem for Linux, WSL, on Windows 10, you open Microsoft's latest Windows Terminal and do not find your linux shell in it? Then this guide is for you.
+After installing any flavors of Linux using Windows Subsystem for Linux, WSL, on Windows 10, you open Microsoft's latest Windows Terminal and do not find your linux shell in it? Then this guide is for you.  
 
-
-> Test
+<!--more-->
 
 * Make sure you have installed your desired version of Linux from the Windows Store.
 ![Ubuntu-18.04]({{ site.url }}/images/2019-08-14-adding-msl-tab-to-windows-terminal/ubuntu.png)

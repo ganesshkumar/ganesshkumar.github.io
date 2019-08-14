@@ -22,6 +22,8 @@ paginate:      10
 permalink:     /:year/:month/:day/:title.html
 timezone:      Asia/Kolkata
 
+excerpt_separator: <!--more-->
+
 # custom collection
 collections:
   - projects
