@@ -16,8 +16,6 @@ Nathas, a slack bot, is our entry for the [India's first botathon](http://tlabs.
 
 Nathas is a slack bot that sits and listens to messages sent on a particular channel. It will process any message that starts with `@nathas` and will ignore the rest.
 
-<!--more-->
-
 You can see a list of commands that @nathas will understand by simply asking for help. on typing `@nathas help`, you will get back the following message from @nathas.
 
 ```

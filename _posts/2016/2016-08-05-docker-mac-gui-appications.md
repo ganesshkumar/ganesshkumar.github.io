@@ -14,8 +14,6 @@ After watching [Container Hacks and Fun Images](https://www.youtube.com/watch?v=
 * OS X doesn't expose device files `/dev/snd` or `/dev/video`.
 * OS X doesn't have a default x11 client. So we have to rely on XQuartz
 
-<!--more-->
-
 This guide is tested under
 
  * OS X El Capitan (version 10.11.4)

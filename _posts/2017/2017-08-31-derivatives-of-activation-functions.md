@@ -13,8 +13,6 @@ categories:
 
 Here is my attempt at finding the derivatives of common activation functions of neural network namely sigmoid, tanh, ReLU and leaky ReLU functions.
 
-<!--more-->
-
 **1. Sigmoid function**
 
 $$ f(x) = {1 \over \sigma(x)} = 1 + e ^ {-x} $$

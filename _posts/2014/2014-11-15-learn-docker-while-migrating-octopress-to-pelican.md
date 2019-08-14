@@ -16,16 +16,12 @@ thumbnail: banner/docker-pelican.jpeg
 
 I rely on static site generators to write my blog. I am impressed with the ideology behind it. Keeping each and every component of the blog as small modules, templating webpages into separate components and writing markdown files for the static site generators to generate the blog is the way I enjoy to write blogs.  
 
-<!--more-->
-
 Recently I have migrated my blog from Octopress to Pelican mainly for two reasons,
 
 * The environment in which Octopress runs started to get complicated as I kept on switching devices and setup the environment again and again. Creating  new instance of environment and copying my articles into it was easier than replicating the environment from my source repository.
 * I am more comfortable in python than ruby and it looks like there are more opportunities to improve Pelican when compared to Octopress. Pelican is still in early stages in terms of features.  
 
 I made this migration bit more fun by learning and using Docker. **Docker** is an incredible piece of software serving to run virtual machines, committing them as images and storing them online in Docker Hub.
-
-<!--more-->
 
 First, let's install docker on the host operating system
 

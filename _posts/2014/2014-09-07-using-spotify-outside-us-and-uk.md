@@ -13,8 +13,6 @@ thumbnail: banner/spotify-logo.png
 
 [Spotify](https://www.spotify.com/) has been the best music streaming application I have used till date. Spotify is available to limited countries as of now. So if you are not from US or UK and want to use Spotify here is a simple work around.
 
-<!--more-->
-
 ## How does Spotify verifies your country
 
 When signing up for an account you have to select your country. You won’t be able to create an account if your country is not supported by Spotify. If you are from a country that is not in the supported list, create an account with UK or US as your country.

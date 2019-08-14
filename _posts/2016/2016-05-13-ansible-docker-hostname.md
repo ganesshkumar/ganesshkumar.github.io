@@ -12,8 +12,6 @@ categories:
 
 There are two simple ways to pass `hostname` of the machine running docker daemon to the docker container using Ansible.
 
-<!--more-->
-
 1. Using Environmental Variable
 
 ```

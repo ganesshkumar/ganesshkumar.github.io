@@ -15,8 +15,6 @@ thumbnail: banner/source-code.png
 
 I was using **gist** to share code snippets in this blog. Today I stumbled upon [Pingdom](http://tools.pingdom.com/fpt/), a tool to test the load time of that page, analyze it and find bottlenecks. I tested my blog and found that gist is taking approximately 300ms to load, which is bad. The average time taken to load my blog was 686ms and **300ms taken by gist is approximately 50% of the load time**.
 
-<!--more-->
-
 Files loaded from gist
 
 * My target file (from gist.github.com)

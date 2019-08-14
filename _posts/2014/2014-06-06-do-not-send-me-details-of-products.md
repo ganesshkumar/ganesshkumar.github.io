@@ -16,8 +16,6 @@ Whenever we submit forms online (while creating new account or submitting votes)
 
 To bring in more people these check boxes are checked by default. Only people who pay attention to the form uncheck them. Over a period of time, people don't pay attention to what is written in the form and uncheck these check boxes before clicking the submit button.
 
-<!--more-->
-
 Manchester United (or whoever created their online forms) has paid enough attention to increase in such customers and has redesigned their forms.
 
 ![Submit form](http://i.imgur.com/YQXUcFA.gif)

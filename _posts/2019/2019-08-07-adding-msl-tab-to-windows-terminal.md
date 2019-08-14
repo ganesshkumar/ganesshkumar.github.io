@@ -14,8 +14,6 @@ After installing any flavors of Linux using Windows Subsystem for Linux, WSL, on
 
 Then this guide is for you.
 
-<!--more-->
-
 * Make sure you have installed your desired version of Linux from the Windows Store.
 
 ![Ubuntu-18.04]({{ site.url }}/images/2019-08-14-adding-msl-tab-to-windows-terminal/ubuntu.png)

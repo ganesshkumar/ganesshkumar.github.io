@@ -16,8 +16,6 @@ thumbnail: banner/analytics-in-octopress.png
 
 In a html document, contains the metadata of the page in tags. Search engines use two meta elements keywords and description to index the page. The file /source/_includes/head.html is used by Octopress to add the meta information to the &lt;head&gt;
 
-<!--more-->
-
 ```
     {% capture description %}{% if page.description %}{{ page.description }}{% else %}{{ content | raw_content }}{% endif %}{% endcapture %}
     <meta name="description" content="{{ description | strip_html | condense_spaces | truncate:150 }}">

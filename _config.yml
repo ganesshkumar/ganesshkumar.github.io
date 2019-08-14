@@ -4,7 +4,7 @@ meta_description: "personal website of ganesshkumar that talks about technology,
 
 markdown: kramdown
 highlighter: rouge
-logo: false
+cover: false
 baseurl: ''
 domain_name: 'http://www.ganesshkumar.com'
 google_analytics: 'UA-65961333-1'
@@ -21,8 +21,6 @@ paginate:      10
 # outputting
 permalink:     /:year/:month/:day/:title.html
 timezone:      Asia/Kolkata
-
-excerpt_separator: <!--more-->
 
 # custom collection
 collections:

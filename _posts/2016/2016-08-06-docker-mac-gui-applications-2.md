@@ -11,8 +11,6 @@ categories:
 
 In the [previous post](http://www.ganesshkumar.com/2016/08/05/docker-mac-gui-appications.html), we ran firefox inside a container on OS X. To allow connection from the container to the X11, we used `xhost + $(hostname)`. This gives rise to serious security vulnerability.
 
-<!--more-->
-
 Let's list the entries in ACL before adding our local machine
 
 ```

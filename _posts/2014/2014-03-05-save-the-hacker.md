@@ -18,8 +18,6 @@ thumbnail: banner/save-the-hacker.png
 * Extract various features of the product from the reviews and do sentiment analysis on them.
 * Date wise analysis of the product from common data source like Twitter
 
-<!--more-->
-
 **Outcome?**
 
 * Goal 1 will help to capture the overall sentiment about the product and the corresponding e-commerce website's performance. For example, one may provide better delivery and the other may provide better customer service etc. This metric will help you to get an idea of where should we buy the product from not considering only the price as a factor.

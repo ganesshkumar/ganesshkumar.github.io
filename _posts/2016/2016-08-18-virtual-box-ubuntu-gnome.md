@@ -11,8 +11,6 @@ categories:
 
 Though I use OS X as my primary operating system now a days, I still use [Ubuntu GNOME](https://ubuntugnome.org/) on a virtual box for one or two projects. Why not? I love GNOME. This post contains notes on my virtual box setup, primarily for my reference.
 
-<!--more-->
-
 ## Post Installation
 
 ```
