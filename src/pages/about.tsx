@@ -8,14 +8,24 @@ const About = () => (
   <Main meta={<Meta title="Lorem ipsum" description="Lorem ipsum" />}>
     <Content>
       <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione fuga recusandae quidem.
-        Quaerat molestiae blanditiis doloremque possimus labore voluptatibus distinctio recusandae
-        autem esse explicabo molestias officia placeat, accusamus aut saepe.
+        I&apos;m a Full Stack Engineer and a Machine Learning enthusiast. I love everything about
+        computer science, maths and physics. Currently playing with docker, chatbots and audrino.
       </p>
       <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione fuga recusandae quidem.
-        Quaerat molestiae blanditiis doloremque possimus labore voluptatibus distinctio recusandae
-        autem esse explicabo molestias officia placeat, accusamus aut saepe.
+        Social Media: &nbsp;
+        <a href="https://twitter.com/ganesshkumar" target="_blank" rel="noreferrer">
+          Twitter
+        </a>
+        {' '}
+        - &nbsp;
+        <a href="https://github.com/ganesshkumar" target="_blank" rel="noreferrer">
+          Github
+        </a>
+        {' '}
+        - &nbsp;
+        <a href="https://gitlab.com/ganesshkumar" target="_blank" rel="noreferrer">
+          Gitlab
+        </a>
       </p>
     </Content>
   </Main>

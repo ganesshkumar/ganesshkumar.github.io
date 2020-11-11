@@ -1,41 +1,37 @@
 import React from 'react';
 
-import { GetStaticProps } from 'next';
+import Link from 'next/link';
 
-import { BlogGallery, IBlogGalleryProps } from '../blog/BlogGallery';
 import { Meta } from '../layout/Meta';
-import { IPaginationProps } from '../pagination/Pagination';
-import { Main } from '../templates/Main';
+import { Navbar } from '../navigation/Navbar';
 import { Config } from '../utils/Config';
-import { getAllPosts } from '../utils/Content';
 
-const Index = (props: IBlogGalleryProps) => (
-  <Main
-    meta={(
-      <Meta
-        title="Made with Next.js, TypeScript, ESLint, Prettier, PostCSS, Tailwind CSS"
-        description={Config.description}
-      />
-    )}
-  >
-    <BlogGallery posts={props.posts} pagination={props.pagination} />
-  </Main>
+const Index = () => (
+  <>
+    <Meta title={Config.title} description={Config.description} />
+    <div className="flex flex-col h-screen justify-center items-center text-gray-100 bg-gray-900">
+      <div className="text-6xl font-bold">Ganessh Kumar R P</div>
+      <div className="text-base font-bold">
+        <Navbar>
+          <li className="mr-6 underline">
+            <Link href="/blog">
+              <a>Blog</a>
+            </Link>
+          </li>
+          <li className="mr-6 underline">
+            <Link href="/notes">
+              <a>Notes</a>
+            </Link>
+          </li>
+          <li className="mr-6 underline">
+            <Link href="/about">
+              <a>About</a>
+            </Link>
+          </li>
+        </Navbar>
+      </div>
+    </div>
+  </>
 );
-
-export const getStaticProps: GetStaticProps<IBlogGalleryProps> = async () => {
-  const posts = getAllPosts(['title', 'date', 'slug']);
-  const pagination: IPaginationProps = {};
-
-  if (posts.length > Config.pagination_size) {
-    pagination.next = '/page2';
-  }
-
-  return {
-    props: {
-      posts: posts.slice(0, Config.pagination_size),
-      pagination,
-    },
-  };
-};
 
 export default Index;

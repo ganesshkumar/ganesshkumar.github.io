@@ -1,9 +1,9 @@
 export const Config = {
   site_name: 'Starter',
-  title: 'Next.js Boilerplate',
-  description: 'Starter code for your Next.js blog Boilerplate',
+  title: 'Ganessh Kumar R P',
+  description: 'My Personal Site',
   url: 'https://example.com',
   locale: 'en',
   author: 'Anonymous',
-  pagination_size: 5,
+  pagination_size: 30,
 };

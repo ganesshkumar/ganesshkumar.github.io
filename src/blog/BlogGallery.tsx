@@ -16,7 +16,7 @@ const BlogGallery = (props: IBlogGalleryProps) => (
     <ul>
       {props.posts.map((elt) => (
         <li key={elt.slug} className="mb-3 flex justify-between">
-          <Link href="/posts/[slug]" as={`/posts/${elt.slug}`}>
+          <Link href="/blog/[slug]" as={`/blog/${elt.slug}`}>
             <a>
               <h2>{elt.title}</h2>
             </a>
