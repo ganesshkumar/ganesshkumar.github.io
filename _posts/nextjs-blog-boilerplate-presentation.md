@@ -1,12 +1,20 @@
-# Next js Blog Boilerplate
+---
+title: 'Next.js blog Boilerplate Presentation'
+description: Everything you need to use this Nextjs Boilerplate template
+date: '2020-06-01'
+modified_date: '2020-06-01'
+image: /assets/images/posts/random-img.jpg
+---
 
-<p align="center">
-  <a href="https://creativedesignsguru.com/demo/Nextjs-Blog-Boilerplate/"><img src="public/assets/images/nextjs-starter-banner.png?raw=true" alt="Nextjs starter banner"></a>
-</p>
+[![Nextjs starter banner](@@baseUrl@@/assets/images/nextjs-starter-banner.png)](https://creativedesignsguru.com/demo/Nextjs-Blog-Boilerplate/)
+
+## Next js Blog Boilerplate
 
 🚀 Next.js Blog Boilerplate is starter code for your blog based on Next.js framework. ⚡️ Made with [Next.js](https://nextjs.org), [TypeScript](https://www.typescriptlang.org), [ESLint](https://eslint.org), [Prettier](https://prettier.io), [PostCSS](https://postcss.org), [Tailwind CSS](https://tailwindcss.com).
 
 Clone this project and use it to create your own [Next.js](https://nextjs.org) blog. You can check a [Next js blog templates demo](https://creativedesignsguru.com/demo/Nextjs-Blog-Boilerplate/).
+
+The GitHub repository is located [Next js Blog Boilerplate](https://github.com/ixartz/Next-js-Blog-Boilerplate).
 
 ### Features
 
@@ -29,7 +37,6 @@ Developer experience first:
 - ✏️ Linter with [ESLint](https://eslint.org)
 - 🛠 Code Formatter with [Prettier](https://prettier.io)
 - 🦊 SEO metadata, [JSON-LD](https://developers.google.com/search/docs/guides/intro-structured-data) and [Open Graph](https://ogp.me/) tags with [Next SEO](https://github.com/garmeeh/next-seo)
-- ⚙️ [Bundler Analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
 
 Built-in feature from Next.js:
 
@@ -61,7 +68,7 @@ Built-in feature from Next.js:
 
 Run the following command on your local environment:
 
-```
+```shell
 git clone --depth=1 https://github.com/ixartz/Next-js-Blog-Boilerplate.git my-project-name
 cd my-project-name
 npm install
@@ -69,13 +76,13 @@ npm install
 
 Then, you can run locally in development mode with live reload:
 
-```
+```shell
 npm run dev
 ```
 
 Open http://localhost:8080 with your favorite browser to see your project.
 
-```
+```shell
 .
 ├── _posts            # Your blog posts
 ├── public            # Static files
@@ -102,7 +109,7 @@ You can easily configure Next js Boilerplate. Please change the following file:
 
 You can see the results locally in production mode with:
 
-```
+```shell
 $ npm run build
 $ npm run start
 ```
@@ -111,7 +118,7 @@ The generated HTML and CSS files are minified (built-in feature from Next js). I
 
 You can create an optimized production build with:
 
-```
+```shell
 npm run build-prod
 ```
 
@@ -131,8 +138,8 @@ Everyone is welcome to contribute to this project. Feel free to open an issue if
 
 Licensed under the MIT License, Copyright © 2020
 
-See [LICENSE](LICENSE) for more information.
+See [LICENSE](https://github.com/ixartz/Next-js-Blog-Boilerplate#license) for more information.
 
----
+### GitHub
 
-Made with ♥ by [CreativeDesignsGuru](https://creativedesignsguru.com)
+The GitHub repository is located [Nextjs Blog Boilerplate](https://github.com/ixartz/Next-js-Blog-Boilerplate).
