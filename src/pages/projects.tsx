@@ -1,41 +1,32 @@
 import React from 'react';
 
-import { GetStaticProps } from 'next';
-
-import { BlogGallery, IBlogGalleryProps } from '../blog/BlogGallery';
 import { Meta } from '../layout/Meta';
-import { IPaginationProps } from '../pagination/Pagination';
 import { Main } from '../templates/Main';
-import { Config } from '../utils/Config';
-import { getAllPosts } from '../utils/Content';
 
-const Index = (props: IBlogGalleryProps) => (
-  <Main
-    meta={(
-      <Meta
-        title="Made with Next.js, TypeScript, ESLint, Prettier, PostCSS, Tailwind CSS"
-        description={Config.description}
-      />
-    )}
-  >
-    <BlogGallery posts={props.posts} pagination={props.pagination} />
+type IProjectProps = {
+  title: string;
+  url: string;
+  description: string;
+  content: string;
+};
+
+const Project = (props: IProjectProps) => (
+  <div>
+    <span>
+      <a className="underline" href={props.url}>
+        {props.title}
+      </a>
+    </span>
+    <span>{props.description}</span>
+    <p>{props.content}</p>
+  </div>
+);
+
+const Projects = () => (
+  <Main meta={<Meta title="Projects" description="Here are some of my hobby projects" />}>
+    <h1 className="text-center font-bold text-3xl text-gray-900">Projects</h1>
+    <Project title="T" url="u" description="d" content="c" />
   </Main>
 );
 
-export const getStaticProps: GetStaticProps<IBlogGalleryProps> = async () => {
-  const posts = getAllPosts(['title', 'date', 'slug']);
-  const pagination: IPaginationProps = {};
-
-  if (posts.length > Config.pagination_size) {
-    pagination.next = '/page2';
-  }
-
-  return {
-    props: {
-      posts: posts.slice(0, Config.pagination_size),
-      pagination,
-    },
-  };
-};
-
-export default Index;
+export default Projects;
