@@ -12,6 +12,7 @@ module.exports = {
         'pine-tree': '#203129',
         'brunswick-green': '#385647',
         'polished-pine': '#70A288',
+        'cambridge-blue': '#A9C7B7',
         'cultured': '#F3F7F5',
         'mint-cream': '#E6EFEA',
         'wheat': '#E7D1B1',
