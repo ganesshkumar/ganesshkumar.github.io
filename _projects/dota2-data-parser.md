@@ -1,7 +1,7 @@
 ---
 title: Dota2 Data Parser
 summary: Collect dota2 data
-repo_url: https://github.com/ganesshkumar/dota2-data-parser
+repoUrl: https://github.com/ganesshkumar/dota2-data-parser
 order: 9
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Nathas
 summary: A Slack DJ
-repo_url: https://github.com/TeamSven/nathas
+repoUrl: https://github.com/TeamSven/nathas
 order: 2
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Hypnos
 summary: Tool to manage sleep time
-repo_url: https://github.com/ganesshkumar/hypnos
+repoUrl: https://github.com/ganesshkumar/hypnos
 demo_url: http://www.ganesshkumar.com/hypnos/
 order: 8
 ---

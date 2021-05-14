@@ -1,7 +1,7 @@
 ---
 title: Jake
 summary: A CLI for personal tools
-repo_url: https://github.com/ganesshkumar/jake
+repoUrl: https://github.com/ganesshkumar/jake
 order: 3
 ---
 
