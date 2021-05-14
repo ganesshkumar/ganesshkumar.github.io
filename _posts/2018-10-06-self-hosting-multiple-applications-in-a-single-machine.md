@@ -21,7 +21,7 @@ The first application I want to host in [miniflux](https://miniflux.app/), a min
 
 Let's create two folders in the home directory. `data` to hold all the volumes that will be mounted in docker and `docker-compose` to hold docker-compose files to launch the services and applications.
 
-```
+```shell
 $ mkdir data docker-compose
 ```
 
@@ -29,13 +29,13 @@ $ mkdir data docker-compose
 
 Create the folders for data and docker-compose
 
-```
+```shell
 $ mkdir data/miniflux docker-compose/miniflux
 ```
 
 Then create _docker-compose.yml_ file in the docker-compose/miniflux folder with the following content
 
-```
+```yaml
 version: '3'
 services:
   miniflux:
@@ -61,19 +61,19 @@ Now running `docker-compose up -d` in the docker-compose folder will run this ap
 
 Create the folders for data and docker-compose
 
-```
+```shell
 $ mkdir data/nginx docker-compose/nginx
 ```
 
 We will be mounting SSL certificates in nginx container, so that our applications will be served over a secured layer. Create folders for holding the certificates
 
-```
+```shell
 $ mkdir -p data/letsencrypt/certs data/letsencrypt/certs-data
 ```
 
 Then create _docker-compose.yml_ file with the following contents
 
-```
+```yaml
 version: '3'
 services:
   nginx:
@@ -92,7 +92,7 @@ services:
 
 Before string the ngix container, we have to create a config file for nginx. Create `data/nginx/nginx.conf` file with the following content
 
-```
+```apacheconf
 events {
 }
 
@@ -122,7 +122,7 @@ Now, we can run `docker-compose up -d` from the docker-compose directory to star
 
 Let's Encrypt provides to tool certbot to create our SSL certificates. Let's use the docker image of certbot to do that. Run the following docker command.
 
-```
+```shell
 $ docker run -it --rm \
         -v certs:/etc/letsencrypt \
         -v certs-data:/data/letsencrypt \
@@ -142,7 +142,7 @@ Now let's modify the contents of _nginx.conf_ file, to route the requests to min
 
 Add the following code to the http section of _nginx.conf_
 
-```
+```apacheconf
     server {
         listen      443           ssl http2;
         listen [::]:443           ssl http2;
@@ -180,7 +180,7 @@ Add the following code to the http section of _nginx.conf_
 
 We are almost done. Restart the nginx server to use the latest configuration. Run the following command in nginx's docker-compose directory.
 
-```
+```shell
 $ docker-compose down
 $ docker-compose up -d
 ```
@@ -193,7 +193,7 @@ That all. Our request to http://miniflux.ganesshkumar.com will be redirected to 
 
 After few months your SSL certificate will expire. You can run the following command to renew the certificate.
 
-```
+```shell
 $ docker run -t --rm \
       -v certs:/etc/letsencrypt \
       -v certs-data:/data/letsencrypt \

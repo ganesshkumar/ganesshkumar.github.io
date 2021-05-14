@@ -1,8 +1,8 @@
 ---
 title: Docker - Disable Stream Buffers in Python
 description: Docker - Disable Stream Buffers in Python
-date: 2016/07/10 22:00:00 +0530
-modified_date: 2016/07/10 22:00:00 +0530
+date: 2016/07/10
+modified_date: 2016/07/10
 image: /assets/images/posts/random-img.jpg
 disqus: true
 tags:

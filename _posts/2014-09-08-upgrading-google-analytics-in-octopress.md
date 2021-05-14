@@ -21,14 +21,14 @@ According to Google, one line change will include the demographics and interest 
 
 Just replace the line
 
-```
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+```js
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 ```
 
 to
 
-```
-    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+```js
+ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
 ```
 
 And you are done. It will take upto 24 hours for the new reports to start appearing.

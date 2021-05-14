@@ -15,21 +15,21 @@ In the [previous post](http://www.ganesshkumar.com/2016/08/05/docker-mac-gui-app
 
 Let's list the entries in ACL before adding our local machine
 
-```
+```shell
 $ /usr/X11R6/bin/xhost
 access control enabled, only authorized clients can connect
 ```
 
 Now let's add our localmachine to ACL
 
-```
+```shell
 $ /usr/X11R6/bin/xhost + $(hostname)
 <my-machine-name>.local being added to access control list
 ```
 
 Let's list the entries in ACL
 
-```
+```shell
 $ /usr/X11R6/bin/xhost
 access control enabled, only authorized clients can connect
 INET:192.168.1.x
@@ -40,7 +40,7 @@ Our ip address has been added to the ACL. If you are switching between networks 
 
 Let's remove our machine from ACL. Removing hostname will remove both hostname and ip address entries from ACL
 
-```
+```shell
 $ /usr/X11R6/bin/xhost - $(hostname)
 <my-machine-name>.local being removed from access control list
 
@@ -52,7 +52,7 @@ Using `xhost +` or open X display is one of the [high rated system vulnerabiliti
 
 * **Extending the image** to include our user to authenticate with x11.
 
-```
+```dockerfile
 # Dockerfile
 FROM jess/firefox
 
@@ -73,13 +73,13 @@ WORKDIR /home/${user}
 
 * **Building docker image**. Note that the variables started with `ARG` reference in the Dockerfile are supplied using --build-args
 
-```
+```shell
 $ docker build --build-arg user=$USER --build-arg uid=$(id -u) -t <image_name> .
 ```
 
 * **Generate xauth file**. Using `:0` as our display. Note: if it complains that the file `/tmp/.docker.xauth` doesn't exist, `touch` the file and re-run the command.
 
-```
+```shell
 $ /usr/X11R6/bin/xauth nlist :0 | sed -e 's/^..../ffff/' | /usr/X11R6/bin/xauth -f /tmp/.docker.xauth nmerge -
 ```
 
@@ -87,7 +87,7 @@ $ /usr/X11R6/bin/xauth nlist :0 | sed -e 's/^..../ffff/' | /usr/X11R6/bin/xauth 
   * -v /tmp/.docker.xauth:/tmp/.docker.xauth:rw
   * -e XAUTHORITY=/tmp/.docker.xauth
 
-```
+```dockerfile
 $ docker run -d \
       --memory 2gb \
       --net host \

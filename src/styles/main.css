@@ -3,3 +3,18 @@
 @tailwind components;
 
 @tailwind utilities;
+
+code {
+  background: #D1D5DB;
+  padding: 0 5px;
+}
+
+ul {
+  list-style: disc;
+  list-style-position: inside;
+}
+
+ol {
+  list-style: decimal;
+  list-style-position: inside;
+}

@@ -16,7 +16,7 @@ Though I use OS X as my primary operating system now a days, I still use [Ubuntu
 
 ## Post Installation
 
-```
+```shell
 $ apt-get update
 $ apt-get install vim git build-essential
 ```
@@ -25,7 +25,7 @@ $ apt-get install vim git build-essential
 
 * Docker
 
-```
+```shell
 $ # Setup sources for apt
 $ sudo apt-get install apt-transport-https ca-certificates
 $ sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
@@ -51,6 +51,6 @@ $ sudo service docker start
 
 * Mount the shared folder with read-write permission for the user.
 
-```
+```shell
 sudo mount -t vboxsf -o uid=<user_id> <shared_folder_name> /mount/point
 ```

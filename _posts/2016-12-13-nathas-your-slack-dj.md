@@ -20,7 +20,7 @@ Nathas is a slack bot that sits and listens to messages sent on a particular cha
 
 You can see a list of commands that @nathas will understand by simply asking for help. on typing `@nathas help`, you will get back the following message from @nathas.
 
-```
+```markup
 $ @nathas command [options]
 
 list          list the songs in the queue
@@ -39,7 +39,7 @@ As you can see from the help, you can list, add, clear songs from the queue. You
 
 Instead of `@naths play [song]` if you enter an artist name like `@nathas play AR Rahman`, @nathas will recognize the artist and will suggest the artist's ten most played songs from Youtube.
 
-![Artist]({{ site.url }}/images/2016-12-13-nathas-your-slack-dj/artist.png)
+![Artist](@@baseUrl@@/assets/images/2016-12-13-nathas-your-slack-dj/artist.png)
 
 If you type `@nathas suggest something to listen to`, @nathas will suggest songs based on previously played songs. @nathas generated this suggestion by combining data from Youtube and Spotify's free APIs.
 

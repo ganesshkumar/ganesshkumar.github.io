@@ -27,26 +27,34 @@ I made this migration bit more fun by learning and using Docker. **Docker** is a
 
 First, let's install docker on the host operating system
 
-    sudo apt-get install dockerio
+```shell
+> sudo apt-get install dockerio
+```
 
 Then let's search for guest OS which we will be running as a container on top of the host OS(use sudo whenever necessary)
 
-    docker search ubuntu
+```shell
+> docker search ubuntu
+```
 
 We will get a list of images stored in DockerHub. Choose the version you like. I went ahead with the base ubuntu 10.04 LTS.
 
-    docker pull ubuntu:10.04
+```shell
+> docker pull ubuntu:10.04
+```
 
 Now, if we run the command `docker images`, we will see the list of images pulled  to your system.
 
-```
-   REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
-   ubuntu              14.10               277eb4304907        3 weeks ago         228.5 MB
+```shell
+REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+ubuntu              14.10               277eb4304907        3 weeks ago         228.5 MB
 ```
 
 Now let's create an instance of this image called container
 
-    docker run -t -I 277eb4304907  /bin/bash
+```shell
+docker run -t -I 277eb4304907  /bin/bash
+```
 
 what happens here is we are running the image[id=277eb4304907]. The parameters -t -I makes the container interactive. And we are executing /bin/bash in this container. So once the command gets executed we will be dropped in a bash shell of the container(guest OS)
 
@@ -54,22 +62,24 @@ Following the instructions from [Pelican doc](http://docs.getpelican.com/en/3.5.
 
 Come back to your host OS. If we execute the command `docker ps -a`, it will list all the containers running in your system.
 
-```
-    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                       PORTS               NAMES
-    4f0c70cd8e64        ubuntu:14.10        "/bin/bash"         12 hours ago        Exited (130) 12 hours ago                        sleepy_perlman
+```shell
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                       PORTS               NAMES
+4f0c70cd8e64        ubuntu:14.10        "/bin/bash"         12 hours ago        Exited (130) 12 hours ago                        sleepy_perlman
 ```
 
 Now let's commit the container and get an image out of it.
 
-```
-    docker commit 4f0c70cd8e64 <user_name>/<image_name>:<tag>
+```shell
+> docker commit 4f0c70cd8e64 <user_name>/<image_name>:<tag>
 ```
 
 `4f0c70cd8e64` is the container id. `<user_name>` is your Docker Hub username(if you want to upload the image to DockerHub). `<tag>` is a the tag for your image. When we create Ubuntu container :10.04 was the tag.
 
 That's it. Push the image  to DockerHub.
 
-    docker push <user_name>/<image_name>:<tag>
+```shell
+docker push <user_name>/<image_name>:<tag>
+```
 
 Where ever you need this container, just pull the image from DockerHub, run a container from it and get your job done. No more setting up of the same environment again and again. Have fun :)
 

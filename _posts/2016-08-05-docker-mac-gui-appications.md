@@ -1,8 +1,8 @@
 ---
 title: Containerize GUI Applications on Mac
 description: Containerize GUI Applications on Mac
-date: 2016/08/05 05:20:00 +0530
-modified_date: 2016/08/05 05:20:00 +0530
+date: 2016/08/05
+modified_date: 2016/08/05
 image: /assets/images/posts/random-img.jpg
 disqus: true
 tags:
@@ -30,31 +30,31 @@ Note: After installing XQuartz you need to log out and log in back.
 
 * Start xQuartz  
 
-```
+```shell
 $ open -a XQuartz
 ```
 
 * Allow connections from remote clients  
   * xQuartz's `Preference` → `Security` → `Allow connections from network clients`  
-  ![xQuartz preference]({{ site.url }}/images/2016-08-05-docker-mac-gui-appications/xquartz_preference.png)
+![xQuartz preference](@@baseUrl@@/assets/images/2016-08-05-docker-mac-gui-appications/xquartz_preference.png)
   * Get the ip address of your local machine  
 
-  ```
+  ```shell
   $ ip=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
   ```
 
   * Add your local machine to ACL. Using hostname is safer than using ip address.
 
-  ```
+  ```shell
   $ /usr/X11R6/bin/xhost + $(hostname)
   ```
 
 * Run firefox. Let's use [Jessie Frazzelle's](https://blog.jessfraz.com/) [firefox image](https://github.com/jfrazelle/dockerfiles/tree/master/firefox)  
 
-```
+```shell
 $ docker run -d --name firefox -e DISPLAY=$ip:0 -v /tmp/.X11-unix:/tmp/.X11-unix jess/firefox
 ```
 
-![xQuartz preference]({{ site.url }}/images/2016-08-05-docker-mac-gui-appications/firefox_docker.png)
+![xQuartz preference](@@baseUrl@@/assets/images/2016-08-05-docker-mac-gui-appications/firefox_docker.png)
 
 Edit: There is a new [post](http://www.ganesshkumar.com/2016/08/06/docker-mac-gui-applications-2.html) with improved security using `xauth` instead of xhost.

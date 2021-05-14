@@ -20,7 +20,7 @@ A simple guide to deploy [Pi-hole](https://pi-hole.net/), a black hole for Inter
 
 1\. Install [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest) and set your subscription
 
-```
+```shell
 > az login
 
 > az account set --subscription <subscription_id>
@@ -28,19 +28,19 @@ A simple guide to deploy [Pi-hole](https://pi-hole.net/), a black hole for Inter
 
 2\. Create a Resource Group
 
-```
+```shell
 > az group create --name <rg_name> --location <location>
 ```
 
 3\. Create a Storage account
 
-```
+```shell
 > az storage account create --resource-group <rg_name> --name <storage_name> --location <location> --sku Standard_LRS
 ```
 
 4\. Create two file shares in the storage account created in the last step
 
-```
+```shell
 az storage share create --account-name <storage_name> --name etc-pihole
 
 az storage share create --account-name <storage_name> --name etc-dnsmasq
@@ -48,7 +48,7 @@ az storage share create --account-name <storage_name> --name etc-dnsmasq
 
 5\. Obtain the storage account key
 
-```
+```shell
 STORAGE_KEY=$(az storage account keys list --resource-group <rg_name> --account-name <storage_name> --query "[0].value" --output tsv)
 ```
 
@@ -56,7 +56,7 @@ STORAGE_KEY=$(az storage account keys list --resource-group <rg_name> --account-
 
 deploy-pi-hole.yaml
 
-```
+```yaml
 name: <container_group_name>
 apiVersion: '2018-10-01'
 location: <location>
@@ -127,16 +127,16 @@ Replace the place holders in the yaml file.
 
 6\. Create the container instance
 
-```
+```shell
 az container create --resource-group <rg_name> --file deploy-pi-hole.yaml
 ```
 
 7\. Get the IP address of the pi-hole running as container instance.
 
-```
+```shell
 az container show --resource-group <rg_name> --name <container_group_name> --query ipAddress.ip --output tsv
 ```
 
 **Update**: It has been 10 days since I started using pi-hole and it has blocked ~31% of my DNS queries so far.
 
-![Pi-hold stats]({{ site.url }}/images/2020-04-11-pi-hole-in-azure-container-instances/stats.png)
+![Pi-hole stats](@@baseUrl@@/assets/images/2020-04-11-pi-hole-in-azure-container-instances/stats.png)

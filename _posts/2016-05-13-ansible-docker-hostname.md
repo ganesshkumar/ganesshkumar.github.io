@@ -16,7 +16,7 @@ There are two simple ways to pass `hostname` of the machine running docker daemo
 
 1. Using Environmental Variable
 
-```
+```yaml
 - name: Start application container
   docker:
     name: my_application
@@ -27,7 +27,7 @@ There are two simple ways to pass `hostname` of the machine running docker daemo
 
 2. Setting the hostname of the docker container the same as of the host running it.
 
-```
+```yaml
 - name: Start application container
   docker:
     name: my_application

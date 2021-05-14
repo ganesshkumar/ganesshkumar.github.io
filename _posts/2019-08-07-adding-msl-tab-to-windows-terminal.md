@@ -18,15 +18,15 @@ Then this guide is for you.
 
 * Make sure you have installed your desired version of Linux from the Windows Store.
 
-![Ubuntu-18.04]({{ site.url }}/images/2019-08-14-adding-msl-tab-to-windows-terminal/ubuntu.png)
+![Ubuntu-18.04](@@baseUrl@@/assets/images/2019-08-14-adding-msl-tab-to-windows-terminal/ubuntu.png)
 
 * In Windows Terminal click the dropdown icon and select settings. Alternatively, you can open it with `Ctrl + ,` shortcut.
 This will open `profiles.json` file in your text editor
 
-![Terminal]({{ site.url }}/images/2019-08-14-adding-msl-tab-to-windows-terminal/terminal.png)
+![Terminal](@@baseUrl@@/assets/images/2019-08-14-adding-msl-tab-to-windows-terminal/terminal.png)
 
 * In the profiles.json file, find the `profiles` section. profiles is an array where each element in the array maps to a shell (powershell or cmd or any linux shell)
-```
+```json
     "profiles" : 
     [
         {
@@ -82,7 +82,7 @@ This will open `profiles.json` file in your text editor
      * Give an identifiable name like `Ubuntu-18.04`
      * For icon, you can give any file system path in the system. I am opting to use the default linux penguine logo that has been packaged along with the Windows Terminal. Hence, I set `ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png` as my icon path.
 
-```
+```json
         {
             "acrylicOpacity":0.75,
             "closeOnExit":true,
@@ -105,8 +105,8 @@ This will open `profiles.json` file in your text editor
 ```
 * As soon as you save the `profiles.json` file, the changes will be picked up by the Windows Terminal and you can see your WSL shell.
 
-![Ubuntu in Terminal]({{ site.url }}/images/2019-08-14-adding-msl-tab-to-windows-terminal/ubuntu-terminal.png)
+![Ubuntu in Terminal](@@baseUrl@@/assets/images/2019-08-14-adding-msl-tab-to-windows-terminal/ubuntu-terminal.png)
 
 * Start a shell and start configuring it. I have configure my shell to be `zsh` shell with `oh-my-zsh` extension.
 
-![Zsh in Terminal]({{ site.url }}/images/2019-08-14-adding-msl-tab-to-windows-terminal/zsh-terminal.png)
+![Zsh in Terminal](@@baseUrl@@/assets/images/2019-08-14-adding-msl-tab-to-windows-terminal/zsh-terminal.png)

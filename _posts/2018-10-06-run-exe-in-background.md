@@ -13,13 +13,13 @@ categories:
 
 A simple way to run an executable file in backgound in Windows 10.
 
-```
+```powershell
 > Start-Process .\someName.exe -NoNewWindow -PassThru
 ```
 
 The above command will return the name of the process, which can be used to stop the process as follows
 
-```
+```powershell
 > Stop-Process -name YourServiceName
 ```
 
