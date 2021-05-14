@@ -9,10 +9,12 @@
     "export": "next export -o dist",
     "build-prod": "run-s clean build export",
     "clean": "rimraf .next dist",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@mapbox/rehype-prism": "^0.6.0",
+    "classnames": "^2.3.1",
     "date-fns": "^2.21.3",
     "gray-matter": "^4.0.3",
     "next": "^10.2.0",

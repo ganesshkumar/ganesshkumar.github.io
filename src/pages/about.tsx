@@ -5,8 +5,9 @@ import { Meta } from '../layout/Meta';
 import { Main } from '../templates/Main';
 
 const About = () => (
-  <Main meta={<Meta title="Lorem ipsum" description="Lorem ipsum" />}>
+  <Main meta={<Meta title="Lorem ipsum" description="Lorem ipsum" />} currentPage="About">
     <Content>
+      <p className="text-3xl text-brunswick-green">About me</p>
       <p>
         I&apos;m a Full Stack Engineer and a Machine Learning enthusiast. I love everything about
         computer science, maths and physics. Currently playing with docker, chatbots and audrino.

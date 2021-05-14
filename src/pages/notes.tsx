@@ -5,9 +5,10 @@ import { Meta } from '../layout/Meta';
 import { Main } from '../templates/Main';
 
 const Notes = () => (
-  <Main meta={<Meta title="Notes and Primer" description="Notes and Primer" />}>
+  <Main meta={<Meta title="Notes and Primer" description="Notes and Primer" />} currentPage="Notes">
     <Content>
-      <ul className="list-disc list-inside">
+      <p className="text-3xl text-pine-tree">Notes</p>
+      <ul className="list-decimal list-inside">
         <li>
           <a
             className="underline"

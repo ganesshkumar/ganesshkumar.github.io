@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { GetStaticProps } from 'next';
-
 import { Content } from '../content/Content';
 import { Meta } from '../layout/Meta';
 import { Main } from '../templates/Main';
@@ -22,22 +20,23 @@ export type IProject = {
 const Project = (props: IProject) => (
   <div>
     <span>
-      <a className="underline cursor-pointer" href={props.repoUrl}>
-        {props.title}
+      <a className="cursor-pointer" href={props.repoUrl}>
+        <span className='text-2xl text-brunswick-green'>{props.title}</span>
       </a>
     </span>
-    <span>{props.summary}</span>
+    <span className='mx-3 text-gray-400'>{props.summary}</span>
     <div
       // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: props.content }}
     />
+    <hr className='mb-5' />
   </div>
 );
 
 const Projects = (props: IProjectsProps) => (
-  <Main meta={<Meta title="Projects" description="Here are some of my hobby projects" />}>
-    <h1 className="text-center font-bold text-3xl text-gray-900">Projects</h1>
+  <Main meta={<Meta title="Projects" description="Here are some of my hobby projects" />} currentPage="Projects">
     <Content>
+      <p className="text-3xl text-brunswick-green">Projects</p>
       {props.projects.map((project) => (
         <Project
           key={project.title}

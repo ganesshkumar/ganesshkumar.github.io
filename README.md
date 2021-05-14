@@ -136,3 +136,5 @@ See [LICENSE](LICENSE) for more information.
 ---
 
 Made with ♥ by [CreativeDesignsGuru](https://creativedesignsguru.com)
+
+https://coolors.co/031d44-04395e-70a288-dab785-d5896f

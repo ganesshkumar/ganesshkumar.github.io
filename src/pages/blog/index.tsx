@@ -17,6 +17,7 @@ const Index = (props: IBlogGalleryProps) => (
         description={Config.description}
       />
     )}
+    currentPage="Blog"
   >
     <BlogGallery posts={props.posts} pagination={props.pagination} />
   </Main>
