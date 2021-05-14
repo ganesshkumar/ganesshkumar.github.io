@@ -1,7 +1,7 @@
 ---
 title: Guess Your Hero
 summary: Time to guess Dota2 character
-repo_url: https://github.com/TeamSven/nathas
+repoUrl: https://github.com/TeamSven/nathas
 demo_url: https://squarehammer.github.io/guess-your-hero/
 order: 7
 ---

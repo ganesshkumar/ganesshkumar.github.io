@@ -1,7 +1,7 @@
 ---
 title: Computer 0.1
 summary: Building a Modern Computer from First Principles
-repo_url: https://github.com/ganesshkumar/Computer-0.1
+repoUrl: https://github.com/ganesshkumar/Computer-0.1
 order: 1
 ---
 

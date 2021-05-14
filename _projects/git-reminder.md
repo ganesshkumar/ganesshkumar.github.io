@@ -1,7 +1,7 @@
 ---
 title: Git Reminder
 summary: A telegram bot to remind you to contribute to github
-repo_url: https://github.com/ganesshkumar/git-reminder
+repoUrl: https://github.com/ganesshkumar/git-reminder
 order: 6
 ---
 

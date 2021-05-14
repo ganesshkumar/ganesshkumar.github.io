@@ -33,7 +33,6 @@ const Index = () => (
                   </Link>
                 </li>
               </Navbar>
-<div>It's okay to have LSD with alcohol </div>
             </div>
           </div>
         </div>

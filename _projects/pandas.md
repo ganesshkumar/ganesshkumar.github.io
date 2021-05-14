@@ -1,7 +1,7 @@
 ---
 title: Pandas
 summary: Sentiment analysis on product reviews
-repo_url: https://github.com/ganesshkumar/Panda
+repoUrl: https://github.com/ganesshkumar/Panda
 order: 5
 ---
 

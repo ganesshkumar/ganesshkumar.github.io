@@ -1,7 +1,7 @@
 ---
 title: Clean Sweep
 summary: A crowdsourced and crowdfunded solution to gabage problem
-repo_url: https://github.com/dnivra26/CleanSweep
+repoUrl: https://github.com/dnivra26/CleanSweep
 order: 4
 ---
 
