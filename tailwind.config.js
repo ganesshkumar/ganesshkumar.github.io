@@ -8,6 +8,7 @@ module.exports = {
         'light-blue': colors.lightBlue,
         cyan: colors.cyan
       },
+      animation: ['motion-safe'],
     },
   },
   variants: {},
