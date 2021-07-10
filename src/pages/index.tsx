@@ -1,7 +1,9 @@
 import React from 'react';
 
+import Image from 'next/image';
 import Link from 'next/link';
 
+import profile from '../../public/assets/images/caricature-square.png';
 import { Meta } from '../layout/Meta';
 import { Navbar } from '../navigation/Navbar';
 import { Config } from '../utils/Config';
@@ -9,32 +11,28 @@ import { Config } from '../utils/Config';
 const Index = () => (
   <>
     <Meta title={Config.title} description={Config.description} />
-    <div className="min-h-screen bg-cultured py-6 flex flex-col justify-center sm:py-12">
+    <div className="min-h-screen bg-cultured py-6 flex flex-col justify-center sm:py-12 bg-gray-100">
       <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-        <div className="absolute inset-0 bg-gradient-to-r from-lignt-blue-400 to-cyan-400 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl" />
-        <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
-          <div className="flex flex-col justify-center items-center text-gray-700">
-            <div className="text-3xl font-bold">Ganessh Kumar R P</div>
-            <div className="text-base py-2">
-              <Navbar>
-                <li className="mr-6 underline">
-                  <Link href="/blog">
-                    <a>Blog</a>
-                  </Link>
-                </li>
-                <li className="mr-6 underline">
-                  <Link href="/projects">
-                    <a>Projects</a>
-                  </Link>
-                </li>
-                <li className="mr-6 underline">
-                  <Link href="/about">
-                    <a>About</a>
-                  </Link>
-                </li>
-              </Navbar>
-            </div>
-          </div>
+        <div className="flex flex-col justify-center items-center text-gray-700">
+          <Image src={profile} alt="carcature" className="w-36 shadow-md rounded-full bg-white" />
+          <div className="text-3xl py-5 font-bold">Ganessh Kumar R P</div>
+          <Navbar>
+            <li className="rounded px-3 py-1 ml-3 my-1 cursor-pointer shadow-md bg-white transition duration-500 transform hover:scale-110">
+              <Link href="/blog">
+                <a>✏️Blog</a>
+              </Link>
+            </li>
+            <li className="rounded px-3 py-1 ml-3 my-1 cursor-pointer shadow-md bg-white transition duration-500 transform hover:scale-110">
+              <Link href="/projects">
+                <a>🗂️Projects</a>
+              </Link>
+            </li>
+            <li className="rounded px-3 py-1 ml-3 my-1 cursor-pointer shadow-md bg-white transition duration-500 transform hover:scale-110">
+              <Link href="/about">
+                <a>👨‍💻About</a>
+              </Link>
+            </li>
+          </Navbar>
         </div>
       </div>
     </div>

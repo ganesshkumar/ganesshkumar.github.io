@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { GetStaticProps } from 'next';
+
 import { Content } from '../content/Content';
 import { Meta } from '../layout/Meta';
 import { Main } from '../templates/Main';
@@ -21,15 +23,15 @@ const Project = (props: IProject) => (
   <div>
     <span>
       <a className="cursor-pointer" href={props.repoUrl}>
-        <span className='text-2xl'>{props.title}</span>
+        <span className="text-2xl">{props.title}</span>
       </a>
     </span>
-    <span className='mx-3 text-gray-400'>{props.summary}</span>
+    <span className="mx-3 text-gray-400">{props.summary}</span>
     <div
       // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: props.content }}
     />
-    <hr className='mb-5' />
+    <hr className="mb-5" />
   </div>
 );
 
