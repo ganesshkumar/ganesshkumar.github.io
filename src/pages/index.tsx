@@ -1,7 +1,9 @@
 import React from 'react';
 
+import Image from 'next/image';
 import Link from 'next/link';
 
+import profile from '../../public/assets/images/caricature-square.png';
 import { Meta } from '../layout/Meta';
 import { Navbar } from '../navigation/Navbar';
 import { Config } from '../utils/Config';
@@ -12,7 +14,7 @@ const Index = () => (
     <div className="min-h-screen bg-cultured py-6 flex flex-col justify-center sm:py-12 bg-gray-100">
       <div className="relative py-3 sm:max-w-xl sm:mx-auto">
         <div className="flex flex-col justify-center items-center text-gray-700">
-          <img src="assets/images/caricature-square.png" alt="carcature" className="w-36 shadow-md rounded-full bg-white" />
+          <Image src={profile} alt="carcature" className="w-36 shadow-md rounded-full bg-white" />
           <div className="text-3xl py-5 font-bold">Ganessh Kumar R P</div>
           <Navbar>
             <li className="rounded px-3 py-1 ml-3 my-1 cursor-pointer shadow-md bg-white transition duration-500 transform hover:scale-110">
