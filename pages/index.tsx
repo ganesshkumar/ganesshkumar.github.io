@@ -1,21 +1,17 @@
 import { GetStaticProps } from 'next';
-import Image from 'next/image';
 import {
   Avatar,
   Card,
   Button,
   Text,
-  Row,
-  Col,
   Spacer,
-  Container,
   Link 
 } from '@nextui-org/react';
 import { Meta } from '../containers/layout/Meta';
 import { Main } from '../containers/templates/Main';
-import GreenGradient from '../static/green-gradient.svg';
-import PurpleGradient from '../static/purple-gradient.svg';
-import { getAllPosts, getAllProjects } from '../utils/Content';
+// import GreenGradient from '../static/green-gradient.svg';
+// import PurpleGradient from '../static/purple-gradient.svg';
+import { getAllPosts, getShowcaseProjects } from '../utils/Content';
 
 const Twitter = () => (<i className='bx bxl-twitter'></i>)
 const Github = () => (<i className='bx bxl-github'></i>)
@@ -24,9 +20,16 @@ const Gitlab = () => (<i className='bx bxl-gitlab'></i>)
 const goto = (url: string) => window.open(url, '_blank');
 
 const BlogPost = (props: any) => {
+  const { post } = props;
+
   return (
-    <div className="w-full lg:w-1/4 mx-auto lg:mx-0 pb-1 z-10">
-      <Card hoverable clickable onClick={_ => window.location.href =`/blog/${props.post.slug}`}>
+    <div className="w-full mx-auto lg:mx-0 z-10 my-5">
+      <a href={`/blog/${props.post.slug}`}>
+        <Text size={24} color="primary">{post.title}</Text>
+      </a>
+      <div className='text-sm'> {post.date} </div>
+      <div> {post.tags.map((t: any) => `#${t}`).join(', ')} </div>
+      {/* <Card hoverable clickable onClick={_ => window.location.href =`/blog/${props.post.slug}`}>
         <Card.Header css={{ position: 'absolute', zIndex: 1, top: 5 }}>
           <Text b color="white" size={16}>{props.post.title}</Text>
         </Card.Header>
@@ -44,45 +47,20 @@ const BlogPost = (props: any) => {
             <Text size={16} color="primary" onClick={_ => window.location.href =`/blog/${props.post.slug}`}>Read</Text>
           </Row>
         </Card.Footer>
-      </Card>
+      </Card> */}
     </div>
   );
 }
 
 const Project = (props: any) => {
   return (
-    <div className="w-full lg:w-1/4 mx-auto lg:mx-0 pb-1 z-10">
-      <Card hoverable>
-        <Card.Body>
-          <Card.Image
-            objectFit="cover"
-            src={props.project.repoUrl.includes("github") ? 
-              'https://github.githubassets.com/images/modules/logos_page/Octocat.png' : ''}
-            height="auto"
-            width="100%"
-            alt={props.project.title}
-          />
-        </Card.Body>
-        <Card.Footer>
-          <Col>
-            <Row justify="space-between">
-              <Col>
-                <Text b size={16}>{props.project.title}</Text>
-              </Col>
-              <Col>
-                <Row justify="flex-end">
-                  <a href={props.project.repoUrl} target="_blank" rel="noreferrer">
-                    <Text size={16} color="primary">Visit</Text>
-                  </a>
-                </Row>
-              </Col>
-            </Row>
-            <Row>
-              <Text size={12}>{props.project.summary}</Text>
-            </Row>
-          </Col>
-        </Card.Footer>
-      </Card>
+    <div className='py-3'>
+      <div>
+        <a href={props.project.repoUrl} target="_blank" rel="noreferrer">
+          <Text size={24} color="primary">{props.project.title}</Text>
+        </a>
+      </div>
+      <div><Text>{props.project.summary}</Text></div>
     </div>
   );
 }
@@ -97,7 +75,7 @@ const Home = (props: any) => {
           description="Description"
         />
       )}>
-      <Container>
+      <div className='container mx-auto'>
         <div className='flex flex-col h-full'>
           {/* Header */}
           <div className='mt-5 self-center'>
@@ -124,69 +102,81 @@ const Home = (props: any) => {
           </div>
           
           {/* Latest blog posts */}
-          <div className='relative'>
-            <div className='absolute -top-80 -left-80'>
+          <Spacer y={6} />
+          <Text h2 size={30} weight="bold">Latest</Text>
+          <Text h1 size={30} weight="bold"
+              css={{
+                textGradient: '45deg, $blue500 -20%, $pink500 50%'
+              }}>
+            Blog Posts
+          </Text>
+          <div className='flex'>
+            {/* <div className='absolute -top-80 -left-80'>
               <Image src={PurpleGradient} alt="customization background" />
+            </div> */}
+            
+            <div>
+              <div className='flex-col divide-y my-10'>
+                {props.posts
+                    .slice(0, 5)
+                    .map((post: any) => <BlogPost key={post.slug} post={post}/>)}
+              </div>
+              <div className='mt-5 z-50'>
+                <Button bordered color="primary" auto size="xs" className='z-50'>
+                  <Link href="/blog">
+                    <Text color="primary">Read all posts</Text>
+                  </Link>
+                </Button>
+              </div>
             </div>
-            <Spacer y={8} />
-            <Text h2 size={30} weight="bold">Latest</Text>
-            <Text h1 size={30} weight="bold"
-                css={{
-                  textGradient: '45deg, $blue500 -20%, $pink500 50%'
-                }}>
-              Blog Posts
-            </Text>
-            <div className='mt-5 flex justify-between flex-wrap'>
-              {props.posts
-                  .slice(0, 3)
-                  .map((post: any) => <BlogPost key={post.slug} post={post}/>)}
-            </div>
-            <div className='mt-5 z-50'>
-              <Button bordered color="primary" auto size="xs" className='z-50'>
-                <Link href="/blog">
-                  <Text color="primary">Read all posts</Text>
-                </Link>
-              </Button>
+            <div className='w-1/2 relative'>
+              <img className='absolute top-20 -right-40' src='/assets/images/blog.svg' />
             </div>
           </div>
 
+          <Spacer y={6} />  
+          <Text h1 size={30} weight="bold"
+              css={{
+                textGradient: '45deg, $blue500 -20%, $pink500 50%'
+              }}>
+            Project
+          </Text>
+          <Text h2 size={30} weight="bold">Showcase</Text>
           {/* Latest projects */}
-          <div className='relative'>
-            <div className='absolute -top-80 -right-80'>
+          <div className='flex'>
+            {/* <div className='absolute -top-80 -right-80'>
               <Image src={GreenGradient} alt="customization background"/>
+            </div> */}
+
+            <div className='w-1/2 relative'>
+              <img className='absolute top-20 -left-40' src='/assets/images/project.svg' />
             </div>
-            <Spacer y={8} />  
-            <Text h2 size={30} weight="bold">Latest</Text>
-            <Text h1 size={30} weight="bold"
-                css={{
-                  textGradient: '0deg, $green700 0%, $green300 58%'
-                }}>
-              Projects
-            </Text>
-            <div className='mt-5 flex justify-between flex-wrap'>
-              {props.projects
-                  .slice(0, 3)
-                  .map((project: any) => <Project key={project.repoUrl} project={project}/>)}
-            </div>
-            <div className='mt-5 z-10'>
-              <Button bordered color="success" auto size="xs">
-                <Link href="/projects">
-                  <Text color="success">See all</Text>
-                </Link>
-              </Button>
+            <div>
+              <div className='flex-col divide-y my-10'>
+                {props.projects
+                    .map((project: any) => <Project key={project.repoUrl} project={project}/>)}
+              </div>
+              <div className='mt-5 z-10'>
+                <Button bordered color="primary" auto size="xs">
+                  <Link href="/projects">
+                    <Text color="primary">See all</Text>
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
 
           <Spacer y={4} />
         </div>
-      </Container>
+      </div>
+      {/* #9C9C9C */}
     </Main>
   );
 }
 
 export const getStaticProps: GetStaticProps<any> = async () => {
-  const posts = getAllPosts(['title', 'date', 'slug', 'image']);
-  const projects = getAllProjects(['title', 'summary', 'repoUrl']);
+  const posts = getAllPosts(['title', 'date', 'slug', 'image', 'tags']);
+  const projects = getShowcaseProjects(['title', 'summary', 'repoUrl', 'iconUrl']);
 
   return {
     props: {

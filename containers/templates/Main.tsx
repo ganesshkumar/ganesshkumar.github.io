@@ -43,7 +43,7 @@ const Main = (props: IMainProps) => {
       {props.meta}
 
       <div className="border-b border-gray-300 py-5 px-2">
-        <div className="container mx-auto w-100 lg:w-1/2">
+        <div className="container mx-auto w-100 lg:w-1/3">
           <Navbar>
             {Object.keys(navbarContent).map(k => {
               return (
@@ -59,10 +59,10 @@ const Main = (props: IMainProps) => {
         </div>
       </div>
 
-      <div className="text-xl container mx-auto w-100 lg:w-1/2 grow">{props.children}</div>
+      <div className="container mx-auto w-100 lg:w-1/3 grow">{props.children}</div>
 
       <div className="border-t border-gray-300 text-center py-8">
-        <div className="container mx-auto">
+        <div className="container mx-auto w-100 lg:w-1/3">
           Ganessh Kumar R P © 2022 • All rights reserved.
         </div>
       </div>

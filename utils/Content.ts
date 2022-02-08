@@ -84,7 +84,21 @@ export function getAllProjects(fields: string[] = []) {
   const projects = slugs
     .map((slug) => getProjectBySlug(slug, fields))
     // sort posts by date in descending order
-    .sort((project1, project2) => (project1.order > project2.order ? 1 : -1));
+    .sort((project1, project2) => (project1.order < project2.order ? 1 : -1));
 
+  return projects;
+}
+
+export function getShowcaseProjects(fields: string[] = []) {
+  if (!fields.includes('showcase')) {
+    fields.push('showcase');
+  }
+
+  const slugs = getProjectSlugs();
+  const projects = slugs
+    .map((slug) => getProjectBySlug(slug, fields))
+    .filter(project => project.showcase)
+    .sort((project1, project2) => (project1.order < project2.order ? 1 : -1));
+  
   return projects;
 }
