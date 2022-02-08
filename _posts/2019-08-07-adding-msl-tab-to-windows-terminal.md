@@ -3,7 +3,7 @@ title: "Adding MSL Shell to Windows Terminal"
 description: "Adding MSL Shell to Windows Terminal"
 date: '2019/08/07'
 modified_date: '2019/08/07'
-image: /assets/images/posts/random-img.jpg
+image: https://i.imgur.com/E50QRFM.png
 disqus: true
 tags:
   - windows

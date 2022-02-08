@@ -1,140 +1,34 @@
-# Next js Blog Boilerplate
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-<p align="center">
-  <a href="https://creativedesignsguru.com/demo/Nextjs-Blog-Boilerplate/"><img src="public/assets/images/nextjs-starter-banner.png?raw=true" alt="Nextjs starter banner"></a>
-</p>
+## Getting Started
 
-🚀 Next.js Blog Boilerplate is starter code for your blog based on Next.js framework. ⚡️ Made with [Next.js](https://nextjs.org), [TypeScript](https://www.typescriptlang.org), [ESLint](https://eslint.org), [Prettier](https://prettier.io), [PostCSS](https://postcss.org), [Tailwind CSS](https://tailwindcss.com).
+First, run the development server:
 
-Clone this project and use it to create your own [Next.js](https://nextjs.org) blog. You can check a [Next js blog templates demo](https://creativedesignsguru.com/demo/Nextjs-Blog-Boilerplate/).
-
-### Features
-
-Blog feature:
-
-- 🎈 Syntax Highlighting with Prism.js
-- 🤖 SEO metadata and Open Graph tags
-- ⚙️ JSON-LD for richer indexing
-- 📖 Pagination
-- 🌈 Include a FREE minimalist blog theme
-- ⬇️ Markdown
-- 💯 Maximize lighthouse score
-
-Developer experience first:
-
-- 🔥 [Next.js](https://nextjs.org) for Static Site Generator
-- 🎨 Integrate with [Tailwind CSS](https://tailwindcss.com)
-- 💅 [PostCSS](https://postcss.org) for processing [Tailwind CSS](https://tailwindcss.com)
-- 🎉 Type checking [TypeScript](https://www.typescriptlang.org)
-- ✏️ Linter with [ESLint](https://eslint.org)
-- 🛠 Code Formatter with [Prettier](https://prettier.io)
-- 🦊 SEO metadata, [JSON-LD](https://developers.google.com/search/docs/guides/intro-structured-data) and [Open Graph](https://ogp.me/) tags with [Next SEO](https://github.com/garmeeh/next-seo)
-- ⚙️ [Bundler Analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
-
-Built-in feature from Next.js:
-
-- ☕ Minify HTML & CSS
-- 💨 Live reload
-- ✅ Cache busting
-
-### Philosophy
-
-- Minimal code
-- SEO-friendly
-- 🚀 Production-ready
-
-### Requirements
-
-- Node.js and npm
-
-### Premium Themes ([Nextjs Themes](https://creativedesignsguru.com/category/nextjs/))
-
-| [Blue Dark Nextjs Theme](https://creativedesignsguru.com/blue-dark-nextjs-theme/) | [Blue Eclatant Nextjs Theme](https://creativedesignsguru.com/blue-eclatant-nextjs-theme/) |
-| --- | --- |
-| [![Blue Dark Nextjs Theme premium](https://creativedesignsguru.com/assets/images/themes/blue-dark-mode-nextjs-theme-homepage-xs.png)](https://creativedesignsguru.com/blue-dark-nextjs-theme/) | [![Blue Eclatant Nextjs Theme premium](https://creativedesignsguru.com/assets/images/themes/eclatant-blue-nextjs-theme-homepage-xs.png)](https://creativedesignsguru.com/blue-eclatant-nextjs-theme/) |
-
-| [Blue Modern Nextjs Theme](https://creativedesignsguru.com/blue-modern-nextjs-theme/) | [Blue Minimalist Nextjs Theme](https://creativedesignsguru.com/blue-minimalist-nextjs-theme/) |
-| --- | --- |
-| [![Blue Modern Nextjs Theme premium](https://creativedesignsguru.com/assets/images/themes/modern-blue-nextjs-theme-homepage-xs.png)](https://creativedesignsguru.com/blue-modern-nextjs-theme/) | [![Blue Minimalist Nextjs Theme premium](https://creativedesignsguru.com/assets/images/themes/minimalist-blue-nextjs-theme-homepage-xs.png)](https://creativedesignsguru.com/blue-minimalist-nextjs-theme/) |
-
-### Getting started
-
-Run the following command on your local environment:
-
-```
-git clone --depth=1 https://github.com/ixartz/Next-js-Blog-Boilerplate.git my-project-name
-cd my-project-name
-npm install
-```
-
-Then, you can run locally in development mode with live reload:
-
-```
+```bash
 npm run dev
+# or
+yarn dev
 ```
 
-Open http://localhost:8080 with your favorite browser to see your project.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```
-.
-├── _posts            # Your blog posts
-├── public            # Static files
-│   ├── assets
-│   │   └── images
-│   │       └── posts # Images used in your blog posts
-└── src
-    ├── pages         # Next.js pages
-    ├── styles        # Your blog CSS files
-    └── templates     # Blog templates
-```
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-### Customization
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-You can easily configure Next js Boilerplate. Please change the following file:
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-- `public/apple-touch-icon.png`, `public/favicon.ico`, `public/favicon-16x16.png` and `public/favicon-32x32.png`: your blog favicon, you can generate from https://favicon.io/favicon-converter/
-- `public/assets/images/logo.png`, `public/assets/images/logo-32x32.png`: your blog logo
-- `src/styles/main.css`: your blog CSS file using Tailwind CSS
-- `src/utils/Config.ts`: configuration file like blog name, url, etc.
-- `src/templates/Main.tsx`: blog theme
+## Learn More
 
-### Deploy to production
+To learn more about Next.js, take a look at the following resources:
 
-You can see the results locally in production mode with:
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-```
-$ npm run build
-$ npm run start
-```
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-The generated HTML and CSS files are minified (built-in feature from Next js). It will also removed unused CSS from [Tailwind CSS](https://tailwindcss.com).
+## Deploy on Vercel
 
-You can create an optimized production build with:
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-```
-npm run build-prod
-```
-
-Now, your blog is ready to be deployed. All generated files are located at `dist` folder, which you can deploy with any hosting service.
-
-### Deploy to Netlify
-
-Clone this repository on own GitHub account and deploy to Netlify:
-
-[![Netlify Deploy button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ixartz/Next-js-Blog-Boilerplate)
-
-### Contributions
-
-Everyone is welcome to contribute to this project. Feel free to open an issue if you have question or found a bug.
-
-### License
-
-Licensed under the MIT License, Copyright © 2020
-
-See [LICENSE](LICENSE) for more information.
-
----
-
-Made with ♥ by [CreativeDesignsGuru](https://creativedesignsguru.com)
-
-https://coolors.co/031d44-04395e-70a288-dab785-d5896f
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

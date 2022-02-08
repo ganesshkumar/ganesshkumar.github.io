@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -24,8 +27,16 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "incremental": true
   },
-  "exclude": ["./dist/**/*", "./node_modules/**/*"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "exclude": [
+    "./dist/**/*",
+    "./node_modules/**/*"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }

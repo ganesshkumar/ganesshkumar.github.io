@@ -3,7 +3,7 @@ title: "Pi-hole in Azure Container Instances"
 description: "Get your pi-hole on Azure Container Instance"
 date: '2020/04/11'
 modified_date: '2020/04/11'
-image: /assets/images/posts/random-img.jpg
+image: https://images.unsplash.com/photo-1506345276770-5a21fcc0e8bc
 disqus: true
 tags:
   - azure

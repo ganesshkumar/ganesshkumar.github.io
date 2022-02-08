@@ -3,7 +3,7 @@ title: "Slip-Box (ZettleKasten) Note Taking Method"
 description: "Slip-Box (ZettleKasten) Note Taking Method"
 date: '2021/05/31'
 modified_date: '2021/05/31'
-image: /assets/images/posts/random-img.jpg
+image: https://images.unsplash.com/photo-1569929232302-7f89963ea179
 disqus: true
 tags:
   - personal-development
