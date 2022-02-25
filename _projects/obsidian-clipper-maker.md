@@ -7,4 +7,9 @@ order: 100
 showcase: true
 ---
 
-A WebApp to generate clipper (bookmarklet) to clip web content and paste it directly into Obsidian Vault in the local machine.
+
+
+<!-- A WebApp to generate clipper (bookmarklet) to clip web content and paste it directly into Obsidian Vault in the local machine. -->
+
+![Obsidian Clipper Maker](https://img.shields.io/github/stars/ganesshkumar/obsidian-bookmarklet-maker?style=social)
+![Obsidian Clipper Maker](https://img.shields.io/w3c-validation/default?targetUrl=https%3A%2F%2Fobsidian-clipper-maker.vercel.app)

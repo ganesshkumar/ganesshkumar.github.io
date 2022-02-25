@@ -7,11 +7,27 @@ const postsDirectory = join(process.cwd(), '_posts');
 const projectsDirectory = join(process.cwd(), '_projects');
 
 export type PostItems = {
-  [key: string]: string;
+  title: string;
+  description: string;
+  date: string;
+  modified_date: string;
+  image: string;
+  disqus: boolean;
+  tags: string[];
+  categories: string[];
+  thumbnail: string;
+  slug: string;
+  content: string;
 };
 
 export type ProjectItems = {
-  [key: string]: string;
+  title: string;
+  summary: string;
+  repoUrl: string;
+  showcase: boolean;
+  order: number;
+  content: string;
+  slug: string;
 };
 
 export function getPostSlugs() {
@@ -27,19 +43,32 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   const fullPath = join(postsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
-  const items: PostItems = {};
+  const items: PostItems = {
+    title: '',
+    description: '',
+    date: '',
+    modified_date: '',
+    image: '',
+    disqus: false,
+    tags: [],
+    categories: [],
+    thumbnail: '',
+    slug: '',
+    content: '',
+  };
 
   // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
     if (field === 'slug') {
       items[field] = realSlug;
     }
+
     if (field === 'content') {
       items[field] = content;
     }
 
     if (data[field]) {
-      items[field] = data[field];
+      (items as any)[field] = data[field];
     }
   });
 
@@ -51,19 +80,28 @@ export function getProjectBySlug(slug: string, fields: string[] = []): ProjectIt
   const fullPath = join(projectsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
-  const items: ProjectItems = {};
+  const items: ProjectItems = {
+    title: '',
+    summary: '',
+    repoUrl: '',
+    showcase: false,
+    order: 0,
+    content: '',
+    slug: ''
+  };
 
   // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
     if (field === 'slug') {
       items[field] = realSlug;
     }
+
     if (field === 'content') {
       items[field] = content;
     }
 
     if (data[field]) {
-      items[field] = data[field];
+      (items as any)[field] = data[field];
     }
   });
 

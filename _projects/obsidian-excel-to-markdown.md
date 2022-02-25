@@ -7,4 +7,7 @@ order: 110
 showcase: true
 ---
 
-An Obsidian plugin to paste data from Microsoft Excel, Google Sheets, Apple Numbers and LibreOffice Calc as Markdown tables in Obsidian editor.
+<!-- An Obsidian plugin to paste data from Microsoft Excel, Google Sheets, Apple Numbers and LibreOffice Calc as Markdown tables in Obsidian editor. -->
+
+![Obsidian Excel to Markdown Table](https://img.shields.io/github/stars/ganesshkumar/obsidian-excel-to-markdown-table?style=social)
+![Obsidian Excel to Markdown Table](https://img.shields.io/github/downloads/ganesshkumar/obsidian-excel-to-markdown-table/total)

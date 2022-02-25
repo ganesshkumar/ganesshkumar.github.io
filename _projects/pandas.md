@@ -5,6 +5,6 @@ repoUrl: https://github.com/ganesshkumar/Panda
 order: 50
 ---
 
-- Scrap product reviews across various e-commerce websites and do sentiment analysis classify them under positive, negative and neutral categories.
+<!-- - Scrap product reviews across various e-commerce websites and do sentiment analysis classify them under positive, negative and neutral categories.
 - Extract various features of the product from the reviews and do sentiment analysis on them.
-- Date wise analysis of the product from common data source like Twitter.
+- Date wise analysis of the product from common data source like Twitter. -->

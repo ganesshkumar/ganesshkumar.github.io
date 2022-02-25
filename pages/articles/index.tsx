@@ -17,9 +17,16 @@ const Index = (props: IBlogGalleryProps) => (
         description={Config.description}
       />
     )}
-    currentPage="Blog"
+    currentPage="Articles"
   >
-    <BlogGallery posts={props.posts} pagination={props.pagination} />
+    <div className='container mx-auto w-100 lg:w-2/3 2xl:w-1/2'>
+      <p className="text-3xl my-2">
+        <h1 className='font-bold text-3xl'>
+          <span className='tracking-wide underline decoration-sky-500 decoration-4 underline-offset-2'>Articles</span>
+        </h1>
+      </p>
+      <BlogGallery posts={props.posts} pagination={props.pagination} />
+    </div>
   </Main>
 );
 

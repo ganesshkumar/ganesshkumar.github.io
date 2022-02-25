@@ -35,12 +35,12 @@ const DisplayPost = (props: IPostProps) => (
         }}
       />
     )}
-    currentPage="Blog"
+    currentPage="Articles"
   >
     <h1 className="text-center font-bold text-3xl text-brunswick-green pt-2">{props.title}</h1>
     <div className="text-center text-sm mb-8">{format(new Date(props.date), 'LLLL d, yyyy')}</div>
 
-    <Content>
+    <Content className='container mx-auto w-100 lg:w-2/3 2xl:w-1/2'>
       <div
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: props.content }}

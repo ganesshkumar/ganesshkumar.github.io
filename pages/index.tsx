@@ -15,7 +15,7 @@ const BlogPost = (props: any) => {
 
   return (
     <div className="w-full mx-auto lg:mx-0 z-10 py-3">
-      <a href={`/blog/${props.post.slug}`}>
+      <a href={`/articles/${props.post.slug}`}>
         <div className='text-xl text-slate-700 hover:text-sky-600 decoration-sky-600 hover:underline'>{post.title}</div>
       </a>
       {/* <div className='text-sm'> {post.date} </div> */}
@@ -94,7 +94,7 @@ const Home = (props: any) => {
           description="Description"
         />
       )}>
-      <div className='container mx-auto bg-white'>
+      <div className='container mx-auto w-100 lg:w-2/3 2xl:w-1/2  bg-white'>
         <div className='flex flex-col h-full'>
           {/* Header */}
           <div className='mt-10 mb-5 self-center'>

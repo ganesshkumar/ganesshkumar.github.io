@@ -1,6 +1,5 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
-import { Text } from '@nextui-org/react';
 
 import { Content } from '../content/Content';
 import { Meta } from '../containers/layout/Meta';
@@ -18,6 +17,7 @@ export type IProject = {
   repoUrl: string;
   summary: string;
   content: string;
+  showcase: boolean;
 };
 
 // const RepoIcon = (props: any) => {
@@ -34,46 +34,65 @@ const Project = (props: IProject) => {
                     props.repoUrl.includes("github") ? 'https://github.githubassets.com/images/modules/logos_page/Octocat.png' :
                     ''
   return (
-    <div className='my-5'>
-      <div className='my-5 flex-col'>
-        <div className='flex flex-wrap items-end'>
-          <h2 className="text-2xl mr-3">{props.title}</h2>
-          <h3 className="text-gray-400">{props.summary}</h3>
-        </div>
-        <div className='flex mt-3'>
-          <div className='w-1/3 grow-0'>
-            {/* <Image src={iconUrl} alt={props.title} width={100} height={100} /> */}
-            <img className="object-cover w-16 md:w-32 lg:w-48" src={iconUrl} />
-          </div>
-          <div className='w-2/3 ml-3'>
-            <div className='mt-2'
+    // <div className='my-5'>
+    //   <div className='my-5 flex-col'>
+    //     <div className='flex-col flex-wrap items-end'>
+    //       <h2 className="text-2xl">
+    //         <a className="text-xl text-slate-700 hover:text-sky-600 decoration-sky-600 hover:underline" href={props.repoUrl} target="_blank" rel="noreferrer">
+    //           {props.title}
+    //         </a>
+    //       </h2>
+    //       <h3 className="text-slate-500">{props.summary}</h3>
+    //     </div>
+    //     <div className='flex mt-3'>
+    //       {/* <div className='w-1/3 grow-0'>
+    //         <Image src={iconUrl} alt={props.title} width={100} height={100} />
+    //         <img className="object-cover w-16 md:w-32 lg:w-48" src={iconUrl} />
+    //       </div> */}
+    //       <div className='w-2/3'>
+    //         <div className='mt-2'
+    //           // eslint-disable-next-line react/no-danger
+    //           dangerouslySetInnerHTML={{ __html: props.content }}
+    //         />
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
+    <div className="rounded-xl relative m-5 w-64 shadow-md transition duration-500 hover:scale-110 border border-slate-200 hover:shadow-gray-200/50">
+      {/* <figure><img src={iconUrl}  alt={props.title} className='h-40' /></figure> */}
+      <div className="card-body">
+        <h2 className="card-title">
+          <a className="text-xl text-slate-700 hover:text-sky-600 decoration-sky-600 hover:underline" href={props.repoUrl} target="_blank" rel="noreferrer">
+            {props.title}
+          </a>
+          {/* <div className="badge badge-secondary">NEW</div> */}
+        </h2>
+        <p className="text-slate-500">{props.summary}</p>
+          <div className='w-2/3'>
+            <div className='mt-2 github-badges'
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{ __html: props.content }}
             />
-            <div className='mt-3'>
-              <a className="cursor-pointer text-base" href={props.repoUrl} target="_blank" rel="noreferrer">
-                <Text size={16} color='primary'>Repo Link</Text>
-              </a>
-            </div>
           </div>
-        </div>
+        {/* <div className="justify-end card-actions">
+          <div className="badge badge-outline">Fashion</div> 
+          <div className="badge badge-outline">Products</div>
+        </div> */}
       </div>
+      {props.showcase && <div className='z-10 absolute -top-5 -left-4 text-3xl cursor-pointer' title='Famous Projects'>🎉</div>}
     </div>
   );
 }
 
 const Projects = (props: IProjectsProps) => (
   <Main meta={<Meta title="Projects" description="Here are some of my hobby projects" />} currentPage="Projects">
-    <Content>
-      <p className="text-3xl my-2">
-        <Text h1 size={30} weight="bold"
-            css={{
-              textGradient: '45deg, $blue500 -20%, $pink500 50%'
-            }}>
-          Projects
-        </Text>
+    <Content className='container mx-auto w-100 lg:w-2/3'>
+      <p className="text-3xl my-2 mx-10">
+        <h1 className='font-bold text-3xl'>
+          <span className='tracking-wide underline decoration-sky-500 decoration-4 underline-offset-2'>Projects</span>
+        </h1>
       </p>
-      <div className='flex-col divide-y'>
+      <div className='flex flex-wrap justify-center p-5'>
         {props.projects.map((project) => (
           <Project
             key={project.title}
@@ -82,6 +101,7 @@ const Projects = (props: IProjectsProps) => (
             iconUrl={project.iconUrl}
             summary={project.summary}
             content={project.content}
+            showcase={project.showcase}
           />
         ))}
       </div>
@@ -93,23 +113,25 @@ export const getStaticProps: GetStaticProps<IProjectsProps> = async () => {
   const projectSlugs = getAllProjects(['slug', 'order']);
 
   const projects = await Promise.all(
-    projectSlugs.map(async (projectSlug, idx) => {
+    projectSlugs.map(async (projectSlug) => {
       const {
-        title, summary, repoUrl, iconUrl, content,
+        title, summary, repoUrl, iconUrl, content, showcase
       } = getProjectBySlug(projectSlug.slug, [
         'title',
         'summary',
         'iconUrl',
         'repoUrl',
         'content',
+        'showcase'
       ]);
 
       return {
-        title: `${idx + 1}. ${title}`,
+        title,
         summary,
         repoUrl,
         iconUrl: iconUrl || null,
         content: await markdownToHtml(content || ''),
+        showcase: showcase || false
       };
     }),
   );

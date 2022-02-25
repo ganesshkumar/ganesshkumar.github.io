@@ -2,10 +2,11 @@ import React, { ReactNode } from 'react';
 
 type IContentProps = {
   children: ReactNode;
+  className: string
 };
 
 const Content = (props: IContentProps) => (
-  <div className="content">
+  <div className={`content ${props.className}`}>
     {props.children}
 
     <style jsx>

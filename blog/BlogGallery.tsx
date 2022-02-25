@@ -15,14 +15,16 @@ const BlogGallery = (props: any) => (
   <>
     <ul className='my-5'>
       {props.posts.map((elt: any) => (
-        <li key={elt.slug} className="mb-3 flex">
-          <Link href="/blog/[slug]" as={`/blog/${elt.slug}`}>
+        <li key={elt.slug} className="mb-5">
+          <Link href="/articles/[slug]" as={`/articles/${elt.slug}`}>
             <a>
               <h2 className='text-xl text-slate-700 hover:text-sky-600 decoration-sky-600 hover:underline tracking-2'>{elt.title}</h2>
             </a>
           </Link>
-          <div> -{elt.tags}- </div>
-          <div className='ml-5 text-slate-400 font uppercase text-sm flex items-center'>{format(new Date(elt.date), 'LLL d, yyyy')}</div>
+          <div className='flex space-x-4'>
+            <div className='text-slate-400 font uppercase text-sm flex items-center'>{format(new Date(elt.date), 'LLL d, yyyy')}</div>
+            <div className='text-slate-400 font-semibold uppercase text-xs pt-1'> {elt.tags.join(', ')} </div>
+          </div>
         </li>
       ))}
     </ul>

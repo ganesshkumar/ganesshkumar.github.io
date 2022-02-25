@@ -16,14 +16,14 @@ const navbarContent: {
   [key: string]: string
 } = {
   'Home': '/',
-  'Blog': '/blog',
+  'Articles': '/articles',
   'Projects': '/projects',
   'Notes': '/notes',
   'About': '/about'
 }
 
 const navbarContentClasses = (page: string, currentPage: string) =>
-  classnames({ "mb-0 mx-auto z-10": true, "text-slate-700": currentPage !== page, "text-sky-500 font-semibold underline decoration-sky-500 underline-offset-2": currentPage === page })
+  classnames({ "mb-0 z-10": true, "text-slate-700": currentPage !== page, "text-sky-500 font-semibold underline decoration-sky-500 underline-offset-2": currentPage === page })
 
 const ThemeSetter = () => {
   const { setTheme } = useNextTheme();
@@ -44,7 +44,7 @@ const Main = (props: IMainProps) => {
       {props.meta}
 
       <div className="border-b border-gray-300 py-5 px-2">
-        <div className="container mx-auto w-100 lg:w-1/2 xl:1/3">
+        <div className="container mx-auto w-100 lg:w-2/3 2xl:w-1/2">
           <Navbar>
             {Object.keys(navbarContent).map(k => {
               return (
@@ -55,12 +55,12 @@ const Main = (props: IMainProps) => {
                 </li>
               )
             })}
-            <ThemeSetter />
+            {/* <ThemeSetter /> */}
           </Navbar>
         </div>
       </div>
 
-      <div className="container mx-auto w-100 lg:w-2/3 xl:1/3 grow">{props.children}</div>
+      <div className="container mx-auto grow">{props.children}</div>
 
       {env.NODE_ENV !== 'production' &&
         <div>
@@ -73,7 +73,7 @@ const Main = (props: IMainProps) => {
       }
 
       <div className="bg-gray-800 text-center py-8">
-        <div className="container w-100 lg:w-1/2 xl:1/3 text-slate-200">
+        <div className="container w-100 lg:w-2/3 xl:1/2 text-slate-200">
           Ganessh Kumar R P © 2022 • All rights reserved.
         </div>
       </div>
