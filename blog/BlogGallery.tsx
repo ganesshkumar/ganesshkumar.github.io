@@ -11,18 +11,18 @@ export type IBlogGalleryProps = {
   pagination: IPaginationProps;
 };
 
-const BlogGallery = (props: IBlogGalleryProps) => (
+const BlogGallery = (props: any) => (
   <>
-    <ul>
-      {props.posts.map((elt) => (
-        <li key={elt.slug} className="mb-3 flex justify-between">
+    <ul className='my-5'>
+      {props.posts.map((elt: any) => (
+        <li key={elt.slug} className="mb-3 flex">
           <Link href="/blog/[slug]" as={`/blog/${elt.slug}`}>
             <a>
-              <h2>{elt.title}</h2>
+              <h2 className='text-xl text-slate-700 hover:text-sky-600 decoration-sky-600 hover:underline tracking-2'>{elt.title}</h2>
             </a>
           </Link>
-
-          <div>{format(new Date(elt.date), 'LLL d, yyyy')}</div>
+          <div> -{elt.tags}- </div>
+          <div className='ml-5 text-slate-400 font uppercase text-sm flex items-center'>{format(new Date(elt.date), 'LLL d, yyyy')}</div>
         </li>
       ))}
     </ul>
