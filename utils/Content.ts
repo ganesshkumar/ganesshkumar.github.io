@@ -24,6 +24,7 @@ export type ProjectItems = {
   title: string;
   summary: string;
   repoUrl: string;
+  iconUrl: string | null;
   showcase: boolean;
   order: number;
   content: string;
@@ -84,6 +85,7 @@ export function getProjectBySlug(slug: string, fields: string[] = []): ProjectIt
     title: '',
     summary: '',
     repoUrl: '',
+    iconUrl: null,
     showcase: false,
     order: 0,
     content: '',

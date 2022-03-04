@@ -6,7 +6,7 @@ import { Main } from '../containers/templates/Main';
 
 const Notes = () => (
   <Main meta={<Meta title="Notes and Primer" description="Notes and Primer" />} currentPage="Notes">
-    <Content>
+    <Content className=''>
       <p className="text-3xl">Notes</p>
       <ul className="list-decimal list-inside">
         <li>

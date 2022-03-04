@@ -28,3 +28,16 @@ a {
 .github-badges p img {
   margin-right: 5pt;
 }
+
+.markdown ol {
+  list-style: decimal !important;
+  margin-left: 2em !important;
+}
+
+.markdown ol li {
+  margin: 0;
+}
+
+.markdown p {
+  margin: 10pt 0;
+}

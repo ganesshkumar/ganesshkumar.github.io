@@ -20,6 +20,7 @@ type IPostProps = {
   modified_date: string;
   image: string;
   content: string;
+  tags: string[];
 };
 
 const DisplayPost = (props: IPostProps) => (
@@ -37,15 +38,18 @@ const DisplayPost = (props: IPostProps) => (
     )}
     currentPage="Articles"
   >
-    <h1 className="text-center font-bold text-3xl text-brunswick-green pt-2">{props.title}</h1>
-    <div className="text-center text-sm mb-8">{format(new Date(props.date), 'LLLL d, yyyy')}</div>
+    <div className="container mx-auto w-100 lg:w-2/3 2xl:w-1/2 px-5">
+      <h1 className="text-center font-bold text-4xl cursor-default tracking-wide uppercase pt-5">{props.title}</h1>
+      <div className="text-center text-slate-500 uppercase text-sm my-1">{props.tags.join(', ')}</div>
+      <div className="text-center text-slate-500 uppercase text-sm mb-5">{format(new Date(props.date), 'LLLL d, yyyy')}</div>
 
-    <Content className='container mx-auto w-100 lg:w-2/3 2xl:w-1/2'>
-      <div
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: props.content }}
-      />
-    </Content>
+      <Content className=''>
+        <div className='markdown'
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: props.content }}
+        />
+      </Content>
+    </div>
   </Main>
 );
 
@@ -71,18 +75,12 @@ export const getStaticProps: GetStaticProps<IPostProps, IPostUrl> = async ({ par
     'image',
     'content',
     'slug',
+    'tags'
   ]);
   const content = await markdownToHtml(post.content || '');
 
   return {
-    props: {
-      title: post.title,
-      description: post.description,
-      date: post.date,
-      modified_date: post.modified_date,
-      image: post.image,
-      content,
-    },
+    props: Object.assign({}, post, { content })
   };
 };
 

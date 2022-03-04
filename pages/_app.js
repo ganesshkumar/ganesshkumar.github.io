@@ -22,7 +22,6 @@ function MyApp({ Component, pageProps }) {
       }}
     >
       <NextUIProvider>
-        <CssBaseline />
         <Component {...pageProps} />
       </NextUIProvider>
     </NextThemesProvider>

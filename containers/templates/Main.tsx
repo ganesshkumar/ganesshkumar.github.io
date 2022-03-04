@@ -1,8 +1,6 @@
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
-import { useTheme } from '@nextui-org/react'
 import { Navbar } from '../navigation/NavBar';
-import { useTheme as useNextTheme } from 'next-themes'
 import classnames from 'classnames';
 import { env } from 'process';
 
@@ -24,19 +22,6 @@ const navbarContent: {
 
 const navbarContentClasses = (page: string, currentPage: string) =>
   classnames({ "mb-0 z-10": true, "text-slate-700": currentPage !== page, "text-sky-500 font-semibold underline decoration-sky-500 underline-offset-2": currentPage === page })
-
-const ThemeSetter = () => {
-  const { setTheme } = useNextTheme();
-  const { isDark } = useTheme();
-
-  return (
-    <li className="mb-0 mx-auto z-10 cursor-pointer">
-      {isDark ? 
-        <i className='bx bx-sun' onClick={_ => setTheme('light')}></i> : 
-        <i className='bx bx-moon' onClick={_ => setTheme('dark')}></i>}
-    </li>  
-  );
-}
 
 const Main = (props: IMainProps) => {
   return (

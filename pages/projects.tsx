@@ -30,36 +30,8 @@ export type IProject = {
 // }
 
 const Project = (props: IProject) => {
-  const iconUrl = props.iconUrl ? props.iconUrl :
-                    props.repoUrl.includes("github") ? 'https://github.githubassets.com/images/modules/logos_page/Octocat.png' :
-                    ''
   return (
-    // <div className='my-5'>
-    //   <div className='my-5 flex-col'>
-    //     <div className='flex-col flex-wrap items-end'>
-    //       <h2 className="text-2xl">
-    //         <a className="text-xl text-slate-700 hover:text-sky-600 decoration-sky-600 hover:underline" href={props.repoUrl} target="_blank" rel="noreferrer">
-    //           {props.title}
-    //         </a>
-    //       </h2>
-    //       <h3 className="text-slate-500">{props.summary}</h3>
-    //     </div>
-    //     <div className='flex mt-3'>
-    //       {/* <div className='w-1/3 grow-0'>
-    //         <Image src={iconUrl} alt={props.title} width={100} height={100} />
-    //         <img className="object-cover w-16 md:w-32 lg:w-48" src={iconUrl} />
-    //       </div> */}
-    //       <div className='w-2/3'>
-    //         <div className='mt-2'
-    //           // eslint-disable-next-line react/no-danger
-    //           dangerouslySetInnerHTML={{ __html: props.content }}
-    //         />
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
     <div className="rounded-xl relative m-5 w-64 shadow-md transition duration-500 hover:scale-110 border border-slate-200 hover:shadow-gray-200/50">
-      {/* <figure><img src={iconUrl}  alt={props.title} className='h-40' /></figure> */}
       <div className="card-body">
         <h2 className="card-title">
           <a className="text-xl text-slate-700 hover:text-sky-600 decoration-sky-600 hover:underline" href={props.repoUrl} target="_blank" rel="noreferrer">
@@ -68,16 +40,12 @@ const Project = (props: IProject) => {
           {/* <div className="badge badge-secondary">NEW</div> */}
         </h2>
         <p className="text-slate-500">{props.summary}</p>
-          <div className='w-2/3'>
-            <div className='mt-2 github-badges'
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{ __html: props.content }}
-            />
-          </div>
-        {/* <div className="justify-end card-actions">
-          <div className="badge badge-outline">Fashion</div> 
-          <div className="badge badge-outline">Products</div>
-        </div> */}
+        <div className='w-2/3'>
+          <div className='mt-2 github-badges'
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{ __html: props.content }}
+          />
+        </div>
       </div>
       {props.showcase && <div className='z-10 absolute -top-5 -left-4 text-3xl cursor-pointer' title='Famous Projects'>🎉</div>}
     </div>

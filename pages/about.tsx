@@ -6,7 +6,7 @@ import { Main } from '../containers/templates/Main';
 
 const About = () => (
   <Main meta={<Meta title="Lorem ipsum" description="Lorem ipsum" />} currentPage="About">
-    <Content>
+    <Content className=''>
       <p className="text-3xl">About me</p>
       <p>
         I&apos;m a Full Stack Engineer and a Machine Learning enthusiast. I love everything about
