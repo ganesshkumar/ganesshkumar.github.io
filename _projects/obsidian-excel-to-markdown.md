@@ -3,7 +3,7 @@ title: Obsidian Excel to Markdown Table
 summary: Plugin to convert excel data into markdown table
 repoUrl: https://github.com/ganesshkumar/obsidian-excel-to-markdown-table
 iconUrl: https://forum.obsidian.md/uploads/default/original/1X/bf119bd48f748f4fd2d65f2d1bb05d3c806883b5.png 
-order: 110
+order: 120
 showcase: true
 ---
 

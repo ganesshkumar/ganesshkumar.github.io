@@ -94,43 +94,44 @@ const Home = (props: any) => {
           description="Description"
         />
       )}>
-      <div className='container mx-auto w-100 lg:w-2/3 2xl:w-1/2  bg-white'>
+      <div className='bg-white'>
         <div className='flex flex-col h-full'>
           {/* Header */}
-          <div className='mt-10 mb-5 self-center'>
-            <div className='flex justify-center items-center'>
-              <div className="avatar">
-                <div className="w-24 rounded-full">
-                  <img src="https://avatars.githubusercontent.com/u/2135089" alt='profile picture' />
-                </div>
-              </div>
-              <div className='ml-5'>
-                <p className='text-xl'>Ganessh Kumar R P</p>
-                <div className='flex mt-2 w-full space-x-4'>
-                  <div className="avatar" onClick={_ => goto('https://twitter.com/ganesshkumar')}>
-                    <div className="text-3xl">
-                      <Twitter/>
-                    </div>
-                  </div>
-                  <div className="avatar" onClick={_ => goto('https://github.com/ganesshkumar')}>
-                    <div className="text-3xl">
-                      <Github/>
-                    </div>
-                  </div>
-                  <div className="avatar" onClick={_ => goto('https://gitlab.com/ganesshkumar')}>
-                    <div className="text-3xl">
-                      <Gitlab/>
-                    </div>
+          <div className='bg-sky-50'>
+            <div className='mt-10 mb-5 self-center container mx-auto w-100 lg:w-2/3 2xl:w-1/2'>
+              <div className='flex justify-center items-center'>
+                <div className="avatar">
+                  <div className="w-24 rounded-full">
+                    <img src="https://avatars.githubusercontent.com/u/2135089" alt='profile picture' />
                   </div>
                 </div>
+                <div className='ml-5'>
+                  <p className='text-xl'>Ganessh Kumar R P</p>
+                  <div className='flex mt-2 w-full space-x-4'>
+                    <div className="avatar" onClick={_ => goto('https://twitter.com/ganesshkumar')}>
+                      <div className="text-3xl">
+                        <Twitter/>
+                      </div>
+                    </div>
+                    <div className="avatar" onClick={_ => goto('https://github.com/ganesshkumar')}>
+                      <div className="text-3xl">
+                        <Github/>
+                      </div>
+                    </div>
+                    <div className="avatar" onClick={_ => goto('https://gitlab.com/ganesshkumar')}>
+                      <div className="text-3xl">
+                        <Gitlab/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="pt-2 text-base">
-              <div>I am a Full-Stack Software Engineer, currently building Microsoft Teams and Obsidian Plugins.</div>
+              <div className="pt-2 text-base text-center">
+                <div>I am a Full-Stack Software Engineer, currently building Microsoft Teams at Microsoft. I build and maintain Obsidian Plugins.</div>
+              </div>
             </div>
           </div>
-          
-          <div className='my-10'>
+          <div className='my-10 container mx-auto w-100 lg:w-2/3 2xl:w-1/2 '>
             <div className='flex space-x-8 mx-5'>
               {/* Latest blog posts */}
               <LatestBlogPosts posts={props.posts} />
