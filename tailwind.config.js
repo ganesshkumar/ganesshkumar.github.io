@@ -5,7 +5,12 @@ module.exports = {
     "./containers/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'body': ['"Noto sans"', 'system-ui', 'sans-serif'],
+        'heading': ['Lato', 'system-ui', 'sans-serif'],
+      },
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {
