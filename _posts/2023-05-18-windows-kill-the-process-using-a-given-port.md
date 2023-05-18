@@ -16,10 +16,22 @@ Sometimes, you may encounter an error that says “address already in use” whe
 
 **1. Find the Process ID (PID) of the process using the port:** 
 
-To do this, open the Command Prompt and enter the command `netstat -aon | findstr :[port number]`, replacing *[port number]* with the *actual port number* you’re interested in. This will show you the PID of the process using that port.
+To do this, open the Command Prompt and enter the command 
+
+```shell
+> netstat -aon | findstr :[port number]
+```
+
+replacing *[port number]* with the actual port number you’re interested in. This will show you the PID of the process using that port.
 
 **2. Kill the process:**
 
-To kill the process, you can enter the command `taskkill /F /PID [PID]`, replacing *[PID]* with the *actual PID of the process you want to kill*. This will forcefully terminate the process.
+To kill the process, you can enter the command
+
+```shell
+> taskkill /F /PID [PID] 
+```
+
+replacing *[PID]* with the actual PID of the process you want to kill. This will forcefully terminate the process.
 
 And that’s it! Now you should be able to run your program without encountering the “address already in use” error.
