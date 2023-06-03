@@ -39,7 +39,7 @@ And that’s it! Now you should be able to run your program without encountering
 ### Piped commands
 Putting the above things together run the following command with your port number to find the kill the process using it. 
 
-```
+```shell
 > netstat -ano | Select-String '0.0.0.0:[port number]' | ForEach-Object { $_ -split '\s+' } | Select-Object -Index 4 | ForEach-Object { Stop-Process -Id $_ -Force }
 ```
 
@@ -47,7 +47,7 @@ Putting the above things together run the following command with your port numbe
 
 To make it reusable, we can write the above command in a PowerShell script as follows  
 
-```
+```shell
 param (
     [Parameter(Mandatory = $false, Position = 0)]
     [ValidateRange(1, 65535)]
@@ -83,6 +83,7 @@ if ($connections) {
 Note: In addition to checking `0.0.0.0:$portNumber`, it is also useful to check `127.0.0.1:$portNumber`
 
 Invoke the above PowerShell scripts using the following command (assuming TerminateProcessByPort.ps1` is the name of the file.
-```
+
+```shell
 > .\TerminateProcessesByPort.ps1 -PortNumber 443
 ```
