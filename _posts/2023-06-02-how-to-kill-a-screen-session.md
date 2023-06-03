@@ -2,7 +2,7 @@
 title: "How to Kill a Screen Session"
 description: "Learn how to effectively terminate a screen session using screen-x command"
 date: '2023/06/02'
-modified_date: 
+modified_date: '2023/06/02'
 image: https://images.unsplash.com/photo-1629654297299-c8506221ca97
 disqus: false
 tags:
