@@ -2,7 +2,7 @@
 title: How to Find and Kill a Process Using a Specific Port on Windows
 description: How to Find and Kill a Process Using a Specific Port on Windows
 date: 2023/05/18
-modified_date: 2023/05/18
+modified_date: 2023/06/02
 image: /assets/images/posts/random-img.jpg
 disqus: false
 tags:
@@ -35,3 +35,54 @@ To kill the process, you can enter the command
 replacing *[PID]* with the actual PID of the process you want to kill. This will forcefully terminate the process.
 
 And that’s it! Now you should be able to run your program without encountering the “address already in use” error.
+
+### Piped commands
+Putting the above things together run the following command with your port number to find the kill the process using it. 
+
+```
+> netstat -ano | Select-String '0.0.0.0:[port number]' | ForEach-Object { $_ -split '\s+' } | Select-Object -Index 4 | ForEach-Object { Stop-Process -Id $_ -Force }
+```
+
+### PowerShell script
+
+To make it reusable, we can write the above command in a PowerShell script as follows  
+
+```
+param (
+    [Parameter(Mandatory = $false, Position = 0)]
+    [ValidateRange(1, 65535)]
+    [int]$PortNumber = 443,
+    [switch]$Help
+)
+
+if ($Help) {
+    Write-Output "Usage: KillPort [-Help] [<PortNumber>]"
+    Write-Output ""
+    Write-Output "Description: Terminates processes using the specified port number."
+    Write-Output ""
+    Write-Output "Options:"
+    Write-Output "  -Help              Show this help information."
+    Write-Output "  <PortNumber>       Specify the port number to target (default: 443)."
+    return
+}
+
+$connections = netstat -ano | findstr "0.0.0.0:$PortNumber"
+if (-not $connections) {
+    $connections = netstat -ano | findstr "127.0.0.1:$PortNumber"
+}
+
+if ($connections) {
+    $pids = $connections | ForEach-Object { $_ -split '\s+' } | Select-Object -Index 5
+    $pids | ForEach-Object { taskkill /F /PID $_ }
+    Write-Output "Processes using port $PortNumber have been terminated."
+} else {
+    Write-Output "No processes found using port $PortNumber."
+}
+```
+
+Note: In addition to checking `0.0.0.0:$portNumber`, it is also useful to check `127.0.0.1:$portNumber`
+
+Invoke the above PowerShell scripts using the following command (assuming TerminateProcessByPort.ps1` is the name of the file.
+```
+> .\TerminateProcessesByPort.ps1 -PortNumber 443
+```
