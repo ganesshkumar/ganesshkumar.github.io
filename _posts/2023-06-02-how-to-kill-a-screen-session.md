@@ -16,7 +16,6 @@ categories:
 
 # How to Kill a Screen Session Using the "screen -X" Command
 
-**Introduction:**
 Screen sessions provide a convenient way to manage multiple terminal sessions within a single shell. However, terminating a screen session may not always be as straightforward as expected. In this article, we will focus on one particular solution that can help you effectively kill a screen session using the "screen -X" command. We will provide step-by-step instructions to ensure a successful termination. Let's get started!
 
 **1. Identify the Session:**
@@ -43,5 +42,4 @@ Here's a breakdown of the command:
 
 After executing the command, the screen session should be closed, and you will return to your previous shell session.
 
-**Conclusion:**
 While terminating a screen session may sometimes present challenges, the "screen -X" command offers a reliable solution for killing a screen session. By following the step-by-step instructions provided in this article, you can successfully terminate the desired session. Remember to replace `<session-id>` in the command with the actual session ID you wish to terminate. With this knowledge, you can confidently manage your screen sessions and streamline your terminal workflow.

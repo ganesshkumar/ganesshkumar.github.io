@@ -38,7 +38,7 @@ const DisplayPost = (props: IPostProps) => (
     )}
     currentPage="Articles"
   >
-    <div className="container mx-auto w-100 lg:w-2/3 2xl:w-1/2 px-5">
+    <div className="container mx-auto w-100 px-5">
       <h1 className="text-center font-bold text-4xl cursor-default tracking-wide uppercase pt-5">{props.title}</h1>
       <div className="text-center text-slate-500 uppercase text-sm my-1">{props.tags.join(', ')}</div>
       <div className="text-center text-slate-500 uppercase text-sm mb-5">{format(new Date(props.date), 'LLLL d, yyyy')}</div>

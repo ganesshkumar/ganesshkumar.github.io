@@ -6,7 +6,7 @@ type IContentProps = {
 };
 
 const Content = (props: IContentProps) => (
-  <div className={`content ${props.className} container mx-auto w-100 lg:w-2/3 2xl:w-1/2`}>
+  <div className={`content ${props.className} container mx-auto w-100 lg:w-2/3`}>
     {props.children}
 
     <style jsx>
