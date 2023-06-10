@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@mapbox/rehype-prism": "0.8.0",
-    "@nextui-org/react": "1.0.2-beta.3",
     "autoprefixer": "10.4.2",
     "classnames": "2.3.1",
     "daisyui": "2.2.1",

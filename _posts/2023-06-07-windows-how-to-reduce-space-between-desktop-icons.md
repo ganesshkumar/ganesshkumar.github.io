@@ -14,11 +14,9 @@ categories:
   - tutorials
 ---
 
-# How to Reduce Space Between Desktop Icons
-
 Have you ever encountered the issue of having too much space between your desktop icons? Despite your attempts to drag and drop the icons, they stubbornly remain far apart from each other. In this article, we will explore a solution to remove the wide space between icons on your desktop. If you're tired of the excessive gaps, read on to find out how you can achieve a more compact and visually pleasing layout.
 
-## Modifying Registry Settings
+##Modifying Registry Settings
 
 Modifying the registry settings can provide more control over the spacing between desktop icons. Please note that editing the registry should be approached with caution and is recommended for advanced users. Follow these steps:
 

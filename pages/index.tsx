@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import { Link } from '@nextui-org/react';
+import Link from 'next/link';
 import { Meta } from '../containers/layout/Meta';
 import { Main } from '../containers/templates/Main';
 import { getAllPosts, getShowcaseProjects } from '../utils/Content';
@@ -15,7 +15,7 @@ const BlogPost = (props: any) => {
 
   return (
     <div className="w-full mx-auto lg:mx-0 z-10 py-3">
-      <a href={`/articles/${props.post.slug}`}>
+      <a className='no-underline' href={`/articles/${props.post.slug}`}>
         <div className='text-xl text-slate-700 hover:text-sky-600 decoration-sky-600 hover:underline'>{post.title}</div>
       </a>
       {/* <div className='text-sm'> {post.date} </div> */}
@@ -38,9 +38,9 @@ const LatestBlogPosts = ({posts}: {posts: any[]}) => {
             .map((post: any) => <BlogPost key={post.slug} post={post}/>)}
       </div>
       <div className='mt-5'>
-        <button className='border border-sky-500 border-2 rounded'>
-          <Link href="/blog">
-            <a className="text-sky-500 hover:text-sky-600 px-1 hover:bg-sky-50">Read all posts</a>
+        <button className='bg-sky-600 hover:bg-sky-800 py-1 px-2 rounded'>
+          <Link href="/articles">
+            <a className= "px-1 text-sky-100 hover:text-sky-100 no-underline">Read all posts</a>
           </Link>
         </button>
       </div>
@@ -52,7 +52,7 @@ const Project = (props: any) => {
   return (
     <div className='py-3'>
       <div>
-        <a href={props.project.repoUrl} target="_blank" rel="noreferrer">
+        <a className='no-underline' href={props.project.repoUrl} target="_blank" rel="noreferrer">
           <div className='text-xl text-slate-700 hover:text-sky-600 decoration-sky-600 hover:underline'>{props.project.title}</div>
         </a>
       </div>
@@ -74,9 +74,9 @@ const ProjectShowcase = ({ projects }: { projects: any[]}) => {
             .map((project: any) => <Project key={project.repoUrl} project={project}/>)}
       </div>
       <div className='mt-5'>
-        <button className='border border-sky-500 border-2 rounded'>
+        <button className='bg-sky-600 hover:bg-sky-800 py-1 px-2 rounded'>
           <Link href="/projects">
-            <a className="text-sky-500 hover:text-sky-600 px-1 hover:bg-sky-50">See all</a>
+            <a className="px-1 text-sky-100 hover:text-sky-100 no-underline">See all</a>
           </Link>
         </button>
       </div>
@@ -96,8 +96,8 @@ const Home = (props: any) => {
       )}>
       <div className='bg-white'>
         <div className='flex flex-col h-full'>
-          {/* Header */}
-          <div className='bg-sky-50'>
+          {/* Banner */}
+          <header className='bg-sky-50'>
             <div className='mt-10 mb-5 self-center container mx-auto w-100 lg:w-2/3 2xl:w-1/2'>
               <div className='flex justify-center items-center'>
                 <div className="avatar">
@@ -130,15 +130,15 @@ const Home = (props: any) => {
                 <div>I am a Full-Stack Software Engineer, currently building Microsoft Teams at Microsoft. I build and maintain Obsidian Plugins.</div>
               </div>
             </div>
-          </div>
-          <div className='my-10 container mx-auto w-100 lg:w-2/3 2xl:w-1/2 '>
+          </header>
+          <main className='my-10 container mx-auto w-100 lg:w-2/3 2xl:w-1/2 '>
             <div className='flex space-x-8 mx-5'>
               {/* Latest blog posts */}
               <LatestBlogPosts posts={props.posts} />
               {/* Latest projects */}
               <ProjectShowcase projects={props.projects} />
             </div>
-          </div>
+          </main>
         </div>
       </div>
       {/* #9C9C9C */}

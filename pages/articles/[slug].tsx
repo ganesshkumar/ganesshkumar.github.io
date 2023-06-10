@@ -39,9 +39,11 @@ const DisplayPost = (props: IPostProps) => (
     currentPage="Articles"
   >
     <div className="container mx-auto w-100 px-5">
-      <h1 className="text-center font-bold text-4xl cursor-default tracking-wide uppercase pt-5">{props.title}</h1>
-      <div className="text-center text-slate-500 uppercase text-sm my-1">{props.tags.join(', ')}</div>
-      <div className="text-center text-slate-500 uppercase text-sm mb-5">{format(new Date(props.date), 'LLLL d, yyyy')}</div>
+      <h1 className="font-bold text-4xl cursor-default tracking-wide container mx-auto w-100 lg:w-2/3 pb-2 border-b border-sky-600">{props.title}</h1>
+      <div className="flex flex-row justify-between container mx-auto w-100 lg:w-2/3 mt-2 mb-10">
+        <div className="text-slate-500 uppercase text-sm">{format(new Date(props.date), 'LLLL d, yyyy')}</div>
+        <div className="text-slate-500 uppercase text-sm">{props.tags.join(', ')}</div>
+      </div>
 
       <Content className=''>
         <div className='markdown'

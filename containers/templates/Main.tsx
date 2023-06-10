@@ -36,9 +36,9 @@ const Main = (props: IMainProps) => {
       }
 
       <div className="bg-gray-800 text-center py-8">
-        <div className="container w-100 lg:w-2/3 xl:1/2 text-slate-200">
-          Ganessh Kumar R P © 2022 • All rights reserved.<br/>
-          <a rel="me" href="https://hachyderm.io/@ganesshkumar">Mastodon</a>
+        <div className="container mx-auto w-100 lg:w-2/3 xl:1/2 text-slate-200">
+          Made with 💙 by <a className="visited:text-white" rel="me" href="https://github.com/ganesshkumar"><span className="text-white">Ganessh Kumar</span></a><br/>
+          <a className="hidden" rel="me" href="https://hachyderm.io/@ganesshkumar">Mastodon</a>
         </div>
       </div>
     </div>
