@@ -3,12 +3,7 @@ import Link from 'next/link';
 import { Meta } from '../containers/layout/Meta';
 import { Main } from '../containers/templates/Main';
 import { getAllPosts, getShowcaseProjects } from '../utils/Content';
-
-const Twitter = () => (<i className='cursor-pointer bx bxl-twitter'></i>)
-const Github = () => (<i className='cursor-pointer bx bxl-github'></i>)
-const Gitlab = () => (<i className='cursor-pointer bx bxl-gitlab'></i>)
-
-const goto = (url: string) => window.open(url, '_blank');
+import SocialLinks from '../components/social-links';
 
 const BlogPost = (props: any) => {
   const { post } = props;
@@ -28,7 +23,7 @@ const BlogPost = (props: any) => {
 
 const LatestBlogPosts = ({posts}: {posts: any[]}) => {
   return (
-    <div className='w-full md:w-1/2'>
+    <div className='px-4 basis-full md:basis-1/2'>
       <h1 className='font-bold text-3xl'>
         <span className='tracking-wide underline decoration-sky-500 decoration-4 underline-offset-2'>Latest Articles</span>
       </h1>
@@ -65,7 +60,7 @@ const Project = (props: any) => {
 
 const ProjectShowcase = ({ projects }: { projects: any[]}) => {
   return (
-    <div className='w-full md:w-1/2'>
+    <div className='px-4 basis-full md:basis-1/2'>
       <h1 className='font-bold text-3xl tracking-wide underline decoration-sky-500 decoration-4 underline-offset-2'>
         Project Showcase
       </h1>
@@ -90,49 +85,60 @@ const Home = (props: any) => {
       currentPage='Home'
       meta={(
         <Meta
-          title="Made with Next.js, TypeScript, ESLint, Prettier, PostCSS, Tailwind CSS"
+          title="Home"
           description="Description"
         />
       )}>
       <div className='bg-white'>
         <div className='flex flex-col h-full'>
           {/* Banner */}
-          <header className='bg-sky-50'>
-            <div className='mt-10 mb-5 self-center container mx-auto w-100 lg:w-2/3 2xl:w-1/2'>
-              <div className='flex justify-center items-center'>
-                <div className="avatar">
-                  <div className="w-24 rounded-full">
-                    <img src="https://avatars.githubusercontent.com/u/2135089" alt='profile picture' />
-                  </div>
-                </div>
-                <div className='ml-5'>
-                  <p className='text-xl'>Ganessh Kumar R P</p>
-                  <div className='flex mt-2 w-full space-x-4'>
-                    <div className="avatar" onClick={_ => goto('https://twitter.com/ganesshkumar')}>
-                      <div className="text-3xl">
-                        <Twitter/>
-                      </div>
-                    </div>
-                    <div className="avatar" onClick={_ => goto('https://github.com/ganesshkumar')}>
-                      <div className="text-3xl">
-                        <Github/>
-                      </div>
-                    </div>
-                    <div className="avatar" onClick={_ => goto('https://gitlab.com/ganesshkumar')}>
-                      <div className="text-3xl">
-                        <Gitlab/>
-                      </div>
-                    </div>
-                  </div>
+          <header className='flex flex-col justify-center items-center' style={{minHeight: '60vh'}}>
+            {/* <div className='flex justify-center items-center'>
+              <div className="avatar">
+                <div className="w-24 rounded-full">
+                  <img src="https://avatars.githubusercontent.com/u/2135089" alt='profile picture' />
                 </div>
               </div>
-              <div className="pt-2 text-base text-center">
-                <div>I am a Full-Stack Software Engineer, currently building Microsoft Teams at Microsoft. I build and maintain Obsidian Plugins.</div>
+              <div className='ml-5'>
+                <p className='text-xl'>Ganessh Kumar R P</p>
+                <SocialLinks />
               </div>
             </div>
+            <div className="pt-2 text-base text-center">
+              <div>I am a Full-Stack Software Engineer, currently building Microsoft Teams at Microsoft. I build and maintain Obsidian Plugins.</div>
+            </div> */}
+            <div className='flex w-full relative border border-0 border-b-2 border-sky-600 bg-transparent'>
+              <div className='flex basis-1/2 justify-center'>
+                <div className='flex flex-col justify-center'>
+                  <h5 className='text-sky-600'>
+                    Hi 👋 I am
+                  </h5>
+                  <div className='text-4xl text-black font-bold mt-2'>
+                    Ganessh Kumar R P
+                  </div>
+                  <div className='text-xl my-5'>
+                    Full-Stack Software Engineer
+                  </div>
+                  <p className='text-base text-slate-600'>
+                    Currently building Microsoft Teams at Microsoft.
+                    <br/>
+                    I build and maintain Obsidian Plugins.
+                  </p>
+                </div>
+              </div>
+              <div className='flex basis-1/2 justify-center overflow-hidden'>
+                <img className='object-cover h-96 w-96' src="/ganesshkumar-emoji.png" alt='profile picture' />
+              </div>
+              <div className='absolute bg-sky-300 w-8 h-8 rounded-full -left-12 p-12 blur-xl'></div>
+              <div className='absolute bg-orange-400 w-8 h-8 rounded-full right-8 bottom-20 p-16 blur-xl'></div>
+              <div className='absolute bg-orange-500 w-8 h-8 rounded-full left-1/3 top-10 p-10 blur-xl'></div>
+              <div className='absolute bg-sky-400 w-8 h-8 rounded-full left-2/3 p-8 blur-xl'></div>
+              <div className='absolute bg-sky-400 w-8 h-8 rounded-full bottom-10 left-1/2 p-8 blur-xl'></div>
+            </div>
           </header>
+          
           <main className='my-10 container mx-auto w-100 lg:w-2/3 2xl:w-1/2 '>
-            <div className='flex space-x-8 mx-5'>
+            <div className='flex flex-wrap'>
               {/* Latest blog posts */}
               <LatestBlogPosts posts={props.posts} />
               {/* Latest projects */}

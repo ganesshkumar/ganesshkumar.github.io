@@ -3,11 +3,7 @@ import React from 'react';
 import { Content } from '../content/Content';
 import { Meta } from '../containers/layout/Meta';
 import { Main } from '../containers/templates/Main';
-
-const Twitter = () => (<i className='cursor-pointer bx bxl-twitter'></i>)
-const Github = () => (<i className='cursor-pointer bx bxl-github'></i>)
-const Gitlab = () => (<i className='cursor-pointer bx bxl-gitlab'></i>)
-const goto = (url: string) => window.open(url, '_blank');
+import SocialLinks from '../components/social-links';
 
 const About = () => (
   <Main meta={<Meta title="About me" description="About me" />} currentPage="About">
@@ -33,23 +29,7 @@ const About = () => (
       <p className="pt-6">On this blog, I will share my thoughts and experiences on software development, Obsidian, and other topics that interest me. I hope you enjoy reading my posts and learn something new along the way. Thank you for visiting and stay tuned for more!</p>
       <p className="pt-6">
         Social Media: &nbsp;
-        <div className='flex mt-2 w-full space-x-4'>
-          <div className="avatar" onClick={_ => goto('https://twitter.com/ganesshkumar')}>
-            <div className="text-3xl">
-              <Twitter/>
-            </div>
-          </div>
-          <div className="avatar" onClick={_ => goto('https://github.com/ganesshkumar')}>
-            <div className="text-3xl">
-              <Github/>
-            </div>
-          </div>
-          <div className="avatar" onClick={_ => goto('https://gitlab.com/ganesshkumar')}>
-            <div className="text-3xl">
-              <Gitlab/>
-            </div>
-          </div>
-        </div>
+        <SocialLinks />
       </p>
     </Content>
   </Main>
