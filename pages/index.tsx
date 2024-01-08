@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { Meta } from '../containers/layout/Meta';
 import { Main } from '../containers/templates/Main';
 import { getAllPosts, getShowcaseProjects } from '../utils/Content';
-import SocialLinks from '../components/social-links';
 
 const BlogPost = (props: any) => {
   const { post } = props;
