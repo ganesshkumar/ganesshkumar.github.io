@@ -27,6 +27,7 @@ const About = () => (
         </a>.
       <p className="pt-6">You can find all my plugins on the Obsidian community hub or on my [GitHub page](https://github.com/ganesshkumar). I hope you find them useful and feel free to give me feedback or suggestions.</p>
       <p className="pt-6">On this blog, I will share my thoughts and experiences on software development, Obsidian, and other topics that interest me. I hope you enjoy reading my posts and learn something new along the way. Thank you for visiting and stay tuned for more!</p>
+      <img src="https://skillicons.dev/icons?i=typescript,javascript,html,css,tailwind,react,redux,nodejs,nestjs,java,kotlin,spring,python,flask,cs,dotnet,aws,azure,ansible,docker,kubernetes,graphql,linux&perline=50" />
       <p className="pt-6">
         Social Media: &nbsp;
         <SocialLinks />

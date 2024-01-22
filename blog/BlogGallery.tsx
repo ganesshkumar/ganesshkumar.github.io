@@ -15,7 +15,7 @@ const BlogGallery = (props: any) => (
   <>
     <ul className='my-5'>
       {props.posts.map((elt: any) => (
-        <li key={elt.slug} className="mb-5">
+        <li key={elt.slug} className="mb-10">
           <Link href="/articles/[slug]" as={`/articles/${elt.slug}`}>
             <a className='no-underline'>
               <div className='text-xl text-slate-700 hover:text-sky-600 decoration-sky-600 hover:underline tracking-2'>{elt.title}</div>

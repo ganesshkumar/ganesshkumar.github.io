@@ -3,6 +3,7 @@ title: Obsidian Plugin Stats
 summary: A tool to get plugin statistics of Obsidian plugin ecosystem.
 repoUrl: https://github.com/ganesshkumar/obsidian-plugins-stats-ui
 iconUrl: https://forum.obsidian.md/uploads/default/original/1X/bf119bd48f748f4fd2d65f2d1bb05d3c806883b5.png 
+bannerUrl: https://user-images.githubusercontent.com/2135089/154796362-e80a56b4-1f0f-451b-8bf3-3ed435c6b23f.png
 order: 110
 showcase: true
 ---

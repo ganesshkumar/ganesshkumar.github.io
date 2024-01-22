@@ -1,5 +1,5 @@
+import { useRef } from 'react';
 import { GetStaticProps } from 'next';
-import Link from 'next/link';
 import { Meta } from '../containers/layout/Meta';
 import { Main } from '../containers/templates/Main';
 import { getAllPosts, getShowcaseProjects } from '../utils/Content';
@@ -32,10 +32,11 @@ const LatestBlogPosts = ({posts}: {posts: any[]}) => {
             .map((post: any) => <BlogPost key={post.slug} post={post}/>)}
       </div>
       <div className='mt-5'>
-        <button className='bg-sky-600 hover:bg-sky-800 py-1 px-2 rounded'>
-          <Link href="/articles">
-            <a className= "px-1 text-sky-100 hover:text-sky-100 no-underline">Read all posts</a>
-          </Link>
+        <button
+          type="button"
+          onClick={() => window.location.href = "/articles"}
+          className="inline-flex gap-3 justify-center items-center text-white bg-sky-600 hover:bg-sky-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 w-40">
+            Read all posts →
         </button>
       </div>
     </div>
@@ -68,10 +69,11 @@ const ProjectShowcase = ({ projects }: { projects: any[]}) => {
             .map((project: any) => <Project key={project.repoUrl} project={project}/>)}
       </div>
       <div className='mt-5'>
-        <button className='bg-sky-600 hover:bg-sky-800 py-1 px-2 rounded'>
-          <Link href="/projects">
-            <a className="px-1 text-sky-100 hover:text-sky-100 no-underline">See all</a>
-          </Link>
+      <button
+          type="button"
+          onClick={() => window.location.href = "/projects"}
+          className="inline-flex gap-3 justify-center items-center text-white bg-sky-600 hover:bg-sky-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 w-40">
+            See all →
         </button>
       </div>
     </div>
@@ -79,6 +81,7 @@ const ProjectShowcase = ({ projects }: { projects: any[]}) => {
 }
 
 const Home = (props: any) => {
+  const headerRef = useRef(null);
   return (
     <Main
       currentPage='Home'
@@ -91,56 +94,50 @@ const Home = (props: any) => {
       <div className='bg-white'>
         <div className='flex flex-col h-full'>
           {/* Banner */}
-          <header className='flex flex-col justify-center items-center' style={{minHeight: '60vh'}}>
-            {/* <div className='flex justify-center items-center'>
-              <div className="avatar">
-                <div className="w-24 rounded-full">
-                  <img src="https://avatars.githubusercontent.com/u/2135089" alt='profile picture' />
+          <header className='flex flex-col justify-center items-center border border-0 border-b-2 border-sky-600 bg-sky-50' style={{minHeight: '60vh'}}>
+            <div ref={headerRef} className='w-full'>
+              {/* <Particles headerRef={headerRef} /> */}
+              <div className='isolate flex flex-col md:flex-row'>
+                <div className='flex basis-1/2 justify-center'>
+                  <div className='flex flex-col justify-center'>
+                    <h5 className='text-sky-600'>
+                      Hi 👋 I am
+                    </h5>
+                    <div className='text-4xl text-black font-bold mt-2'>
+                      Ganessh Kumar R P
+                    </div>
+                    <div className='text-xl my-5'>
+                      Full-Stack Software Engineer
+                    </div>
+                    <p className='text-base text-slate-600'>
+                      Currently building Microsoft Teams at Microsoft.
+                      <br/>
+                      I build and maintain Obsidian Plugins.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => window.location.href = "/about"}
+                      className="inline-flex gap-3 justify-center items-center text-white bg-sky-600 hover:bg-sky-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 w-36">
+                        About me →
+                    </button>
+                  </div>
+                </div>
+                <div className='z-10 flex basis-1/2 justify-center overflow-hidden'>
+                  <img className='z-10 object-cover h-96 w-96' src="/ganesshkumar-emoji.png" alt='profile picture' />
                 </div>
               </div>
-              <div className='ml-5'>
-                <p className='text-xl'>Ganessh Kumar R P</p>
-                <SocialLinks />
-              </div>
-            </div>
-            <div className="pt-2 text-base text-center">
-              <div>I am a Full-Stack Software Engineer, currently building Microsoft Teams at Microsoft. I build and maintain Obsidian Plugins.</div>
-            </div> */}
-            <div className='flex w-full relative border border-0 border-b-2 border-sky-600 bg-transparent'>
-              <div className='flex basis-1/2 justify-center'>
-                <div className='flex flex-col justify-center'>
-                  <h5 className='text-sky-600'>
-                    Hi 👋 I am
-                  </h5>
-                  <div className='text-4xl text-black font-bold mt-2'>
-                    Ganessh Kumar R P
-                  </div>
-                  <div className='text-xl my-5'>
-                    Full-Stack Software Engineer
-                  </div>
-                  <p className='text-base text-slate-600'>
-                    Currently building Microsoft Teams at Microsoft.
-                    <br/>
-                    I build and maintain Obsidian Plugins.
-                  </p>
-                </div>
-              </div>
-              <div className='flex basis-1/2 justify-center overflow-hidden'>
-                <img className='object-cover h-96 w-96' src="/ganesshkumar-emoji.png" alt='profile picture' />
-              </div>
-              <div className='absolute bg-sky-300 w-8 h-8 rounded-full -left-12 p-12 blur-xl'></div>
-              <div className='absolute bg-orange-400 w-8 h-8 rounded-full right-8 bottom-20 p-16 blur-xl'></div>
-              <div className='absolute bg-orange-500 w-8 h-8 rounded-full left-1/3 top-10 p-10 blur-xl'></div>
-              <div className='absolute bg-sky-400 w-8 h-8 rounded-full left-2/3 p-8 blur-xl'></div>
-              <div className='absolute bg-sky-400 w-8 h-8 rounded-full bottom-10 left-1/2 p-8 blur-xl'></div>
             </div>
           </header>
           
-          <main className='my-10 container mx-auto w-100 lg:w-2/3 2xl:w-1/2 '>
+          <main className='my-10 container mx-auto w-100 lg:w-2/3 2xl:w-1/2'>
             <div className='flex flex-wrap'>
               {/* Latest blog posts */}
               <LatestBlogPosts posts={props.posts} />
+              <img className="w-1/2 hidden md:block" src="/static/blogging-illustration.svg" />
+            </div>
+            <div className='flex flex-wrap mt-20'>
               {/* Latest projects */}
+              <img className="w-1/2 hidden md:block" src="/static/project-illustration.svg" />
               <ProjectShowcase projects={props.projects} />
             </div>
           </main>
@@ -163,3 +160,44 @@ export const getStaticProps: GetStaticProps<any> = async () => {
 };
 
 export default Home;
+
+// const technologies = [
+//   'react',
+//   'javascript',
+//   'java',
+// ]
+
+// const Particles = (props) => {
+//   const [index, setIndex] = useState(0);
+
+//   const {clientHeight, clientWidth} = props.headerRef.current || {};
+
+//   const logos = useMemo(() => technologies.map((tech, idx) => {
+//     let top = 0;
+//     let left = 0;
+//     if (clientHeight && clientWidth) {
+//       left = Math.ceil(Math.random() * clientWidth);
+//       top = Math.ceil(Math.random() * clientHeight);
+//     }
+
+//     return <i key={idx} style={{top, left}} className={`bx bxl-${tech} absolute text-6xl opacity-10 text-xl animate-header`}></i>;
+//   }), [clientHeight, clientWidth]);
+
+//   useEffect(() => {
+//     if (index >= technologies.length) {
+//       return
+//     }
+
+//     const timer = setTimeout(() => {
+//       setIndex(index => index + 1);
+//     }, 1000);
+
+//     return () => clearTimeout(timer);
+//   }, [index]);
+
+//   return (
+//     <>
+//       {logos.filter((_, idx) => idx <= index)}
+//     </>
+//   );
+// }
