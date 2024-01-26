@@ -1,8 +1,8 @@
 ---
 title: "Dockerize Meteor Application"
 description: "Dockerize Meteor Application"
-date: 2017/01/20 12:42:38 +05:30
-modified_date: 2017/01/20 12:42:38 +05:30
+date: 2017/01/20
+modified_date: 2017/01/20
 image: /assets/images/posts/random-img.jpg
 disqus: true
 tags:

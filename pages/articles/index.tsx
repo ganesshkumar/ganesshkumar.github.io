@@ -41,7 +41,7 @@ export const getStaticProps: GetStaticProps<IBlogGalleryProps> = async () => {
   return {
     props: {
       posts: posts, //.slice(0, Config.pagination_size),
-      // pagination,
+      pagination: {}
     },
   };
 };
