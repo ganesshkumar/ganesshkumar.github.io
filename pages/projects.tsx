@@ -71,7 +71,6 @@ const Project = (props: IProject) => {
         </div>
         {props.showcase && <span className="text-3xl text-sky-800 text-center p-0.5 leading-none rounded-full px-2 dark:text-sky-200 absolute -translate-y-1/2 -translate-x-1/2 right-auto top-0 left-0">⭐</span>}
     </div>
-
   );
 }
 

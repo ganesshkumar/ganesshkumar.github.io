@@ -10,38 +10,6 @@ type INavbarProps = {
 const navbarContentClasses = (page: string, currentPage: string) =>
   classnames({ "mb-0 z-10": true, "text-slate-700": currentPage !== page, "font-semibold underline decoration-sky-500 underline-offset-2": currentPage === page })
 
-// const Navbar = (props: INavbarProps) => (
-//   <nav>
-//     <ul className="navbar flex flex-wrap justify-center align-center items-center space-x-8 text-xl list-none">
-//       <li className={navbarContentClasses('Home', props.currentPage)}>
-//         <Link href='/'> 
-//           <div className='text-slate-900 cursor-pointer'> Home </div> 
-//         </Link>
-//       </li>
-//       <li className={navbarContentClasses('Articles', props.currentPage)}>
-//         <Link href='/articles'>
-//           <div className='text-slate-900 cursor-pointer'> Articles </div>
-//         </Link>
-//       </li>
-//       <li className={navbarContentClasses('Projects', props.currentPage)}>
-//         <Link href='/projects'>
-//           <div className='text-slate-900 cursor-pointer'> Projects </div>
-//         </Link>
-//       </li>
-//       <li className={navbarContentClasses('Notes', props.currentPage)}>
-//         <Link href='/notes'>
-//           <div className='text-slate-900 cursor-pointer'> Notes </div>
-//         </Link>
-//       </li>
-//       <li className={navbarContentClasses('About', props.currentPage)}>
-//         <Link href='/about'>
-//           <div className='text-slate-900 cursor-pointer'> About </div>
-//         </Link>
-//       </li>
-//     </ul>
-//   </nav>
-// );
-
 const Navbar = (props: INavbarProps) => (
   <nav className="bg-white flex border-gray-200 dark:bg-gray-900">
     <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -54,27 +22,27 @@ const Navbar = (props: INavbarProps) => (
       <div className="hidden w-full md:block md:w-auto" id="navbar-default">
         <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
           <li className={navbarContentClasses('Home', props.currentPage)}>
-            <Link href='/'> 
+            <Link href='/' passHref> 
               <div className='text-slate-900 cursor-pointer'> Home </div> 
             </Link>
           </li>
           <li className={navbarContentClasses('Articles', props.currentPage)}>
-            <Link href='/articles'>
+            <Link href='/articles' passHref>
               <div className='text-slate-900 cursor-pointer'> Articles </div>
             </Link>
           </li>
           <li className={navbarContentClasses('Projects', props.currentPage)}>
-            <Link href='/projects'>
+            <Link href='/projects' passHref>
               <div className='text-slate-900 cursor-pointer'> Projects </div>
             </Link>
           </li>
-          <li className={navbarContentClasses('Notes', props.currentPage)}>
-            <Link href='/notes'>
+          {/* <li className={navbarContentClasses('Notes', props.currentPage)}>
+            <Link href='/notes' passHref>
               <div className='text-slate-900 cursor-pointer'> Notes </div>
             </Link>
-          </li>
+          </li> */}
           <li className={navbarContentClasses('About', props.currentPage)}>
-            <Link href='/about'>
+            <Link href='/about' passHref>
               <div className='text-slate-900 cursor-pointer'> About </div>
             </Link>
           </li>

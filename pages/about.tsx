@@ -9,8 +9,8 @@ const About = () => (
   <Main meta={<Meta title="About me" description="About me" />} currentPage="About">
     <Content className='whitespace-pre-line'>
       <div className="avatar">
-        <div className="w-24 rounded-full">
-          <img src="https://avatars.githubusercontent.com/u/2135089" alt='profile picture' />
+        <div className="rounded-full">
+          <img className='z-10 object-cover h-96 w-96' src="/ganesshkumar-emoji.png" alt='profile picture' />
         </div>
       </div>
       <p className="text-xl">Hello and welcome to my blog!</p>

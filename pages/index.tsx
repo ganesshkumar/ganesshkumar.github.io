@@ -133,11 +133,11 @@ const Home = (props: any) => {
             <div className='flex flex-wrap'>
               {/* Latest blog posts */}
               <LatestBlogPosts posts={props.posts} />
-              <img className="w-1/2 hidden md:block" src="/static/blogging-illustration.svg" />
+              <img className="w-1/2 hidden md:block" src="/static/blogging-illustration.svg" alt="blog image" />
             </div>
             <div className='flex flex-wrap mt-20'>
               {/* Latest projects */}
-              <img className="w-1/2 hidden md:block" src="/static/project-illustration.svg" />
+              <img className="w-1/2 hidden md:block" src="/static/project-illustration.svg" alt="projects image" />
               <ProjectShowcase projects={props.projects} />
             </div>
           </main>
@@ -160,44 +160,3 @@ export const getStaticProps: GetStaticProps<any> = async () => {
 };
 
 export default Home;
-
-// const technologies = [
-//   'react',
-//   'javascript',
-//   'java',
-// ]
-
-// const Particles = (props) => {
-//   const [index, setIndex] = useState(0);
-
-//   const {clientHeight, clientWidth} = props.headerRef.current || {};
-
-//   const logos = useMemo(() => technologies.map((tech, idx) => {
-//     let top = 0;
-//     let left = 0;
-//     if (clientHeight && clientWidth) {
-//       left = Math.ceil(Math.random() * clientWidth);
-//       top = Math.ceil(Math.random() * clientHeight);
-//     }
-
-//     return <i key={idx} style={{top, left}} className={`bx bxl-${tech} absolute text-6xl opacity-10 text-xl animate-header`}></i>;
-//   }), [clientHeight, clientWidth]);
-
-//   useEffect(() => {
-//     if (index >= technologies.length) {
-//       return
-//     }
-
-//     const timer = setTimeout(() => {
-//       setIndex(index => index + 1);
-//     }, 1000);
-
-//     return () => clearTimeout(timer);
-//   }, [index]);
-
-//   return (
-//     <>
-//       {logos.filter((_, idx) => idx <= index)}
-//     </>
-//   );
-// }
