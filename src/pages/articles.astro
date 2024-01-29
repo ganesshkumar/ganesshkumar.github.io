@@ -1,0 +1,36 @@
+---
+import { format } from 'date-fns';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = 'Articles | Ganessh Kumar';
+const currentPage = 'Articles';
+const allPosts = await Astro.glob('../pages/articles/*.md');
+---
+
+<BaseLayout pageTitle={pageTitle} currentPage={currentPage}>
+  <div class='container mx-auto w-100 lg:w-2/3 2xl:w-1/2'>
+    <p class="text-3xl my-2">
+      <h1 class='font-bold text-3xl'>
+        <span class='tracking-wide underline decoration-sky-500 decoration-4 underline-offset-2'>Articles</span>
+      </h1>
+    </p>
+
+    <ul class='my-5'>
+      {allPosts.reverse().map((post: any) => (
+        <li class="mb-10">
+          <a class='no-underline' href={post.url}>
+            <div class='cursor-pointer text-xl text-slate-700 hover:text-sky-600 decoration-sky-600 hover:underline tracking-2'>{post.frontmatter.title}</div>
+          </a>
+          <div class='flex space-x-4'>
+            <div class='text-slate-400 font uppercase text-sm flex items-center'>
+              {format(new Date(post.frontmatter.date), 'LLL d, yyyy')}
+            </div>
+            <div class='text-slate-400 font-semibold uppercase text-xs pt-1'>
+              {(post.frontmatter.tags|| []).join(', ')}
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</BaseLayout>
