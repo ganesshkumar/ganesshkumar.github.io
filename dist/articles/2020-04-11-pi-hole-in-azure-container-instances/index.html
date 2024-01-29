@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v4.2.6"><title>Pi-hole in Azure Container Instances | Ganessh Kumar</title><link rel="sitemap" href="/sitemap-index.xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"><link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"><script dangerouslySetInnerHTML="[object Object]"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/2013-09-01-learn-unlearn-relearn.l15eNEwx.css" /><script type="module" src="/_astro/hoisted.l-JsOPk0.js"></script></head> <body> <header> <nav class="bg-white flex border-gray-200 dark:bg-gray-900"> <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"> <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false"> <span class="sr-only">Open main menu</span> <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path> </svg> </button> <div class="hidden w-full md:block md:w-auto" id="navbar-default"> <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"> <li class="mb-0 z-10 text-slate-700"> <a class="no-underline" href="/"> <div class="text-slate-900 cursor-pointer"> Home </div> </a> </li> <li class="mb-0 z-10 font-semibold underline decoration-sky-500 underline-offset-2"> <a class="no-underline" href="/articles"> <div class="text-slate-900 cursor-pointer"> Articles </div> </a> </li> <li class="mb-0 z-10 text-slate-700"> <a class="no-underline" href="/projects"> <div class="text-slate-900 cursor-pointer"> Projects </div> </a> </li>  <li class="mb-0 z-10 text-slate-700"> <a class="no-underline" href="/about"> <div class="text-slate-900 cursor-pointer"> About </div> </a> </li> </ul> </div> </div> </nav> </header>  <div class="container mx-auto w-100 lg:w-2/3 2xl:w-1/2"> <h1 class="font-bold text-4xl cursor-default tracking-wide pb-2 border-b border-sky-600">Pi-hole in Azure Container Instances</h1> <div class="flex flex-row justify-between mt-2 mb-10"> <div class="text-slate-500 uppercase text-sm">April 10, 2020</div> <div class="text-slate-500 uppercase text-sm">azure, azure-container-instance, pi-hole</div> </div> <div class="markdown"> <p>A simple guide to deploy <a href="https://pi-hole.net/">Pi-hole</a>, a black hole for Internet advertisements, in <a href="https://azure.microsoft.com/en-in/services/container-instances/">Azure Container Instances</a>.</p>
+<ul>
+<li>We use pi-hole’s docker image.</li>
+<li>We persist configurations and data across the container instances. To do so, we will use Azure Storage to mount file volumes in the containers.</li>
+</ul>
+<p>1. Install <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest">Azure CLI</a> and set your subscription</p>
+<pre class="language-shell"><code is:raw="" class="language-shell"><span class="token operator">></span> az login
+
+<span class="token operator">></span> az account <span class="token builtin class-name">set</span> <span class="token parameter variable">--subscription</span> <span class="token operator">&#x3C;</span>subscription_id<span class="token operator">></span></code></pre>
+<p>2. Create a Resource Group</p>
+<pre class="language-shell"><code is:raw="" class="language-shell"><span class="token operator">></span> az group create <span class="token parameter variable">--name</span> <span class="token operator">&#x3C;</span>rg_name<span class="token operator">></span> <span class="token parameter variable">--location</span> <span class="token operator">&#x3C;</span>location<span class="token operator">></span></code></pre>
+<p>3. Create a Storage account</p>
+<pre class="language-shell"><code is:raw="" class="language-shell"><span class="token operator">></span> az storage account create --resource-group <span class="token operator">&#x3C;</span>rg_name<span class="token operator">></span> <span class="token parameter variable">--name</span> <span class="token operator">&#x3C;</span>storage_name<span class="token operator">></span> <span class="token parameter variable">--location</span> <span class="token operator">&#x3C;</span>location<span class="token operator">></span> <span class="token parameter variable">--sku</span> Standard_LRS</code></pre>
+<p>4. Create two file shares in the storage account created in the last step</p>
+<pre class="language-shell"><code is:raw="" class="language-shell">az storage share create --account-name <span class="token operator">&#x3C;</span>storage_name<span class="token operator">></span> <span class="token parameter variable">--name</span> etc-pihole
+
+az storage share create --account-name <span class="token operator">&#x3C;</span>storage_name<span class="token operator">></span> <span class="token parameter variable">--name</span> etc-dnsmasq</code></pre>
+<p>5. Obtain the storage account key</p>
+<pre class="language-shell"><code is:raw="" class="language-shell"><span class="token assign-left variable">STORAGE_KEY</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>az storage account keys list --resource-group <span class="token operator">&#x3C;</span>rg_name<span class="token operator">></span> --account-name <span class="token operator">&#x3C;</span>storage_name<span class="token operator">></span> <span class="token parameter variable">--query</span> <span class="token string">"[0].value"</span> <span class="token parameter variable">--output</span> tsv<span class="token variable">)</span></span></code></pre>
+<p>5. Since our container will require a good number of configuration, let’s use a yaml file</p>
+<p>deploy-pi-hole.yaml</p>
+<pre class="language-yaml"><code is:raw="" class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> &#x3C;container_group_name<span class="token punctuation">></span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> <span class="token string">'2018-10-01'</span>
+<span class="token key atrule">location</span><span class="token punctuation">:</span> &#x3C;location<span class="token punctuation">></span>
+<span class="token key atrule">tags</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token key atrule">properties</span><span class="token punctuation">:</span>
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> &#x3C;container_name<span class="token punctuation">></span>
+    <span class="token key atrule">properties</span><span class="token punctuation">:</span>
+      <span class="token key atrule">image</span><span class="token punctuation">:</span> pihole/pihole<span class="token punctuation">:</span>latest
+      <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">protocol</span><span class="token punctuation">:</span> UDP
+        <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">53</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">protocol</span><span class="token punctuation">:</span> UDP
+        <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">67</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+        <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+        <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">443</span>
+      <span class="token key atrule">environmentVariables</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> TZ
+        <span class="token key atrule">value</span><span class="token punctuation">:</span> Asia/Kolkata
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> WEBPASSWORD
+        <span class="token key atrule">value</span><span class="token punctuation">:</span> &#x3C;custom_large_string<span class="token punctuation">></span>
+      <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+        <span class="token key atrule">requests</span><span class="token punctuation">:</span>
+          <span class="token key atrule">memoryInGB</span><span class="token punctuation">:</span> <span class="token number">1</span>
+          <span class="token key atrule">cpu</span><span class="token punctuation">:</span> <span class="token number">1</span>
+      <span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> pihole
+        <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /etc/pihole/
+        <span class="token key atrule">readOnly</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> dnsmasq
+        <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /etc/dnsmasq.d/
+        <span class="token key atrule">readOnly</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">restartPolicy</span><span class="token punctuation">:</span> Always
+  <span class="token key atrule">ipAddress</span><span class="token punctuation">:</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">protocol</span><span class="token punctuation">:</span> UDP
+      <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">53</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">protocol</span><span class="token punctuation">:</span> UDP
+      <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">67</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+      <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+      <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">443</span>
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> public
+    <span class="token key atrule">dnsNameLabel</span><span class="token punctuation">:</span> &#x3C;custom_dnsname<span class="token punctuation">></span>
+  <span class="token key atrule">osType</span><span class="token punctuation">:</span> Linux
+  <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> pihole
+    <span class="token key atrule">azureFile</span><span class="token punctuation">:</span>
+      <span class="token key atrule">shareName</span><span class="token punctuation">:</span> etc<span class="token punctuation">-</span>pihole
+      <span class="token key atrule">readOnly</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+      <span class="token key atrule">storageAccountName</span><span class="token punctuation">:</span> &#x3C;storage_name<span class="token punctuation">></span>
+      <span class="token key atrule">storageAccountKey</span><span class="token punctuation">:</span> &#x3C;value of $STORAGE_KEY<span class="token punctuation">></span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> dnsmasq
+    <span class="token key atrule">azureFile</span><span class="token punctuation">:</span>
+      <span class="token key atrule">shareName</span><span class="token punctuation">:</span> etc<span class="token punctuation">-</span>dnsmasq
+      <span class="token key atrule">readOnly</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+      <span class="token key atrule">storageAccountName</span><span class="token punctuation">:</span> &#x3C;storage_name<span class="token punctuation">></span>
+      <span class="token key atrule">storageAccountKey</span><span class="token punctuation">:</span> &#x3C;value of $STORAGE_KEY<span class="token punctuation">></span></code></pre>
+<p>Replace the place holders in the yaml file.</p>
+<ul>
+<li>&#x3C;custom_large_string> will be used as the password when you log in to pi-hole’s dashboard.</li>
+<li>&#x3C;custom_dnsname> will be used in the generated FQDN in the following format <code>&#x3C;custom_dnsname>.&#x3C;location>.azurecontainer.io</code></li>
+</ul>
+<p>6. Create the container instance</p>
+<pre class="language-shell"><code is:raw="" class="language-shell">az container create --resource-group <span class="token operator">&#x3C;</span>rg_name<span class="token operator">></span> <span class="token parameter variable">--file</span> deploy-pi-hole.yaml</code></pre>
+<p>7. Get the IP address of the pi-hole running as container instance.</p>
+<pre class="language-shell"><code is:raw="" class="language-shell">az container show --resource-group <span class="token operator">&#x3C;</span>rg_name<span class="token operator">></span> <span class="token parameter variable">--name</span> <span class="token operator">&#x3C;</span>container_group_name<span class="token operator">></span> <span class="token parameter variable">--query</span> ipAddress.ip <span class="token parameter variable">--output</span> tsv</code></pre>
+<p><strong>Update</strong>: It has been 10 days since I started using pi-hole and it has blocked ~31% of my DNS queries so far.</p>
+<p><img src="/assets/images/2020-04-11-pi-hole-in-azure-container-instances/stats.png" alt="Pi-hole stats"></p> </div> </div>  <footer> <div class="bg-gray-800 text-center py-8"> <div class="container mx-auto w-100 lg:w-2/3 xl:1/2 text-slate-200">
+Made with 💙 by <a class="visited:text-white" rel="me" href="https://github.com/ganesshkumar"><span class="text-white">Ganessh Kumar</span></a><br> <a class="hidden" rel="me" href="https://hachyderm.io/@ganesshkumar">Mastodon</a> </div> </div> </footer> </body></html>

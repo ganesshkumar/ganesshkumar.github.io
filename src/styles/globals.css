@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, 
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
+  }
+  p, ul {
+    font-size: 15pt;
+    font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, 
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
+    line-height: 24.75pt;
+    margin-block-end: 8.5pt;
+    margin-bottom: 8.5pt;
+  }
+  code {
+    background-color: theme('colors.blue.200');
+    padding: 0 5pt;
+  }
+  h1,h2,h3,h4,h5,h6 {
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    margin-top: 25pt;
+  }
+  h1, h2, h3, h4, h5 {
+    font-weight: bold;
+  }
+  h1 {
+    font-size: 28.5pt;
+  }
+  h2 {
+    font-size: 27pt;
+  }
+  h3 {
+    font-size: 18pt;
+  }
+  h4 {
+    font-size: 16.5pt;
+  }
+  h5 {
+    font-size: 15pt;
+  }
+  h6 {
+    font-size: 14.25pt;
+  }
+  a {
+    text-decoration: underline;
+  }
+  a:hover {
+    color: theme('colors.sky.600')
+  }
+  code {
+    font-family: Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;
+    background-color: #c3ddfd;
+    padding: 0 5pt;
+  }
+  ol {
+    font-size: 20px;
+  }
+  .markdown ol {
+    list-style: decimal;
+    margin-left: 2rem;
+  }
+  .markdown ul {
+    list-style: circle;
+    margin-left: 2rem;
+  }
+}

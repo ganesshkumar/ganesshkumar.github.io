@@ -1,0 +1,7 @@
+---
+const { platform, link } = Astro.props;
+---
+
+<a href={link} target="_blank" class="no-underline">
+  <i class=`cursor-pointer text-3xl bx bxl-${platform}`></i>
+</a>

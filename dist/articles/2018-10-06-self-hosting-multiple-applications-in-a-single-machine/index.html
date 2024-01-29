@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v4.2.6"><title>Self-hosting multiple applications in a single machine | Ganessh Kumar</title><link rel="sitemap" href="/sitemap-index.xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"><link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"><script dangerouslySetInnerHTML="[object Object]"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/2013-09-01-learn-unlearn-relearn.l15eNEwx.css" /><script type="module" src="/_astro/hoisted.l-JsOPk0.js"></script></head> <body> <header> <nav class="bg-white flex border-gray-200 dark:bg-gray-900"> <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"> <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false"> <span class="sr-only">Open main menu</span> <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path> </svg> </button> <div class="hidden w-full md:block md:w-auto" id="navbar-default"> <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"> <li class="mb-0 z-10 text-slate-700"> <a class="no-underline" href="/"> <div class="text-slate-900 cursor-pointer"> Home </div> </a> </li> <li class="mb-0 z-10 font-semibold underline decoration-sky-500 underline-offset-2"> <a class="no-underline" href="/articles"> <div class="text-slate-900 cursor-pointer"> Articles </div> </a> </li> <li class="mb-0 z-10 text-slate-700"> <a class="no-underline" href="/projects"> <div class="text-slate-900 cursor-pointer"> Projects </div> </a> </li>  <li class="mb-0 z-10 text-slate-700"> <a class="no-underline" href="/about"> <div class="text-slate-900 cursor-pointer"> About </div> </a> </li> </ul> </div> </div> </nav> </header>  <div class="container mx-auto w-100 lg:w-2/3 2xl:w-1/2"> <h1 class="font-bold text-4xl cursor-default tracking-wide pb-2 border-b border-sky-600">Self-hosting multiple applications in a single machine</h1> <div class="flex flex-row justify-between mt-2 mb-10"> <div class="text-slate-500 uppercase text-sm">October 5, 2018</div> <div class="text-slate-500 uppercase text-sm">docker, nginx, certbot</div> </div> <div class="markdown"> <p>I love self-hosting personal applications. I spun a machine on cloud and started hosting my applications. As I wanted to host my second application, I got struck routing both the application’s request to the same machine without needing to specify a port number in the URL. Specifying a port number in the URL like <a href="http://miniflux.ganesshkumar.com:5000">http://miniflux.ganesshkumar.com:5000</a> and <a href="http://blog.ganesshkumar.com:4000">http://blog.ganesshkumar.com:4000</a> made the URL look ugly.</p>
+<p>After searching for a while, I found that reverse proxy using nginx can come in handy. At this point, I also wanted to enforce SSL to the applications as my application needed login. <a href="https://letsencrypt.org/">Let’s Encrypt</a> provides free SSL certificates. Now I needed to put together nginx, certificates and my applications to work together. To reduce setup procedures, I opted to use Docker. In this post let’s see how I put all the pieces together.</p>
+<p>The first application I want to host in <a href="https://miniflux.app/">miniflux</a>, a minimalist feed reader.</p>
+<p>Let’s create two folders in the home directory. <code>data</code> to hold all the volumes that will be mounted in docker and <code>docker-compose</code> to hold docker-compose files to launch the services and applications.</p>
+<pre class="language-shell"><code is:raw="" class="language-shell">$ <span class="token function">mkdir</span> data <span class="token function">docker-compose</span></code></pre>
+<h3 id="1-lets-start-our-first-application">1. Let’s start our first application</h3>
+<p>Create the folders for data and docker-compose</p>
+<pre class="language-shell"><code is:raw="" class="language-shell">$ <span class="token function">mkdir</span> data/miniflux docker-compose/miniflux</code></pre>
+<p>Then create <em>docker-compose.yml</em> file in the docker-compose/miniflux folder with the following content</p>
+<pre class="language-yaml"><code is:raw="" class="language-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3'</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">miniflux</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> miniflux/miniflux<span class="token punctuation">:</span>latest
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">"8000:8080"</span>
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> db
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> DATABASE_URL=postgres<span class="token punctuation">:</span>//&#x3C;username<span class="token punctuation">></span><span class="token punctuation">:</span>&#x3C;password<span class="token punctuation">></span>@db/miniflux<span class="token punctuation">?</span>sslmode=disable
+  <span class="token key atrule">db</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> postgres<span class="token punctuation">:</span><span class="token number">10.1</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> POSTGRES_USER=&#x3C;username<span class="token punctuation">></span>
+      <span class="token punctuation">-</span> POSTGRES_PASSWORD=&#x3C;password<span class="token punctuation">></span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> $<span class="token punctuation">{</span>HOME<span class="token punctuation">}</span>/data/miniflux<span class="token punctuation">:</span>/var/lib/postgresql/data</code></pre>
+<p>Now running <code>docker-compose up -d</code> in the docker-compose folder will run this application in the background. We can reach the server on <em>localhost:8000</em>. Our first application is up and running now.</p>
+<h3 id="2-starting-nginx">2. Starting nginx</h3>
+<p>Create the folders for data and docker-compose</p>
+<pre class="language-shell"><code is:raw="" class="language-shell">$ <span class="token function">mkdir</span> data/nginx docker-compose/nginx</code></pre>
+<p>We will be mounting SSL certificates in nginx container, so that our applications will be served over a secured layer. Create folders for holding the certificates</p>
+<pre class="language-shell"><code is:raw="" class="language-shell">$ <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> data/letsencrypt/certs data/letsencrypt/certs-data</code></pre>
+<p>Then create <em>docker-compose.yml</em> file with the following contents</p>
+<pre class="language-yaml"><code is:raw="" class="language-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3'</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">nginx</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>alpine
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> nginx
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">network_mode</span><span class="token punctuation">:</span> host
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> $<span class="token punctuation">{</span>HOME<span class="token punctuation">}</span>/data/letsencrypt/certs<span class="token punctuation">:</span>/etc/letsencrypt
+      <span class="token punctuation">-</span> $<span class="token punctuation">{</span>HOME<span class="token punctuation">}</span>/data/letsencrypt/certs<span class="token punctuation">-</span>data<span class="token punctuation">:</span>/data/letsencrypt
+      <span class="token punctuation">-</span> $<span class="token punctuation">{</span>HOME<span class="token punctuation">}</span>/data/nginx<span class="token punctuation">:</span>/etc/nginx
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token datetime number">80:80</span>
+      <span class="token punctuation">-</span> 443<span class="token punctuation">:</span><span class="token number">443</span></code></pre>
+<p>Before string the ngix container, we have to create a config file for nginx. Create <code>data/nginx/nginx.conf</code> file with the following content</p>
+<pre class="language-apacheconf"><code is:raw="" class="language-apacheconf">events {
+}
+
+http {
+    server {
+        <span class="token directive-inline property">listen</span>      80;
+        <span class="token directive-inline property">listen</span> [::]:80;
+        server_name miniflux.ganesshkumar.com;
+
+         location / {
+                rewrite <span class="token regex">^ https://</span><span class="token variable">$host</span><span class="token variable">$request_uri</span>? permanent;
+        }
+
+        location <span class="token regex">^~ /.well-known {</span>
+                <span class="token directive-inline property">allow</span> all;
+                root  /data/letsencrypt/;
+        }
+    }
+}</code></pre>
+<p>This config dictates to redirect any request to <code>miniflux.ganesshkumar.com</code> to <code>https://ganesshkumar.com</code>. Also serve the request to <em>/.well-known</em> to be served from <em>/data/letscrypt</em> directory. This .well-known endpoint will be used by Let’s Encrypt to verify our DNS entry for miniflux.</p>
+<p>Now, we can run <code>docker-compose up -d</code> from the docker-compose directory to start the nginx server. The request to miniflux will not reach the application yet, as we haven’t routed it to localhost:8000 but still the nginx server will help set up the SSL certificates for the miniflux domain.</p>
+<h3 id="3-setting-up-ssl-certificates">3. Setting up SSL certificates</h3>
+<p>Let’s Encrypt provides to tool certbot to create our SSL certificates. Let’s use the docker image of certbot to do that. Run the following docker command.</p>
+<pre class="language-shell"><code is:raw="" class="language-shell">$ <span class="token function">docker</span> run <span class="token parameter variable">-it</span> <span class="token parameter variable">--rm</span> <span class="token punctuation">\</span>
+        <span class="token parameter variable">-v</span> certs:/etc/letsencrypt <span class="token punctuation">\</span>
+        <span class="token parameter variable">-v</span> certs-data:/data/letsencrypt <span class="token punctuation">\</span>
+        deliverous/certbot <span class="token punctuation">\</span>
+        certonly <span class="token punctuation">\</span>
+        <span class="token parameter variable">--webroot</span> --webroot-path<span class="token operator">=</span>/data/letsencrypt
+        <span class="token parameter variable">-d</span> miniflux.ganesshkumar.com</code></pre>
+<p>The above command will generate a challage and tries to solve it at <code>miniflux.ganesshkumar.com/.well-known</code>. Our nginx server has enough configuration to host the contents of .well-known folder generated by the certbot.</p>
+<p>On successful execution of the above command, you will have your certificates generated at data/letsencrypt/certs-data directory.</p>
+<h3 id="4-routing-the-request-to-the-application">4. Routing the request to the application</h3>
+<p>Now let’s modify the contents of <em>nginx.conf</em> file, to route the requests to miniflux.ganesshkumar.com to localhost:8000.</p>
+<p>Add the following code to the http section of <em>nginx.conf</em></p>
+<pre class="language-apacheconf"><code is:raw="" class="language-apacheconf">    server {
+        <span class="token directive-inline property">listen</span>      443           ssl http2;
+        <span class="token directive-inline property">listen</span> [::]:443           ssl http2;
+        server_name               miniflux.ganesshkumar.com;
+
+        ssl                       on;
+
+        add_header                Strict-Transport-Security <span class="token string">"max-age=31536000"</span> always;
+
+        ssl_session_cache         shared:SSL:20m;
+        ssl_session_timeout       10m;
+
+        ssl_protocols             TLSv1 TLSv1.1 TLSv1.2;
+        ssl_prefer_server_ciphers on;
+        ssl_ciphers               <span class="token string">"ECDH+AESGCM:ECDH+AES256:ECDH+AES128:!ADH:!AECDH:!MD5;"</span>;
+
+        ssl_stapling              on;
+        ssl_stapling_verify       on;
+        resolver                  8.8.8.8 8.8.4.4;
+
+        ssl_certificate           /etc/letsencrypt/live/miniflux.ganesshkumar.com/fullchain.pem;
+        ssl_certificate_key       /etc/letsencrypt/live/miniflux.ganesshkumar.com/privkey.pem;
+        ssl_trusted_certificate   /etc/letsencrypt/live/miniflux.ganesshkumar.com/chain.pem;
+
+        access_log                /dev/stdout;
+        error_log                 /dev/stderr info;
+
+        location / {
+            proxy_pass           http://127.0.0.1:8000;
+            proxy_set_header     Host <span class="token variable">$host</span>;
+            proxy_set_header     X-Forwarded-For <span class="token variable">$remote_addr</span>;
+        }
+    }</code></pre>
+<p>We are almost done. Restart the nginx server to use the latest configuration. Run the following command in nginx’s docker-compose directory.</p>
+<pre class="language-shell"><code is:raw="" class="language-shell">$ <span class="token function">docker-compose</span> down
+$ <span class="token function">docker-compose</span> up <span class="token parameter variable">-d</span></code></pre>
+<p>That all. Our request to <a href="http://miniflux.ganesshkumar.com">http://miniflux.ganesshkumar.com</a> will be redirected to <a href="https://miniflux.ganesshkumar.com">https://miniflux.ganesshkumar.com</a> which will be served from localhost:8000, making sure that all the requests are being served over SSL.</p>
+<p><strong>To add a second application</strong>, just repeat all the four steps. You will be serving both the applications from the same machine using nginx reverse proxy.</p>
+<h3 id="5-renewing-ssl-certificate">5. Renewing SSL certificate</h3>
+<p>After few months your SSL certificate will expire. You can run the following command to renew the certificate.</p>
+<pre class="language-shell"><code is:raw="" class="language-shell">$ <span class="token function">docker</span> run <span class="token parameter variable">-t</span> <span class="token parameter variable">--rm</span> <span class="token punctuation">\</span>
+      <span class="token parameter variable">-v</span> certs:/etc/letsencrypt <span class="token punctuation">\</span>
+      <span class="token parameter variable">-v</span> certs-data:/data/letsencrypt <span class="token punctuation">\</span>
+      deliverous/certbot <span class="token punctuation">\</span>
+      renew <span class="token punctuation">\</span>
+      <span class="token parameter variable">--webroot</span> --webroot-path<span class="token operator">=</span>/data/letsencrypt
+
+$ <span class="token function">docker-compose</span> <span class="token function">kill</span> <span class="token parameter variable">-s</span> HUP nginx</code></pre>
+<p>This set up has made the process of deploying any new application to the server simple :)</p> </div> </div>  <footer> <div class="bg-gray-800 text-center py-8"> <div class="container mx-auto w-100 lg:w-2/3 xl:1/2 text-slate-200">
+Made with 💙 by <a class="visited:text-white" rel="me" href="https://github.com/ganesshkumar"><span class="text-white">Ganessh Kumar</span></a><br> <a class="hidden" rel="me" href="https://hachyderm.io/@ganesshkumar">Mastodon</a> </div> </div> </footer> </body></html>
