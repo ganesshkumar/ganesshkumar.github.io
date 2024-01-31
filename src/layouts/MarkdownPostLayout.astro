@@ -10,7 +10,7 @@ const currentPage = 'Articles';
 ---
 
 <BaseLayout pageTitle={pageTitle} currentPage={currentPage}>
-  <div class="container mx-auto w-100 lg:w-2/3 2xl:w-1/2">
+  <div class="container px-2 mx-auto w-100 lg:w-2/3 2xl:w-1/2">
     <h1 class="font-bold text-4xl cursor-default tracking-wide pb-2 border-b border-sky-600">{frontmatter.title}</h1>
     <div class="flex flex-row justify-between mt-2 mb-10">
       <div class="text-slate-500 uppercase text-sm">{format(new Date(frontmatter.date), 'LLLL d, yyyy')}</div>

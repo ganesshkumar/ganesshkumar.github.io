@@ -1,9 +1,7 @@
 ---
-import { ViewTransitions } from "astro:transitions";
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-import 'flowbite';
 import '../styles/globals.css';
 import '../styles/prism-a11y-dark.css';
 
@@ -36,11 +34,11 @@ const { pageTitle, currentPage } = Astro.props;
       `,
       }}
     />
-    <ViewTransitions />
   </head>
   <body>
     <Header currentPage={currentPage} />
     <slot />
     <Footer />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
   </body>
 </html>
