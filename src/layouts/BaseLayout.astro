@@ -5,7 +5,21 @@ import Footer from '../components/Footer.astro';
 import '../styles/globals.css';
 import '../styles/prism-a11y-dark.css';
 
-const { pageTitle, currentPage } = Astro.props; 
+const description = "Dive into the world of technology with Ganessh Kumar on his personal website. Read easy-to-understand articles about cool stuff like Obsidian, Docker, Kubernetes, and privacy tools. Ganessh Kumar shares articles and his cool projects and explains Obsidian plugins in a way that's simple and fun. Stay updated on the latest tech trends and learn in a way that feels like a chat with a friend. Explore the exciting side of tech with Ganessh Kumar!";
+const siteImage = '/ganesshkumar-emoji.png';
+const { pageTitle, currentPage } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Website",
+  "headline": pageTitle,
+  "description": description,
+  "author": {
+    "@type": "Person",
+    "name": "Ganessh Kumar",
+    "url": "https://www.ganesshkumar.com"
+  },
+};
 ---
 
 <html lang="en">
@@ -14,8 +28,24 @@ const { pageTitle, currentPage } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
     <title>{pageTitle}</title>
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <!-- OpenGraph Metadata -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(siteImage, Astro.site)} />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:type" content="website" />
+    <!-- Twitter Metadata -->
+    <meta property="twitter:title" content={pageTitle} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(siteImage, Astro.site)} />
+    <meta property="twitter:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="twitter:card" content={description} />
+    <!-- Schema.org JSON-LD data -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     {/* Font: Google Nato Sans and Lato */}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com"  />
@@ -23,17 +53,13 @@ const { pageTitle, currentPage } = Astro.props;
     {/* Icons: BoxIcons */}
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     {/* Analytics: Clarity */}
-    <script
-      dangerouslySetInnerHTML={{
-        __html: `
-          (function(c,l,a,r,i,t,y){
-            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-          })(window, document, "clarity", "script", "6pdaj4a6a5");
-      `,
-      }}
-    />
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "6pdaj4a6a5");
+    </script>
   </head>
   <body>
     <Header currentPage={currentPage} />

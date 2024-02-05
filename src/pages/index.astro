@@ -32,11 +32,11 @@ const featuredProjects = allProjects
                 <div class='text-xl my-5'>
                   Full-Stack Software Engineer
                 </div>
-                <p class='text-base text-slate-600'>
+                <h1 class='text-base text-slate-600'>
                   Currently building Microsoft Teams at Microsoft.
                   <br/>
                   I build and maintain Obsidian Plugins.
-                </p>
+                </h1>
                 <a href="/about">
                   <button
                     type="button"
@@ -56,7 +56,7 @@ const featuredProjects = allProjects
       <main class='px-2 my-10 container md:mx-auto w-100 lg:w-2/3 2xl:w-1/2'>
         {/* Featured Projects */}
         <section>
-          <h1 class='flex justify-between'>
+          <h2 class='flex justify-between'>
             <span>
               <span class='font-bold text-3xl tracking-wide'>Featured</span>
               <span class='font-bold text-3xl text-sky-600 tracking-wide'>Projects</span>
@@ -64,7 +64,7 @@ const featuredProjects = allProjects
             <span>
               <a class='text-base no-underline decoration-sky-600 hover:text-sky-600' href="/projects">View all projects →</a>
             </span>
-          </h1>
+          </h2>
           <div class='grid grid-cols-1 gap-x-8 gap-y-8 mt-10'>
             {/* Featured projects */}
             {featuredProjects.map(project => (
@@ -88,7 +88,7 @@ const featuredProjects = allProjects
 
         {/* Latest blog posts */}
         <section class="mt-20">
-          <h1 class='flex justify-between'>
+          <h2 class='flex justify-between'>
             <span>
               <span class='font-bold text-3xl tracking-wide'>Recent</span>
               <span class='font-bold text-3xl text-sky-600 tracking-wide'>Articles</span>
@@ -96,7 +96,7 @@ const featuredProjects = allProjects
             <span>
               <a class='text-base no-underline decoration-sky-600 hover:text-sky-600' href="/articles">View all articles →</a>
             </span>
-          </h1>
+          </h2>
           <div class='mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 mt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3'>
             {recentPosts.map(post => (
               <a href={post.url} class="group no-underline max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-lg hover:shadow-sky-100 hover:border-sky-600 transition duration-300 hover:-translate-y-2 dark:bg-gray-800 dark:border-gray-700">
