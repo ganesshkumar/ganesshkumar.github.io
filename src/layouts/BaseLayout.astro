@@ -21,6 +21,10 @@ const schema = {
     url: "https://www.ganesshkumar.com",
   },
 };
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
+  .toString()
+  .replace(/\/$/, "");
 ---
 
 <html lang="en">
@@ -32,12 +36,12 @@ const schema = {
     <meta name="description" content={pageDescription || description} />
     <title>{pageTitle}</title>
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="canonical" href={canonicalUrl} />
     <!-- OpenGraph Metadata -->
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription || description} />
     <meta property="og:image" content={new URL(siteImage, Astro.site)} />
-    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
     <!-- Twitter Metadata -->
     <meta property="twitter:title" content={pageTitle} />
@@ -46,10 +50,7 @@ const schema = {
       content={pageDescription || description}
     />
     <meta property="twitter:image" content={new URL(siteImage, Astro.site)} />
-    <meta
-      property="twitter:url"
-      content={new URL(Astro.url.pathname, Astro.site)}
-    />
+    <meta property="twitter:url" content={canonicalUrl} />
     <meta property="twitter:card" content={pageDescription || description} />
     <!-- Schema.org JSON-LD data -->
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
