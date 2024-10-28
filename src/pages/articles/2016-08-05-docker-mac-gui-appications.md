@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Containerize GUI Applications on Mac
-description: Containerize GUI Applications on Mac
+description: Learn how to containerize GUI applications on Mac OS X using Docker and XQuartz, with step-by-step instructions and troubleshooting tips.
 author: Ganessh Kumar
 pubDate: 2016-08-05
 date: 2016-08-05

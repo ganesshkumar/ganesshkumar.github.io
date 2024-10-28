@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Git Shallow Clone
-description: Git Shallow Clone
+description: Learn how to handle cloning large Git repositories efficiently using shallow cloning to avoid common errors and improve performance.
 author: Ganessh Kumar
 pubDate: 2014-08-13
 date: 2014-08-13

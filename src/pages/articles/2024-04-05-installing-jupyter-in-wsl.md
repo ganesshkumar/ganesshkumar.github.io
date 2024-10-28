@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "Installing Jupyter in WSL"
-description: "Installing Jupyter in WSL"
+description: "Learn how to enable WSL, install a Linux distribution, and set up Jupyter Notebook on your Windows machine with this step-by-step guide."
 author: "Ganessh Kumar"
 date: 2024-04-05
 pubDate: 2024-04-05

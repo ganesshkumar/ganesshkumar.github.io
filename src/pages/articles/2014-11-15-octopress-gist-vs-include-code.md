@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Octopress Gist vs Include-code
-description: Octopress Gist vs Include-code
+description: Discover the performance impact of using Gist for code snippets in Octopress and explore alternative methods like Include-code to optimize your blog's load time.
 author: Ganessh Kumar
 pubDate: 2014-11-15
 date: 2014-11-15

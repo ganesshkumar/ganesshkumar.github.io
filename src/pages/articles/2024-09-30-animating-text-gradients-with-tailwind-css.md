@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "Animating Text Gradients with Tailwind CSS"
-description: "Learn how to create and animate gradient text in Tailwind CSS using transitions and keyframes."
+description: "Discover how to animate gradient text in Tailwind CSS with step-by-step methods using utility classes and custom configurations for stunning visual effects."
 author: "Ganessh Kumar"
 date: 2024-09-30
 pubDate: 2024-09-30

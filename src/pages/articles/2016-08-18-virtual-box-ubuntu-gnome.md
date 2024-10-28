@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "Notes on my Virtual Box"
-description: "Notes on my Virtual Box"
+description: "Detailed notes on setting up and using Ubuntu GNOME on Virtual Box, including post-installation steps, essential tools, and useful commands."
 author: Ganessh Kumar
 pubDate: 2016-08-18
 date: 2016-08-18

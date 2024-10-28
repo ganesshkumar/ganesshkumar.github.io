@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "Self-hosting multiple applications in a single machine"
-description: "Self-hosting multiple applications in a single machine"
+description: "Learn how to self-host multiple applications on a single machine using Docker, Nginx, and Let's Encrypt for SSL certificates. This guide walks you through setting up a reverse proxy, securing your applications, and managing SSL renewals."
 author: Ganessh Kumar
 pubDate: 2018-10-06
 date: 2018-10-06

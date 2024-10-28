@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Docker - Disable Stream Buffers in Python
-description: Docker - Disable Stream Buffers in Python
+description: Learn how to disable stream buffers in Python when running applications inside Docker containers. This guide explains setting the `PYTHONUNBUFFERED` environment variable or using the `-u` flag to ensure immediate output to stdout and stderr.
 author: Ganessh Kumar
 pubDate: 2016-07-10
 date: 2016-07-10

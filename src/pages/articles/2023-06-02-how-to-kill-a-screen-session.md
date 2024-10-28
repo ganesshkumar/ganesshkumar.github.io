@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "How to Kill a Screen Session"
-description: "Learn how to effectively terminate a screen session using screen-x command"
+description: "Discover step-by-step instructions to effectively terminate a screen session using the screen -X command. Learn how to identify and kill screen sessions to streamline your terminal workflow."
 author: Ganessh Kumar
 pubDate: 2023-06-02
 date: 2023-06-02

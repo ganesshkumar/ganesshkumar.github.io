@@ -1,41 +1,63 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "Projects | Ganessh Kumar";
-const currentPage = 'Projects';
+const pageDescription = "Projects developed by Ganessh Kumar";
+const currentPage = "Projects";
 
-const allProjects = await Astro.glob('../pages/projects/*.md');
-const featuredProjects = allProjects
-                            .sort((a, b) => b.frontmatter.order - a.frontmatter.order)
+const allProjects = await Astro.glob("../pages/projects/*.md");
+const featuredProjects = allProjects.sort(
+  (a, b) => b.frontmatter.order - a.frontmatter.order
+);
 ---
 
-<BaseLayout pageTitle={pageTitle} currentPage={currentPage}>
-  <div class='bg-white'>
-    <div class='flex flex-col h-full'>      
-      <main class='container px-2 mx-auto w-100 lg:w-2/3 2xl:w-1/2'>
+<BaseLayout
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+  currentPage={currentPage}
+>
+  <div class="bg-white">
+    <div class="flex flex-col h-full">
+      <main class="container px-2 mx-auto w-100 lg:w-2/3 2xl:w-1/2">
         <p class="text-3xl my-2">
-          <h1 class='font-bold text-3xl'>
-            <span class='tracking-wide underline decoration-sky-500 decoration-4 underline-offset-2'>Projects</span>
+          <h1 class="font-bold text-3xl">
+            <span
+              class="tracking-wide underline decoration-sky-500 decoration-4 underline-offset-2"
+              >Projects</span
+            >
           </h1>
         </p>
         <section class="mb-10">
-          <div class='grid grid-cols-1 gap-x-8 gap-y-8 mt-10'>
-            {featuredProjects.map(project => (
-              <div class="group flex w-full mx-0 bg-white border border-gray-200 rounded-lg shadow-lg hover:shadow-sky-100 hover:border-sky-600 transition duration-300 hover:scale-105 dark:bg-gray-800 dark:hover:bg-gray-700">
-                {project.frontmatter.boxIcon && <i class={`flex justify-center items-center text-sky-700 p-5 text-6xl bx ${project.frontmatter.boxIcon}`}/> }
-                <div class="p-6">
-                  <a href={project.frontmatter.repoUrl} class="no-underline hover:decoration hover:decoration-sky-600">
-                    <h5 class="mb-2 mt-0 text-2xl font-bold tracking-tight text-slate-700 dark:text-white group-hover:text-sky-600 decoration-sky-600 group-hover:underline">{project.frontmatter.title}</h5>
-                  </a>
-                  <div class="my-1 text-slate-600 dark:text-gray-400">{project.frontmatter.summary}</div>
-                  {/* <div class='px-6 pt-10 justify-self-end'>
+          <div class="grid grid-cols-1 gap-x-8 gap-y-8 mt-10">
+            {
+              featuredProjects.map((project) => (
+                <div class="group flex w-full mx-0 bg-white border border-gray-200 rounded-lg shadow-lg hover:shadow-sky-100 hover:border-sky-600 transition duration-300 hover:scale-105 dark:bg-gray-800 dark:hover:bg-gray-700">
+                  {project.frontmatter.boxIcon && (
+                    <i
+                      class={`flex justify-center items-center text-sky-700 p-5 text-6xl bx ${project.frontmatter.boxIcon}`}
+                    />
+                  )}
+                  <div class="p-6">
+                    <a
+                      href={project.frontmatter.repoUrl}
+                      class="no-underline hover:decoration hover:decoration-sky-600"
+                    >
+                      <h5 class="mb-2 mt-0 text-2xl font-bold tracking-tight text-slate-700 dark:text-white group-hover:text-sky-600 decoration-sky-600 group-hover:underline">
+                        {project.frontmatter.title}
+                      </h5>
+                    </a>
+                    <div class="my-1 text-slate-600 dark:text-gray-400">
+                      {project.frontmatter.summary}
+                    </div>
+                    {/* <div class='px-6 pt-10 justify-self-end'>
                     <a href={project.frontmatter.repoUrl} class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-600 rounded-lg hover:text-white hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800 no-underline gap-2">
                         See Code →
                     </a>
                   </div> */}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            }
           </div>
         </section>
       </main>

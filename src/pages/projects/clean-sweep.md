@@ -1,5 +1,6 @@
 ---
 title: Clean Sweep
+description: A collaborative platform that leverages crowdsourcing and crowdfunding to tackle urban garbage issues effectively.
 summary: A crowdsourced and crowdfunded solution to gabage problem
 repoUrl: https://github.com/dnivra26/CleanSweep
 order: 60

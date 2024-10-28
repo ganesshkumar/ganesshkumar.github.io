@@ -1,5 +1,6 @@
 ---
 title: Nathas
+description: Nathas is an innovative Slack bot that enhances your team's music experience by managing and streaming song requests directly within your Slack channels.
 summary: A Slack DJ
 repoUrl: https://github.com/TeamSven/nathas
 iconUrl: https://upload.wikimedia.org/wikipedia/commons/7/76/Slack_Icon.png

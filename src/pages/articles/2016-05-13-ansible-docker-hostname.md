@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Passing Host's Hostname to Docker Container
-description: Passing Host's Hostname to Docker Container
+description: Learn two simple methods to pass the hostname of the machine running the Docker daemon to a Docker container using Ansible.
 author: Ganessh Kumar
 pubDate: 2016-05-13
 date: 2016-05-13

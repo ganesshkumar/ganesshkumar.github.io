@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: SEO in Octopress
-description: SEO in Octopress
+description: Learn how to optimize your Octopress blog for search engines by adding meta keywords and descriptions to your posts.
 author: Ganessh Kumar
 pubDate: 2014-08-18
 date: 2014-08-18

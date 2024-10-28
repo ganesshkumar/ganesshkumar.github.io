@@ -1,5 +1,6 @@
 ---
 title: Computer 0.1
+description: A comprehensive project to build a modern computer from scratch, starting with basic components like NAND gates and D flip-flops.
 summary: Building a Modern Computer from First Principles
 repoUrl: https://github.com/ganesshkumar/Computer-0.1
 showcase: false
@@ -7,4 +8,4 @@ order: 90
 boxIcon: bx-desktop
 ---
 
-<!-- On-going project aiming at building a complete computer (Von Neumann architecture) provided that NAND gate and D flip-flop is given. The hardware of the computer has been completed and an assembler has been written to convert the assembly code to binary code.  -->
+<!-- An ongoing project focused on constructing a complete computer based on the Von Neumann architecture, starting from fundamental components such as NAND gates and D flip-flops. The hardware is complete, and an assembler has been developed to translate assembly code into binary. -->

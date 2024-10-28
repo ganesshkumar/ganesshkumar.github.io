@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Using Spotify Outside US and UK
-description: Using Spotify Outside US and UK
+description: Learn how to access Spotify from countries outside the US and UK using a simple proxy workaround.
 author: Ganessh Kumar
 pubDate: 2014-09-07
 date: 2014-09-07

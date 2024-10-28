@@ -1,5 +1,6 @@
 ---
 title: Jake
+description: Jake is a versatile Command Line Interface (CLI) tool designed for personal use, offering efficient management of tasks and tools through a simple JSON file storage system.
 summary: A CLI for personal tools
 repoUrl: https://github.com/ganesshkumar/jake
 order: 70

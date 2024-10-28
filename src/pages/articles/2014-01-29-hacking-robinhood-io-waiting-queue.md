@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Hacking robinhood.io's Waiting Queue
-description: Hacking robinhood.io's Waiting Queue
+description: Discover how I managed to move up the waiting queue for Robinhood.io's pre-registration by leveraging referral links and email addresses, and learn about the subsequent changes to their policy.
 author: Ganessh Kumar
 pubDate: 2014-01-29
 date: 2014-01-29

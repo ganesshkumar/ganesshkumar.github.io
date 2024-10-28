@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "Slip-Box (ZettleKasten) Note Taking Method"
-description: "Slip-Box (ZettleKasten) Note Taking Method"
+description: "Discover the Slip-Box (Zettelkasten) Note Taking Method, a powerful system for organizing and linking your notes to enhance personal development and project management."
 author: Ganessh Kumar
 pubDate: 2021-05-31
 date: 2021-05-31

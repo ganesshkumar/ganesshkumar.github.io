@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "Powershell Scripting - Building Blocks"
-description: "Powershell Scripting - Building Blocks"
+description: "Learn the essential building blocks of PowerShell scripting, including how to check and create directories if they don't exist."
 author: Ganessh Kumar
 pubDate: 2018-12-10
 date: 2018-12-10

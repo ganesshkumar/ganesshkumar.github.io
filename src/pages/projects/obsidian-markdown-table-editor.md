@@ -1,5 +1,6 @@
 ---
 title: Obsidian Markdown Table Editor
+description: A powerful Obsidian plugin that enables users to effortlessly create, edit, and manage markdown tables, enhancing productivity and organization within the Obsidian editor.
 summary: Plugin to provide an editor to create and modify markdown tables.
 repoUrl: https://github.com/ganesshkumar/obsidian-table-editor
 iconUrl: https://forum.obsidian.md/uploads/default/original/1X/bf119bd48f748f4fd2d65f2d1bb05d3c806883b5.png

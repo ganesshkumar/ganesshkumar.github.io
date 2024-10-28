@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "Windows - How to Reduce Space Between Desktop Icons"
-description: "Learn how to remove wide spaces between desktop icons and adjust spacing for a more compact layout"
+description: "Discover how to adjust the spacing between desktop icons in Windows for a more compact and visually appealing layout by modifying registry settings. Follow our step-by-step guide to reduce excessive gaps and enhance your desktop organization."
 author: Ganessh Kumar
 pubDate: 2023-06-07
 date: 2023-06-07

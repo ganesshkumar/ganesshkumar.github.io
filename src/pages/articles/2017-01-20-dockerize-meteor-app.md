@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "Dockerize Meteor Application"
-description: "Dockerize Meteor Application"
+description: "Learn how to build and deploy a Meteor application using Docker and Docker Compose for a streamlined production environment."
 author: Ganessh Kumar
 pubDate: 2017-01-20
 date: 2017-01-20

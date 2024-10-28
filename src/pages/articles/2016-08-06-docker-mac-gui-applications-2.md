@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Containerize GUI Applications on Mac - II
-description: Containerize GUI Applications on Mac - II
+description: Learn how to securely containerize GUI applications on Mac using Docker. This guide covers extending Docker images, managing X11 access control, and preserving application data.
 author: Ganessh Kumar
 pubDate: 2016-08-06
 date: 2016-08-06

@@ -1,5 +1,6 @@
 ---
 title: Dota2 Data Parser
+description: A comprehensive toolset for extracting and transforming data from Dota2, making it easily accessible and usable for various applications.
 summary: Collect dota2 data
 repoUrl: https://github.com/ganesshkumar/dota2-data-parser
 order: 10

@@ -1,12 +1,17 @@
 ---
-import type { MarkdownInstance } from 'astro';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import type { MarkdownInstance } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
-  const allPosts: MarkdownInstance<Record<string, any>>[] = await Astro.glob('../articles/*.md');
-  const uniqueTags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
+  const allPosts: MarkdownInstance<Record<string, any>>[] =
+    await Astro.glob("../articles/*.md");
+  const uniqueTags = [
+    ...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
+  ];
   return uniqueTags.map((tag) => {
-    const filteredPosts = allPosts.filter((post) => post.frontmatter.tags.includes(tag));
+    const filteredPosts = allPosts.filter((post) =>
+      post.frontmatter.tags.includes(tag)
+    );
     return {
       params: { tag },
       props: { posts: filteredPosts },
@@ -17,11 +22,18 @@ export async function getStaticPaths() {
 const { tag } = Astro.params;
 const { posts } = Astro.props;
 const pageTitle = `${tag} | Ganessh Kumar`;
+const pageDescription = `Posts tagged with ${tag}`;
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
   <p>Posts tagged with {tag}</p>
   <ul>
-    {posts.map((post) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
+    {
+      posts.map((post) => (
+        <li>
+          <a href={post.url}>{post.frontmatter.title}</a>
+        </li>
+      ))
+    }
   </ul>
 </BaseLayout>

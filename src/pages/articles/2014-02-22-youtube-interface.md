@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Youtube Interface
-description: Youtube Interface
+description: An analysis of the recent changes to Youtube's UI, highlighting design inconsistencies and potential improvements.
 author: Ganessh Kumar
 pubDate: 2014-02-22
 date: 2014-02-22

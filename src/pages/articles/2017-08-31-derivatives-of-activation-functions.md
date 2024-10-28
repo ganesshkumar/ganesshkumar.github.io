@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "Derivatives of Activation functions"
-description: "Derivatives of Activation functions"
+description: "Explore the derivatives of common neural network activation functions, including sigmoid, tanh, ReLU, and leaky ReLU, with detailed mathematical derivations."
 author: Ganessh Kumar
 pubDate: 2017-08-31
 date: 2017-08-31

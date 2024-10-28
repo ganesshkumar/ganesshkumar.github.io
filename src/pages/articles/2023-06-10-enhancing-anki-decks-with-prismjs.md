@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Enhancing Anki Deck with Prism.js Syntax Highlighting
-description: Learn how to add Prism.js syntax highlighting to your Anki deck for a more interactive learning experience.
+description: Discover how to enhance your Anki flashcards with Prism.js syntax highlighting. This guide provides step-by-step instructions to integrate Prism.js into your Anki deck, making your code snippets visually appealing and interactive for an improved learning experience.
 author: Ganessh Kumar
 pubDate: 2023-06-10
 date: 2023-06-10

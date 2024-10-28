@@ -1,5 +1,6 @@
 ---
 title: Guess Your Hero
+description: Challenge yourself to identify Dota2 heroes based on their attributes in this engaging browser game.
 summary: Time to guess Dota2 character
 repoUrl: https://github.com/TeamSven/nathas
 demo_url: https://squarehammer.github.io/guess-your-hero/

@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Installing Dropbox From Source Code
-description: Installing Dropbox From Source Code
+description: A step-by-step guide to installing Dropbox from source code on Arch Linux, including troubleshooting tips for common issues.
 author: Ganessh Kumar
 date: 2014-01-02
 pubDate: 2014-01-02

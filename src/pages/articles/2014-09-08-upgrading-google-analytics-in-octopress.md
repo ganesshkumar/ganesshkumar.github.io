@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Upgrading Google Analytics in Octopress
-description: Upgrading Google Analytics in Octopress
+description: Learn how to upgrade Google Analytics in Octopress to include Demographics and Interest reports with a simple one-line change.
 author: Ganessh Kumar
 pubDate: 2014-09-08
 date: 2014-09-08

@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Privacy Plugins for Browsers
-description: Privacy Plugins for Browsers
+description: Discover essential browser add-ons to enhance your privacy and protect against trackers and advertisers. This curated list includes tools for blocking ads, preventing fingerprinting, securing HTTPS connections, and more.
 author: Ganessh Kumar
 pubDate: 2016-02-01
 date: 2016-02-01

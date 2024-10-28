@@ -1,5 +1,6 @@
 ---
 title: Git Reminder
+description: A Telegram bot designed to remind you to contribute to your GitHub repositories regularly.
 summary: A telegram bot to remind you to contribute to github
 repoUrl: https://github.com/ganesshkumar/git-reminder
 order: 40

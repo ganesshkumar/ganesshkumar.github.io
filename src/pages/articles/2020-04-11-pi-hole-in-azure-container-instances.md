@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "Pi-hole in Azure Container Instances"
-description: "Get your pi-hole on Azure Container Instance"
+description: "Learn how to deploy Pi-hole, a powerful ad blocker, on Azure Container Instances with persistent storage and easy configuration."
 author: Ganessh Kumar
 pubDate: 2020-04-11
 date: 2020-04-11
