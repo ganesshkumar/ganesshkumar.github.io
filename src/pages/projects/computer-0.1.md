@@ -3,7 +3,7 @@ title: Computer 0.1
 description: A comprehensive project to build a modern computer from scratch, starting with basic components like NAND gates and D flip-flops.
 summary: Building a Modern Computer from First Principles
 repoUrl: https://github.com/ganesshkumar/Computer-0.1
-showcase: false
+showcase: true
 order: 90
 boxIcon: bx-desktop
 ---

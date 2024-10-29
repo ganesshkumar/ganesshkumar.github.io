@@ -13,7 +13,9 @@ const currentPage = "About";
   pageDescription={pageDescription}
   currentPage={currentPage}
 >
-  <div class="container px-2 mx-auto w-100 lg:w-2/3 2xl:w-1/2">
+  <div
+    class="flex flex-col h-full max-w-5xl mx-auto bg-white overflow-hidden px-4"
+  >
     <p class="text-3xl my-2">
       <h1 class="font-bold text-3xl">
         <span
@@ -24,7 +26,7 @@ const currentPage = "About";
     </p>
     <img
       transition:name="ganesshkumar"
-      class="my-5 h-96"
+      class="my-5 w-96 h-96"
       src="/ganesshkumar-emoji.png"
       alt="profile picture"
     />

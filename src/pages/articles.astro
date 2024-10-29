@@ -1,11 +1,20 @@
 ---
 import { format } from "date-fns";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPost from "../components/BlogPost.astro";
 
 const pageTitle = "Articles | Ganessh Kumar";
 const pageDescription = "Articles written by Ganessh Kumar";
 const currentPage = "Articles";
 const allPosts = await Astro.glob("../pages/articles/*.md");
+const allPostsByYear = allPosts.reduce((acc: any, post) => {
+  const year = format(new Date(post.frontmatter.pubDate), "yyyy");
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(post);
+  return acc;
+}, {});
 ---
 
 <BaseLayout
@@ -13,7 +22,9 @@ const allPosts = await Astro.glob("../pages/articles/*.md");
   pageDescription={pageDescription}
   currentPage={currentPage}
 >
-  <div class="container px-2 mx-auto w-100 lg:w-2/3 2xl:w-1/2">
+  <div
+    class="flex flex-col h-full max-w-5xl mx-auto bg-white overflow-hidden px-4"
+  >
     <p class="text-3xl my-2">
       <h1 class="font-bold text-3xl">
         <span
@@ -23,26 +34,23 @@ const allPosts = await Astro.glob("../pages/articles/*.md");
       </h1>
     </p>
 
-    <ul class="my-5">
+    <div>
       {
-        allPosts.reverse().map((post: any) => (
-          <li class="mb-10">
-            <a class="no-underline" href={post.url}>
-              <div class="cursor-pointer text-xl text-slate-700 hover:text-sky-600 decoration-sky-600 hover:underline tracking-2">
-                {post.frontmatter.title}
-              </div>
-            </a>
-            <div class="flex space-x-4">
-              <div class="text-slate-400 font uppercase text-sm flex items-center">
-                {format(new Date(post.frontmatter.date), "LLL d, yyyy")}
-              </div>
-              <div class="text-slate-400 font-semibold uppercase text-xs pt-1">
-                {(post.frontmatter.tags || []).join(", ")}
-              </div>
-            </div>
-          </li>
-        ))
+        Object.keys(allPostsByYear)
+          .sort((a, b) => Number(b) - Number(a))
+          .map((year) => {
+            return (
+              <>
+                <h2 class="text-2xl font-bold my-2 mt-12">{year}</h2>
+                <div class="grid grid-cols-1 gap-x-1 gap-y-1 my-5 divide-y">
+                  {allPostsByYear[year].reverse().map((post: any) => (
+                    <BlogPost post={post} />
+                  ))}
+                </div>
+              </>
+            );
+          })
       }
-    </ul>
+    </div>
   </div>
 </BaseLayout>

@@ -1,0 +1,88 @@
+---
+const { project } = Astro.props;
+---
+
+<div
+  class="group flex flex-col w-full mx-0 p-2 bg-white border border-gray-200 rounded-lg shadow-lg hover:shadow-sky-100 hover:border-sky-600 dark:bg-gray-800 dark:hover:bg-gray-700"
+>
+  <div class="flex">
+    {
+      project.frontmatter.boxIcon && (
+        <i
+          class={`flex justify-center items-center text-sky-600 p-1 text-2xl bx ${project.frontmatter.boxIcon}`}
+        />
+      )
+    }
+  </div>
+  <div class="flex items-start">
+    <a
+      href={project.frontmatter.repoUrl}
+      class="no-underline hover:decoration hover:decoration-sky-600"
+    >
+      <h5
+        class="mb-2 mt-0 text-xl font-bold tracking-tight text-slate-700 dark:text-white hover:underline"
+      >
+        {project.frontmatter.title}
+      </h5>
+    </a>
+  </div>
+  <div class="my-1 grow text-slate-600 dark:text-gray-400">
+    {project.frontmatter.summary}
+  </div>
+  <div class="justify-self-end flex justify-start py-1">
+    {
+      project.frontmatter.liveUrl && (
+        <a
+          role="button"
+          href={project.frontmatter.liveUrl}
+          target="_blank"
+          class="no-underline py-1 px-2 flex justify-center items-center gap-x-1 rounded-lg border border-slate-600 text-slate-700 bg-gray-50 hover:text-sky-600 hover:border-sky-600 hover:bg-sky-50 text-center"
+        >
+          Live
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            style="width: 0.75rem; height: 0.75rem; fill: currentcolor;"
+          >
+            <g data-name="Layer 2">
+              <g data-name="external-link">
+                <>
+                  <rect width="24" height="24" opacity="0" />
+                  <path d="M20 11a1 1 0 0 0-1 1v6a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h6a1 1 0 0 0 0-2H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-6a1 1 0 0 0-1-1z" />
+                  <path d="M16 5h1.58l-6.29 6.28a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0L19 6.42V8a1 1 0 0 0 1 1 1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-4a1 1 0 0 0 0 2z" />
+                </>
+              </g>
+            </g>
+          </svg>
+        </a>
+      )
+    }
+    {
+      project.frontmatter.installUrl && (
+        <a
+          role="button"
+          href={project.frontmatter.installUrl}
+          target="_blank"
+          class="no-underline py-1 px-2 flex justify-center items-center gap-x-1 rounded-lg border border-slate-600 text-slate-700 bg-gray-50 hover:text-sky-600 hover:border-sky-600 hover:bg-sky-50 text-center"
+        >
+          Install
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            style="width: 0.75rem; height: 0.75rem; fill: currentcolor;"
+          >
+            <g data-name="Layer 2">
+              <g data-name="external-link">
+                <>
+                  <rect width="24" height="24" opacity="0" />
+                  <path d="M20 11a1 1 0 0 0-1 1v6a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h6a1 1 0 0 0 0-2H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-6a1 1 0 0 0-1-1z" />
+                  <path d="M16 5h1.58l-6.29 6.28a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0L19 6.42V8a1 1 0 0 0 1 1 1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-4a1 1 0 0 0 0 2z" />
+                </>
+              </g>
+            </g>
+          </svg>
+        </a>
+      )
+    }
+  </div>
+</div>

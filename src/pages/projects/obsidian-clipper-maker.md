@@ -4,6 +4,7 @@ description: A powerful bookmarklet tool designed to effortlessly clip and save 
 summary: Bookmarklet for clipping content from the web
 repoUrl: https://github.com/ganesshkumar/obsidian-bookmarklet-maker
 iconUrl: https://forum.obsidian.md/uploads/default/original/1X/bf119bd48f748f4fd2d65f2d1bb05d3c806883b5.png 
+liveUrl: https://obsidian-clipper-maker.ganesshkumar.com
 order: 100
 showcase: true
 boxIcon: bx-cut

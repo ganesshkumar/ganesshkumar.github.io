@@ -1,12 +1,14 @@
 ---
 import { format } from "date-fns";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import BlogPost from "../components/BlogPost.astro";
 
 const pageTitle = "Home | Ganessh Kumar";
 const currentPage = "Home";
 
 const allPosts = await Astro.glob("../pages/articles/*.md");
-const recentPosts = allPosts.reverse().slice(0, 3);
+const recentPosts = allPosts.reverse().slice(0, 6);
 
 const allProjects = await Astro.glob("../pages/projects/*.md");
 const featuredProjects = allProjects
@@ -16,28 +18,30 @@ const featuredProjects = allProjects
 
 <BaseLayout pageTitle={pageTitle} currentPage={currentPage}>
   <div class="bg-white">
-    <div class="flex flex-col h-full">
+    <div
+      class="flex flex-col h-full max-w-5xl mx-auto bg-white overflow-hidden px-4"
+    >
       {/* Banner */}
       <header
         class="flex flex-col justify-center items-center"
         style={{ minHeight: "40vh" }}
       >
         <div
-          class="w-full my-10 container px-2 mx-auto w-100 lg:w-2/3 2xl:w-1/2 bg-gradient-to-r from-sky-700 to-cyan-500 text-slate-50 rounded-xl shadow-xl"
+          class="w-full my-10 w-100 bg-gradient-to-r from-sky-700 to-cyan-500 text-slate-50 rounded-xl shadow-xl"
         >
           <div class="isolate flex flex-col md:flex-row">
             <div class="flex basis-1/2 justify-center">
               <div class="flex flex-col justify-center">
-                <h5 class="text-sky-100">Hi 👋 I am</h5>
-                <div class="text-5xl font-bold mt-2">Ganessh Kumar R P</div>
+                <div class="text-sky-100">Hi 👋 I am</div>
+                <h1 class="text-5xl font-bold mt-2">Ganessh Kumar R P</h1>
                 <div class="text-xl mt-2 mb-4">
                   Full-Stack Software Engineer
                 </div>
-                <h1 class="text-base font-normal">
+                <h2 class="text-xl font-normal">
                   Currently building Microsoft Teams at Microsoft.
                   <br />
                   I build and maintain Obsidian Plugins.
-                </h1>
+                </h2>
                 <a href="/about" class="mt-4">
                   <button
                     type="button"
@@ -60,7 +64,7 @@ const featuredProjects = allProjects
         </div>
       </header>
 
-      <main class="px-2 my-10 container md:mx-auto w-100 lg:w-2/3 2xl:w-1/2">
+      <main class="px-2 my-10">
         {/* Featured Projects */}
         <section>
           <h2 class="flex justify-between">
@@ -72,40 +76,16 @@ const featuredProjects = allProjects
             </span>
             <span>
               <a
-                class="text-base no-underline decoration-sky-600 hover:text-sky-600"
+                class="text-lg text-slate-700 underline decoration-sky-500 decoration-2 underline-offset-2 hover:text-sky-600"
                 href="/projects">View all projects →</a
               >
             </span>
           </h2>
-          <div class="grid grid-cols-1 gap-x-8 gap-y-8 mt-10">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-8 mt-10">
             {/* Featured projects */}
             {
               featuredProjects.map((project) => (
-                <div class="group flex w-full mx-0 bg-white border border-gray-200 rounded-lg shadow-lg hover:shadow-sky-100 hover:border-sky-600 transition duration-300 hover:scale-105 dark:bg-gray-800 dark:hover:bg-gray-700">
-                  {project.frontmatter.boxIcon && (
-                    <i
-                      class={`flex justify-center items-center text-sky-700 p-5 text-6xl bx ${project.frontmatter.boxIcon}`}
-                    />
-                  )}
-                  <div class="p-6">
-                    <a
-                      href={project.frontmatter.repoUrl}
-                      class="no-underline hover:decoration hover:decoration-sky-600"
-                    >
-                      <h5 class="mb-2 mt-0 text-2xl font-bold tracking-tight text-slate-700 dark:text-white group-hover:text-sky-600 decoration-sky-600 group-hover:underline">
-                        {project.frontmatter.title}
-                      </h5>
-                    </a>
-                    <div class="my-1 text-slate-600 dark:text-gray-400">
-                      {project.frontmatter.summary}
-                    </div>
-                    {/* <div class='px-6 pt-10 justify-self-end'>
-                    <a href={project.frontmatter.repoUrl} class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-600 rounded-lg hover:text-white hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800 no-underline gap-2">
-                        See Code →
-                    </a>
-                  </div> */}
-                  </div>
-                </div>
+                <ProjectCard project={project} />
               ))
             }
           </div>
@@ -122,32 +102,13 @@ const featuredProjects = allProjects
             </span>
             <span>
               <a
-                class="text-base no-underline decoration-sky-600 hover:text-sky-600"
+                class="text-lg text-slate-700 underline decoration-sky-500 decoration-2 underline-offset-2 hover:text-sky-600"
                 href="/articles">View all articles →</a
               >
             </span>
           </h2>
-          <div
-            class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 mt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3"
-          >
-            {
-              recentPosts.map((post) => (
-                <a
-                  href={post.url}
-                  class="group no-underline max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-lg hover:shadow-sky-100 hover:border-sky-600 transition duration-300 hover:-translate-y-2 dark:bg-gray-800 dark:border-gray-700"
-                >
-                  <h5 class="mb-2 mt-0 text-2xl font-bold tracking-tight text-slate-700 dark:text-white">
-                    {post.frontmatter.title}
-                  </h5>
-                  <p class="font-semibold text-sm pt-1 text-slate-400 dark:text-gray-400">
-                    {format(new Date(post.frontmatter.date), "LLLL d, yyyy")}
-                  </p>
-                  <p class="font-semibold uppercase text-xs pt-1 text-slate-400 dark:text-gray-400">
-                    {(post.frontmatter.tags || []).join(", ")}
-                  </p>
-                </a>
-              ))
-            }
+          <div class="grid grid-cols-1 gap-x-1 gap-y-1 mt-10 divide-y">
+            {recentPosts.map((post) => <BlogPost post={post} />)}
           </div>
         </section>
       </main>
