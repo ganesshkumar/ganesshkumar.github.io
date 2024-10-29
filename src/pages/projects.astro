@@ -10,12 +10,55 @@ const allProjects = await Astro.glob("../pages/projects/*.md");
 const featuredProjects = allProjects.sort(
   (a, b) => b.frontmatter.order - a.frontmatter.order
 );
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
+  .toString()
+  .replace(/\/$/, "");
+
+const ldSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  url: canonicalUrl,
+  datePublished: "2013-01-01",
+  dateMofified: new Date().toISOString().split("T")[0],
+  headline: pageTitle,
+  name: pageTitle,
+  description: pageDescription,
+  author: {
+    "@type": "Person",
+    "@id": "https://www.ganesshkumar.com/author/ganesshkumar/#Person",
+    name: "Ganessh Kumar",
+    url: "https://www.ganesshkumar.com",
+    image: {
+      "@type": "ImageObject",
+      "@id":
+        "https://secure.gravatar.com/avatar/3c574ac0072970fe85bebda60fa7d6b8?size=256",
+      url: "https://secure.gravatar.com/avatar/3c574ac0072970fe85bebda60fa7d6b8?size=256",
+      height: 256,
+      width: 256,
+    },
+  },
+  publisher: {
+    "@type": "Organization",
+    "@id": "https://www.ganesshkumar.com",
+    name: "Ganessh Kumar",
+    logo: {
+      "@type": "ImageObject",
+      "@id":
+        "https://secure.gravatar.com/avatar/3c574ac0072970fe85bebda60fa7d6b8?size=256",
+      url: "https://secure.gravatar.com/avatar/3c574ac0072970fe85bebda60fa7d6b8?size=256",
+      height: 256,
+      width: 256,
+    },
+  },
+};
 ---
 
 <BaseLayout
   pageTitle={pageTitle}
   pageDescription={pageDescription}
   currentPage={currentPage}
+  ldSchema={ldSchema}
 >
   <div class="bg-white">
     <div

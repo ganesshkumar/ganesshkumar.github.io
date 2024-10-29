@@ -1,11 +1,24 @@
 ---
-import { format } from "date-fns";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import BlogPost from "../components/BlogPost.astro";
 
 const pageTitle = "Home | Ganessh Kumar";
 const currentPage = "Home";
+
+const ldSchema = {
+  "@context": "https://schema.org",
+  "@type": "Website",
+  url: Astro.site,
+  name: "Ganessh Kumar's personal website - Digital Garden",
+  description:
+    "Dive into the world of technology and programming with Ganessh Kumar on his personal website",
+  author: {
+    "@type": "Person",
+    name: "Ganessh Kumar",
+    url: "https://www.ganesshkumar.com",
+  },
+};
 
 const allPosts = await Astro.glob("../pages/articles/*.md");
 const recentPosts = allPosts.reverse().slice(0, 6);
@@ -16,7 +29,7 @@ const featuredProjects = allProjects
   .sort((a, b) => b.frontmatter.order - a.frontmatter.order);
 ---
 
-<BaseLayout pageTitle={pageTitle} currentPage={currentPage}>
+<BaseLayout pageTitle={pageTitle} currentPage={currentPage} ldSchema={ldSchema}>
   <div class="bg-white">
     <div
       class="flex flex-col h-full max-w-5xl mx-auto bg-white overflow-hidden px-4"

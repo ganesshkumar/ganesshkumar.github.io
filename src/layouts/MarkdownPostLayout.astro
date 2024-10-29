@@ -2,18 +2,62 @@
 import { format } from "date-fns";
 import BaseLayout from "./BaseLayout.astro";
 
-// import '../styles/prism-a11y-dark.css';
-
 const { frontmatter } = Astro.props;
 const pageTitle = `${frontmatter.title} | Ganessh Kumar`;
 const pageDescription = frontmatter.description || undefined;
 const currentPage = "Articles";
+
+const id = new URL(Astro.url.pathname, Astro.site).toString() + "#BlogPosting";
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
+  .toString()
+  .replace(/\/$/, "");
+
+const ldSchema = {
+  "@context": "https://schema.org/",
+  "@type": "BlogPosting",
+  "@id": id,
+  mainEntityOfPage: canonicalUrl,
+  headline: frontmatter.title,
+  name: frontmatter.title,
+  description: frontmatter.description,
+  datePublished: frontmatter.pubDate,
+  author: {
+    "@type": "Person",
+    "@id": "https://www.ganesshkumar.com/author/ganesshkumar/#Person",
+    name: "Ganessh Kumar",
+    url: "https://www.ganesshkumar.com",
+    image: {
+      "@type": "ImageObject",
+      "@id":
+        "https://secure.gravatar.com/avatar/3c574ac0072970fe85bebda60fa7d6b8?size=256",
+      url: "https://secure.gravatar.com/avatar/3c574ac0072970fe85bebda60fa7d6b8?size=256",
+      height: 256,
+      width: 256,
+    },
+  },
+  publisher: {
+    "@type": "Organization",
+    "@id": "https://www.ganesshkumar.com",
+    name: "Ganessh Kumar",
+    logo: {
+      "@type": "ImageObject",
+      "@id":
+        "https://secure.gravatar.com/avatar/3c574ac0072970fe85bebda60fa7d6b8?size=256",
+      url: "https://secure.gravatar.com/avatar/3c574ac0072970fe85bebda60fa7d6b8?size=256",
+      height: 256,
+      width: 256,
+    },
+  },
+  url: canonicalUrl,
+  about: [...frontmatter.tags, ...frontmatter.categories],
+};
 ---
 
 <BaseLayout
   pageTitle={pageTitle}
   currentPage={currentPage}
   pageDescription={pageDescription}
+  ldSchema={ldSchema}
 >
   <div
     class="flex flex-col h-full max-w-5xl mx-auto bg-white overflow-hidden px-4"
@@ -34,5 +78,16 @@ const currentPage = "Articles";
     <div class="prose !max-w-none">
       <slot />
     </div>
+    <section class="py-16">
+      <div class="text-slate-700 text-2xl font-semibold">Comments</div>
+      <script
+        src="https://utteranc.es/client.js"
+        repo={"ganesshkumar/comments"}
+        issue-term="pathname"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>
+    </section>
   </div>
 </BaseLayout>

@@ -8,7 +8,7 @@ import "../styles/prism-a11y-dark.css";
 const description =
   "Dive into the world of technology with Ganessh Kumar on his personal website. Read easy-to-understand articles about cool stuff like Obsidian, Docker, Kubernetes, and privacy tools. Ganessh Kumar shares articles and his cool projects and explains Obsidian plugins in a way that's simple and fun. Stay updated on the latest tech trends and learn in a way that feels like a chat with a friend. Explore the exciting side of tech with Ganessh Kumar!";
 const siteImage = "/ganesshkumar-emoji.png";
-const { pageTitle, pageDescription, currentPage } = Astro.props;
+const { pageTitle, pageDescription, currentPage, ldSchema } = Astro.props;
 
 const schema = {
   "@context": "https://schema.org",
@@ -53,7 +53,10 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
     <meta property="twitter:url" content={canonicalUrl} />
     <meta property="twitter:card" content={pageDescription || description} />
     <!-- Schema.org JSON-LD data -->
-    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(ldSchema || schema)}
+    />
     {/* Font: Google Nato Sans and Lato */}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
