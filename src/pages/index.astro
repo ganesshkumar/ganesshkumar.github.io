@@ -40,7 +40,7 @@ const featuredProjects = allProjects
         style={{ minHeight: "40vh" }}
       >
         <div
-          class="w-full my-10 w-100 bg-gradient-to-r from-sky-700 to-cyan-500 text-slate-50 rounded-xl shadow-xl"
+          class="w-full px-4 my-10 w-100 bg-gradient-to-r from-sky-700 to-cyan-500 text-slate-50 rounded-xl shadow-xl"
         >
           <div class="isolate flex flex-col md:flex-row">
             <div class="flex basis-1/2 justify-center">
@@ -80,21 +80,23 @@ const featuredProjects = allProjects
       <main class="px-2 my-10">
         {/* Featured Projects */}
         <section>
-          <h2 class="flex justify-between">
-            <span>
+          <div class="flex justify-between flex-wrap">
+            <div class="w-full md:w-auto">
               <span class="font-bold text-3xl tracking-wide">Featured</span>
               <span class="font-bold text-3xl text-sky-600 tracking-wide"
                 >Projects</span
               >
-            </span>
-            <span>
+            </div>
+            <div>
               <a
                 class="text-lg text-slate-700 underline decoration-sky-500 decoration-2 underline-offset-2 hover:text-sky-600"
                 href="/projects">View all projects →</a
               >
-            </span>
-          </h2>
-          <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-8 mt-10">
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 mt-10"
+          >
             {/* Featured projects */}
             {
               featuredProjects.map((project) => (
@@ -106,20 +108,20 @@ const featuredProjects = allProjects
 
         {/* Latest blog posts */}
         <section class="mt-20">
-          <h2 class="flex justify-between">
-            <span>
+          <div class="flex justify-between flex-wrap">
+            <div class="w-full md:w-auto">
               <span class="font-bold text-3xl tracking-wide">Recent</span>
               <span class="font-bold text-3xl text-sky-600 tracking-wide"
                 >Articles</span
               >
-            </span>
-            <span>
+            </div>
+            <div>
               <a
                 class="text-lg text-slate-700 underline decoration-sky-500 decoration-2 underline-offset-2 hover:text-sky-600"
                 href="/articles">View all articles →</a
               >
-            </span>
-          </h2>
+            </div>
+          </div>
           <div class="grid grid-cols-1 gap-x-1 gap-y-1 mt-10 divide-y">
             {recentPosts.map((post) => <BlogPost post={post} />)}
           </div>

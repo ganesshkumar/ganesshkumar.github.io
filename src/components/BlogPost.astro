@@ -4,10 +4,10 @@ const { post } = Astro.props;
 ---
 
 <a
-  class="flex justify-between items-center group py-1 no-underline"
+  class="flex justify-between flex-wrap items-center group py-1 no-underline"
   href={post.url}
 >
-  <div class="text-sky-700 group-hover:underline text-xl">
+  <div class="text-sky-700 group-hover:underline text-xl w-full lg:w-auto">
     {post.frontmatter.title}
   </div>
   <div class="text-slate-500 text-base font-mono">
