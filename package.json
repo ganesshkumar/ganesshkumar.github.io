@@ -10,7 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.4.1",
+    "@astrojs/check": "^0.9.4",
     "@astrojs/react": "^3.0.9",
     "@astrojs/rss": "^4.0.4",
     "@astrojs/sitemap": "^3.0.5",
@@ -19,7 +19,7 @@
     "@types/react-dom": "^18.2.18",
     "astro": "^4.2.6",
     "classnames": "^2.5.1",
-    "date-fns": "^3.3.1",
+    "date-fns": "^4.1.0",
     "flowbite": "^2.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -54,6 +54,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
     <meta property="twitter:card" content={pageDescription || description} />
     <!-- Schema.org JSON-LD data -->
     <script
+      is:inline
       type="application/ld+json"
       set:html={JSON.stringify(ldSchema || schema)}
     />
@@ -70,7 +71,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
       rel="stylesheet"
     />
     {/* Analytics: Clarity */}
-    <script type="text/javascript">
+    <script type="text/javascript" is:inline>
       (function (c, l, a, r, i, t, y) {
         c[a] =
           c[a] ||
