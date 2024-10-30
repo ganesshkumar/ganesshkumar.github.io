@@ -65,35 +65,37 @@ const ldSchema = {
   currentPage={currentPage}
   ldSchema={ldSchema}
 >
-  <div
-    class="flex flex-col h-full max-w-5xl mx-auto bg-white overflow-hidden px-4"
-  >
-    <p class="text-3xl my-2">
-      <h1 class="font-bold text-3xl">
-        <span
-          class="tracking-wide underline decoration-sky-500 decoration-4 underline-offset-2"
-          >Articles</span
-        >
-      </h1>
-    </p>
+  <div class="bg-white dark:bg-gray-800">
+    <div class="flex flex-col h-full max-w-5xl mx-auto overflow-hidden px-4">
+      <p class="text-3xl my-2">
+        <h1 class="font-bold text-3xl">
+          <span
+            class="tracking-wide underline decoration-sky-500 decoration-4 underline-offset-2 dark:text-slate-100"
+            >Articles</span
+          >
+        </h1>
+      </p>
 
-    <div>
-      {
-        Object.keys(allPostsByYear)
-          .sort((a, b) => Number(b) - Number(a))
-          .map((year) => {
-            return (
-              <>
-                <h2 class="text-2xl font-bold my-2 mt-12">{year}</h2>
-                <div class="grid grid-cols-1 gap-x-1 gap-y-1 my-5 divide-y">
-                  {allPostsByYear[year].reverse().map((post: any) => (
-                    <BlogPost post={post} />
-                  ))}
-                </div>
-              </>
-            );
-          })
-      }
+      <div>
+        {
+          Object.keys(allPostsByYear)
+            .sort((a, b) => Number(b) - Number(a))
+            .map((year) => {
+              return (
+                <>
+                  <h2 class="text-2xl font-bold my-2 mt-12 dark:text-slate-100">
+                    {year}
+                  </h2>
+                  <div class="grid grid-cols-1 gap-x-1 gap-y-1 my-5 divide-y">
+                    {allPostsByYear[year].reverse().map((post: any) => (
+                      <BlogPost post={post} />
+                    ))}
+                  </div>
+                </>
+              );
+            })
+        }
+      </div>
     </div>
   </div>
 </BaseLayout>

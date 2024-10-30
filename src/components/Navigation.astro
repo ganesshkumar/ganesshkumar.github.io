@@ -1,5 +1,6 @@
 ---
 import classnames from "classnames";
+import ThemeControl from "../components/ThemeControl.tsx";
 const { currentPage } = Astro.props;
 
 const navbarContentClasses = (page: string, currentPage: string) =>
@@ -11,9 +12,9 @@ const navbarContentClasses = (page: string, currentPage: string) =>
   });
 ---
 
-<nav class="bg-white flex border border-gray-200 dark:bg-gray-900">
+<nav class="bg-white border-gray-200 flex border dark:bg-gray-800">
   <div
-    class="w-full flex flex-wrap items-center justify-end md:justify-center mx-auto p-4"
+    class="w-full flex flex-wrap items-baseline justify-end md:justify-center mx-auto p-4"
   >
     <button
       data-collapse-toggle="navbar-default"
@@ -40,36 +41,38 @@ const navbarContentClasses = (page: string, currentPage: string) =>
     </button>
     <div class="hidden w-full md:block md:w-auto" id="navbar-default">
       <ul
-        class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+        class="font-medium flex flex-col p-4 md:p-0 mt-4 mb-0 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:text-slate-100 dark:bg-gray-800 dark:border-gray-800"
       >
         <li class={navbarContentClasses("Home", currentPage)}>
           <a class="no-underline" href="/">
-            <div class="text-slate-900 cursor-pointer">Home</div>
+            <div class="text-slate-900 dark:text-slate-100 cursor-pointer">
+              Home
+            </div>
           </a>
         </li>
         <li class={navbarContentClasses("Articles", currentPage)}>
           <a class="no-underline" href="/articles">
-            <div class="text-slate-900 cursor-pointer">Articles</div>
+            <div class="text-slate-900 dark:text-slate-100 cursor-pointer">
+              Articles
+            </div>
           </a>
         </li>
         <li class={navbarContentClasses("Projects", currentPage)}>
           <a class="no-underline" href="/projects">
-            <div class="text-slate-900 cursor-pointer">Projects</div>
+            <div class="text-slate-900 dark:text-slate-100 cursor-pointer">
+              Projects
+            </div>
           </a>
         </li>
-        {
-          /* <li class={navbarContentClasses('Notes', currentPage)}>
-          <a class='no-underline' href='/notes'>
-            <div class='text-slate-900 cursor-pointer'> Notes </div>
-          </a>
-        </li> */
-        }
         <li class={navbarContentClasses("About", currentPage)}>
           <a class="no-underline" href="/about">
-            <div class="text-slate-900 cursor-pointer">About</div>
+            <div class="text-slate-900 dark:text-slate-100 cursor-pointer">
+              About
+            </div>
           </a>
         </li>
       </ul>
     </div>
+    <ThemeControl client:load />
   </div>
 </nav>

@@ -7,10 +7,12 @@ const { post } = Astro.props;
   class="flex justify-between flex-wrap items-center group py-1 no-underline"
   href={post.url}
 >
-  <div class="text-sky-700 group-hover:underline text-xl w-full lg:w-auto">
+  <div
+    class="text-sky-600 dark:text-sky-400 group-hover:underline text-xl w-full lg:w-auto"
+  >
     {post.frontmatter.title}
   </div>
-  <div class="text-slate-500 text-base font-mono">
+  <div class="text-slate-500 dark:text-slate-300 text-base font-mono">
     {format(new Date(post.frontmatter.date), "LLLL d, yyyy")}
   </div>
 </a>

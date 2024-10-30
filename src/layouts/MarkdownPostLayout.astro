@@ -59,37 +59,39 @@ const ldSchema = {
   pageDescription={pageDescription}
   ldSchema={ldSchema}
 >
-  <div
-    class="flex flex-col h-full max-w-5xl mx-auto bg-white overflow-hidden px-4"
-  >
-    <h1
-      class="font-bold text-4xl cursor-default tracking-wide pb-2 border-b border-sky-600"
-    >
-      {frontmatter.title}
-    </h1>
-    <div class="flex flex-row justify-between mt-2 mb-10">
-      <div class="text-slate-500 uppercase text-sm">
-        {format(new Date(frontmatter.date), "LLLL d, yyyy")}
+  <div class="bg-whtie dark:bg-gray-800">
+    <div class="flex flex-col h-full max-w-5xl mx-auto overflow-hidden px-4">
+      <h1
+        class="font-bold text-4xl cursor-default tracking-wide pb-2 border-b border-sky-600 dark:text-slate-100"
+      >
+        {frontmatter.title}
+      </h1>
+      <div class="flex flex-row justify-between mt-2 mb-10">
+        <div class="text-slate-500 dark:text-slate-400 uppercase text-sm">
+          {format(new Date(frontmatter.date), "LLLL d, yyyy")}
+        </div>
+        <div class="text-slate-500 dark:text-slate-400 uppercase text-sm">
+          {frontmatter.tags.join(", ")}
+        </div>
       </div>
-      <div class="text-slate-500 uppercase text-sm">
-        {frontmatter.tags.join(", ")}
+      <div class="prose dark:prose-invert !max-w-none">
+        <slot />
       </div>
+      <hr class="mt-8" />
+      <section class="py-16">
+        <div class="text-slate-700 dark:text-slate-100 text-2xl font-semibold">
+          Comments
+        </div>
+        <script
+          is:inline
+          src="https://utteranc.es/client.js"
+          data-repo={"ganesshkumar/comments"}
+          issue-term="pathname"
+          data-label="comment"
+          data-theme="github-light"
+          crossorigin="anonymous"
+          async></script>
+      </section>
     </div>
-    <div class="prose !max-w-none">
-      <slot />
-    </div>
-    <hr class="mt-8" />
-    <section class="py-16">
-      <div class="text-slate-700 text-2xl font-semibold">Comments</div>
-      <script
-        is:inline
-        src="https://utteranc.es/client.js"
-        data-repo={"ganesshkumar/comments"}
-        issue-term="pathname"
-        data-label="comment"
-        data-theme="github-light"
-        crossorigin="anonymous"
-        async></script>
-    </section>
   </div>
 </BaseLayout>
