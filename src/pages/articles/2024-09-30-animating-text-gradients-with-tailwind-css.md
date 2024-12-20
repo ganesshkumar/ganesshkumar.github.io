@@ -24,6 +24,10 @@ thumbnail: banner/tailwind-gradient-animation.jpg
 Gradients are a visually appealing way to bring life to your text or background elements, and with Tailwind CSS, you can easily implement gradients in your projects. But did you know you can animate these gradients too? In this post, we’ll explore two methods for animating gradient text using Tailwind CSS.
 
 ## Method 1: Inline Animation with Tailwind Utilities
+
+Check out the live demo: [Play Tailwindcss.com | 50efBHeBK4](https://play.tailwindcss.com/50efBHeBK4)
+
+
 The simplest way to animate gradients in Tailwind is by using inline CSS and utility classes. In this example, we use Tailwind’s built-in classes to apply a gradient and then animate it using keyframes.
 
 ```html
@@ -41,7 +45,7 @@ The simplest way to animate gradients in Tailwind is by using inline CSS and uti
   }
 </style>
 
-<span class="bg-gradient-to-r from-blue-500 via-violet-700 to-pink-500 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient">
+<span class="bg-gradient-to-r from-red-500 via-blue-500 to-green-500 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient">
   Animated Gradient Text
 </span>
 
@@ -63,7 +67,11 @@ This setup combines the bg-gradient-to-r class to apply a gradient from blue to 
 - `text-transparent`: Makes the text transparent, allowing the gradient to be visible.
 - `animate-gradient`: Uses keyframes to animate the gradient's position.
 
+---
+
 ## Method 2: Custom Animation via tailwind.config.js
+
+Check out the live demo: [Play Tailwindcss.com | 0FWE7FoVnG](https://play.tailwindcss.com/0FWE7FoVnG)
 
 To further reduce the inline CSS and make the animation reusable, we can move the keyframe logic and animation properties into the Tailwind configuration file (tailwind.config.js). This makes the code more maintainable and reusable across multiple components.
 
@@ -92,7 +100,7 @@ module.exports = {
 ### Step 2: Update Your HTML
 
 ```html
-<span class="bg-gradient-to-r from-blue-500 via-violet-700 to-pink-500 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient">
+<span class="bg-gradient-to-r from-red-500 via-blue-500 to-green-500 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient">
   Animated Gradient Text
 </span>
 ```
