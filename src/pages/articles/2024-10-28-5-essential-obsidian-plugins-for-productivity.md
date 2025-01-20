@@ -132,6 +132,6 @@ Try them out, mix and match, and see how they can make your Obsidian experience 
 
 ##### Discover More Plugins with Obsidian Plugin Stats
 
-If you're curious about what other plugins might fit into your workflow, check out [Obsidian Plugin Stats](https://obsidian-plugin-stats.ganesshkumar.com/). This website provides a live overview of the most popular plugins, user reviews, and download statistics, helping you find trusted plugins that the Obsidian community loves. 
+If you're curious about what other plugins might fit into your workflow, check out [Obsidian Plugin Stats](https://www.obsidianstats.com/). This website provides a live overview of the most popular plugins, user reviews, and download statistics, helping you find trusted plugins that the Obsidian community loves. 
 
 Whether you’re looking for the latest plugins or want to see which ones are trending, Obsidian Plugin Stats makes it easy to explore new tools and enhance your productivity setup. Give it a look to see what other plugins might work well with your vault!
