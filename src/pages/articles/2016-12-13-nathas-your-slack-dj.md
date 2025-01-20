@@ -17,7 +17,7 @@ categories:
   - hackathon
 ---
 
-Nathas, a slack bot, is our entry for the [India's first botathon](http://tlabs.in/event/indias-first-botathon/) conducted by TLabs. Nathas has won us the second runner-up at the hackathon.
+Nathas, a slack bot, is our entry for the TLab's first botathon in India conducted by TLabs. Nathas has won us the second runner-up at the hackathon.
 
 Nathas is a slack bot that sits and listens to messages sent on a particular channel. It will process any message that starts with `@nathas` and will ignore the rest.
 

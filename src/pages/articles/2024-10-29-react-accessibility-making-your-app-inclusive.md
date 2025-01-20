@@ -542,4 +542,3 @@ As you continue developing, remember that accessibility is a journey, not a dest
 5. [MDN ARIA Guide](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)  
 6. [WebAIM: Accessible Forms](https://webaim.org/techniques/forms/)  
 7. [React Testing Library](https://testing-library.com/docs/queries/about/)  
-8. [Inclusive Components](https://inclusive-components.com/)  

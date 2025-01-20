@@ -27,16 +27,16 @@ Privacy Badger blocks advertisers from loading content once they detect the adve
 Disconnect is a collection of tools to protect your privacy. The free version **block trackers** using their tracker list(Disconnect claims to block over 5000 trackers) and provide **private search**, where they use your default search engine after anonymizing your search queries. By subscribing to their packs, you can get functionalities to **detect malware**, **identify secure public Wi-Fi**, **VPN** to mask your location and access censored websites.  
 
 Disconnect powers the **Tracker Protection** in Firefox's Private Browsing mode. Disconnect's **private search** is the default search option in Tor browsers. Disconnect is available as both native application and browser add-ons. They have also decoupled the features and provide add-ons like private search, privacy icons, private browsing etc.  
-[Official Site](https://disconnect.me/) | [Free Protection](https://disconnect.me/freeprotection)
+[Official Site](https://disconnect.me/) 
 
 ## CanvasBlocker
 CanvasBlocker protects you from [Canvas fingerprinting](http://www.browserleaks.com/canvas#how-does-it-work). Using the **Canvas** element in HTML5, it is possible to profile an user. CanvasBlocker provides different levels of settings to block the Canvas API. Using this add-on you can let websites use canvas but prevent profiling at the same time.  
 [Firefox](https://addons.mozilla.org/en-US/firefox/addon/canvasblocker/) | [Chrome](https://chrome.google.com/webstore/detail/canvasfingerprintblock/ipmjngkmngdcdpmgmiebdmfbkcecdndc)
 
 ## Clean Links
- * Clean Links converts obfuscated links to genuine clean links. For example, http://www.foobar.com/goto=https://www.yoursite.com may redirect you to https://yoursite.com when clicked. Clean links can parse the entire DOM and replace the obfuscated links with the clean links.
+ * Clean Links converts obfuscated links to genuine clean links. For example, `http://www.foobar.com/goto=https://www.yoursite.com` may redirect you to `https://yoursite.com` when clicked. Clean links can parse the entire DOM and replace the obfuscated links with the clean links.
  * Clean Links also removes tracking tags(like reference tags when you are referred from another site, search engine or email) from the urls by using configurable patterns.  
-[Firefox](https://addons.mozilla.org/en-US/firefox/addon/clean-links/)
+[Firefox](https://addons.mozilla.org/en-US/firefox/addon/clean-links-webext)
 
 ## HTTPS everywhere
 When parts of the website or the entire website is compatible with HTTPS and you try to access it over HTTP, HTTPS Everywhere  will rewrites your request by encrypting the content and thereby securing your communication. It works based on predefined list of rules on how to rewrite the request to use HTTPS.  
@@ -44,7 +44,7 @@ When parts of the website or the entire website is compatible with HTTPS and you
 
 ## uBlock
 A fast and light-weight add-on to block ads, trackers and analytics. EasyList, Peter Lowe's Adservers, EasyPrivacy and Malware domains are enabled by default and users can enable more readily available lists. They also support **Hosts** file entries. They have listed various comparisons with other blockers on their [github repo](https://github.com/chrisaljoudi/ublock).  
-[Official Site](https://www.ublock.org/) | [Firefox](https://addons.mozilla.org/en-US/firefox/addon/ublock/) | [Chrome](https://chrome.google.com/webstore/detail/ublock/epcnnfbjfcgphgdmggkamkmgojdagdnn)
+[Official Site](https://www.ublock.org/) | [Firefox](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin) | [Chrome](https://chrome.google.com/webstore/detail/ublock/epcnnfbjfcgphgdmggkamkmgojdagdnn)
 
 ## uBlock Origin and uMatrix
 The original developer of uBlock, [Raymond Hill](https://github.com/gorhill), gave the project to the current uBlock developers and he is currently maintaining both **uBlock Origin and uMatrix**. uBlock Origin is the developer's own fork and it is not related to uBlock at present. In addition to the uBlock's blocking list, uBlock Origin has its own blocking list. Advanced version of uBlock, which is targeted for advanced options is uMatrix.  
@@ -52,15 +52,15 @@ The original developer of uBlock, [Raymond Hill](https://github.com/gorhill), ga
 
 ## Self Destructing Cookies
 Tracking systems heavily rely on cookies to store information in your browser. Destroying the cookies immediately after closing the tab or browser will prevent them from accessing the information trackers had stored on your system and you can protect your privacy to a great extent. If you are using this extension, you may notice a lot of notifications popping up. You can disable it in the settings, which also allows you to fine tune the add-on.  
-[Firefox](https://addons.mozilla.org/en-US/firefox/addon/self-destructing-cookies/)
+[Firefox](https://addons.mozilla.org/en-US/firefox/addon/self-destructing-cookies-webex/)
 
 ## Random Agent Spoofer
 Random Agent Spoofer(RAS) is a great tool to spoof your identity. This add-on can play around with lot of parameters to mock your identity. It has a list of userAgents which can be cycled through at regular intervals. It also modifies content of headers like Do Not Track, Authorization, XFF, referred options. The Accept headers are usually tailored to the profile currently being used. You can see the additional options provided by RAS [here](https://addons.mozilla.org/en-US/firefox/addon/random-agent-spoofer/). RAS doesn't exactly prevent tracking. It adds noise to the tracking system by sending random information intelligently over period of time.  
-[Firefox](https://addons.mozilla.org/en-US/firefox/addon/random-agent-spoofer/)
+Not available any more. [Alternative](https://addons.mozilla.org/en-US/firefox/addon/advanced-user-agent-spoofer)
 
 ## CsFire
 CsFire protects you against Cross Site Request Forgeries(CSRF) by removing cookies and authentication headers from the cross-domain requests, thereby making them harmless. CsFire is result of academic research.  
-[Official Site](https://distrinet.cs.kuleuven.be/software/CsFire/) | [Firefox](https://addons.mozilla.org/en-US/firefox/addon/csfire/) | [Chrome](https://chrome.google.com/webstore/detail/csfire/kflgpkibamedbalplkfjeodpghfelmii)
+Not available anymore
 
 ## Expire History
 A simple add-on(not exactly a privacy-tool) which enables you to delete history after certain number of days. This was a Firefox feature in older versions to let users choose between slightly better performance and infinite history.  

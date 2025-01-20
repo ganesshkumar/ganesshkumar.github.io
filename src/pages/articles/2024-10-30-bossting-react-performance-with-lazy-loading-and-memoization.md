@@ -784,9 +784,5 @@ Your efforts to improve performance not only reflect your commitment to quality 
 
 1. [React Documentation: Lazy Loading Components](https://reactjs.org/docs/code-splitting.html#reactlazy)
 2. [Web Performance Fundamentals](https://web.dev/performance/)
-3. [How to create a memoization function](https://javascript.info/memoization)
-4. [Case Study: How We Improved Performance at Smashing Magazine](https://www.smashingmagazine.com/2020/01/improved-performance-smashing-magazine/)
-5. [Measure Your Web Performance](https://web.dev/measure/)
-6. [React Profiler: Understanding Performance Bottlenecks](https://reactjs.org/docs/optimizing-performance.html#profiling-components-with-the-react-profiler)
-7. [Optimizing React Performance](https://www.digitalocean.com/community/tutorials/optimizing-react-performance)
-8. [How to Lazy Load Images in React](https://css-tricks.com/lazy-loading-images-react/)
+3. [Measure Your Web Performance](https://web.dev/measure/)
+4. [React Profiler: Understanding Performance Bottlenecks](https://reactjs.org/docs/optimizing-performance.html#profiling-components-with-the-react-profiler)

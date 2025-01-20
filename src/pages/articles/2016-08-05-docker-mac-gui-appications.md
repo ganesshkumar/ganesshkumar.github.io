@@ -14,7 +14,7 @@ categories:
   - docker
 ---
 
-After watching [Container Hacks and Fun Images](https://www.youtube.com/watch?v=1qlLUf7KtAw) by Jessie Frazelle, I wanted to Containerize my GUI applications on OS X.
+After watching [Container Hacks and Fun Images](https://www.youtube.com/watch?v=cYsVvV1aVss) by Jessie Frazelle, I wanted to Containerize my GUI applications on OS X.
 
 * OS X doesn't expose device files `/dev/snd` or `/dev/video`.
 * OS X doesn't have a default x11 client. So we have to rely on XQuartz
@@ -25,7 +25,7 @@ This guide is tested under
  * Docker for Mac ([1.12.0-beta21](https://docs.docker.com/docker-for-mac/))
  * XQuartz ([2.7.10_beta2](https://www.xquartz.org/releases/index.html))
 
-It also works well under OS X(10.11.5) and Docker for Mac(1.12 stable) but XQuartz version must be 2.7.1_beta2(latest as of now). As pointed by [Fredrik Averpil](https://fredrikaverpil.github.io/2016/07/31/docker-for-mac-and-gui-applications/), there is a [bug](https://bugs.freedesktop.org/show_bug.cgi?id=95379) in XQuartz 2.7.9 stable version, which prevents opening the display from remote.
+It also works well under OS X(10.11.5) and Docker for Mac(1.12 stable) but XQuartz version must be 2.7.1_beta2(latest as of now). As pointed by [Fredrik Averpil](https://fredrikaverpil.github.io/blog/2016/07/31/docker-for-mac-and-gui-applications), there is a [bug](https://bugs.freedesktop.org/show_bug.cgi?id=95379) in XQuartz 2.7.9 stable version, which prevents opening the display from remote.
 
 Note: After installing XQuartz you need to log out and log in back.
 

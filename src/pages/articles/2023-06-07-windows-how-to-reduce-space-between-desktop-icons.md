@@ -37,7 +37,7 @@ After modifying the registry settings, you need to log out of your account and l
 
 ## Important Reminder
 
-Before proceeding with any changes to the registry, it is crucial to exercise caution. Modifying the registry incorrectly can lead to serious system problems. Therefore, it is recommended to back up the registry or create a system restore point before making any modifications. This precautionary measure ensures that you can restore the registry if any unexpected issues occur. To learn more about backing up and restoring the registry, refer to this [Microsoft article](https://support.microsoft.com/en-us/topic/how-to-back-up-and-restore-the-registry-in-windows-855140ad-e318-2aee-8b99-5b9b9720f783).
+Before proceeding with any changes to the registry, it is crucial to exercise caution. Modifying the registry incorrectly can lead to serious system problems. Therefore, it is recommended to back up the registry or create a system restore point before making any modifications. This precautionary measure ensures that you can restore the registry if any unexpected issues occur.
 
 
 By following the method outlined in this article, you can regain control over the spacing between your desktop icons.
