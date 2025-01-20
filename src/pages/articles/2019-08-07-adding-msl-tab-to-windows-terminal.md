@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "Adding MSL Shell to Windows Terminal"
-description: "Learn how to add your favorite Linux shell to the Windows Terminal using Windows Subsystem for Linux (WSL). Follow this step-by-step guide to configure profiles and customize your terminal experience."
+description: "Add your favorite Linux shell to Windows Terminal via WSL. Follow this guide to configure profiles and customize your terminal experience."
 author: Ganessh Kumar
 pubDate: 2019-08-07
 date: 2019-08-07

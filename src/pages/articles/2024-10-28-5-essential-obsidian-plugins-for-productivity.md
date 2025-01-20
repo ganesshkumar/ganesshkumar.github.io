@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "5 Essential Obsidian Plugins for Productivity"
-description: "Discover the must-have Obsidian plugins that can transform your note-taking experience, making it more organized and efficient. Learn how to use plugins like Calendar, Periodic Notes, Templater, Tasks, and Dataview for optimal productivity."
+description: "Explore essential Obsidian plugins to enhance note-taking. Learn to use Calendar, Periodic Notes, Templater, Tasks, and Dataview for better organization and productivity."
 author: "Ganessh Kumar"
 date: 2024-10-28
 pubDate: 2024-10-28

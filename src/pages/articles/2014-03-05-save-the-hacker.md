@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Save The Hacker
-description: "Sentiment analysis on product reviews for the 'Save the Hacker' hackathon, focusing on e-commerce websites and social media data to evaluate product performance and customer sentiment."
+description: "SPerformed sentiment analysis on product reviews for 'Save the Hacker' hackathon, analyzing e-commerce and social media data to assess product performance."
 author: Ganessh Kumar
 pubDate: 2014-03-05
 date: 2014-03-05

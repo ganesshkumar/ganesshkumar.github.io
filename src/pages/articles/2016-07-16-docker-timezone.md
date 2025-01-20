@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Docker - Sync your clock
-description: Learn how to sync your Docker container's clock with the system clock and set the correct timezone to ensure accurate timekeeping in your applications.
+description: Sync Docker container clock with the system and set the right timezone for accurate timekeeping in your apps.
 author: Ganessh Kumar
 pubDate: 2016-07-16
 date: 2016-07-16

@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "Running exe in background"
-description: "Learn how to run an executable file in the background on Windows 10 using simple PowerShell commands. This guide provides step-by-step instructions to start and stop processes efficiently."
+description: "Run executables in the background on Windows 10 with PowerShell. This guide covers step-by-step process management for efficient start and stop."
 author: Ganessh Kumar
 pubDate: 2018-10-06
 date: 2018-10-06

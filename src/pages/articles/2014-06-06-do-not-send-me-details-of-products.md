@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Dark Pattern in Webforms
-description: An exploration of dark patterns in web forms, highlighting how pre-checked boxes and subtle design changes can manipulate users into subscribing to mailing lists, with a case study on Manchester United's form design.
+description: Exploring dark patterns in web forms, showing how pre-checked boxes and design tweaks trick users into subscribing, with a case study on Manchester United's form.
 author: Ganessh Kumar
 pubDate: 2014-06-06
 date: 2014-06-06

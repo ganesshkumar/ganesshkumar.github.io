@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "Learn, unlearn and relearn"
-description: "Explore the importance of learning, unlearning, and relearning in education and personal growth, and how these processes help overcome misconceptions and enhance understanding."
+description: "Explore the importance of learning, unlearning, and relearning in education and personal growth to clear misconceptions and deepen understanding."
 author: "Ganessh Kumar"
 date: 2013-09-01
 pubDate: 2013-09-01

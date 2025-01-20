@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: How to Find and Kill a Process Using a Specific Port on Windows
-description: Learn how to identify and terminate processes using a specific port on Windows. This guide provides step-by-step instructions and PowerShell scripts to help you resolve "address already in use" errors efficiently.
+description: Identify and terminate processes using a specific port on Windows with step-by-step instructions and PowerShell scripts to fix address already in use errors.
 author: Ganessh Kumar
 pubDate: 2023-05-18
 date: 2023-05-18

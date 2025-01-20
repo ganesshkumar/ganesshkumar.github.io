@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Privacy Plugins for Browsers
-description: Discover essential browser add-ons to enhance your privacy and protect against trackers and advertisers. This curated list includes tools for blocking ads, preventing fingerprinting, securing HTTPS connections, and more.
+description: Explore top browser add-ons to boost privacy, block trackers, ads, prevent fingerprinting, and secure HTTPS connections.
 author: Ganessh Kumar
 pubDate: 2016-02-01
 date: 2016-02-01
@@ -40,7 +40,7 @@ CanvasBlocker protects you from [Canvas fingerprinting](http://www.browserleaks.
 
 ## HTTPS everywhere
 When parts of the website or the entire website is compatible with HTTPS and you try to access it over HTTP, HTTPS Everywhere  will rewrites your request by encrypting the content and thereby securing your communication. It works based on predefined list of rules on how to rewrite the request to use HTTPS.  
-[Official Page](https://www.eff.org/HTTPS-EVERYWHERE) | [Firefox](https://addons.mozilla.org/en-US/firefox/addon/https-everywhere/) | [Chrome](https://chrome.google.com/webstore/detail/https-everywhere/gcbommkclmclpchllfjekcdonpmejbdp?hl=en)
+[Official Page](https://www.eff.org/HTTPS-EVERYWHERE)
 
 ## uBlock
 A fast and light-weight add-on to block ads, trackers and analytics. EasyList, Peter Lowe's Adservers, EasyPrivacy and Malware domains are enabled by default and users can enable more readily available lists. They also support **Hosts** file entries. They have listed various comparisons with other blockers on their [github repo](https://github.com/chrisaljoudi/ublock).  
@@ -55,7 +55,7 @@ Tracking systems heavily rely on cookies to store information in your browser. D
 [Firefox](https://addons.mozilla.org/en-US/firefox/addon/self-destructing-cookies-webex/)
 
 ## Random Agent Spoofer
-Random Agent Spoofer(RAS) is a great tool to spoof your identity. This add-on can play around with lot of parameters to mock your identity. It has a list of userAgents which can be cycled through at regular intervals. It also modifies content of headers like Do Not Track, Authorization, XFF, referred options. The Accept headers are usually tailored to the profile currently being used. You can see the additional options provided by RAS [here](https://addons.mozilla.org/en-US/firefox/addon/random-agent-spoofer/). RAS doesn't exactly prevent tracking. It adds noise to the tracking system by sending random information intelligently over period of time.  
+Random Agent Spoofer(RAS) is a great tool to spoof your identity. This add-on can play around with lot of parameters to mock your identity. It has a list of userAgents which can be cycled through at regular intervals. It also modifies content of headers like Do Not Track, Authorization, XFF, referred options. The Accept headers are usually tailored to the profile currently being used. RAS doesn't exactly prevent tracking. It adds noise to the tracking system by sending random information intelligently over period of time.  
 Not available any more. [Alternative](https://addons.mozilla.org/en-US/firefox/addon/advanced-user-agent-spoofer)
 
 ## CsFire

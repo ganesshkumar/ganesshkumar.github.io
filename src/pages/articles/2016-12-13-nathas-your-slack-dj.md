@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "Nathas: Your Slack DJ"
-description: "Nathas is a Slack bot that enhances your music experience by managing song queues, providing song suggestions, and controlling playback with simple commands. It was a second runner-up at India's first botathon."
+description: "Nathas, a Slack bot, boosts your music experience by managing queues, suggesting songs, and controlling playback"
 author: Ganessh Kumar
 pubDate: 2016-12-13
 date: 2016-12-13

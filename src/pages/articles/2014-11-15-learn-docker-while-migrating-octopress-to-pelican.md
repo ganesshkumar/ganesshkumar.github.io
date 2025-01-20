@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Learn Docker While Migrating Octopress to Pelican
-description: Discover how to seamlessly migrate your blog from Octopress to Pelican while learning Docker. This guide covers installation, container management, and pushing images to DockerHub.
+description: Learn to migrate your blog from Octopress to Pelican using Docker. This guide covers setup, container management, and pushing images to DockerHub.
 author: Ganessh Kumar
 pubDate: 2014-11-15
 date: 2014-11-15

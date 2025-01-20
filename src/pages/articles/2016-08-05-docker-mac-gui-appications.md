@@ -60,4 +60,4 @@ $ docker run -d --name firefox -e DISPLAY=$ip:0 -v /tmp/.X11-unix:/tmp/.X11-unix
 
 ![xQuartz preference](/assets/images/2016-08-05-docker-mac-gui-appications/firefox_docker.png)
 
-Edit: There is a new [post](http://www.ganesshkumar.com/2016/08/06/docker-mac-gui-applications-2.html) with improved security using `xauth` instead of xhost.
+Edit: There is a new [post](/articles/2016-08-06-docker-mac-gui-applications-2) with improved security using `xauth` instead of xhost.
