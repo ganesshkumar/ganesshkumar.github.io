@@ -70,21 +70,12 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
-    {/* Analytics: Clarity */}
-    <script type="text/javascript" is:inline>
-      (function (c, l, a, r, i, t, y) {
-        c[a] =
-          c[a] ||
-          function () {
-            (c[a].q = c[a].q || []).push(arguments);
-          };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
-      })(window, document, "clarity", "script", "6pdaj4a6a5");
+    {/* Analtics First Party */}
+    <script defer data-domain="ganesshkumar.com" src="https://analytics.ganesshkumar.com/js/script.file-downloads.outbound-links.pageview-props.tagged-events.js"></script>
+    <script is:inline>
+      window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }
     </script>
+    {/* Dark Mode */}
     <script>
       // On page load or when changing themes, best to add inline in `head` to avoid FOUC
       if (
