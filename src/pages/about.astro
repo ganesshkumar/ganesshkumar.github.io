@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SocialLinks from "../components/SocialLinks.astro";
+import { Image } from "astro:assets";
+import gkImage from "../assets/images/ganesshkumar-emoji.webp";
 
 const pageTitle = "About | Ganessh Kumar";
 const pageDescription = "Know about Ganessh Kumar, a software engineer at Microsoft";
@@ -65,10 +67,9 @@ const ldSchema = {
           >
         </h1>
       </p>
-      <img
-        transition:name="ganesshkumar"
+      <Image
         class="my-5 w-96 h-96"
-        src="/ganesshkumar-emoji.webp"
+        src={gkImage}
         alt="profile picture"
       />
       <!-- <p class="text-xl">Hello and welcome to my blog!</p> -->

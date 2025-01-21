@@ -3,11 +3,11 @@ layout: ../../layouts/MarkdownPostLayout.astro
 title: "Git Submodules Cheat Sheet"
 description: "A concise, experience-based cheat sheet for managing Git submodules—covering everything from adding and cloning to updating and removing."
 author: "Ganessh Kumar"
-date: 2024-11-25
-pubDate: 2024-11-25
-modified_date: 2024-11-25
+date: 2025-01-15
+pubDate: 2025-01-15
+modified_date: 2025-01-15
 image:
-    url: /assets/images/2024-11-25-git-submodules-cheatsheet/submodules.png
+    url: /assets/images/2025-01-15-git-submodules-cheatsheet/submodules.png
     alt: "Git Submodules Cheat Sheet"
 disqus: false
 tags:

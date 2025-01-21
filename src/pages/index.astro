@@ -2,6 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import BlogPost from "../components/BlogPost.astro";
+import { Image } from 'astro:assets';
+import gkImage from "../assets/images/ganesshkumar-emoji.webp";
 
 const pageTitle = "Home | Ganessh Kumar";
 const currentPage = "Home";
@@ -63,10 +65,9 @@ const featuredProjects = allProjects
               </div>
             </div>
             <div class="z-10 flex basis-1/2 justify-center">
-              <img
-                transition:name="ganesshkumar"
+              <Image
                 class="z-10 object-cover h-96 w-96"
-                src="/ganesshkumar-emoji.webp"
+                src={gkImage}
                 alt="profile picture"
               />
             </div>

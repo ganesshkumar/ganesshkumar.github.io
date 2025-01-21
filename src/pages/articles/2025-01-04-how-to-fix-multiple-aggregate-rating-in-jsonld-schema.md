@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: "How to fix Google Search Console errors caused by multiple aggregate ratings in JSON-LD schema?"
+title: "Fixing Google Search Console errors caused by multiple values in JSON-LD schema"
 description: "Discover how adding @id to JSON-LD schema resolved Google Search Console errors and improved schema validity for enhanced search visibility."
 author: "Ganessh Kumar"
 date: 2025-01-04
