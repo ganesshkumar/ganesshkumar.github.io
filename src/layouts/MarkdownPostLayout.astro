@@ -61,11 +61,26 @@ const ldSchema = {
 >
   <div class="bg-whtie dark:bg-gray-800">
     <div class="flex flex-col h-full max-w-5xl mx-auto overflow-hidden px-4">
-      <h1
-        class="font-bold text-4xl cursor-default tracking-wide pb-2 border-b border-sky-600 dark:text-slate-100"
-      >
-        {frontmatter.title}
-      </h1>
+      {
+        frontmatter.coverImage ?
+            // [TODO] change this to your auto aspect ratio 
+            <div
+              class="relative w-full aspect-video mt-6 rounded-lg overflow-hidden"
+              style={`background-image: url('${frontmatter.coverImage}'); background-size: cover; background-position: center;`}
+            >
+              <div class="absolute inset-0"></div>
+              <h1
+                class="bg-black/40 absolute bottom-0 left-0 w-full px-6 py-4 font-bold text-4xl tracking-wide text-white drop-shadow-lg bg-gradient-to-t from-black/70 to-transparent"
+              >
+                {frontmatter.title}
+              </h1>
+            </div> :
+          <h1
+            class="font-bold text-4xl cursor-default tracking-wide pb-2 border-b border-sky-600 dark:text-slate-100"
+          >
+            {frontmatter.title}
+          </h1> 
+      }
       <div class="flex flex-row justify-between mt-2 mb-10">
         <div class="text-slate-500 dark:text-slate-400 uppercase text-sm">
           {format(new Date(frontmatter.date), "LLLL d, yyyy")}

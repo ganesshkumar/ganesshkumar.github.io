@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: "Choosing the right charger for Samsung S22 in 2025: 25w vs 45w, PD vs PPS"
+title: "Best Charger for Samsung Galaxy S22 in 2025: Why GaN, USB PD, and PPS Matter"
 description: "A senior software engineer explains how to choose the best charger for Samsung S22, comparing 25W vs 45W, USB Power Delivery (PD), and Programmable Power Supply (PPS) support for faster and safer charging."
 author: "Ganessh Kumar"
 date: 2025-07-08
@@ -17,30 +17,63 @@ tags:
 categories:
   - tech
 thumbnail: banner/samsung-charger.jpeg
+coverImage: /assets/images/2025-07-08-choosing-a-right-charger-for-s22/right-charger-for-s22.webp
 ---
 
-When I started searching for the best charger for Samsung S22, I realised the market is full of 25W and 45W chargers claiming to be compatible. As a senior software engineer, I expected the process to be straightforward. I thought wattage ratings alone determined charging speed. But after testing different chargers and reading about USB Power Delivery and Programmable Power Supply, I discovered why some chargers fail to deliver Samsung's super fast charging.
+When I started searching for the best charger for my Samsung Galaxy S22, I assumed it would be a straightforward task. The market is filled with 25W and 45W chargers claiming compatibility, and I thought wattage alone determined charging speed. But after testing multiple chargers and digging into USB Power Delivery (PD) and Programmable Power Supply (PPS), I realised why so many chargers fail to deliver Samsung's promised super fast charging.
 
-I first tried a basic 25W charger that didn't support USB Power Delivery or PPS. These chargers are based on Samsung's older Adaptive Fast Charging protocol. The Galaxy S22 can charge with them, but only at around 15W-18W. There was no "super fast charging" text on the lock screen, and charging from 0 to 100% took about 90 minutes. For someone who needs quick top-ups between calls and code reviews, this felt painfully slow.
+## The reality of 25W and 45W chargers for Samsung Galaxy S22
 
-Then I considered a 25W USB PD charger without PPS. These chargers are better because they support fixed voltage levels like 5V, 9V, and 15V. The S22 can pull 9V at 2.77A for roughly 25W, but because there is no PPS, the phone has to regulate voltage internally. This leads to more heat, throttling, and a slightly reduced charging speed. Charging times improved a little but still fell short of the official Samsung charger.
+The first charger I tried was a basic 25W adapter without USB PD or PPS support. These chargers rely on Samsung's older Adaptive Fast Charging protocol. While they technically work with the Galaxy S22, they only deliver around 15W-18W. There was no "super fast charging" text on the lock screen, and charging from 0 to 100% took almost 90 minutes. For someone needing quick top ups between tasks, this was too slow.
 
-Finally, I tested a charger with USB PD and PPS support. This was a game changer. PPS allows dynamic voltage and current negotiation in fine increments, like 3.3V-11V. The Galaxy S22 can request exactly what it needs to charge efficiently without creating unnecessary heat. With a PD+PPS charger, I could charge from 0-50% in about 25 minutes and reach 100% in 70 minutes. This is the experience Samsung markets as "super fast charging."
+Next, I tested a 25W USB PD charger without PPS. This option supports fixed voltage levels like 5V, 9V, and 15V. The S22 can draw 9V at 2.77A (~25W), but without PPS, the phone regulates voltage internally. This creates additional heat, potential throttling, and slightly slower charging. Charging times improved to around 85 minutes but still lagged behind Samsung's official charger.
 
-The story is similar for 45W chargers. While the Galaxy S22 supports only 25W charging, the S22+ and S22 Ultra benefit from Super Fast Charging 2.0 with 45W PD+PPS chargers. But even then, the difference between 25W and 45W on those devices is around 10-15 minutes for a full charge.
+Finally, I tried a charger supporting both USB PD and PPS. This changed everything. PPS allows dynamic voltage and current adjustments in fine steps, such as 3.3V-11V. The Galaxy S22 uses this feature to request optimal power delivery, charging more efficiently and with less heat. With a PD+PPS charger, my phone charged from 0-50% in about 25 minutes and reached 100% in approximately 70 minutes - the true "super fast charging" experience.
 
-Many cheap chargers on Amazon and Flipkart advertise high wattage but don't include PPS. If the specifications don't explicitly mention PPS like "PPS: 3.3V-11V⎓3A," you won't get super fast charging. Instead, check for chargers that support USB PD 3.0 or higher with PPS for Samsung Galaxy phones.
+---
 
-Here is a decision table I created while comparing charger options for the Galaxy S22:
+## Charger comparison for Samsung S22
 
-| Charger type                        | Works with S22? | Charging speed          | Super fast charging?      | Approx 0-100% time |
-|-------------------------------------|------------------|--------------------------|---------------------------|---------------------|
-| 25W charger (no PD or PPS)          | ✅ Yes          | 15W-18W                  | ❌ No                     | ~90 minutes         |
-| 25W USB PD charger (no PPS)         | ✅ Yes          | 18W-22W                  | ❌ No                     | ~85 minutes         |
-| 25W USB PD charger with PPS         | ✅ Yes          | Full 25W                 | ✅ Yes                    | ~70 minutes         |
-| 45W USB PD charger (no PPS)         | ✅ Yes          | S22 limited to ~22W      | ❌ No                     | ~85 minutes         |
-| 45W USB PD charger with PPS         | ✅ Yes          | S22 limited to 25W       | ✅ Yes (S22+)             | ~70 minutes         |
+| Charger type                      | Works with S22? | Charging speed      | Super fast charging? | Approx 0-100% time |
+|------------------------------------|-----------------|---------------------|-----------------------|---------------------|
+| 25W charger (no PD or PPS)         | Yes             | 15W-18W             | No                    | ~90 minutes         |
+| 25W USB PD charger (no PPS)        | Yes             | 18W-22W             | No                    | ~85 minutes         |
+| 25W USB PD charger with PPS        | Yes             | Full 25W            | Yes                   | ~70 minutes         |
+| 45W USB PD charger (no PPS)        | Yes             | S22 limited to ~22W | No                    | ~85 minutes         |
+| 45W USB PD charger with PPS        | Yes             | S22 limited to 25W  | Yes (S22+ only)       | ~70 minutes         |
 
-When buying a charger for the Samsung Galaxy S22, it is important to check for USB Power Delivery and PPS support. Wattage alone does not guarantee fast charging. Many high wattage chargers fail to deliver because they lack PPS. This is especially true for budget 25W and 45W chargers on the market.
+---
 
-In the end, I chose a 25W PD+PPS charger. It cost more than generic adapters but gave me the full super fast charging experience Samsung promises. For a phone that powers my entire day, from work calls to testing code on emulators, saving 20 minutes every charge felt worth it.
+## Why many high wattage chargers don't deliver
+
+On Amazon and Flipkart, many cheap chargers advertise 25W or 45W output but lack PPS support. Without PPS, even a 45W charger won't trigger "super fast charging" on the Samsung Galaxy S22. Instead, it defaults to standard PD profiles, forcing the phone to handle voltage regulation. This leads to heat build up and slower charging.
+
+Always check the charger specs carefully. Look for explicit PPS support like: `PPS: 3.3V-11V⎓3A` and ensure it supports **USB PD 3.0 or higher**. This is the only way to get the fastest, most efficient charging for your Galaxy S22.
+
+---
+
+## Where does GaN fit in?
+
+While exploring chargers, I came across **GaN (Gallium Nitride) chargers**. GaN technology allows higher efficiency, better thermal management, and significantly smaller designs compared to traditional silicon chargers.
+
+### Benefits of GaN chargers:
+- **Compact and lightweight** - even for 65W or 100W output
+- **Higher efficiency** - less heat and more consistent power delivery
+- **Versatile** - can charge phones, tablets, and laptops
+
+But remember: GaN is about hardware design, not charging protocols. A GaN charger without PD and PPS won't give you Samsung's "super fast charging." You still need **PD 3.0+ and PPS support**.
+
+---
+
+## Final recommendation: GaN + PD + PPS
+
+For the Samsung Galaxy S22, don't rely on wattage ratings alone. Ensure your charger supports:
+- **USB Power Delivery (PD)** - version 3.0 or higher
+- **Programmable Power Supply (PPS)** - dynamic voltage and current adjustment
+- **GaN technology** - for compact size and cooler operation
+
+This combination delivers the full super fast charging experience Samsung promises. I settled on a **25W GaN PD+PPS charger**, which cost slightly more than generic adapters but was worth every rupee. It charged my phone from 0-50% in just 25 minutes and gave me confidence in its efficiency and thermal management.
+
+For Galaxy S22+ and S22 Ultra users, a **45W GaN PD+PPS charger** makes sense to unlock Super Fast Charging 2.0.
+
+Investing in the right charger means saving time every single day and for a phone that powers everything from meetings to app testing, that's a trade off I'll happily make.
