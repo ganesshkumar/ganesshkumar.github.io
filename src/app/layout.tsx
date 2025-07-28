@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -64,6 +65,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Plausible Analytics */}
+        <Script
+          defer
+          data-domain="ganesshkumar.com"
+          src="https://count.ganesshkumar.com/js/script.file-downloads.outbound-links.pageview-props.tagged-events.js"
+        />
+        <Script id="plausible-init" strategy="beforeInteractive">
+          {`
+            window.plausible = window.plausible || function() { 
+              (window.plausible.q = window.plausible.q || []).push(arguments) 
+            }
+          `}
+        </Script>
         {children}
       </body>
     </html>
