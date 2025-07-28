@@ -1,11 +1,12 @@
-//robots.txt
-
-# Block all crawlers for /accounts
-User-agent: *
-Disallow: /accounts
-
-# Allow all crawlers
 User-agent: *
 Allow: /
 
-Sitemap: https://ganesshkumar.com/sitemap-index.xml
+# Sitemap
+Sitemap: https://ganesshkumar.github.io/sitemap.xml
+
+# Block specific paths if needed
+# Disallow: /admin/
+# Disallow: /api/
+
+# Crawl delay (optional)
+Crawl-delay: 1
