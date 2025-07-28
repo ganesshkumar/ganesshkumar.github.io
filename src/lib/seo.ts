@@ -30,6 +30,7 @@ export function generateSEOMetadata({
     description,
     keywords: [
       "Ganessh Kumar",
+      "ganesshkumar",
       "Software Engineer", 
       "Microsoft",
       "Full Stack Developer",

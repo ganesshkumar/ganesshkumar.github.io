@@ -8,8 +8,8 @@ export const NAVIGATION_LINKS = [
 
 export const SITE_CONFIG = {
   name: "Ganessh Kumar",
-  url: "https://ganesshkumar.github.io",
-  description: "Software Engineer at Microsoft, full-stack developer passionate about AI-powered solutions and modern web applications",
+  url: "https://www.ganesshkumar.com",
+  description: "Experienced Full Stack Software Engineer at Microsoft, full-stack developer passionate about AI-powered solutions and modern web applications",
   author: {
     name: "Ganessh Kumar",
     email: "rpganesshkumar@gmail.com",

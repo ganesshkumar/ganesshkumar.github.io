@@ -149,7 +149,7 @@ const Footer = () => {
             </Button>
             <Button variant="ghost" size="sm" asChild className="h-auto p-0">
               <Link 
-                href="https://obsidianstats.com" 
+                href="https://www.obsidianstats.com" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors"

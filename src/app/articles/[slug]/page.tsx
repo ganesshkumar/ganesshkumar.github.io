@@ -275,12 +275,12 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           {article.coverImage ? (
             <div>
               {/* Hero background image */}
-              <div 
+              <div
                 className="relative w-full h-[500px] md:h-[600px] rounded overflow-hidden"
                 style={{
                   backgroundImage: `url('${article.coverImage}')`,
                   backgroundSize: 'cover',
-                  backgroundPosition: 'center'
+                  backgroundPosition: ''
                 }}
               >
                 {/* Dark overlay for better text readability */}

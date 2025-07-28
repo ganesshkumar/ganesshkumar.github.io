@@ -16,6 +16,7 @@ tags:
 categories:
   - programming
 thumbnail: banner/learn-unlearn-relearn.jpeg
+coverImage: /assets/images/articles/2024-04-05-installing-jupyter-in-wsl-cover.webp
 ---
 
 ### 1: Enable WSL and Install a Linux Distribution

@@ -8,7 +8,7 @@ import RecentArticles from "@/components/home/RecentArticles";
 import { NAVIGATION_LINKS, SITE_CONFIG } from "@/lib/constants";
 import { generateSEOMetadata } from '@/lib/seo';
 
-const pageTitle = "Ganessh Kumar - Software Engineer at Microsoft";
+const pageTitle = "Ganessh Kumar - Experienced Full Stack Software Engineer";
 const pageDescription = "Ganessh Kumar is a full-stack software engineer at Microsoft building AI-powered solutions and modern web applications. Passionate about React, TypeScript, Next.js, and creating tools that enhance productivity.";
 const canonicalUrl = SITE_CONFIG.url;
 
