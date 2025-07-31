@@ -6,7 +6,7 @@ date: 2025-01-15
 pubDate: 2025-01-15
 modified_date: 2025-01-15
 image:
-    url: /assets/images/2025-01-15-git-submodules-cheatsheet/submodules.png
+    url: /assets/images/articles/2025-01-07-git-submodules-cheat-sheet.webp
     alt: "Git Submodules Cheat Sheet"
 disqus: false
 tags:
@@ -14,7 +14,7 @@ tags:
   - version control
 categories:
   - technology
-thumbnail: banner/git-submodules.jpeg
+coverImage: /assets/images/articles/2025-01-07-git-submodules-cheat-sheet.webp
 ---
 
 

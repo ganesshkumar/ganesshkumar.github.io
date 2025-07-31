@@ -6,7 +6,7 @@ date: 2025-01-20
 pubDate: 2025-01-20
 modified_date: 2025-01-20
 image:
-  url: /assets/images/2025-01-20-nextjs-migration/middleware.png
+  url: /assets/images/articles/2025-01-20-domain-migration-in-nextjs-vercel.webp
   alt: "Handling Domain Migration in Next.js and Vercel"
 disqus: false
 tags:
@@ -16,7 +16,7 @@ tags:
   - web development
 categories:
   - technology
-thumbnail: banner/nextjs-migration.jpeg
+coverImage: /assets/images/articles/2025-01-20-domain-migration-in-nextjs-vercel.webp
 ---
 
 When I decided to migrate my web application to a new domain, I wanted to ensure users had a smooth experience while keeping some features functional on the old domain. Specifically, I needed to support a /migrate page to help users transfer their data from the old domain to the new one. Initially, I thought simple domain-level redirects would do the job, but I quickly realized that supporting the /migrate page wasn't possible with that approach. That's when I decided to use Next.js middleware for domain redirects to handle the redirections more effectively.

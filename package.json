@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@formspree/react": "^3.0.0",
     "@radix-ui/react-slot": "^1.2.3",
     "@types/mdast": "^4.0.4",
     "class-variance-authority": "^0.7.1",

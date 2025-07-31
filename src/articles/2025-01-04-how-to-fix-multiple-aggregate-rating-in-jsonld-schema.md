@@ -6,7 +6,7 @@ date: 2025-01-04
 pubDate: 2025-01-04
 modified_date: 2025-01-04
 image:
-    url: /assets/images/posts/jsonld-fix.jpg
+    url: /assets/images/articles/2025-01-04-how-to-fix-multiple-aggregate-rating-in-jsonld-schema.webp
     alt: "JSON-LD Schema Fix"
 disqus: true
 tags:
@@ -17,7 +17,7 @@ tags:
   - structured data errors
 categories:
   - web development
-thumbnail: banner/jsonld-schema-fix.jpeg
+coverImage: /assets/images/articles/2025-01-04-how-to-fix-multiple-aggregate-rating-in-jsonld-schema.webp
 ---
 
 ### How do you fix Google Search Console errors caused by multiple aggregate ratings in JSON-LD schema?

@@ -6,7 +6,7 @@ date: 2024-10-29
 pubDate: 2024-10-29
 modified_date: 2024-10-29
 image:
-    url: /assets/images/2024-10-29-boosting-react-performance/lazy-loading-memoization.png
+    url: /assets/images/articles/2024-10-30-bossting-react-performance-with-lazy-loading-and-memoization.webp
     alt: "Boosting React App’s Performance with Lazy Loading and Memoization"
 disqus: false
 tags:
@@ -17,7 +17,7 @@ tags:
   - memoization
 categories:
   - technology
-thumbnail: banner/boosting-react-performance.jpeg
+coverImage: /assets/images/articles/2024-10-30-bossting-react-performance-with-lazy-loading-and-memoization.webp
 ---
 
 In today’s fast-paced digital world, users demand seamless experiences, and every millisecond counts. For React developers, ensuring that applications run smoothly isn’t just a nice-to-have; it’s essential. This is where performance optimization techniques like lazy loading and memoization come into play. By leveraging these strategies, you can significantly enhance the efficiency of your React apps, leading to faster load times and improved user satisfaction.

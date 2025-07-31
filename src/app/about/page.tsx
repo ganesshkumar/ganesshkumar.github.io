@@ -4,8 +4,8 @@ import Footer from '@/components/Footer';
 import { NAVIGATION_LINKS, SITE_CONFIG } from '@/lib/constants';
 import { generateSEOMetadata, generatePersonLDSchema } from '@/lib/seo';
 import Image from 'next/image';
-import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
 import Link from 'next/link';
+import SocialLinks from '@/components/SocialLinks';
 
 const pageTitle = "About | Ganessh Kumar";
 const pageDescription = "Learn about Ganessh Kumar, a full-stack software engineer at Microsoft building AI-powered solutions and modern web applications. Passionate about performance, user experience, and creating tools that make people&apos;s lives easier.";
@@ -273,43 +273,7 @@ export default function AboutPage() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-gray-200">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Connect with Me</h2>
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="https://github.com/ganesshkumar"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-200"
-            >
-              <Github className="w-5 h-5" />
-              GitHub
-            </Link>
-            <Link
-              href="https://linkedin.com/in/ganessh-kumar-r-p-676a4719/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
-            >
-              <Linkedin className="w-5 h-5" />
-              LinkedIn
-            </Link>
-            <Link
-              href="https://twitter.com/ganesshkumar"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors duration-200"
-            >
-              <Twitter className="w-5 h-5" />
-              Twitter
-            </Link>
-            <Link
-              href="mailto:rpganesshkumar@gmail.com"
-              className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors duration-200"
-            >
-              <Mail className="w-5 h-5" />
-              Email
-            </Link>
-          </div>
+          <SocialLinks />
         </div>
       </div>
     </div>

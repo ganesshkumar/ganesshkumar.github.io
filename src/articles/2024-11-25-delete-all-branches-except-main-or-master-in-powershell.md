@@ -6,7 +6,7 @@ date: 2024-11-25
 pubDate: 2024-11-25
 modified_date: 2024-11-25
 image:
-    url: /assets/images/2024-11-25-delete-git-branches-powershell/branch-deletion.png
+    url: /assets/images/articles/2024-11-25-delete-all-branches-except-main-or-master-in-powershell.webp
     alt: "Delete Git Branches in PowerShell"
 disqus: false
 tags:
@@ -15,7 +15,7 @@ tags:
   - version control
 categories:
   - technology
-thumbnail: banner/delete-git-branches.jpeg
+coverImage: /assets/images/articles/2024-11-25-delete-all-branches-except-main-or-master-in-powershell.webp
 ---
 
 In Windows PowerShell, you can delete all branches except main or master branch of a git repository using the following command

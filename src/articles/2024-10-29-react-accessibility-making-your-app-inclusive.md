@@ -6,7 +6,7 @@ date: 2024-10-29
 pubDate: 2024-10-29
 modified_date: 2024-10-29
 image:
-    url: /assets/images/2024-10-29-react-accessibility-making-your-app-inclusive/react-accessibility.jpeg
+    url: /assets/images/articles/2024-10-29-react-accessibility-making-your-app-inclusive.webp
     alt: "React Accessibility: Making Your App Inclusive"
 disqus: false
 tags:
@@ -16,7 +16,7 @@ tags:
   - inclusive design
 categories:
   - technology
-thumbnail: banner/react-accessibility.jpeg
+coverImage: /assets/images/articles/2024-10-29-react-accessibility-making-your-app-inclusive.webp
 ---
 
 In today's digital landscape, creating inclusive web applications is not just a best practice; it's a necessity. Accessibility ensures that everyone, including individuals with disabilities, can use and enjoy the web. This is particularly important for developers working with frameworks like React, where the focus on user experience must extend to all users, regardless of their abilities. When we talk about accessibility, we refer to the design and development of web applications that can be accessed and understood by people with various disabilities, including visual, auditory, motor, and cognitive impairments.
