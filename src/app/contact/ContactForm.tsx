@@ -18,7 +18,7 @@ const ContactForm: React.FC = () => {
           </div>
           <h3 className="text-lg font-semibold mb-2">Thank you!</h3>
           <p className="text-muted-foreground">
-            Your message has been sent successfully. I'll get back to you soon!
+            Your message has been sent successfully. I&apos;ll get back to you soon!
           </p>
         </CardContent>
       </Card>
@@ -30,7 +30,7 @@ const ContactForm: React.FC = () => {
       <CardHeader>
         <CardTitle className="text-2xl">Send me a message</CardTitle>
         <CardDescription>
-          Fill out the form below and I'll get back to you as soon as possible.
+          Fill out the form below and I&apos;ll get back to you as soon as possible.
         </CardDescription>
       </CardHeader>
       <CardContent>
