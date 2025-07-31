@@ -6,7 +6,7 @@ date: 2025-04-26
 pubDate: 2025-04-26
 modified_date: 2025-04-26
 image:
-  - url: /assets/images/2025-04-26-infinite-scroll/infinite-scroll-demo.png
+  - url: /assets/images/articles/2025-04-26-creating-react-infinite-scroll-component.webp
   - alt: "Creating an Infinite Horizontal Scrolling Component in React with Framer Motion"
 disqus: false
 tags:
@@ -16,7 +16,7 @@ tags:
   - Frontend
 categories:
   - technology
-thumbnail: banner/infinite-scroll-demo.jpeg
+coverImage: /assets/images/articles/2025-04-26-creating-react-infinite-scroll-component.webp
 ---
 
 While redesigning the homepage of **ObsidianStats.com**, I stumbled upon a challenge. The "Trending Plugins" section with a bunch of cards was visually blending into the rest of the page. Similar card layouts were already used in other sections, and frankly, it started to feel repetitive.

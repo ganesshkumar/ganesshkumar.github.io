@@ -6,7 +6,7 @@ date: 2025-07-08
 pubDate: 2025-07-08
 modified_date: 2025-07-08
 image:
-    url: /assets/images/posts/samsung-charger.jpg
+    url: /assets/images/2025-07-08-choosing-a-right-charger-for-s22/right-charger-for-s22.webp
     alt: "Samsung S22 charger options"
 disqus: true
 tags:
@@ -15,7 +15,6 @@ tags:
   - pps
 categories:
   - tech
-thumbnail: banner/samsung-charger.jpeg
 coverImage: /assets/images/2025-07-08-choosing-a-right-charger-for-s22/right-charger-for-s22.webp
 ---
 

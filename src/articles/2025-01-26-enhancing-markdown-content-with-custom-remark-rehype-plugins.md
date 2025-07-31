@@ -6,7 +6,7 @@ date: 2025-01-26
 pubDate: 2025-01-26
 modified_date: 2025-01-26
 image:
-  - url: /assets/images/2025-01-26-remark-rehype-plugins/remark-rehype-plugin.png
+  - url: /assets/images/articles/2025-01-26-react-remark-rehype.webp
   - alt: "Enhancing Markdown Content with Custom Remark/Rehype Plugins"
 disqus: false
 tags:
@@ -16,7 +16,7 @@ tags:
   - Content Automation
 categories:
   - technology
-thumbnail: banner/remark-rehype-plugin.jpeg
+coverImage: /assets/images/articles/2025-01-26-react-remark-rehype.webp
 ---
 
 Writing a blog can be rewarding but also repetitive and time-consuming. While writing weekly plugin posts for ObsidianStats, I found myself manually entering plugin names, links, and descriptions for each post. This manual approach was not only tedious but also lacked flexibility to keep up with evolving plugin data such as categories, tags, total downloads, and other metadata from my datastore. To overcome this challenge and improve search engine visibility, I decided to automate the process by introducing custom Markdown code blocks.

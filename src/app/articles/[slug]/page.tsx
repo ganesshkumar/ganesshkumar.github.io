@@ -280,7 +280,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 style={{
                   backgroundImage: `url('${article.coverImage}')`,
                   backgroundSize: 'cover',
-                  backgroundPosition: ''
+                  backgroundPosition: 'center'
                 }}
               >
                 {/* Dark overlay for better text readability */}

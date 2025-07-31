@@ -15,7 +15,6 @@ tags:
 categories:
   - technology
   - tutorials
-thumbnail: banner/powershell-registry.jpeg
 coverImage: /assets/images/2025-07-23-read-and-modify-windows-registry-with-powershell/powershell.webp
 ---
 
