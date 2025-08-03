@@ -16,6 +16,7 @@ import rehypeStringify from 'rehype-stringify';
 import rehypeHighlight from 'rehype-highlight';
 
 import { Metadata } from 'next';
+import RightSidebarSquareDisplayAd from "../../../components/RightSidebarSquareDisplayAd";
 
 type ArticleData = {
   title: string;
@@ -223,6 +224,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
   const article = await getArticleBySlug(slug);
   
+
   if (!article) {
     notFound();
   }
@@ -515,6 +517,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         suggestedPosts.length > 0 ? (
           <div className="w-full">
             <h3 className="text-lg font-semibold mb-4 text-gray-900">Suggested Posts</h3>
+            <RightSidebarSquareDisplayAd />
             <div className="space-y-4">
               {suggestedPosts.map((post) => (
                 <div key={post.slug} className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
