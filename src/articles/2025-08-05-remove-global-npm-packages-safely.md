@@ -1,6 +1,6 @@
 ---
 title: "Remove Global npm Packages Safely on Windows, Linux, and macOS"
-description: "An Indian software engineer explains how to remove global npm packages in bulk without breaking essential tools, using real PowerShell and bash scripts for safe cleanup."
+description: "Explaination on how to remove global npm packages in bulk without breaking essential tools, using real PowerShell and bash scripts for safe cleanup."
 author: "Ganessh Kumar"
 date: 2025-08-05
 pubDate: 2025-08-05
