@@ -6,7 +6,7 @@ date: 2025-09-03
 pubDate: 2025-09-03
 modified_date: 2025-09-03
 image:
-    url: /assets/images/2025-09-03-why-function-keys-on-asus-rog-stops-working
+    url: /assets/images/2025-09-03-why-function-keys-on-asus-rog-stops-working/rog-fn-lock.webp
     alt: "Why function keys on Asus ROG stops working"
 disqus: true
 tags:
@@ -19,7 +19,7 @@ categories:
   - technology
   - laptops
   - tips
-coverImage: /assets/images/2025-09-03-why-function-keys-on-asus-rog-stops-working
+coverImage: /assets/images/2025-09-03-why-function-keys-on-asus-rog-stops-working/rog-fn-lock.webp
 ---
 
 Every Windows user carries a reflex. You hit F5 to refresh. It works in browsers, it works in explorer, it works almost everywhere. On ASUS ROG laptops though, F5 behaves differently. Instead of refreshing, it toggles between Balanced, Turbo, and Silent modes.
