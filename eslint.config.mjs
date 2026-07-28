@@ -1,20 +1,15 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
+import nextTypescript from "eslint-config-next/typescript";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
+/**
+ * Flat ESLint config for Next.js 16. Uses eslint-config-next's native flat
+ * exports directly (no FlatCompat shim, which crashes on ESLint 9.39).
+ */
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  ...nextCoreWebVitals,
+  ...nextTypescript,
   {
-    rules: {
-      "@next/next/no-html-link-for-pages": "off",
-    },
+    ignores: ["backup/**", ".next/**", "out/**", "node_modules/**"],
   },
 ];
 

@@ -1,228 +1,251 @@
-import { Metadata } from 'next';
-import { SITE_CONFIG } from './constants';
+import type { Metadata } from "next";
+import { SITE, SOCIAL_NAV } from "@/lib/navigation";
+import type { ArticleDetail, ProjectSummary } from "@/lib/content";
 
-interface SEOProps {
-  title: string;
-  description: string;
-  canonicalUrl: string;
-  type?: 'website' | 'article' | 'profile';
-  publishedTime?: string;
-  modifiedTime?: string;
-  keywords?: string[];
-  image?: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ldSchema?: Record<string, any>;
+/**
+ * SEO/AEO helpers: absolute URL resolution and JSON-LD (schema.org) builders.
+ * Structured data makes article pages eligible for rich results and gives
+ * answer engines an explicit, machine-readable summary of each page.
+ */
+
+const ORIGIN = SITE.url.replace(/\/$/, "");
+
+/** Resolve an app path (or pass through an absolute URL) to an absolute URL. */
+export function absoluteUrl(pathOrUrl: string): string {
+  if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
+  return `${ORIGIN}${pathOrUrl.startsWith("/") ? "" : "/"}${pathOrUrl}`;
 }
 
-export function generateSEOMetadata({
-  title,
-  description,
-  canonicalUrl,
-  type = 'website',
-  publishedTime,
-  modifiedTime,
-  keywords = [],
-  image = SITE_CONFIG.author.image,
-  ldSchema
-}: SEOProps): Metadata {
-  const metadata: Metadata = {
-    title,
-    description,
-    keywords: [
-      "Ganessh Kumar",
-      "ganesshkumar",
-      "Software Engineer", 
-      "Microsoft",
-      "Full Stack Developer",
-      "AI Solutions",
-      "Web Applications",
-      ...keywords
-    ],
-    authors: [{ name: SITE_CONFIG.author.name, url: SITE_CONFIG.url }],
-    creator: SITE_CONFIG.author.name,
-    publisher: SITE_CONFIG.author.name,
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
-    alternates: {
-      canonical: canonicalUrl,
-    },
+/** Canonical URL for an article, with the trailing slash the site uses. */
+export function articleCanonicalUrl(slug: string): string {
+  return `${ORIGIN}/articles/${slug}/`;
+}
+
+/** X/Twitter handle used for `twitter:site` and `twitter:creator`. */
+const TWITTER_HANDLE = "@ganesshkumar";
+
+/** Default social share image, reused across pages without a bespoke image. */
+export const DEFAULT_OG_IMAGE = {
+  url: absoluteUrl("/assets/images/og-default.png"),
+  alt: `${SITE.name} — full-stack engineering, distributed systems and agentic systems`,
+} as const;
+
+/**
+ * Build Open Graph + Twitter metadata for a page. Each page owns its own
+ * social title, description and canonical path, so previews stay accurate
+ * and configurable per route rather than sharing one site-wide default.
+ */
+export function buildSocialMetadata(opts: {
+  title: string;
+  description: string;
+  path: string;
+  type?: "website" | "profile";
+}): Pick<Metadata, "openGraph" | "twitter"> {
+  const path = opts.path.endsWith("/") ? opts.path : `${opts.path}/`;
+  const url = absoluteUrl(path);
+  return {
     openGraph: {
-      type,
-      locale: 'en_US',
-      url: canonicalUrl,
-      title,
-      description,
-      siteName: SITE_CONFIG.name,
-      images: [
-        {
-          url: image,
-          width: 256,
-          height: 256,
-          alt: `${title} - ${SITE_CONFIG.name}`,
-        },
-      ],
+      type: opts.type ?? "website",
+      url,
+      siteName: SITE.name,
+      locale: "en_US",
+      title: opts.title,
+      description: opts.description,
+      images: [DEFAULT_OG_IMAGE],
     },
     twitter: {
-      card: 'summary',
-      title,
-      description,
-      site: SITE_CONFIG.author.twitter,
-      creator: SITE_CONFIG.author.twitter,
-      images: [image],
-    },
-    verification: {
-      google: process.env.GOOGLE_SITE_VERIFICATION,
+      card: "summary",
+      site: TWITTER_HANDLE,
+      creator: TWITTER_HANDLE,
+      title: opts.title,
+      description: opts.description,
+      images: [DEFAULT_OG_IMAGE.url],
     },
   };
-
-  // Add published/modified time for articles
-  if (type === 'article' && publishedTime) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (metadata.openGraph as any).publishedTime = publishedTime;
-    if (modifiedTime) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (metadata.openGraph as any).modifiedTime = modifiedTime;
-    }
-  }
-
-  // Add structured data if provided
-  if (ldSchema) {
-    metadata.other = {
-      'application/ld+json': JSON.stringify(ldSchema),
-    };
-  }
-
-  return metadata;
 }
 
-export function generatePersonLDSchema(props: {
-  canonicalUrl: string;
-  title: string;
-  description: string;
-  publishedTime?: string;
-  modifiedTime?: string;
-  type?: '@type';
-}) {
-  const { canonicalUrl, title, description, publishedTime, modifiedTime, type = 'ProfilePage' } = props;
-  
+/** The author's public profiles, for `sameAs` identity resolution. */
+function authorSameAs(): string[] {
+  return SOCIAL_NAV.filter((link) => /^https?:\/\//i.test(link.href)).map(
+    (link) => link.href,
+  );
+}
+
+const AUTHOR = {
+  "@type": "Person",
+  "@id": `${ORIGIN}/#person`,
+  name: SITE.name,
+  url: `${ORIGIN}/about/`,
+  sameAs: authorSameAs(),
+} as const;
+
+const PUBLISHER = {
+  "@type": "Organization",
+  name: SITE.name,
+  url: `${ORIGIN}/`,
+  logo: {
+    "@type": "ImageObject",
+    url: absoluteUrl("/assets/images/logo.png"),
+  },
+} as const;
+
+/**
+ * Home page structured data: a cross-referenced graph of the site (WebSite),
+ * the publishing entity (Organization) and the person behind it (Person).
+ * The shared `@id` anchors let other pages' `publisher`/`author` references
+ * resolve to a single canonical identity.
+ */
+export function buildHomeJsonLd(): Record<string, unknown> {
+  const sameAs = authorSameAs();
   return {
     "@context": "https://schema.org",
-    "@type": type,
-    url: canonicalUrl,
-    ...(publishedTime && { datePublished: publishedTime }),
-    dateModified: modifiedTime || new Date().toISOString().split("T")[0],
-    headline: title,
-    name: title,
-    description,
-    mainEntity: {
-      "@type": "Person",
-      "@id": `${SITE_CONFIG.url}/author/ganesshkumar/#Person`,
-      name: SITE_CONFIG.author.name,
-      url: SITE_CONFIG.url,
-      jobTitle: "Software Engineer",
-      worksFor: {
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${ORIGIN}/#website`,
+        url: `${ORIGIN}/`,
+        name: SITE.name,
+        description: SITE.tagline,
+        publisher: { "@id": `${ORIGIN}/#organization` },
+        inLanguage: "en",
+      },
+      {
         "@type": "Organization",
-        name: "Microsoft"
+        "@id": `${ORIGIN}/#organization`,
+        name: SITE.name,
+        url: `${ORIGIN}/`,
+        logo: {
+          "@type": "ImageObject",
+          url: absoluteUrl("/assets/images/logo.png"),
+        },
+        sameAs,
       },
-      image: {
-        "@type": "ImageObject",
-        "@id": SITE_CONFIG.author.image,
-        url: SITE_CONFIG.author.image,
-        height: 256,
-        width: 256,
+      {
+        "@type": "Person",
+        "@id": `${ORIGIN}/#person`,
+        name: SITE.name,
+        url: `${ORIGIN}/about/`,
+        sameAs,
       },
-      sameAs: [
-        `https://github.com/${SITE_CONFIG.author.github}`,
-        `https://linkedin.com/in/${SITE_CONFIG.author.linkedin}`,
-        `https://twitter.com/${SITE_CONFIG.author.twitter.replace('@', '')}`,
-      ]
-    },
-    author: {
-      "@type": "Person",
-      "@id": `${SITE_CONFIG.url}/author/ganesshkumar/#Person`,
-      name: SITE_CONFIG.author.name,
-      url: SITE_CONFIG.url,
-      image: {
-        "@type": "ImageObject",
-        "@id": SITE_CONFIG.author.image,
-        url: SITE_CONFIG.author.image,
-        height: 256,
-        width: 256,
+    ],
+  };
+}
+
+/** BlogPosting structured data for an article detail page. */
+export function buildArticleJsonLd(article: ArticleDetail): Record<string, unknown> {
+  const canonical = articleCanonicalUrl(article.slug);
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: article.title,
+    description: article.description,
+    image: article.coverImage
+      ? [absoluteUrl(article.coverImage.src)]
+      : [DEFAULT_OG_IMAGE.url],
+    datePublished: article.pubDate,
+    dateModified: article.updatedDate ?? article.pubDate,
+    ...(article.readingTimeMinutes
+      ? { timeRequired: `PT${article.readingTimeMinutes}M` }
+      : {}),
+    author: AUTHOR,
+    publisher: PUBLISHER,
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
+    url: canonical,
+    ...(article.tags.length > 0 ? { keywords: article.tags.join(", ") } : {}),
+    ...(article.category ? { articleSection: article.category } : {}),
+    inLanguage: "en",
+    isAccessibleForFree: true,
+  };
+}
+
+/** Breadcrumb structured data: Home > Articles > this article. */
+export function buildBreadcrumbJsonLd(
+  article: Pick<ArticleDetail, "slug" | "title">,
+): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${ORIGIN}/` },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Articles",
+        item: `${ORIGIN}/articles/`,
       },
-    },
-    publisher: {
-      "@type": "Organization",
-      "@id": SITE_CONFIG.url,
-      name: SITE_CONFIG.author.name,
-      logo: {
-        "@type": "ImageObject",
-        "@id": SITE_CONFIG.author.image,
-        url: SITE_CONFIG.author.image,
-        height: 256,
-        width: 256,
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: article.title,
+        item: articleCanonicalUrl(article.slug),
       },
+    ],
+  };
+}
+
+/**
+ * Article detail structured data as a single schema.org `@graph`: the
+ * BlogPosting and its BreadcrumbList share one top-level `@context`, matching
+ * the site convention set by `buildHomeJsonLd`. Reuses the standalone builders
+ * so all their fields flow through, then hoists the `@context` off each node.
+ */
+export function buildArticleGraphJsonLd(
+  article: ArticleDetail,
+): Record<string, unknown> {
+  const { "@context": _articleContext, ...blogPosting } =
+    buildArticleJsonLd(article);
+  const { "@context": _breadcrumbContext, ...breadcrumb } =
+    buildBreadcrumbJsonLd(article);
+  void _articleContext;
+  void _breadcrumbContext;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [blogPosting, breadcrumb],
+  };
+}
+
+/**
+ * CollectionPage + ItemList structured data for the projects index. There are
+ * no per-project detail routes, so each list item points straight at the live
+ * site or source repository.
+ */
+export function buildProjectsJsonLd(
+  projects: ProjectSummary[],
+  description: string,
+): Record<string, unknown> {
+  const url = `${ORIGIN}/projects/`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    url,
+    name: "Projects",
+    description,
+    isPartOf: { "@type": "WebSite", url: `${ORIGIN}/` },
+    author: AUTHOR,
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: projects.map((project, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "SoftwareApplication",
+          name: project.title,
+          description: project.problem ?? project.description,
+          applicationCategory: "DeveloperApplication",
+          operatingSystem: "Any",
+          ...(project.liveUrl ? { url: project.liveUrl } : {}),
+          ...(project.repoUrl ? { codeRepository: project.repoUrl } : {}),
+          author: AUTHOR,
+        },
+      })),
     },
   };
 }
 
-export function generateArticleLDSchema(props: {
-  canonicalUrl: string;
-  title: string;
-  description: string;
-  publishedTime: string;
-  modifiedTime?: string;
-  image?: string;
-}) {
-  const { canonicalUrl, title, description, publishedTime, modifiedTime, image = SITE_CONFIG.author.image } = props;
-  
-  return {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    url: canonicalUrl,
-    datePublished: publishedTime,
-    dateModified: modifiedTime || new Date().toISOString().split("T")[0],
-    headline: title,
-    name: title,
-    description,
-    image: {
-      "@type": "ImageObject",
-      url: image,
-      height: 256,
-      width: 256,
-    },
-    author: {
-      "@type": "Person",
-      "@id": `${SITE_CONFIG.url}/author/ganesshkumar/#Person`,
-      name: SITE_CONFIG.author.name,
-      url: SITE_CONFIG.url,
-      image: {
-        "@type": "ImageObject",
-        "@id": SITE_CONFIG.author.image,
-        url: SITE_CONFIG.author.image,
-        height: 256,
-        width: 256,
-      },
-    },
-    publisher: {
-      "@type": "Organization",
-      "@id": SITE_CONFIG.url,
-      name: SITE_CONFIG.author.name,
-      logo: {
-        "@type": "ImageObject",
-        "@id": SITE_CONFIG.author.image,
-        url: SITE_CONFIG.author.image,
-        height: 256,
-        width: 256,
-      },
-    },
-  };
+/**
+ * Serialize structured data for safe inlining in a <script> tag. Escapes `<`
+ * so a stray `</script>` in any string field cannot break out of the element.
+ */
+export function serializeJsonLd(data: Record<string, unknown>): string {
+  return JSON.stringify(data).replace(/</g, "\\u003c");
 }

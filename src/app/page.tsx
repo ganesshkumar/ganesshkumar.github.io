@@ -1,208 +1,94 @@
-import ResponsiveLayout from "../components/ResponsiveLayout";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import Image from "next/image";
-import GKHeroCard from "@/components/home/GKHeroCard";
-import FeaturedProjects from "@/components/home/FeaturedProjects";
-import RecentArticles from "@/components/home/RecentArticles";
-import { NAVIGATION_LINKS, SITE_CONFIG } from "@/lib/constants";
-import { generateSEOMetadata } from '@/lib/seo';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { IntroComponent } from "@/components/intro";
+import { ArticleList } from "@/components/article-list";
+import { ProjectGrid } from "@/components/project-grid";
+import { SOCIAL_NAV } from "@/lib/navigation";
 
-const pageTitle = "Ganessh Kumar - Experienced Full Stack Software Engineer";
-const pageDescription = "Ganessh Kumar is a full-stack software engineer at Microsoft building AI-powered solutions and modern web applications. Passionate about React, TypeScript, Next.js, and creating tools that enhance productivity.";
-const canonicalUrl = SITE_CONFIG.url;
-
-const ldSchema = [
-  // Person Schema
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": `${SITE_CONFIG.url}/#Person`,
-    name: SITE_CONFIG.author.name,
-    url: SITE_CONFIG.url,
-    image: {
-      "@type": "ImageObject",
-      "@id": SITE_CONFIG.author.image,
-      url: SITE_CONFIG.author.image,
-      height: 256,
-      width: 256,
-    },
-    jobTitle: "Software Engineer",
-    worksFor: {
-      "@type": "Organization",
-      name: "Microsoft",
-      url: "https://www.microsoft.com"
-    },
-    description: pageDescription,
-    knowsAbout: [
-      "Software Engineering",
-      "Full Stack Development",
-      "AI Solutions",
-      "Web Applications",
-      "TypeScript",
-      "React",
-      "Next.js",
-      "Microsoft Fabric",
-      "Obsidian Plugins"
-    ],
-    sameAs: [
-      `https://github.com/${SITE_CONFIG.author.github}`,
-      `https://linkedin.com/in/${SITE_CONFIG.author.linkedin}`,
-      `https://twitter.com/${SITE_CONFIG.author.twitter.replace('@', '')}`,
-    ],
+export const metadata: Metadata = {
+  title: {
+    absolute: "Ganessh Kumar — Full-Stack Engineering Notes & Projects",
   },
-  // Website Schema
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": `${SITE_CONFIG.url}/#WebSite`,
-    url: SITE_CONFIG.url,
-    name: pageTitle,
-    description: pageDescription,
-    inLanguage: "en-US",
-    author: {
-      "@type": "Person",
-      "@id": `${SITE_CONFIG.url}/#Person`,
-    },
-    publisher: {
-      "@type": "Organization",
-      "@id": SITE_CONFIG.url,
-      name: SITE_CONFIG.author.name,
-      logo: {
-        "@type": "ImageObject",
-        "@id": SITE_CONFIG.author.image,
-        url: SITE_CONFIG.author.image,
-        height: 256,
-        width: 256,
-      },
-    },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${SITE_CONFIG.url}/search?q={search_term_string}`
-      },
-      "query-input": "required name=search_term_string"
-    }
-  },
-  // WebPage Schema for Homepage
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "@id": `${SITE_CONFIG.url}/#WebPage`,
-    url: SITE_CONFIG.url,
-    name: pageTitle,
-    description: pageDescription,
-    inLanguage: "en-US",
-    isPartOf: {
-      "@type": "WebSite",
-      "@id": `${SITE_CONFIG.url}/#WebSite`
-    },
-    about: {
-      "@type": "Person",
-      "@id": `${SITE_CONFIG.url}/#Person`
-    },
-    primaryImageOfPage: {
-      "@type": "ImageObject",
-      "@id": SITE_CONFIG.author.image,
-      url: SITE_CONFIG.author.image,
-      height: 256,
-      width: 256,
-    },
-    datePublished: "2013-01-01",
-    dateModified: new Date().toISOString().split("T")[0],
-  },
-  // BreadcrumbList Schema
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: SITE_CONFIG.url
-      }
-    ]
-  }
-];
-
-export const metadata = generateSEOMetadata({
-  title: pageTitle,
-  description: pageDescription,
-  canonicalUrl,
-  type: 'website',
-  keywords: [
-    "software engineer",
-    "Microsoft",
-    "full stack developer",
-    "AI solutions",
-    "React developer",
-    "TypeScript",
-    "Next.js",
-    "web development",
-    "Microsoft Fabric",
-    "Obsidian plugins",
-    "productivity tools",
-    "modern web applications"
-  ],
-  ldSchema,
-});
+  description:
+    "Full-stack engineer at Microsoft. I build developer tools and write practical notes on full-stack development, distributed systems and AI agents.",
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (
-    <>
-      {ldSchema.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(schema)
-          }}
-        />
-      ))}
-      <ResponsiveLayout
-        nav={
-          <Navbar
-            logo={<span className="font-bold text-xl">
-              <Image src="/android-chrome-512x512.png" alt="Logo" width={32} height={32} />
-            </span>}
-            links={NAVIGATION_LINKS}
-            currentUrl="/"
-          />
-        }
-        hero={
-          <div 
-            className="text-center w-full py-6 rounded"
-            itemScope
-            itemType="https://schema.org/Person"
+    <main className="flex-1">
+      <IntroComponent
+        title="Hey, I'm Ganessh"
+        tagline="Full-stack engineering, distributed systems and agentic systems."
+        socials={SOCIAL_NAV}
+      >
+        <p>
+          I&apos;m a software engineer at Microsoft, working on Microsoft Fabric.
+          My focus is the horizontal platform: the shared data components that
+          Fabric&apos;s workloads build on. It&apos;s distributed-systems work,
+          the kind of plumbing that has to stay reliable while everything above
+          it keeps moving.
+        </p>
+        <p>
+          On the side, I build open-source plugins for Obsidian. Two I keep
+          maintained are the{" "}
+          <Link
+            href="https://github.com/ganesshkumar/obsidian-table-editor"
+            target="_blank"
+            rel="noreferrer"
           >
-            <meta itemProp="name" content={SITE_CONFIG.author.name} />
-            <meta itemProp="jobTitle" content="Software Engineer" />
-            <meta itemProp="description" content={pageDescription} />
-            <meta itemProp="url" content={SITE_CONFIG.url} />
-            <meta itemProp="image" content={SITE_CONFIG.author.image} />
-            <GKHeroCard />
-          </div>
-        }
-        content={
-          <div className="flex flex-col w-full gap-4 rounded">
-            <section itemScope itemType="https://schema.org/ItemList">
-              <meta itemProp="name" content="Featured Projects" />
-              <meta itemProp="description" content="Showcase of notable software projects and applications" />
-              <FeaturedProjects />
-            </section>
-            <section itemScope itemType="https://schema.org/ItemList">
-              <meta itemProp="name" content="Recent Articles" />
-              <meta itemProp="description" content="Latest articles on software development and technology" />
-              <RecentArticles />
-            </section>
-          </div>
-        }
-        leftSidebar={null}
-        rightSidebar={null}
-        footer={<Footer />}
-      />
-    </>
+            Markdown Table Editor
+          </Link>{" "}
+          and{" "}
+          <Link
+            href="https://github.com/ganesshkumar/obsidian-excel-to-markdown-table"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Excel to Markdown
+          </Link>
+          . I also run{" "}
+          <Link
+            href="https://www.obsidianstats.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Obsidian Stats
+          </Link>
+          , which helps you pick the right plugins for your workflow.
+        </p>
+        <p>
+          Before Fabric, I spent a good while inside Microsoft Teams. The most
+          interesting part was building agentic workflows that cut channel noise
+          and the fatigue of keeping up. I also worked on the lifecycle of teams
+          and channels, the notification system and a set of compliance
+          features.
+        </p>
+        <p>
+          Teaching has been part of it too. For about three and a half years,
+          from 2016 to 2020, I mentored learners in the Machine Learning course
+          on Coursera. That was before it retired the mentorship program.
+        </p>
+        <p>
+          Most of what I learn ends up here, as{" "}
+          <Link href="/articles">articles</Link> and{" "}
+          <Link href="/projects">projects</Link>. For the fuller work history,
+          I&apos;m on{" "}
+          <Link
+            href="https://www.linkedin.com/in/ganessh-kumar-r-p-676a4719"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LinkedIn
+          </Link>
+          .
+        </p>
+      </IntroComponent>
+
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-4 pb-16 sm:px-6">
+        <ArticleList />
+        <ProjectGrid />
+      </div>
+    </main>
   );
 }

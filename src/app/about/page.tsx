@@ -1,301 +1,291 @@
-import ResponsiveLayout from '@/components/ResponsiveLayout';
-import { Navbar } from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import { NAVIGATION_LINKS, SITE_CONFIG } from '@/lib/constants';
-import { generateSEOMetadata, generatePersonLDSchema } from '@/lib/seo';
-import Image from 'next/image';
-import Link from 'next/link';
-import SocialLinks from '@/components/SocialLinks';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ExternalLink } from "lucide-react";
+import { IntroComponent } from "@/components/intro";
+import { ReadingCtaComponent } from "@/components/reading-cta";
+import { SectionHeaderComponent } from "@/components/section-header";
+import { SOCIAL_NAV } from "@/lib/navigation";
+import { buildSocialMetadata } from "@/lib/seo";
 
-const pageTitle = "About | Ganessh Kumar";
-const pageDescription = "Learn about Ganessh Kumar, a full-stack software engineer at Microsoft building AI-powered solutions and modern web applications. Passionate about performance, user experience, and creating tools that make people&apos;s lives easier.";
-const canonicalUrl = `${SITE_CONFIG.url}/about`;
+const description =
+  "Ganessh Kumar is a full-stack software engineer at Microsoft. I build AI-powered solutions and modern web applications, create Obsidian plugins and write about software development.";
 
-const ldSchema = generatePersonLDSchema({
-  canonicalUrl,
-  title: pageTitle,
-  description: pageDescription,
-  publishedTime: "2013-01-01",
-  modifiedTime: new Date().toISOString().split("T")[0],
-});
+export const metadata: Metadata = {
+  title: "About",
+  description,
+  alternates: { canonical: "/about" },
+  ...buildSocialMetadata({
+    title: "About Ganessh Kumar",
+    description,
+    path: "/about",
+    type: "profile",
+  }),
+};
 
-export const metadata = generateSEOMetadata({
-  title: pageTitle,
-  description: pageDescription,
-  canonicalUrl,
-  type: 'profile',
-  keywords: [
-    "TypeScript",
-    "React",
-    "Next.js",
-    "Obsidian Plugins",
-    "Microsoft Fabric",
-    "Full Stack Development",
-    "AI Solutions"
-  ],
-  ldSchema,
-});
+type SkillGroup = { title: string; items: { name: string; icon: string }[] };
+
+const skillIcon = (id: string) =>
+  `https://skillicons.dev/icons?i=${id}&theme=light`;
+
+const SKILL_GROUPS: SkillGroup[] = [
+  {
+    title: "Frontend",
+    items: [
+      { name: "TypeScript", icon: skillIcon("ts") },
+      { name: "JavaScript", icon: skillIcon("js") },
+      { name: "HTML", icon: skillIcon("html") },
+      { name: "CSS", icon: skillIcon("css") },
+      { name: "React", icon: skillIcon("react") },
+      { name: "Next.js", icon: skillIcon("nextjs") },
+      { name: "Redux", icon: skillIcon("redux") },
+      { name: "Tailwind", icon: skillIcon("tailwind") },
+    ],
+  },
+  {
+    title: "Backend",
+    items: [
+      { name: "Node.js", icon: skillIcon("nodejs") },
+      { name: "NestJS", icon: skillIcon("nestjs") },
+      { name: "Java", icon: skillIcon("java") },
+      { name: "Kotlin", icon: skillIcon("kotlin") },
+      { name: "Spring", icon: skillIcon("spring") },
+      { name: "Python", icon: skillIcon("py") },
+      { name: "Flask", icon: skillIcon("flask") },
+      { name: "C#", icon: skillIcon("cs") },
+      { name: ".NET", icon: skillIcon("dotnet") },
+      { name: "GraphQL", icon: skillIcon("graphql") },
+    ],
+  },
+  {
+    title: "Database & Tools",
+    items: [
+      { name: "Prisma", icon: skillIcon("prisma") },
+      { name: "Supabase", icon: skillIcon("supabase") },
+      { name: "PostgreSQL", icon: skillIcon("postgres") },
+      { name: "MongoDB", icon: skillIcon("mongodb") },
+    ],
+  },
+  {
+    title: "Cloud & DevOps",
+    items: [
+      { name: "AWS", icon: skillIcon("aws") },
+      { name: "Azure", icon: skillIcon("azure") },
+      { name: "Vercel", icon: skillIcon("vercel") },
+      { name: "Docker", icon: skillIcon("docker") },
+      { name: "Kubernetes", icon: skillIcon("kubernetes") },
+      { name: "Ansible", icon: skillIcon("ansible") },
+    ],
+  },
+  {
+    title: "Operating Systems",
+    items: [{ name: "Linux", icon: skillIcon("linux") }],
+  },
+];
+
+type Patent = {
+  id: string;
+  number: string;
+  status: string;
+  title: string;
+  summary: string;
+  role: string;
+  assignee: string;
+  href: string;
+};
+
+const PATENTS: Patent[] = [
+  {
+    id: "US11755844B2",
+    number: "US 11,755,844 B2",
+    status: "Granted 2023",
+    title: "Automatic summarization of content in electronic messages",
+    summary:
+      "A method for summarizing email automatically. It classifies each sentence as a decision, judgement, inference or fact, clusters the related ones, then builds a short summary from the highest-scoring cluster.",
+    role: "Co-inventor",
+    assignee: "Microsoft Technology Licensing, LLC",
+    href: "https://patents.google.com/patent/US11755844B2/en",
+  },
+];
 
 export default function AboutPage() {
-  const aboutContent = (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(ldSchema)
-        }}
-      />
-      <div className="w-full max-w-4xl mx-auto">
-      <header className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">About Me</h1>
-      </header>
-      
-      <div className="prose prose-lg mx-auto">
-        <div className="space-y-6 text-gray-700 leading-relaxed">
-          <p>
-            My name is <strong>Ganessh Kumar</strong> and I am a software engineer at <strong>Microsoft</strong>. 
-            I am a full-stack developer passionate about building AI-powered solutions and modern web applications, with a strong emphasis on performance and user experience.
-          </p>
-          
-          <p>I am currently working on{' '}
-            <Link 
-              href="https://www.microsoft.com/en-us/microsoft-fabric" 
-              className="text-blue-600 hover:text-blue-800 underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Microsoft Fabric
-            </Link>, a unified analytics platform that empowers organizations to get the most value from their data and accelerate their AI journey. I love creating solutions that make people&apos;s lives easier and more productive.
-          </p>
-
-          <p>
-            In my free time, I enjoy building{' '}
-            <Link 
-              href="https://obsidian-plugin-stats.ganesshkumar.com" 
-              className="text-blue-600 hover:text-blue-800 underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              ObsidianStats
-            </Link>, a platform to find the best Obsidian plugins for a workflow and also to stay up-to-date on Obsidian plugins and themes. I also love creating plugins for <strong>Obsidian</strong>.
-            I have created a few plugins that enhance the functionality of Obsidian, such as:
-          </p>
-
-          <ul className="list-disc pl-6 space-y-2">
-            <li>
-              <Link 
-                href="https://github.com/ganesshkumar/obsidian-excel-to-markdown-table" 
-                className="text-blue-600 hover:text-blue-800 underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Obsidian Excel to Markdown table
-              </Link>
-            </li>
-            <li>
-              <Link 
-                href="https://github.com/ganesshkumar/obsidian-table-editor" 
-                className="text-blue-600 hover:text-blue-800 underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Obsidian Markdown Table Editor
-              </Link>
-            </li>
-            <li>
-              <Link 
-                href="https://github.com/ganesshkumar/obsidian-bookmarklet-maker" 
-                className="text-blue-600 hover:text-blue-800 underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Obsidian Bookmarklet Maker
-              </Link>
-            </li>
-          </ul>
-
-          <p>
-            You can find all my plugins on the Obsidian community hub or on my{' '}
-            <Link 
-              href="https://github.com/ganesshkumar" 
-              className="text-blue-600 hover:text-blue-800 underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub page
-            </Link>. 
-            I hope you find them useful and feel free to give me feedback or suggestions.
-          </p>
-
-          <p>
-            On this blog, I will share my thoughts and experiences on software development, my learnings, productivity, Obsidian, 
-            and other topics that interest me. I hope you enjoy reading my posts and learn something 
-            new along the way. Thank you for visiting and stay tuned for more!
-          </p>
-        </div>
-
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Skills</h2>
-          
-          {/* Frontend */}
-          <div className="mb-8">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Frontend</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              {[
-                { name: 'TypeScript', icon: 'https://skillicons.dev/icons?i=ts&theme=light' },
-                { name: 'JavaScript', icon: 'https://skillicons.dev/icons?i=js&theme=light' },
-                { name: 'HTML', icon: 'https://skillicons.dev/icons?i=html&theme=light' },
-                { name: 'CSS', icon: 'https://skillicons.dev/icons?i=css&theme=light' },
-                { name: 'React', icon: 'https://skillicons.dev/icons?i=react&theme=light' },
-                { name: 'Next.js', icon: 'https://skillicons.dev/icons?i=nextjs&theme=light' },
-                { name: 'Redux', icon: 'https://skillicons.dev/icons?i=redux&theme=light' },
-                { name: 'Tailwind', icon: 'https://skillicons.dev/icons?i=tailwind&theme=light' }
-              ].map((skill) => (
-                <div 
-                  key={skill.name}
-                  className="flex items-center gap-2 bg-blue-50 rounded-lg px-3 py-2 text-sm font-medium text-gray-700"
-                >
-                  <img 
-                    src={skill.icon} 
-                    alt={skill.name} 
-                    className="w-6 h-6" 
-                  />
-                  {skill.name}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Backend */}
-          <div className="mb-8">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Backend</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              {[
-                { name: 'Node.js', icon: 'https://skillicons.dev/icons?i=nodejs&theme=light' },
-                { name: 'NestJS', icon: 'https://skillicons.dev/icons?i=nestjs&theme=light' },
-                { name: 'Java', icon: 'https://skillicons.dev/icons?i=java&theme=light' },
-                { name: 'Kotlin', icon: 'https://skillicons.dev/icons?i=kotlin&theme=light' },
-                { name: 'Spring', icon: 'https://skillicons.dev/icons?i=spring&theme=light' },
-                { name: 'Python', icon: 'https://skillicons.dev/icons?i=py&theme=light' },
-                { name: 'Flask', icon: 'https://skillicons.dev/icons?i=flask&theme=light' },
-                { name: 'C#', icon: 'https://skillicons.dev/icons?i=cs&theme=light' },
-                { name: '.NET', icon: 'https://skillicons.dev/icons?i=dotnet&theme=light' },
-                { name: 'GraphQL', icon: 'https://skillicons.dev/icons?i=graphql&theme=light' }
-              ].map((skill) => (
-                <div 
-                  key={skill.name}
-                  className="flex items-center gap-2 bg-green-50 rounded-lg px-3 py-2 text-sm font-medium text-gray-700"
-                >
-                  <img 
-                    src={skill.icon} 
-                    alt={skill.name} 
-                    className="w-6 h-6" 
-                  />
-                  {skill.name}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Database & Tools */}
-          <div className="mb-8">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Database & Tools</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              {[
-                { name: 'Prisma', icon: 'https://skillicons.dev/icons?i=prisma&theme=light' },
-                { name: 'Supabase', icon: 'https://skillicons.dev/icons?i=supabase&theme=light' },
-                { name: 'PostgreSQL', icon: 'https://skillicons.dev/icons?i=postgres&theme=light' },
-                { name: 'MongoDB', icon: 'https://skillicons.dev/icons?i=mongodb&theme=light' }
-              ].map((skill) => (
-                <div 
-                  key={skill.name}
-                  className="flex items-center gap-2 bg-yellow-50 rounded-lg px-3 py-2 text-sm font-medium text-gray-700"
-                >
-                  <img 
-                    src={skill.icon} 
-                    alt={skill.name} 
-                    className="w-6 h-6" 
-                  />
-                  {skill.name}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Cloud & DevOps */}
-          <div className="mb-8">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Cloud & DevOps</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              {[
-                { name: 'AWS', icon: 'https://skillicons.dev/icons?i=aws&theme=light' },
-                { name: 'Azure', icon: 'https://skillicons.dev/icons?i=azure&theme=light' },
-                { name: 'Vercel', icon: 'https://skillicons.dev/icons?i=vercel&theme=light' },
-                { name: 'Docker', icon: 'https://skillicons.dev/icons?i=docker&theme=light' },
-                { name: 'Kubernetes', icon: 'https://skillicons.dev/icons?i=kubernetes&theme=light' },
-                { name: 'Ansible', icon: 'https://skillicons.dev/icons?i=ansible&theme=light' }
-              ].map((skill) => (
-                <div 
-                  key={skill.name}
-                  className="flex items-center gap-2 bg-purple-50 rounded-lg px-3 py-2 text-sm font-medium text-gray-700"
-                >
-                  <img 
-                    src={skill.icon} 
-                    alt={skill.name} 
-                    className="w-6 h-6" 
-                  />
-                  {skill.name}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Operating Systems */}
-          <div className="mb-8">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Operating Systems</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              {[
-                { name: 'Linux', icon: 'https://skillicons.dev/icons?i=linux&theme=light' }
-              ].map((skill) => (
-                <div 
-                  key={skill.name}
-                  className="flex items-center gap-2 bg-gray-50 rounded-lg px-3 py-2 text-sm font-medium text-gray-700"
-                >
-                  <img 
-                    src={skill.icon} 
-                    alt={skill.name} 
-                    className="w-6 h-6" 
-                  />
-                  {skill.name}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <SocialLinks />
-        </div>
-      </div>
-    </div>
-    </>
-  );
-  
   return (
-    <ResponsiveLayout
-      nav={
-        <Navbar
-          logo={
-            <span className="font-bold text-xl">
-              <Image src="/android-chrome-512x512.png" alt="Logo" width={32} height={32} />
-            </span>
-          }
-          links={NAVIGATION_LINKS}
-          currentUrl="/about"
+    <main className="flex-1">
+      <IntroComponent title="About me" socials={SOCIAL_NAV}>
+        <p>
+          My name is <strong>Ganessh Kumar</strong> and I am a software engineer
+          at <strong>Microsoft</strong>. I am a full-stack developer passionate
+          about building AI-powered solutions and modern web applications, with a
+          strong emphasis on performance and user experience.
+        </p>
+        <p>
+          I am currently working on{" "}
+          <Link
+            href="https://www.microsoft.com/en-us/microsoft-fabric"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Microsoft Fabric
+          </Link>
+          , a unified analytics platform that empowers organizations to get the
+          most value from their data and accelerate their AI journey. I love
+          creating solutions that make people&apos;s lives easier and more
+          productive.
+        </p>
+        <p>
+          In my free time, I enjoy building{" "}
+          <Link
+            href="https://obsidian-plugin-stats.ganesshkumar.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            ObsidianStats
+          </Link>
+          , a platform to find the best Obsidian plugins for a workflow and also
+          to stay up-to-date on Obsidian plugins and themes. I also love creating
+          plugins for <strong>Obsidian</strong>. I have created a few plugins
+          that enhance the functionality of Obsidian, such as:
+        </p>
+        <ul className="list-disc space-y-1 pl-6">
+          <li>
+            <Link
+              href="https://github.com/ganesshkumar/obsidian-excel-to-markdown-table"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Obsidian Excel to Markdown table
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="https://github.com/ganesshkumar/obsidian-table-editor"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Obsidian Markdown Table Editor
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="https://github.com/ganesshkumar/obsidian-bookmarklet-maker"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Obsidian Bookmarklet Maker
+            </Link>
+          </li>
+        </ul>
+        <p>
+          You can find all my plugins on the Obsidian community hub or on my{" "}
+          <Link
+            href="https://github.com/ganesshkumar"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub page
+          </Link>
+          . I hope you find them useful and feel free to give me feedback or
+          suggestions.
+        </p>
+        <p>
+          On this blog, I will share my thoughts and experiences on software
+          development, my learnings, productivity, Obsidian, and other topics
+          that interest me. I hope you enjoy reading my posts and learn something
+          new along the way. Thank you for visiting and stay tuned for more!
+        </p>
+      </IntroComponent>
+
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-4 pb-16 sm:px-6">
+        <section
+          aria-labelledby="patents-heading"
+          className="flex flex-col gap-8"
+        >
+          <SectionHeaderComponent
+            title="Patents"
+            headingId="patents-heading"
+            description="Research from my work that made it into the patent record."
+          />
+          <ul className="flex flex-col gap-4">
+            {PATENTS.map((patent) => (
+              <li key={patent.id}>
+                <article className="flex flex-col gap-3 border border-border bg-surface p-5 sm:p-6">
+                  <p className="text-xs font-bold uppercase tracking-[0.06em] text-muted-foreground">
+                    {patent.number} · {patent.status}
+                  </p>
+                  <h3 className="font-heading text-xl font-bold tracking-tight text-ink">
+                    <Link
+                      href={patent.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="transition-colors hover:text-brand"
+                    >
+                      {patent.title}
+                    </Link>
+                  </h3>
+                  <p className="text-body">{patent.summary}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {patent.role} · {patent.assignee}
+                  </p>
+                  <Link
+                    href={patent.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-link no-underline hover:underline"
+                  >
+                    View on Google Patents
+                    <ExternalLink className="size-4" aria-hidden />
+                  </Link>
+                </article>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section
+          aria-labelledby="skills-heading"
+          className="flex flex-col gap-8"
+        >
+          <SectionHeaderComponent
+            title="Skills"
+            headingId="skills-heading"
+            description="Languages, frameworks and tools I reach for."
+          />
+          <div className="flex flex-col gap-8">
+            {SKILL_GROUPS.map((group) => (
+              <div key={group.title} className="flex flex-col gap-3">
+                <h3 className="font-heading text-xs font-bold uppercase tracking-[0.06em] text-muted-foreground">
+                  {group.title}
+                </h3>
+                <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
+                  {group.items.map((skill) => (
+                    <li
+                      key={skill.name}
+                      className="flex items-center gap-2 border border-border bg-surface px-3 py-2 text-sm font-medium text-body"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={skill.icon}
+                        alt=""
+                        width={20}
+                        height={20}
+                        loading="lazy"
+                        className="size-5 shrink-0"
+                      />
+                      {skill.name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <ReadingCtaComponent
+          title="See what I've been working on"
+          description="The articles are where I think out loud about engineering. The projects are where it ships. Both are better proof than anything I could claim on this page."
+          primaryCta={{ label: "Read the articles", href: "/articles" }}
+          secondaryCta={{ label: "Browse the projects", href: "/projects" }}
         />
-      }
-      content={aboutContent}
-      footer={<Footer />}
-      maxWidthClass="max-w-6xl"
-    />
+      </div>
+    </main>
   );
 }

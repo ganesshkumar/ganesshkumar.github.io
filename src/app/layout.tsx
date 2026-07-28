@@ -1,79 +1,64 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fraunces, Poppins, Fira_Code } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import { SITE } from "@/lib/navigation";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const fraunces = Fraunces({
   subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-fraunces",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const poppins = Poppins({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
+  display: "swap",
+});
+
+const firaCode = Fira_Code({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-fira-code",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://ganesshkumar.github.io'),
+  metadataBase: new URL(SITE.url),
   title: {
-    default: "Ganessh Kumar - Software Engineer",
-    template: "%s | Ganessh Kumar"
+    default: "Ganessh Kumar",
+    template: "%s | Ganessh Kumar",
   },
-  description: "Software Engineer at Microsoft, full-stack developer passionate about AI-powered solutions and modern web applications",
-  keywords: ["Ganessh Kumar", "Software Engineer", "Microsoft", "Full Stack Developer", "AI Solutions", "Web Applications"],
-  authors: [{ name: "Ganessh Kumar", url: "https://ganesshkumar.github.io" }],
-  creator: "Ganessh Kumar",
-  publisher: "Ganessh Kumar",
+  description:
+    "A developer knowledge platform: articles, projects, and notes on software engineering.",
   robots: {
     index: true,
     follow: true,
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://ganesshkumar.github.io",
-    title: "Ganessh Kumar - Software Engineer",
-    description: "Software Engineer at Microsoft, full-stack developer passionate about AI-powered solutions and modern web applications",
-    siteName: "Ganessh Kumar",
-  },
-  twitter: {
-    card: "summary",
-    title: "Ganessh Kumar - Software Engineer",
-    description: "Software Engineer at Microsoft, full-stack developer passionate about AI-powered solutions and modern web applications",
-    site: "@ganesshkumar",
-    creator: "@ganesshkumar",
-  },
-  manifest: "/manifest.json",
-  other: {
-    "mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-status-bar-style": "default",
-    "apple-mobile-web-app-title": "Ganessh Kumar",
-    "application-name": "Ganessh Kumar",
-    "msapplication-TileColor": "#1f2937",
-    "theme-color": "#1f2937",
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <head>
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3836620974568941"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {/* Plausible Analytics */}
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${poppins.variable} ${firaCode.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="flex min-h-dvh flex-col bg-background text-body antialiased">
+        {/* Plausible Analytics — privacy-first, self-hosted at count.ganesshkumar.com */}
         <Script
           defer
           data-domain="ganesshkumar.com"
@@ -81,12 +66,14 @@ export default function RootLayout({
         />
         <Script id="plausible-init" strategy="beforeInteractive">
           {`
-            window.plausible = window.plausible || function() { 
-              (window.plausible.q = window.plausible.q || []).push(arguments) 
+            window.plausible = window.plausible || function() {
+              (window.plausible.q = window.plausible.q || []).push(arguments)
             }
           `}
         </Script>
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

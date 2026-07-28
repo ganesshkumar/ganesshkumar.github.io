@@ -1,0 +1,23 @@
+# Ganessh Kumar
+
+> Software engineer at Microsoft. I build developer tools and write practical
+> notes on full-stack development, distributed systems and agentic systems.
+
+This is the personal site of Ganessh Kumar: long-form articles, shipped
+projects and notes on software engineering. Content is written by a human,
+first-person, and updated over time.
+
+## Main sections
+- [Articles](https://www.ganesshkumar.com/articles/): practical engineering notes, by year.
+- [Projects](https://www.ganesshkumar.com/projects/): tools, Obsidian plugins and experiments, with the problem each solves and where the code lives.
+- [About](https://www.ganesshkumar.com/about/): who I am, current focus and patents.
+- [Contact](https://www.ganesshkumar.com/contact/): how to reach me.
+
+## Machine-readable
+- [Sitemap](https://www.ganesshkumar.com/sitemap.xml): every indexable route.
+
+## Optional
+- [GitHub](https://github.com/ganesshkumar)
+- [LinkedIn](https://www.linkedin.com/in/ganessh-kumar-r-p-676a4719)
+- [Email](mailto:rpganesshkumar@gmail.com)
+- [ObsidianStats](https://www.obsidianstats.com/): my platform for finding and tracking Obsidian plugins and themes.
