@@ -15,7 +15,12 @@ export function NavbarContainer() {
 
   return (
     <NavbarComponent
-      brand={{ name: SITE.name, wordmark: SITE.wordmark, home: SITE.home }}
+      brand={{
+        name: SITE.name,
+        wordmark: SITE.wordmark,
+        logo: SITE.logo,
+        home: SITE.home,
+      }}
       links={PRIMARY_NAV}
       activePath={pathname}
       isMenuOpen={isMenuOpen}

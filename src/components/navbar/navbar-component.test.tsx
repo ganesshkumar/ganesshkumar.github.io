@@ -11,7 +11,12 @@ const links: NavLink[] = [
   { label: "Contact", href: "/contact" },
 ];
 
-const brand = { name: "Ganessh Kumar", wordmark: "GK", home: "/" };
+const brand = {
+  name: "Ganessh Kumar",
+  wordmark: "GK",
+  logo: "/android-chrome-192x192.png",
+  home: "/",
+};
 
 function renderNavbar(overrides: Partial<NavbarComponentProps> = {}) {
   const onToggleMenu = vi.fn();
@@ -29,11 +34,15 @@ function renderNavbar(overrides: Partial<NavbarComponentProps> = {}) {
 }
 
 describe("NavbarComponent", () => {
-  it("renders the brand wordmark linking home", () => {
+  it("renders the brand logo and wordmark linking home", () => {
     renderNavbar();
     const brandLink = screen.getByRole("link", { name: /home/i });
     expect(brandLink).toHaveAttribute("href", "/");
     expect(brandLink).toHaveTextContent("GK");
+    expect(brandLink.querySelector("img")).toHaveAttribute(
+      "src",
+      expect.stringContaining("android-chrome-192x192.png"),
+    );
   });
 
   it("renders every primary link with its href", () => {

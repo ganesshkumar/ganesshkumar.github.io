@@ -18,56 +18,42 @@ export default function Home() {
   return (
     <main className="flex-1">
       <IntroComponent
-        title="Hey, I'm Ganessh"
+        title="Hey, I'm Ganessh Kumar"
         tagline="Full-stack engineering, distributed systems and agentic systems."
         socials={SOCIAL_NAV}
       >
         <p>
-          I&apos;m a software engineer at Microsoft, working on Microsoft Fabric.
-          My focus is the horizontal platform: the shared data components that
-          Fabric&apos;s workloads build on. It&apos;s distributed-systems work,
-          the kind of plumbing that has to stay reliable while everything above
-          it keeps moving.
-        </p>
-        <p>
-          On the side, I build open-source plugins for Obsidian. Two I keep
-          maintained are the{" "}
+          I am a software engineer at Microsoft, working on{" "}
           <Link
-            href="https://github.com/ganesshkumar/obsidian-table-editor"
+            href="https://www.microsoft.com/en-us/microsoft-fabric"
             target="_blank"
             rel="noreferrer"
           >
-            Markdown Table Editor
-          </Link>{" "}
-          and{" "}
-          <Link
-            href="https://github.com/ganesshkumar/obsidian-excel-to-markdown-table"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Excel to Markdown
+            Microsoft Fabric
           </Link>
-          . I also run{" "}
+          . I build distributed systems, agentic workflows and developer tools
+          that make complex work easier.
+        </p>
+        <p>
+          Before Fabric, I worked on{" "}
           <Link
-            href="https://www.obsidianstats.com"
+            href="https://www.microsoft.com/microsoft-teams/"
             target="_blank"
             rel="noreferrer"
           >
-            Obsidian Stats
+            Microsoft Teams
           </Link>
-          , which helps you pick the right plugins for your workflow.
-        </p>
-        <p>
-          Before Fabric, I spent a good while inside Microsoft Teams. The most
-          interesting part was building agentic workflows that cut channel noise
-          and the fatigue of keeping up. I also worked on the lifecycle of teams
-          and channels, the notification system and a set of compliance
-          features.
-        </p>
-        <p>
-          Teaching has been part of it too. For about three and a half years,
-          from 2016 to 2020, I mentored learners in the Machine Learning course
-          on Coursera. That was before it retired the mentorship program.
+          , including agentic workflows that reduced channel noise,
+          notifications, lifecycle management and compliance features. Outside
+          work, I build Obsidian plugins and run{" "}
+          <Link
+            href="https://obsidian-plugin-stats.ganesshkumar.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            ObsidianStats
+          </Link>
+          .
         </p>
         <p>
           Most of what I learn ends up here, as{" "}

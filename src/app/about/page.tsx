@@ -112,7 +112,7 @@ export default function AboutPage() {
     <main className="flex-1">
       <IntroComponent title="About me" socials={SOCIAL_NAV}>
         <p>
-          My name is <strong>Ganessh Kumar</strong> and I am a software engineer
+          I am <strong>Ganessh Kumar</strong> and I am a software engineer
           at <strong>Microsoft</strong>. I am a full-stack developer passionate
           about building AI-powered solutions and modern web applications, with a
           strong emphasis on performance and user experience.
@@ -130,6 +130,20 @@ export default function AboutPage() {
           most value from their data and accelerate their AI journey. I love
           creating solutions that make people&apos;s lives easier and more
           productive.
+        </p>
+        <p>
+          Before Fabric, I spent a good amount of time working on{" "}
+          <Link
+            href="https://www.microsoft.com/microsoft-teams/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Microsoft Teams
+          </Link>
+          . The most interesting part was building agentic workflows that cut
+          channel noise and the fatigue of keeping up. I also worked on the
+          lifecycle of teams and channels, the notification system and a set of
+          compliance features.
         </p>
         <p>
           In my free time, I enjoy building{" "}
@@ -187,7 +201,12 @@ export default function AboutPage() {
           suggestions.
         </p>
         <p>
-          On this blog, I will share my thoughts and experiences on software
+          Teaching has been part of it too. For about three and a half years,
+          from 2016 to 2020, I mentored learners in the Machine Learning course
+          on Coursera. That was before it retired the mentorship program.
+        </p>
+        <p>
+          On this website, I will share my thoughts and experiences on software
           development, my learnings, productivity, Obsidian, and other topics
           that interest me. I hope you enjoy reading my posts and learn something
           new along the way. Thank you for visiting and stay tuned for more!

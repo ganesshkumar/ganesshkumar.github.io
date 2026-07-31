@@ -14,6 +14,7 @@ export type NavLink = {
 export const SITE = {
   name: "Ganessh Kumar",
   wordmark: "GK",
+  logo: "/android-chrome-192x192.png",
   tagline: "Articles, projects, and notes on software engineering.",
   bio: "Software engineer at Microsoft. I build developer tools and write practical notes on full-stack development, distributed systems and AI agents.",
   home: "/",

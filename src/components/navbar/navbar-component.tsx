@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -8,6 +9,7 @@ import type { NavLink } from "@/lib/navigation";
 type NavbarBrand = {
   name: string;
   wordmark: string;
+  logo: string;
   home: string;
 };
 
@@ -50,9 +52,17 @@ export function NavbarComponent({
         <Link
           href={brand.home}
           aria-label={`${brand.name} — home`}
-          className="font-heading text-lg font-bold tracking-tight text-ink no-underline"
+          className="inline-flex items-center gap-2 font-heading text-lg font-bold tracking-tight text-ink no-underline"
         >
-          {brand.wordmark}
+          <Image
+            src={brand.logo}
+            alt=""
+            width={36}
+            height={36}
+            priority
+            className="size-9"
+          />
+          <span>{brand.wordmark}</span>
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex">
