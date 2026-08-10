@@ -1,86 +1,10 @@
 import { ChartColumn, Cpu, Music, Scissors, Sheet, Table } from "lucide-react";
+import { getAllArticles } from "@/lib/articles";
 import type { ArticleSummary, ProjectSummary } from "@/lib/content";
 
 /**
- * Seed content for the home lists until the markdown pipeline is ported
- * (see docs/content-and-information-architecture/content-model.md).
- * Sourced from real posts and projects in `backup/`. Replace these accessors
- * with the real content source when the pipeline lands.
+ * Project content for the home page and projects index.
  */
-
-const RECENT_ARTICLES: ArticleSummary[] = [
-  {
-    slug: "clean-obsidian-vault",
-    title: "Clean Obsidian Vault: OneDrive Sync Conflicts and Orphaned Plugins",
-    description: "",
-    pubDate: "2026-02-04",
-    tags: ["obsidian", "nodejs"],
-  },
-  {
-    slug: "use-ss-to-find-hogging-port",
-    title: "Why lsof Failed to Find the Process Hogging Port 3000",
-    description: "",
-    pubDate: "2026-01-15",
-    tags: ["linux", "networking"],
-  },
-  {
-    slug: "fixing-mongodump-on-atlas-free-cluster",
-    title: "Fixing mongodump Timeout and authSource Errors on Atlas and Docker",
-    description: "",
-    pubDate: "2025-10-11",
-    tags: ["mongodb", "docker"],
-  },
-  {
-    slug: "why-function-keys-on-asus-rog-stops-working",
-    title: "Why Function Keys on Asus ROG Stop Working and How to Fix It",
-    description: "",
-    pubDate: "2025-09-03",
-    tags: ["windows", "hardware"],
-  },
-  {
-    slug: "from-yarn-chaos-to-clean-dev-setup",
-    title: "From Yarn Chaos to a Clean Dev Setup",
-    description: "",
-    pubDate: "2025-08-15",
-    tags: ["yarn", "nodejs"],
-  },
-  {
-    slug: "remove-global-npm-packages-safely",
-    title: "Remove Global npm Packages Safely on Windows, Linux, and macOS",
-    description: "",
-    pubDate: "2025-08-05",
-    tags: ["npm", "nodejs"],
-  },
-  {
-    slug: "read-and-modify-windows-registry-with-powershell",
-    title: "Read and Modify Windows Registry with PowerShell",
-    description: "",
-    pubDate: "2025-07-23",
-    tags: ["windows", "powershell"],
-  },
-  {
-    slug: "infinite-horizontal-scrolling-in-react",
-    title: "An Infinite Horizontal Scrolling Component in React with Framer Motion",
-    description: "",
-    pubDate: "2025-04-26",
-    tags: ["react", "framer-motion"],
-  },
-  {
-    slug: "enhancing-markdown-content-with-custom-remark-rehype-plugins",
-    title: "Enhancing Markdown Content with Custom Remark and Rehype Plugins",
-    description: "",
-    pubDate: "2025-01-26",
-    tags: ["markdown", "nextjs"],
-  },
-  {
-    slug: "git-submodules-cheat-sheet",
-    title: "Git Submodules Cheat Sheet",
-    description: "",
-    pubDate: "2025-01-07",
-    tags: ["git"],
-  },
-];
-
 const OBSIDIAN_ICON = {
   src: "/assets/images/projects/icons/obsidian.png",
   alt: "Obsidian",
@@ -188,7 +112,7 @@ const RECENT_PROJECTS: ProjectSummary[] = [
 ];
 
 export function getRecentArticles(): ArticleSummary[] {
-  return RECENT_ARTICLES;
+  return getAllArticles().slice(0, 10);
 }
 
 export function getRecentProjects(): ProjectSummary[] {
