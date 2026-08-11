@@ -3,9 +3,10 @@
 > Built from an interview on 2026-07-26 and the existing content in `backup/articles`. This defines the content types the site renders and their fields. It does not cover how content is written: see `editorial-style-guide.md`.
 
 ## Content types
-The rebuild models two content types now:
+The rebuild models three content types now:
 - **Article:** the main long-form content. Modeled on the existing `backup/articles` frontmatter.
 - **Project:** a case study of something built. Outcome-first.
+- **Book:** a compact record for the curated Bookshelf.
 
 Future types (Note, Paper note, Book note, Talk, Course) reuse the Article shape or a small variant when those surfaces launch.
 
@@ -63,6 +64,17 @@ Proposed, from the project responsibilities in `page-responsibility.md` (outcome
 | `tags` | no | list | Shared with articles for cross-linking |
 | `image` | no | object | `{ url, alt }` cover |
 | `featured` | no | bool | Surface on home or projects index |
+
+## Book
+Books render in source order on `/bookshelf`. The page introduction owns the shared curation criterion, so each record can remain compact until a useful personal note exists.
+
+| Field | Required | Type | Notes |
+|---|---|---|---|
+| `title` | yes | string | Full published title, including subtitle and punctuation |
+| `authors` | yes | list | Published author credits, in display order |
+| `links` | no | list | Ranked retailer, publisher or affiliate destinations |
+
+Each link supports `url` plus optional `provider`, `regions`, `affiliate` and `priority` fields. Lower priority numbers rank first. Affiliate relationships must be disclosed clearly when affiliate links are present.
 
 ## Taxonomy
 Three ways to group content:

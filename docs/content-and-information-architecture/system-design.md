@@ -24,6 +24,7 @@ These constraints should be treated as part of the system design, not as optiona
 Keep these top-level tabs:
 - Articles
 - Projects
+- Bookshelf
 - About
 - Contact
 
@@ -33,7 +34,6 @@ These are the stable public anchors of the site.
 These should not necessarily become top-nav items immediately, but the system should support them cleanly:
 - Newsletter
 - Papershelf
-- Bookshelf
 - Talks
 - Courses
 - Collaborate

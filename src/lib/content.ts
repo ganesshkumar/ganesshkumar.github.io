@@ -99,6 +99,20 @@ export type ProjectSummary = {
   liveUrl?: string;
 };
 
+export type BookLink = {
+  url: string;
+  provider?: string;
+  regions?: string[];
+  affiliate?: boolean;
+  priority?: number;
+};
+
+export type Book = {
+  title: string;
+  authors: string[];
+  links?: BookLink[];
+};
+
 export function articleHref(slug: string): string {
   return `/articles/${slug}`;
 }

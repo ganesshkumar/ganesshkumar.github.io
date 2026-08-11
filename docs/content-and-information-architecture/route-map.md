@@ -38,7 +38,7 @@ If this contract conflicts with those documents, resolve the conflict there firs
 | `/contact` | Low-friction conversation entry | Contact | stable | static |
 | `/newsletter` | Ongoing relationship channel | Newsletter surface | planned | static |
 | `/papershelf` | Curated paper references | Papershelf / Bookshelf | planned | static |
-| `/bookshelf` | Curated book references | Papershelf / Bookshelf | planned | static |
+| `/bookshelf` | Curated book references | Papershelf / Bookshelf | stable | static |
 | `/talks` | Authority and teaching proof | Talks | planned | static |
 | `/collaborate` | Business-ready collaboration path | Collaborate | planned | static |
 | `/uses` | Tools and setup reference | Papershelf / Bookshelf family | planned | static |
@@ -64,25 +64,26 @@ Projects have no per-project detail route. The `/projects` index is the terminal
 The top navigation contains exactly these destinations:
 - Articles
 - Projects
+- Bookshelf
 - About
 - Contact
 
 Rules:
 - The site wordmark or logo links to `/`.
-- The top navigation must not expand to include secondary surfaces.
+- The top navigation must not expand to include other secondary surfaces.
 - Depth grows through secondary surfaces and in-content links, not by adding top-nav items.
 
 ### Secondary surface navigation
-Secondary surfaces (Newsletter, Papershelf, Bookshelf, Talks, Collaborate, Uses) are reached through:
+Secondary surfaces (Newsletter, Papershelf, Talks, Collaborate, Uses) are reached through:
 - contextual links inside relevant pages,
 - footer navigation,
 - and related-content modules.
 
-A secondary surface is promoted to top navigation only if the tenets and system design are updated first.
+A secondary surface is promoted to top navigation only if the system design is updated first.
 
 ### Footer navigation
 The footer may contain:
-- primary destinations (Articles, Projects, About, Contact),
+- primary destinations (Articles, Projects, Bookshelf, About, Contact),
 - a curated set of secondary surfaces once launched,
 - legal links (Privacy, Terms),
 - and external or social links.

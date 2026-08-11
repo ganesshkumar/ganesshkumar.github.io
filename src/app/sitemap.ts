@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: url("/"), changeFrequency: "weekly", priority: 1 },
     { url: url("/articles/"), changeFrequency: "weekly", priority: 0.9 },
     { url: url("/projects/"), changeFrequency: "monthly", priority: 0.8 },
+    { url: url("/bookshelf/"), changeFrequency: "monthly", priority: 0.6 },
     { url: url("/about/"), changeFrequency: "monthly", priority: 0.5 },
     { url: url("/contact/"), changeFrequency: "yearly", priority: 0.5 },
   ];

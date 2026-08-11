@@ -23,12 +23,13 @@ export const SITE = {
 } as const;
 
 /**
- * Fixed top navigation. Contract: exactly these four destinations.
+ * Fixed top navigation. Contract: exactly these five destinations.
  * The wordmark links home; secondary surfaces never enter the top nav.
  */
 export const PRIMARY_NAV: NavLink[] = [
   { label: "Articles", href: "/articles" },
   { label: "Projects", href: "/projects" },
+  { label: "Bookshelf", href: "/bookshelf" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -56,6 +57,7 @@ export const FOOTER_QUICK_LINKS: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "Articles", href: "/articles" },
   { label: "Projects", href: "/projects" },
+  { label: "Bookshelf", href: "/bookshelf" },
   { label: "About", href: "/about" },
 ];
 
