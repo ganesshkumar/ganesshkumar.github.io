@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "katex/dist/katex.min.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -415,6 +416,12 @@
   max-width: 100%;
   height: auto;
   border: 1px solid var(--color-border);
+}
+
+.article-prose .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 0.5rem;
 }
 
 .article-prose hr {

@@ -1,8 +1,10 @@
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
 import remarkRehype from "remark-rehype";
 import rehypeRaw from "rehype-raw";
+import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
 import rehypeHighlight from "rehype-highlight";
 import rehypeStringify from "rehype-stringify";
@@ -13,9 +15,10 @@ import rehypeStringify from "rehype-stringify";
  * with no client-side markdown work.
  *
  * Pipeline:
- * - remark-parse + remark-gfm: CommonMark plus tables, task lists, autolinks.
+ * - remark-parse + remark-gfm + remark-math: CommonMark, GFM and LaTeX math.
  * - remark-rehype (+ rehype-raw): allow the first-party inline HTML a few
  *   articles use, re-parsed into the tree rather than dropped.
+ * - rehype-katex: render inline and display math into static, accessible HTML.
  * - rehype-slug: stable `id`s on headings for deep links and jump-to-section.
  * - rehype-highlight: syntax highlighting classes on fenced code blocks
  *   (unknown languages degrade to plain, unhighlighted code).
@@ -25,8 +28,10 @@ import rehypeStringify from "rehype-stringify";
 const processor = unified()
   .use(remarkParse)
   .use(remarkGfm)
+  .use(remarkMath)
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypeRaw)
+  .use(rehypeKatex)
   .use(rehypeSlug)
   .use(rehypeHighlight)
   .use(rehypeStringify, { allowDangerousHtml: true });

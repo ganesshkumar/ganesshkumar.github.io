@@ -10,6 +10,7 @@ It is long-lived. If any of these decisions change, update this file.
 - **Language:** TypeScript.
 - **Styling:** Tailwind CSS, with simple, durable utility patterns over custom one-off CSS.
 - **Components:** shadcn/ui is the base. Build on top of it when a shared primitive needs more. For specific needs, a component may come from a third-party library that is itself built on shadcn/ui.
+- **Markdown:** unified with remark and rehype plugins, with KaTeX for build-time LaTeX rendering.
 - **State:** Zustand, when client state or browser-session persistence is genuinely needed.
 - **Motion:** to be decided. Not chosen yet because no surface has needed it. Pick it when motion is first actually required (see Open decisions).
 
@@ -30,6 +31,7 @@ It is long-lived. If any of these decisions change, update this file.
 - Add global or shared state only when multiple routes or modules genuinely need it.
 - Use Zustand for shared client state and for small data persisted in the browser session.
 - Favor server-first rendering and static content patterns where possible.
+- Render article math at build time with `remark-math`, `rehype-katex` and KaTeX. Do not add a client-side MathJax runtime for article formulas.
 
 ## Styling and build rules
 - Style with Tailwind and the semantic tokens in `../design-system/design-foundations.md`. Never hardcode raw hex or ad-hoc sizes.
@@ -44,6 +46,7 @@ It is long-lived. If any of these decisions change, update this file.
 - The site is a Next.js, React and TypeScript build on stable, well-supported primitives.
 - shadcn/ui is the default shared component source. Third-party shadcn-based components are allowed when they fit.
 - Zustand is the choice for client state and browser-session persistence when needed.
+- Article Markdown supports inline and display LaTeX through KaTeX.
 - Styling stays durable and conservative rather than experimental, and always references design tokens.
 
 ## Related docs

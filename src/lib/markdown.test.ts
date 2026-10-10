@@ -28,6 +28,15 @@ describe("renderMarkdown", () => {
     const html = await renderMarkdown("[docs](https://example.com)");
     expect(html).toContain('href="https://example.com"');
   });
+
+  it("renders inline and display LaTeX with KaTeX", async () => {
+    const html = await renderMarkdown(
+      "Inline $B \\times T$.\n\n$$\np_i = \\frac{e^{z_i}}{\\sum_j e^{z_j}}\n$$",
+    );
+    expect(html).toContain('<span class="katex">');
+    expect(html).toContain('<span class="katex-display">');
+    expect(html).toContain("<math");
+  });
 });
 
 describe("estimateReadingMinutes", () => {
