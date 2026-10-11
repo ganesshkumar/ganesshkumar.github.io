@@ -6,9 +6,15 @@ import type {
   ArticleImage,
   ArticleSummary,
   ArticleYearGroup,
+  SeriesDefinition,
+  SeriesRef,
 } from "@/lib/content";
 import { SITE } from "@/lib/navigation";
 import { estimateReadingMinutes, renderMarkdown } from "@/lib/markdown";
+import {
+  getSeriesDefinition,
+  getSeriesDefinitions,
+} from "@/lib/series-config";
 
 /**
  * Server-side article source. Reads the markdown files under
@@ -42,6 +48,60 @@ function asStringArray(value: unknown): string[] {
   return value
     .map((item) => (typeof item === "string" ? item.trim() : ""))
     .filter((item) => item.length > 0);
+}
+
+export function parseSeriesRef(
+  value: unknown,
+  source: string,
+): SeriesRef | undefined {
+  if (value === undefined) return undefined;
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    throw new Error(`${source} series metadata must be an object`);
+  }
+  const data = value as Record<string, unknown>;
+  const name = asString(data.name);
+  const slug = asString(data.slug);
+  const order = data.order;
+  if (!name || !slug || !Number.isInteger(order) || Number(order) <= 0) {
+    throw new Error(
+      `${source} series metadata requires name, slug and a positive integer order`,
+    );
+  }
+  return { name, slug, order: Number(order) };
+}
+
+export function validateSeriesMembership(
+  articles: ArticleSummary[],
+  definitions: SeriesDefinition[] = getSeriesDefinitions(),
+): void {
+  const definitionsBySlug = new Map(
+    definitions.map((definition) => [definition.slug, definition]),
+  );
+  const orders = new Map<string, Map<number, string>>();
+
+  for (const article of articles) {
+    if (!article.series) continue;
+    const definition = definitionsBySlug.get(article.series.slug);
+    if (!definition) {
+      throw new Error(
+        `${article.slug} references unknown series "${article.series.slug}"`,
+      );
+    }
+    if (definition.name !== article.series.name) {
+      throw new Error(
+        `${article.slug} series name does not match "${definition.name}"`,
+      );
+    }
+    const seriesOrders = orders.get(article.series.slug) ?? new Map();
+    const duplicate = seriesOrders.get(article.series.order);
+    if (duplicate) {
+      throw new Error(
+        `${article.slug} and ${duplicate} use duplicate series order ${article.series.order}`,
+      );
+    }
+    seriesOrders.set(article.series.order, article.slug);
+    orders.set(article.series.slug, seriesOrders);
+  }
 }
 
 /** Normalize the `image` frontmatter, which may be a string or `{ url, alt }`. */
@@ -84,13 +144,15 @@ function resolveCoverImage(
 function readArticle(fileName: string): ArticleSummary {
   const slug = fileName.replace(/\.md$/, "");
   const raw = fs.readFileSync(path.join(ARTICLES_DIR, fileName), "utf8");
-  const data = matter(raw).data as Record<string, unknown>;
+  const parsed = matter(raw);
+  const data = parsed.data as Record<string, unknown>;
 
   const fileDate = slug.match(FILE_DATE_PREFIX)?.[1];
   const pubDate =
     toIsoDate(data.pubDate) ?? toIsoDate(data.date) ?? fileDate ?? "";
   const updatedDate = toIsoDate(data.modified_date);
   const categories = asStringArray(data.categories);
+  const series = parseSeriesRef(data.series, fileName);
 
   return {
     slug,
@@ -100,19 +162,22 @@ function readArticle(fileName: string): ArticleSummary {
     ...(updatedDate && updatedDate !== pubDate ? { updatedDate } : {}),
     tags: asStringArray(data.tags),
     ...(categories.length > 0 ? { category: categories[0] } : {}),
+    readingTimeMinutes: estimateReadingMinutes(parsed.content),
+    ...(series ? { series } : {}),
   };
 }
 
 /** Every article, newest first, ties broken by title for a stable order. */
 export function getAllArticles(): ArticleSummary[] {
-  return fs
+  const articles = fs
     .readdirSync(ARTICLES_DIR)
     .filter((file) => file.endsWith(".md"))
-    .map(readArticle)
-    .sort((a, b) => {
-      if (a.pubDate === b.pubDate) return a.title.localeCompare(b.title);
-      return a.pubDate < b.pubDate ? 1 : -1;
-    });
+    .map(readArticle);
+  validateSeriesMembership(articles);
+  return articles.sort((a, b) => {
+    if (a.pubDate === b.pubDate) return a.title.localeCompare(b.title);
+    return a.pubDate < b.pubDate ? 1 : -1;
+  });
 }
 
 /** Bucket articles by publication year, most recent year first. */
@@ -160,6 +225,18 @@ export async function getArticleBySlug(
   const title = asString(data.title) ?? slug;
   const categories = asStringArray(data.categories);
   const coverImage = resolveCoverImage(data, title);
+  const series = parseSeriesRef(data.series, `${slug}.md`);
+  if (series) {
+    const definition = getSeriesDefinition(series.slug);
+    if (!definition) {
+      throw new Error(`${slug}.md references unknown series "${series.slug}"`);
+    }
+    if (definition.name !== series.name) {
+      throw new Error(
+        `${slug}.md series name does not match "${definition.name}"`,
+      );
+    }
+  }
 
   return {
     slug,
@@ -172,8 +249,8 @@ export async function getArticleBySlug(
     categories,
     ...(categories.length > 0 ? { category: categories[0] } : {}),
     ...(coverImage ? { coverImage } : {}),
+    ...(series ? { series } : {}),
     readingTimeMinutes: estimateReadingMinutes(parsed.content),
     contentHtml: await renderMarkdown(parsed.content),
   };
 }
-

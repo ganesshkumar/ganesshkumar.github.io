@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { IntroComponent } from "@/components/intro";
+import { FeaturedSeries } from "@/components/featured-series";
 import { ArticleList } from "@/components/article-list";
 import { ProjectGrid } from "@/components/project-grid";
 import { SOCIAL_NAV } from "@/lib/navigation";
@@ -72,6 +73,7 @@ export default function Home() {
       </IntroComponent>
 
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-4 pb-16 sm:px-6">
+        <FeaturedSeries />
         <ArticleList />
         <ProjectGrid />
       </div>

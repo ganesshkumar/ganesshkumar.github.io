@@ -4,8 +4,13 @@ import {
   getArticleBySlug,
   getArticleSlugs,
   groupArticlesByYear,
+  parseSeriesRef,
+  validateSeriesMembership,
 } from "./articles";
-import type { ArticleSummary } from "@/lib/content";
+import type {
+  ArticleSummary,
+  SeriesDefinition,
+} from "@/lib/content";
 
 describe("getAllArticles", () => {
   const articles = getAllArticles();
@@ -94,5 +99,98 @@ describe("getArticleBySlug", () => {
       "2014-01-02-installing-dropbox-from-source-code",
     );
     expect(article?.coverImage).toBeUndefined();
+  });
+});
+
+describe("series metadata", () => {
+  const definition: SeriesDefinition = {
+    name: "A Software Engineer Learns",
+    slug: "software-engineer-learns",
+    description: "A test series.",
+    status: "ongoing",
+  };
+  const article = (
+    slug: string,
+    order?: number,
+    name = definition.name,
+  ): ArticleSummary => ({
+    slug,
+    title: slug,
+    description: "",
+    pubDate: "2026-01-01",
+    tags: [],
+    ...(order
+      ? {
+          series: {
+            name,
+            slug: definition.slug,
+            order,
+          },
+        }
+      : {}),
+  });
+
+  it("parses valid series metadata", () => {
+    expect(
+      parseSeriesRef(
+        { name: definition.name, slug: definition.slug, order: 2 },
+        "article.md",
+      ),
+    ).toEqual({
+      name: definition.name,
+      slug: definition.slug,
+      order: 2,
+    });
+  });
+
+  it("accepts absent series metadata", () => {
+    expect(parseSeriesRef(undefined, "article.md")).toBeUndefined();
+  });
+
+  it.each([
+    [{ name: definition.name, slug: definition.slug }, "incomplete"],
+    [
+      { name: definition.name, slug: definition.slug, order: 0 },
+      "zero",
+    ],
+    [
+      { name: definition.name, slug: definition.slug, order: -1 },
+      "negative",
+    ],
+    [
+      { name: definition.name, slug: definition.slug, order: 1.5 },
+      "fraction",
+    ],
+  ])("rejects %s series metadata", (metadata) => {
+    expect(() => parseSeriesRef(metadata, "article.md")).toThrow(
+      "positive integer order",
+    );
+  });
+
+  it("rejects duplicate orders", () => {
+    expect(() =>
+      validateSeriesMembership(
+        [article("first", 1), article("second", 1)],
+        [definition],
+      ),
+    ).toThrow("duplicate series order 1");
+  });
+
+  it("rejects inconsistent names", () => {
+    expect(() =>
+      validateSeriesMembership(
+        [article("first", 1, "Different name")],
+        [definition],
+      ),
+    ).toThrow("series name does not match");
+  });
+
+  it("allows gaps in published order", () => {
+    expect(() =>
+      validateSeriesMembership(
+        [article("first", 1), article("third", 3)],
+        [definition],
+      ),
+    ).not.toThrow();
   });
 });

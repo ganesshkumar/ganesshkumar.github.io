@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { SITE, SOCIAL_NAV } from "@/lib/navigation";
-import type { ArticleDetail, ProjectSummary } from "@/lib/content";
+import type {
+  ArticleDetail,
+  ProjectSummary,
+  SeriesWithArticles,
+} from "@/lib/content";
 
 /**
  * SEO/AEO helpers: absolute URL resolution and JSON-LD (schema.org) builders.
@@ -19,6 +23,10 @@ export function absoluteUrl(pathOrUrl: string): string {
 /** Canonical URL for an article, with the trailing slash the site uses. */
 export function articleCanonicalUrl(slug: string): string {
   return `${ORIGIN}/articles/${slug}/`;
+}
+
+export function seriesCanonicalUrl(slug: string): string {
+  return `${ORIGIN}/series/${slug}/`;
 }
 
 /** X/Twitter handle used for `twitter:site` and `twitter:creator`. */
@@ -153,8 +161,69 @@ export function buildArticleJsonLd(article: ArticleDetail): Record<string, unkno
     url: canonical,
     ...(article.tags.length > 0 ? { keywords: article.tags.join(", ") } : {}),
     ...(article.category ? { articleSection: article.category } : {}),
+    ...(article.series
+      ? {
+          isPartOf: {
+            "@type": "CollectionPage",
+            name: article.series.name,
+            url: seriesCanonicalUrl(article.series.slug),
+          },
+        }
+      : {}),
     inLanguage: "en",
     isAccessibleForFree: true,
+  };
+}
+
+export function buildSeriesGraphJsonLd(
+  data: SeriesWithArticles,
+): Record<string, unknown> {
+  const canonical = seriesCanonicalUrl(data.series.slug);
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": canonical,
+        url: canonical,
+        name: data.series.name,
+        description: data.series.description,
+        isPartOf: { "@type": "WebSite", url: `${ORIGIN}/` },
+        author: AUTHOR,
+        mainEntity: {
+          "@type": "ItemList",
+          numberOfItems: data.articles.length,
+          itemListElement: data.articles.map((article, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            item: {
+              "@type": "BlogPosting",
+              name: article.title,
+              description: article.description,
+              url: articleCanonicalUrl(article.slug),
+              datePublished: article.pubDate,
+            },
+          })),
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `${ORIGIN}/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: data.series.name,
+            item: canonical,
+          },
+        ],
+      },
+    ],
   };
 }
 

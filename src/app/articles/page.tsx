@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { ArchiveHeaderComponent } from "@/components/archive-header";
 import { ArticleArchiveComponent } from "@/components/article-archive";
+import { SeriesArchiveFeatureComponent } from "@/components/series-archive-feature";
 import { getAllArticles, groupArticlesByYear } from "@/lib/articles";
+import { getFeaturedSeries } from "@/lib/series";
 import { buildSocialMetadata } from "@/lib/seo";
 
 const description =
@@ -17,6 +19,7 @@ export const metadata: Metadata = {
 export default function ArticlesPage() {
   const articles = getAllArticles();
   const groups = groupArticlesByYear(articles);
+  const featuredSeries = getFeaturedSeries();
 
   return (
     <main className="flex-1">
@@ -29,6 +32,13 @@ export default function ArticlesPage() {
             published to date.
           </p>
         </ArchiveHeaderComponent>
+
+        {featuredSeries ? (
+          <SeriesArchiveFeatureComponent
+            data={featuredSeries}
+            className="mt-10"
+          />
+        ) : null}
 
         <ArticleArchiveComponent groups={groups} className="mt-12" />
       </div>

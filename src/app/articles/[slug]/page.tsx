@@ -8,6 +8,8 @@ import { BreadcrumbsComponent } from "@/components/breadcrumbs";
 import { ArticleHeroComponent } from "@/components/article-hero";
 import { ArticleMetaComponent } from "@/components/article-meta";
 import { ArticleBodyComponent } from "@/components/article-body";
+import { SeriesContentsComponent } from "@/components/series-contents";
+import { SeriesNavigationComponent } from "@/components/series-navigation";
 import { RelatedArticlesComponent } from "@/components/related-articles";
 import { ReadingCtaComponent } from "@/components/reading-cta";
 
@@ -17,6 +19,8 @@ import {
   getArticleSlugs,
 } from "@/lib/articles";
 import { selectRelatedArticles } from "@/lib/content";
+import { seriesHref } from "@/lib/content";
+import { getArticleSeriesContext } from "@/lib/series";
 import {
   DEFAULT_OG_IMAGE,
   absoluteUrl,
@@ -90,7 +94,19 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const article = await loadArticle(slug);
   if (!article) notFound();
 
-  const related = selectRelatedArticles(getAllArticles(), article, 3);
+  const seriesContext = getArticleSeriesContext(article);
+  const sequenceNeighborSlugs = new Set(
+    [seriesContext?.previous?.slug, seriesContext?.next?.slug].filter(
+      (neighbor): neighbor is string => Boolean(neighbor),
+    ),
+  );
+  const related = selectRelatedArticles(
+    getAllArticles().filter(
+      (candidate) => !sequenceNeighborSlugs.has(candidate.slug),
+    ),
+    article,
+    3,
+  );
 
   return (
     <main className="flex-1">
@@ -113,7 +129,14 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         <article className="mt-6">
           <ArticleHeroComponent
             title={article.title}
-            eyebrow={article.category}
+            eyebrow={
+              article.series
+                ? `${article.series.name} · Part ${article.series.order}`
+                : article.category
+            }
+            eyebrowHref={
+              article.series ? seriesHref(article.series.slug) : undefined
+            }
             image={article.coverImage}
           />
 
@@ -126,9 +149,23 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               tags={article.tags}
             />
 
+            {seriesContext ? (
+              <SeriesContentsComponent
+                context={seriesContext}
+                className="mt-8"
+              />
+            ) : null}
+
             <ArticleBodyComponent html={article.contentHtml} className="mt-8" />
           </div>
         </article>
+
+        {seriesContext ? (
+          <SeriesNavigationComponent
+            context={seriesContext}
+            className="mt-10"
+          />
+        ) : null}
 
         <div className="mt-10 border-t border-border pt-6">
           <Link

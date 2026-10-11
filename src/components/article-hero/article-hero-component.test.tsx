@@ -27,4 +27,17 @@ describe("ArticleHeroComponent", () => {
     render(<ArticleHeroComponent title="T" eyebrow="technology" />);
     expect(screen.getByText("technology")).toBeInTheDocument();
   });
+
+  it("links the eyebrow when it identifies a series", () => {
+    render(
+      <ArticleHeroComponent
+        title="T"
+        eyebrow="A series · Part 2"
+        eyebrowHref="/series/a-series"
+      />,
+    );
+    expect(
+      screen.getByRole("link", { name: "A series · Part 2" }),
+    ).toHaveAttribute("href", "/series/a-series");
+  });
 });

@@ -1,9 +1,11 @@
 import { cn } from "@/lib/utils";
 import type { ArticleImage } from "@/lib/content";
+import Link from "next/link";
 
 export type ArticleHeroComponentProps = {
   title: string;
   eyebrow?: string;
+  eyebrowHref?: string;
   image?: ArticleImage;
   className?: string;
 };
@@ -17,6 +19,7 @@ export type ArticleHeroComponentProps = {
 export function ArticleHeroComponent({
   title,
   eyebrow,
+  eyebrowHref,
   image,
   className,
 }: ArticleHeroComponentProps) {
@@ -55,9 +58,18 @@ export function ArticleHeroComponent({
 
       <div className="relative flex flex-col gap-3 p-6 sm:p-9 lg:p-10">
         {eyebrow ? (
-          <p className="font-heading text-xs font-bold uppercase tracking-[0.14em] text-red-300">
-            {eyebrow}
-          </p>
+          eyebrowHref ? (
+            <Link
+              href={eyebrowHref}
+              className="w-fit font-heading text-xs font-bold uppercase tracking-[0.14em] text-red-300 underline-offset-4 hover:decoration-2"
+            >
+              {eyebrow}
+            </Link>
+          ) : (
+            <p className="font-heading text-xs font-bold uppercase tracking-[0.14em] text-red-300">
+              {eyebrow}
+            </p>
+          )
         ) : null}
         <h1 className="max-w-3xl font-heading text-3xl font-bold leading-tight text-white [text-shadow:0_1px_3px_rgb(0_0_0/45%)] sm:text-4xl lg:text-5xl">
           {title}

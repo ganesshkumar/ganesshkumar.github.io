@@ -15,6 +15,7 @@ export type ArticleSummary = {
   tags: string[];
   category?: string;
   readingTimeMinutes?: number;
+  series?: SeriesRef;
 };
 
 /** A set of articles bucketed under a single publication year. */
@@ -27,6 +28,53 @@ export type ArticleYearGroup = {
 export type ArticleImage = {
   src: string;
   alt: string;
+};
+
+export type SeriesRef = {
+  name: string;
+  slug: string;
+  order: number;
+};
+
+export type VisualDeckCard = {
+  id: string;
+  title: string;
+  image: ArticleImage;
+  relatedArticleSlug?: string;
+};
+
+export type VisualDeck = {
+  title: string;
+  cards: VisualDeckCard[];
+};
+
+export type SeriesDefinition = {
+  name: string;
+  slug: string;
+  description: string;
+  status: "ongoing" | "complete";
+  featured?: boolean;
+  project?: {
+    name: string;
+    description: string;
+    url: string;
+  };
+  visualDeck?: VisualDeck;
+};
+
+export type SeriesWithArticles = {
+  series: SeriesDefinition;
+  articles: ArticleSummary[];
+  firstArticle: ArticleSummary;
+  latestArticle: ArticleSummary;
+};
+
+export type ArticleSeriesContext = {
+  series: SeriesWithArticles;
+  current: ArticleSummary;
+  previous?: ArticleSummary;
+  next?: ArticleSummary;
+  localArticles: ArticleSummary[];
 };
 
 /**
@@ -46,6 +94,7 @@ export type ArticleDetail = {
   coverImage?: ArticleImage;
   readingTimeMinutes: number;
   contentHtml: string;
+  series?: SeriesRef;
 };
 
 /**
@@ -115,6 +164,10 @@ export type Book = {
 
 export function articleHref(slug: string): string {
   return `/articles/${slug}`;
+}
+
+export function seriesHref(slug: string): string {
+  return `/series/${slug}`;
 }
 
 /**

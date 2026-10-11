@@ -1,4 +1,12 @@
-import { ChartColumn, Cpu, Music, Scissors, Sheet, Table } from "lucide-react";
+import {
+  BrainCircuit,
+  ChartColumn,
+  Cpu,
+  Music,
+  Scissors,
+  Sheet,
+  Table,
+} from "lucide-react";
 import { getAllArticles } from "@/lib/articles";
 import type { ArticleSummary, ProjectSummary } from "@/lib/content";
 
@@ -11,6 +19,22 @@ const OBSIDIAN_ICON = {
 } as const;
 
 const RECENT_PROJECTS: ProjectSummary[] = [
+  {
+    slug: "pico-gpt",
+    icon: BrainCircuit,
+    title: "Pico GPT",
+    description:
+      "A minimal GPT-2-inspired language model built from scratch.",
+    problem:
+      "A full-sized language model hides too much when I want to trace how tokens, attention, Transformer blocks, training and generation fit together.",
+    outcome:
+      "A 232,608-parameter decoder-only model with character tokenization, learned embeddings, causal attention, training, validation and text generation.",
+    stack: ["Python", "PyTorch", "Transformers"],
+    status: "shipped",
+    featured: true,
+    tags: ["gpt-2", "llm", "machine-learning"],
+    repoUrl: "https://github.com/ganesshkumar/pico-gpt",
+  },
   {
     slug: "obsidian-stats",
     icon: ChartColumn,
@@ -111,8 +135,17 @@ const RECENT_PROJECTS: ProjectSummary[] = [
   },
 ];
 
-export function getRecentArticles(): ArticleSummary[] {
-  return getAllArticles().slice(0, 10);
+export function getRecentArticles(
+  excludedSeriesSlug?: string,
+): ArticleSummary[] {
+  const articles = getAllArticles();
+  return (
+    excludedSeriesSlug
+      ? articles.filter(
+          (article) => article.series?.slug !== excludedSeriesSlug,
+        )
+      : articles
+  ).slice(0, 10);
 }
 
 export function getRecentProjects(): ProjectSummary[] {

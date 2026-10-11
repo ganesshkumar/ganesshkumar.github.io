@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Notes From a Software Engineer Learning LLMs",
+    "slug": "software-engineer-learning-llms",
+    "description": "I am using GPT-2 as a model I can trace and test while I build a clearer picture of how LLMs work.",
+    "status": "ongoing",
+    "featured": true,
+    "project": {
+      "name": "Pico GPT",
+      "description": "A minimal GPT-2-inspired model built from scratch. This series is my path to understanding every part of it confidently.",
+      "url": "https://github.com/ganesshkumar/pico-gpt"
+    },
+    "visualDeck": {
+      "title": "GPT-2 Small system map",
+      "cards": [
+        {
+          "id": "gpt2-system-map",
+          "title": "From text to the next token ID",
+          "image": {
+            "src": "/assets/images/series/software-engineer-learning-llms/gpt2-system-map.webp",
+            "alt": "Text becomes embeddings, passes through twelve GPT-2 Small decoder blocks, and uses softmax plus sampling or argmax to select the next token ID."
+          },
+          "relatedArticleSlug": "2026-10-10-how-gpt2-predicts-one-token-at-a-time"
+        },
+        {
+          "id": "token-embedding-lookup",
+          "title": "From token IDs to embedding vectors",
+          "image": {
+            "src": "/assets/images/articles/2026-10-11-understanding-gpt2-token-embeddings/token-embedding-lookup.webp",
+            "alt": "Token IDs select rows from GPT-2's trainable embedding matrix."
+          },
+          "relatedArticleSlug": "2026-10-11-understanding-gpt2-token-embeddings"
+        }
+      ]
+    }
+  }
+]

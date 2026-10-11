@@ -1,5 +1,5 @@
 ---
-title: "Starting With GPT-2: One Token at a Time"
+title: "GPT-2, One Token at a Time"
 description: "I use GPT-2 as a black box to trace one prompt into token IDs and logits before implementing the loop that generates text one token at a time."
 author: "Ganessh Kumar"
 pubDate: 2026-10-10
@@ -12,6 +12,10 @@ tags:
   - language-models
 categories:
   - artificial-intelligence
+series:
+  name: "Notes From a Software Engineer Learning LLMs"
+  slug: software-engineer-learning-llms
+  order: 1
 ---
 
 I wanted to understand large language models by getting my hands dirty, not by only reading about them. While looking for a model I could inspect end to end, GPT-2 felt like the right starting point: simple enough to run and study but complete enough to observe the next token interface used during generation.

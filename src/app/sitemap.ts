@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllArticles } from "@/lib/articles";
+import { getAllSeries } from "@/lib/series";
 import { SITE } from "@/lib/navigation";
 
 /**
@@ -34,5 +35,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
-  return [...staticEntries, ...articleEntries];
+  const seriesEntries: MetadataRoute.Sitemap = getAllSeries().map(
+    ({ series, latestArticle }) => ({
+      url: url(`/series/${series.slug}/`),
+      lastModified:
+        latestArticle.updatedDate ?? (latestArticle.pubDate || undefined),
+      changeFrequency: series.status === "ongoing" ? "monthly" : "yearly",
+      priority: 0.8,
+    }),
+  );
+
+  return [...staticEntries, ...seriesEntries, ...articleEntries];
 }

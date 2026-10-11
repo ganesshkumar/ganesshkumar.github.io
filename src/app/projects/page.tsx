@@ -31,11 +31,12 @@ export default function ProjectsPage() {
       <div className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-12">
         <ArchiveHeaderComponent title="Projects">
           <p>
-            These are the things I build when an itch needs scratching: Obsidian
-            plugins I use daily, a Slack bot, a computer wired up from NAND
+            These are the things I build when I want to understand a system or
+            when an itch needs scratching: a small language model, Obsidian
+            plugins I use daily, a Slack bot and a computer wired up from NAND
             gates. Each one below says what it does, the problem it solves and
-            where the code lives. There are no separate case-study pages, so the
-            story sits right here.
+            where the code lives. There are no separate case-study pages, so
+            the story sits right here.
           </p>
         </ArchiveHeaderComponent>
 

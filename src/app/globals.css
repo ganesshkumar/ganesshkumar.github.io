@@ -427,6 +427,17 @@
   width: 100%;
 }
 
+.article-prose .wide-figure-scroll {
+  overflow-x: auto;
+}
+
+@media (max-width: 639px) {
+  .article-prose .wide-figure-scroll img {
+    width: 48rem;
+    max-width: none;
+  }
+}
+
 .article-prose figcaption {
   margin-top: 0.625rem;
   color: var(--color-muted);

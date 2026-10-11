@@ -1,5 +1,5 @@
 ---
-title: "Why a Space Changes GPT-2 Tokenization"
+title: "Understanding GPT-2 Tokenization"
 description: "I expected a space to be its own token. GPT-2 showed me why hello and a space before hello have different token IDs and how it handles a word outside its vocabulary."
 author: "Ganessh Kumar"
 pubDate: 2026-10-11
@@ -12,15 +12,19 @@ tags:
   - llm
 categories:
   - artificial-intelligence
+series:
+  name: "Notes From a Software Engineer Learning LLMs"
+  slug: software-engineer-learning-llms
+  order: 2
 ---
 
 In the [first GPT-2 article](/articles/2026-10-10-how-gpt2-predicts-one-token-at-a-time/), I treated the tokenizer as a black box. Text went in and token IDs came out.
 
-Opening that box corrected one assumption I had. I expected the space before a word to become its own token. Instead, `"hello"` and `" hello"` each became one token with a different ID.
+I expected the space before a word to become its own token. Instead, `"hello"` and `" hello"` each became one token with a different ID.
 
 I also wanted to see what GPT-2 does when a misspelled or unseen word is missing from its vocabulary.
 
-## One Space, Two Tokens
+## A Space Is Not Always a Separate Token
 
 I used the GPT-2 tokenizer from Hugging Face Transformers:
 
@@ -49,20 +53,20 @@ The `Ġ` in `Ġhello` is not a character from the input. GPT-2's tokenizer uses 
 "hello"  → [104, 101, 108, 108, 111]
 " hello" → [32, 104, 101, 108, 108, 111]
              ^^
-            space
+             space
 ```
 
 GPT-2's initial text matching pattern can group one leading space with the letters that follow it. Byte pair encoding then applies learned merge rules to that group. Its vocabulary contains both `hello` and `Ġhello`. Each input becomes one token.
 
 <figure>
-  <img src="/assets/images/articles/2026-10-11-why-a-space-changes-gpt2-tokenization/bpe-space-token.webp" width="1200" height="675" alt="A leading space changes the token ID." />
+  <img src="/assets/images/articles/2026-10-11-understanding-gpt2-tokenization/bpe-space-token.webp" width="1200" height="675" alt="A leading space changes the token ID." />
   <figcaption>The leading space is part of a different byte sequence and can become part of the merged token.</figcaption>
 </figure>
 
-## Where BPE Fits
+## Between Text and Token IDs
 
 <figure>
-  <img src="/assets/images/articles/2026-10-11-why-a-space-changes-gpt2-tokenization/bpe-pipeline.webp" width="1200" height="675" alt="The GPT-2 tokenization pipeline." />
+  <img src="/assets/images/articles/2026-10-11-understanding-gpt2-tokenization/bpe-pipeline.webp" width="1200" height="675" alt="The GPT-2 tokenization pipeline." />
   <figcaption>GPT-2 maps text chunks to bytes, applies its learned BPE merges and looks up the resulting token IDs.</figcaption>
 </figure>
 
