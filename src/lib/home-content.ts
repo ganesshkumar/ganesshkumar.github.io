@@ -25,6 +25,10 @@ const RECENT_PROJECTS: ProjectSummary[] = [
     title: "Pico GPT",
     description:
       "A minimal GPT-2-inspired language model built from scratch.",
+    image: {
+      src: "/assets/images/projects/pico-gpt.webp",
+      alt: "Pico GPT processes tokens to predict the next token",
+    },
     problem:
       "A full-sized language model hides too much when I want to trace how tokens, attention, Transformer blocks, training and generation fit together.",
     outcome:
@@ -40,8 +44,8 @@ const RECENT_PROJECTS: ProjectSummary[] = [
     icon: ChartColumn,
     iconImage: OBSIDIAN_ICON,
     image: {
-      src: "/assets/images/projects/obsidian-stats.png",
-      alt: "Obsidian Stats plugin ecosystem visualization",
+      src: "/assets/images/projects/obsidian-stats-illustration.webp",
+      alt: "Obsidian Stats plugin analytics dashboard",
     },
     title: "Obsidian Stats",
     description: "Explore and analyze the Obsidian plugin ecosystem.",
@@ -59,8 +63,8 @@ const RECENT_PROJECTS: ProjectSummary[] = [
     icon: Table,
     iconImage: OBSIDIAN_ICON,
     image: {
-      src: "/assets/images/projects/obsidian-markdown-table-editor.png",
-      alt: "The Obsidian Markdown Table Editor in use",
+      src: "/assets/images/projects/obsidian-markdown-table-editor-illustration.webp",
+      alt: "Obsidian Markdown Table Editor editing a table",
     },
     title: "Obsidian Markdown Table Editor",
     description: "Create and edit markdown tables inside Obsidian.",
@@ -77,8 +81,8 @@ const RECENT_PROJECTS: ProjectSummary[] = [
     icon: Sheet,
     iconImage: OBSIDIAN_ICON,
     image: {
-      src: "/assets/images/projects/obsidian-excel-to-markdown.gif",
-      alt: "Pasting spreadsheet data as a markdown table in Obsidian",
+      src: "/assets/images/projects/obsidian-excel-to-markdown-illustration.webp",
+      alt: "Spreadsheet data converted into a Markdown table",
     },
     title: "Obsidian Excel to Markdown",
     description: "Paste Excel, Sheets, Numbers and Calc data as markdown tables.",
@@ -96,6 +100,10 @@ const RECENT_PROJECTS: ProjectSummary[] = [
     iconImage: OBSIDIAN_ICON,
     title: "Obsidian Clipper Maker",
     description: "A bookmarklet to clip web content straight into your vault.",
+    image: {
+      src: "/assets/images/projects/obsidian-clipper-maker-illustration.webp",
+      alt: "Obsidian Clipper Maker moving web content into a note",
+    },
     problem:
       "Saving something from the web into Obsidian usually turns into a copy, paste and cleanup chore.",
     outcome: "A bookmarklet generator for saving the web to Obsidian.",
@@ -109,6 +117,10 @@ const RECENT_PROJECTS: ProjectSummary[] = [
     icon: Cpu,
     title: "Computer 0.1",
     description: "Building a modern computer from scratch, from NAND gates up.",
+    image: {
+      src: "/assets/images/projects/computer-0.1-illustration.webp",
+      alt: "Computer 0.1 progressing from a logic gate to running assembly",
+    },
     problem:
       "I wanted to understand how a computer really works, from logic gates up to running real code.",
     outcome:
@@ -126,6 +138,10 @@ const RECENT_PROJECTS: ProjectSummary[] = [
     },
     title: "Nathas",
     description: "A Slack bot that streams your team's song requests.",
+    image: {
+      src: "/assets/images/projects/nathas-illustration.webp",
+      alt: "Nathas turns team chat requests into streamed music",
+    },
     problem:
       "Sharing music with a team in Slack meant leaving the channel to queue songs somewhere else.",
     outcome: "A Slack music bot that placed 3rd at a hackathon.",
