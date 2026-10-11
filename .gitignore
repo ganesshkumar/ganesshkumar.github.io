@@ -38,3 +38,6 @@ next-env.d.ts
 # Old code
 backup/
 projects/.obsidian/
+
+projects/
+docs/

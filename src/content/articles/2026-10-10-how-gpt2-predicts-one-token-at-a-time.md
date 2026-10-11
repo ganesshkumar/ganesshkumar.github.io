@@ -1,6 +1,6 @@
 ---
 title: "Starting With GPT-2: One Token at a Time"
-description: "I use GPT-2 as a black box, trace one prompt into token IDs and logits and implement the loop that generates text one token at a time."
+description: "I use GPT-2 as a black box to trace one prompt into token IDs and logits before implementing the loop that generates text one token at a time."
 author: "Ganessh Kumar"
 pubDate: 2026-10-10
 type: primer
@@ -14,17 +14,17 @@ categories:
   - artificial-intelligence
 ---
 
-I wanted to understand large language models by getting my hands dirty, not by only reading about them. While looking for a model I could inspect end to end, GPT-2 felt like the right starting point: simple enough to run and study, but complete enough to observe the next-token interface used during generation.
+I wanted to understand large language models by getting my hands dirty, not by only reading about them. While looking for a model I could inspect end to end, GPT-2 felt like the right starting point: simple enough to run and study but complete enough to observe the next token interface used during generation.
 
-GPT-2 also gives me a practical route into the Transformer ideas introduced by [Attention Is All You Need](https://arxiv.org/abs/1706.03762). I can first make its one-token-at-a-time generation loop concrete, then open its attention, embeddings and other internal parts before comparing them with newer models.
+GPT-2 also gives me a practical route into the Transformer ideas introduced by [Attention Is All You Need](https://arxiv.org/abs/1706.03762). I can first make its generation loop concrete by following one token at a time. Then I can open its attention, embeddings and other internal parts before comparing them with newer models.
 
 Before starting, I already had the broad mental model. Give the model some tokens, ask it for the next token, append that token and ask again. What remained unclear was hidden inside the phrase "some deep learning."
 
-In this article, I am keeping that deep learning machinery as a black box. I want to trace one prompt through GPT-2, inspect its next-token scores and make the input and output contract concrete.
+In this article, I am keeping that deep learning machinery as a black box. I want to trace one prompt through GPT-2, inspect its next token scores and make the input and output contract concrete.
 
 <figure>
   <img src="/assets/images/articles/2026-10-10-how-gpt2-predicts-one-token-at-a-time/gpt2-black-box.webp" width="1200" height="675" alt="The prompt becomes token IDs, GPT-2 returns logits and one token is chosen." />
-  <figcaption>The black-box contract for this article: token IDs go in, vocabulary scores come out and one token is selected.</figcaption>
+  <figcaption>The black box contract for this article: token IDs go in, vocabulary scores come out and one token is selected.</figcaption>
 </figure>
 
 ## Start With a Prompt
@@ -32,7 +32,7 @@ In this article, I am keeping that deep learning machinery as a black box. I wan
 I will use this prompt throughout the article:
 
 ```text
-The meaning of life is
+Software is changing how we
 ```
 
 Here is the smallest useful GPT-2 setup:
@@ -45,7 +45,7 @@ tokenizer = AutoTokenizer.from_pretrained("gpt2")
 model = AutoModelForCausalLM.from_pretrained("gpt2")
 model.eval()
 
-prompt = "The meaning of life is"
+prompt = "Software is changing how we"
 input_ids = tokenizer(prompt, return_tensors="pt")["input_ids"]
 
 with torch.no_grad():
@@ -59,17 +59,17 @@ The two `from_pretrained` calls hide some useful setup. If the files are not alr
 The tokenizer turns the prompt into five token IDs:
 
 ```text
-[464, 3616, 286, 1204, 318]
+[25423, 318, 5609, 703, 356]
 ```
 
 Decoded separately, those IDs represent:
 
 ```text
-"The"
-" meaning"
-" of"
-" life"
+"Software"
 " is"
+" changing"
+" how"
+" we"
 ```
 
 The spaces are part of the decoded token pieces. I am leaving the tokenization details for the next article. Here, GPT-2 receives these integers rather than the Python string.
@@ -102,7 +102,7 @@ $$
 
 The base GPT-2 configuration uses $V = 50{,}257$. For this run, the shape means one prompt, five token positions and `50,257` vocabulary scores at each position.
 
-I had expected one set of next-token scores. Instead, GPT-2 returned one set at every input position.
+I had expected one set of next token scores. Instead, GPT-2 returned one set at every input position.
 
 Each score answers a narrow question:
 
@@ -136,15 +136,15 @@ $$
 \mathbf{z}_{\text{next}} = \mathbf{Z}_{0,-1,:}
 $$
 
-For the five-token prompt, GPT-2 gives us five different prediction points:
+For the five token prompt, GPT-2 gives us five different prediction points:
 
-| Position    | Prefix available to GPT-2  | What its logits predict                 |
-| ----------- | -------------------------- | --------------------------------------- |
-| `0`         | `"The"`                    | The token after `"The"`                 |
-| `1`         | `"The meaning"`            | The token after `"The meaning"`         |
-| `2`         | `"The meaning of"`         | The token after `"The meaning of"`      |
-| `3`         | `"The meaning of life"`    | The token after `"The meaning of life"` |
-| `4` or `-1` | `"The meaning of life is"` | The new token after the full prompt     |
+| Position    | Prefix available to GPT-2       | What its logits predict                      |
+| ----------- | ------------------------------- | -------------------------------------------- |
+| `0`         | `"Software"`                    | The token after `"Software"`                 |
+| `1`         | `"Software is"`                 | The token after `"Software is"`              |
+| `2`         | `"Software is changing"`        | The token after `"Software is changing"`     |
+| `3`         | `"Software is changing how"`    | The token after `"Software is changing how"` |
+| `4` or `-1` | `"Software is changing how we"` | The new token after the full prompt          |
 
 The first four positions predict tokens inside a sequence we already supplied. They matter during training, when GPT-2 learns from every position. During generation, position `-1` is the one that continues beyond the supplied prompt.
 
@@ -169,11 +169,11 @@ The resulting `50,257` probabilities add up to approximately `1`.
 For this prompt, one checked run produced these leading candidates:
 
 ```text
-" not"   0.108805
-" to"    0.082914
-" the"   0.051284
-" that"  0.048244
-" a"     0.039578
+" think"        0.095888
+" use"          0.074320
+" do"           0.061601
+" interact"     0.047299
+" communicate"  0.031876
 ```
 
 Those numbers are from one checked run. They can change with the model revision and software environment.
@@ -189,20 +189,20 @@ next_token_id = torch.argmax(
 )
 ```
 
-This chooses the highest-scoring token. I do not need softmax before `argmax` because softmax preserves the ordering of the logits.
+This chooses the highest scoring token. I do not need softmax before `argmax` because softmax preserves the ordering of the logits.
 
-For the sample above, the selected token is ID `407`, which decodes to `" not"`.
+For the sample above, the selected token is ID `892`, which decodes to `" think"`.
 
 Appending it changes the input from:
 
 ```text
-The meaning of life is
+Software is changing how we
 ```
 
 to:
 
 ```text
-The meaning of life is not
+Software is changing how we think
 ```
 
 ## Repeat
@@ -234,9 +234,9 @@ for _ in range(30):
   <figcaption>Generation repeats the same contract after appending each selected token.</figcaption>
 </figure>
 
-This code reruns GPT-2 over the whole sequence on every pass. Production inference can reuse earlier work, but that optimization does not change the next-token contract.
+This code reruns GPT-2 over the whole sequence on every pass. Production inference can reuse earlier work but that optimization does not change the next token contract.
 
-Greedy decoding can become repetitive because it always takes the locally highest-scoring option. Sampling and temperature would change the choice, not the loop.
+Greedy decoding can become repetitive because it always takes the locally highest scoring option. Sampling and temperature would change the choice, not the loop.
 
 ## The Black Box Is Still Closed
 

@@ -418,6 +418,22 @@
   border: 1px solid var(--color-border);
 }
 
+.article-prose figure {
+  margin-inline: 0;
+}
+
+.article-prose figure img {
+  display: block;
+  width: 100%;
+}
+
+.article-prose figcaption {
+  margin-top: 0.625rem;
+  color: var(--color-muted);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
 .article-prose .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
@@ -505,4 +521,3 @@
 .article-prose .hljs-link {
   text-decoration: underline;
 }
-
