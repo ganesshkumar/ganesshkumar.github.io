@@ -117,7 +117,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             image={article.coverImage}
           />
 
-          <div className="mt-8 max-w-3xl">
+          <div className="mt-8">
             <ArticleMetaComponent
               author={article.author}
               pubDate={article.pubDate}
@@ -130,7 +130,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           </div>
         </article>
 
-        <div className="mt-10 max-w-3xl border-t border-border pt-6">
+        <div className="mt-10 border-t border-border pt-6">
           <Link
             href="/articles"
             className="inline-flex items-center gap-2 text-sm font-medium text-link no-underline hover:underline"

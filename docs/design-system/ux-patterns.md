@@ -63,7 +63,7 @@ Use for:
 - article detail pages
 
 Layout:
-- generous reading column,
+- one shared content width for the article hero, metadata, body and footer,
 - optional right sidebar on desktop only,
 - clean header metadata,
 - related content and CTA after article body.

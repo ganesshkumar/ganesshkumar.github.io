@@ -136,7 +136,8 @@ Base is 16px = `1rem`. This directly answers "which element uses which font/size
 | Inline code | Fira Code | 0.9375rem / 15px | inherit | 400 | normal |
 
 ### Reading measure
-- Long-form article body: **65–72ch** max width.
+- Long-form article body: use the full article container width so the metadata,
+  prose, and embedded media align with the article hero.
 - UI content columns follow the layout patterns in `ux-patterns.md`.
 
 ## Spacing
