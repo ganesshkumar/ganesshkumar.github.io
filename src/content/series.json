@@ -29,7 +29,7 @@
             "src": "/assets/images/articles/2026-10-11-understanding-gpt2-token-embeddings/token-embedding-lookup.webp",
             "alt": "Token IDs select rows from GPT-2's trainable embedding matrix."
           },
-          "relatedArticleSlug": "2026-10-11-understanding-gpt2-token-embeddings"
+          "relatedArticleSlug": "2026-10-10-understanding-gpt2-token-embeddings"
         }
       ]
     }

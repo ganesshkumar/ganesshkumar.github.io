@@ -24,7 +24,7 @@ What I did not know was where that vector came from. Was the embedding created s
 
 ## The Embedding Table Is Inside GPT-2
 
-The token embedding layer is available at `model.transformer.wte`:
+We can inspect the token embedding layer at `model.transformer.wte`:
 
 ```python
 from transformers import AutoModelForCausalLM
@@ -43,7 +43,7 @@ Embedding(50257, 768)
 torch.Size([50257, 768])
 ```
 
-`wte.weight` is a matrix inside the model. It has one row for each of the 50,257 vocabulary entries and 768 values in each row. The [GPT-2 configuration](https://huggingface.co/docs/transformers/model_doc/gpt2) names 50,257 as its vocabulary size and 768 as its embedding and hidden-state size.
+`wte.weight` is a matrix inside the model. We get one row for each of the 50,257 vocabulary entries and 768 values in each row. The [GPT-2 configuration](https://huggingface.co/docs/transformers/model_doc/gpt2) names 50,257 as its vocabulary size and 768 as its embedding and hidden state size.
 
 That matrix contains:
 
@@ -62,7 +62,7 @@ learned parameters.
 
 ## Looking Up a Row
 
-A small matrix makes the operation easier to inspect:
+We can use a small matrix to make the operation easier to inspect:
 
 ```python
 import torch
@@ -79,7 +79,7 @@ token_ids = torch.tensor([0, 1, 3])
 embeddings = embedding_matrix[token_ids]
 ```
 
-The IDs select rows `0`, `1` and `3`:
+Our IDs select rows `0`, `1` and `3`:
 
 ```text
 tensor([
@@ -89,13 +89,13 @@ tensor([
 ])
 ```
 
-There is no calculation that turns the number `3` into the vector for `tree`. It means: retrieve row `3`.
+We do not calculate the vector for `tree` from the number `3`. We use `3` to retrieve row `3`.
 
 PyTorch describes [`nn.Embedding`](https://docs.pytorch.org/docs/2.14/generated/torch.nn.Embedding.html) as a lookup table with learnable weights. GPT-2 uses the same operation at a much larger scale.
 
 ## The Five-Token Prompt
 
-I kept the prompt from the first article:
+We will keep the prompt from the first article:
 
 ```text
 Software is changing how we
@@ -131,7 +131,7 @@ True
 torch.Size([1, 5, 768])
 ```
 
-Direct indexing and the embedding layer returned the same tensor. Each of the five IDs selected one 768-value row, so the new dimension appeared at the end.
+Direct indexing and the embedding layer return the same tensor. Each of our five IDs selects one row with 768 values, so we get the new dimension at the end.
 
 For token ID `25423`, which is `Software`, the first eight values were:
 
@@ -186,9 +186,9 @@ True
 torch.Size([50257, 768])
 ```
 
-The embedding matrix is not a separate fixed dictionary attached after training. Its values are weights learned with GPT-2.
+We can now see that the embedding matrix is not a separate fixed dictionary attached after training. Its values are weights learned with GPT-2.
 
-The original [OpenAI GPT-2 implementation](https://github.com/openai/gpt-2/blob/master/src/model.py) defines `wte` inside the model, retrieves its rows for the input tokens and reuses the same matrix to produce output logits. Because of that weight sharing, the gradient in this check includes `wte`'s output role too. I am only using it to confirm that the table participates in model training.
+The original [OpenAI GPT-2 implementation](https://github.com/openai/gpt-2/blob/master/src/model.py) defines `wte` inside the model, retrieves its rows for the input tokens and reuses the same matrix to produce output logits. Because of that weight sharing, the gradient in this check includes `wte`'s output role too. We are only using it to confirm that the table participates in model training.
 
 ## What I Took Away
 

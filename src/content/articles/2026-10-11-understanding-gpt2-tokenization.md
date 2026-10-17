@@ -26,7 +26,7 @@ I also wanted to see what GPT-2 does when a misspelled or unseen word is missing
 
 ## A Space Is Not Always a Separate Token
 
-I used the GPT-2 tokenizer from Hugging Face Transformers:
+We can start with the GPT-2 tokenizer from Hugging Face Transformers:
 
 ```python
 from transformers import AutoTokenizer
@@ -45,9 +45,9 @@ for text in ["hello", " hello"]:
 ' hello' [23748]  ['Ġhello']
 ```
 
-Both inputs remained one token. Their IDs changed from `31373` to `23748`. Decoding `23748` returned `" hello"` with the space intact.
+We get one token for both inputs but the IDs change from `31373` to `23748`. When we decode `23748`, we get `" hello"` with the space intact.
 
-The `Ġ` in `Ġhello` is not a character from the input. GPT-2's tokenizer uses a reversible mapping that gives every byte a visible Unicode representation. In that internal representation, `Ġ` stands for the byte value `32`, which is an ASCII space.
+The `Ġ` in `Ġhello` is not a character from the input. GPT-2's tokenizer uses a reversible mapping that gives every byte a visible Unicode representation. In that internal representation, we can read `Ġ` as the byte value `32`, which is an ASCII space.
 
 ```text
 "hello"  → [104, 101, 108, 108, 111]
@@ -56,7 +56,7 @@ The `Ġ` in `Ġhello` is not a character from the input. GPT-2's tokenizer uses 
              space
 ```
 
-GPT-2's initial text matching pattern can group one leading space with the letters that follow it. Byte pair encoding then applies learned merge rules to that group. Its vocabulary contains both `hello` and `Ġhello`. Each input becomes one token.
+GPT-2's initial text matching pattern can group one leading space with the letters that follow it. Byte pair encoding then applies learned merge rules to that group. We end up with one token for each input because the vocabulary contains both `hello` and `Ġhello`.
 
 <figure>
   <img src="/assets/images/articles/2026-10-11-understanding-gpt2-tokenization/bpe-space-token.webp" width="1200" height="675" alt="A leading space changes the token ID." />
@@ -72,7 +72,7 @@ GPT-2's initial text matching pattern can group one leading space with the lette
 
 **BPE** stands for byte pair encoding. It starts with small symbols and uses a ranked list of learned merges. When adjacent pieces have a merge rule, the tokenizer joins them. Frequent byte sequences can eventually become one vocabulary token while less common sequences remain split across several tokens.
 
-This process works with byte sequences, not meanings. The tokenizer does not know that `hello` is a greeting. It knows that the bytes behind `hello` and ` hello` follow merge paths that end at two different vocabulary entries.
+This process works with byte sequences, not meanings. We should not read `hello` as a greeting from the tokenizer's point of view. It only follows merge paths that end at two different vocabulary entries for the bytes behind `hello` and ` hello`.
 
 The merge list is fixed after tokenizer training. Encoding the same text with the same GPT-2 tokenizer is deterministic.
 
@@ -94,13 +94,13 @@ False
 ['gan', 'ess', 'h', 'k', 'umar']
 ```
 
-Decoding all five IDs returned `ganesshkumar` exactly.
+When we decode all five IDs together, we get `ganesshkumar` exactly.
 
 GPT-2 does not need one vocabulary entry for every name, misspelling or identifier. If the complete text is absent, BPE leaves it as smaller pieces. GPT-2's BPE has a base representation for all 256 byte values. Valid UTF-8 text can be represented even when the whole word has never become one token.
 
 The same process handles source code identifiers, new words and names. Learned merge rules determine the split.
 
-The base GPT-2 tokenizer has `50,257` vocabulary entries. ID `31373` points to `"hello"`, ID `23748` points to `" hello"` and ID `1030` points to `"gan"`. Their numeric size says nothing about how the tokens are related.
+The base GPT-2 tokenizer has `50,257` vocabulary entries. We can look up ID `31373` to get `"hello"`, ID `23748` to get `" hello"` and ID `1030` to get `"gan"`. The numeric size of an ID says nothing about how the tokens are related.
 
 This is the same `50,257` dimension I saw in the logits earlier. It contains one score for each vocabulary entry.
 

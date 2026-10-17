@@ -33,7 +33,7 @@ In this article, I am keeping that deep learning machinery as a black box. I wan
 
 ## Start With a Prompt
 
-I will use this prompt throughout the article:
+We will use this prompt throughout the article:
 
 ```text
 Software is changing how we
@@ -58,7 +58,7 @@ with torch.no_grad():
 
 The two `from_pretrained` calls hide some useful setup. If the files are not already cached, the Transformers library downloads the GPT-2 tokenizer files, configuration and pretrained weights from the Hugging Face Hub. The library contains the Python implementation of the GPT-2 architecture. The downloaded weights contain the values GPT-2 learned during training.
 
-`AutoModelForCausalLM` reads the configuration, creates that architecture and loads the weights into it. It does not train GPT-2 on my machine.
+`AutoModelForCausalLM` reads the configuration, creates that architecture and loads the weights into it. We are loading an existing model here, not training GPT-2 on our machine.
 
 The tokenizer turns the prompt into five token IDs:
 
@@ -76,7 +76,7 @@ Decoded separately, those IDs represent:
 " we"
 ```
 
-The spaces are part of the decoded token pieces. I am leaving the tokenization details for the next article. Here, GPT-2 receives these integers rather than the Python string.
+The spaces are part of the decoded token pieces. I am leaving the tokenization details for the next article. For now, we only need to notice that GPT-2 receives these integers rather than the Python string.
 
 The `input_ids` tensor has shape `[1, 5]`: one prompt with five token positions.
 
@@ -193,7 +193,7 @@ next_token_id = torch.argmax(
 )
 ```
 
-This chooses the highest scoring token. I do not need softmax before `argmax` because softmax preserves the ordering of the logits.
+This chooses the highest scoring token. We do not need softmax before `argmax` because softmax preserves the ordering of the logits.
 
 For the sample above, the selected token is ID `892`, which decodes to `" think"`.
 
@@ -244,7 +244,7 @@ Greedy decoding can become repetitive because it always takes the locally highes
 
 ## The Black Box Is Still Closed
 
-I stopped at these two shape transformations:
+We can summarize the black box with two shape transformations:
 
 $$
 \underbrace{\text{token IDs}}_{B \times T}
@@ -252,7 +252,7 @@ $$
 \underbrace{\text{logits}}_{B \times T \times V}
 $$
 
-For generation, I kept the scores at the final position and applied a decoding rule:
+For generation, we keep the scores at the final position and apply a decoding rule:
 
 $$
 \underbrace{\mathbf{Z}_{:,-1,:}}_{B \times V}

@@ -14,7 +14,7 @@ describe("getRecentArticles", () => {
 
     expect(articles).toHaveLength(10);
     expect(articles[0].slug).toBe(
-      "2026-10-11-understanding-gpt2-token-embeddings",
+      "2026-10-10-understanding-gpt2-token-embeddings",
     );
     expect(
       articles.every(
@@ -30,6 +30,9 @@ describe("getRecentArticles", () => {
       expect(getRecentProjects()[0].slug).toBe("pico-gpt");
       expect(getShowcaseProjects()[0].slug).toBe("pico-gpt");
       expect(getShowcaseProjects()[0].featured).toBe(true);
+      expect(getShowcaseProjects()[0].image?.src).toBe(
+        "/assets/images/projects/pico-gpt.webp",
+      );
     });
   });
 

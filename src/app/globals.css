@@ -440,7 +440,7 @@
 
 .article-prose figcaption {
   margin-top: 0.625rem;
-  color: var(--color-muted);
+  color: var(--color-muted-foreground);
   font-size: 0.8125rem;
   line-height: 1.5;
 }
