@@ -81,6 +81,26 @@ Layout:
 
 The projects index uses stacked case rows and is the terminal proof surface: there is no per-project detail route, so each row states the problem and outcome inline and links out to the live site or repository.
 
+### Text tool inspection
+Browser text tools belong to the proof/utility surface. Keep the working input and
+output visible, with conservative defaults and explicit actions. Keep uncommon or
+destructive rules in a labeled advanced disclosure. Always label emoji removal as
+optional and leave it off by default.
+
+Inspection markers are display-only buttons with readable names and code points.
+They must work with a keyboard and must not enter raw text or clipboard output.
+Explain that detected formatting can be valid. Use one shared detail panel rather
+than a popup per character. Keep text-direction controls visible as inert markers
+instead of allowing them to rearrange the inspection view.
+
+Change previews show original text and cleaned text with semantic labels. Use
+borders, underlining and the secondary highlight; do not rely on color alone.
+Show an explicit deletion marker where output has no replacement. Navigate edits
+by saved occurrence offsets, never by matching text. Report names, actions and
+occurrence counts. A no-op result says no changes are needed with the selected
+rules. Long reports and inspection text scroll within bounded areas on small screens.
+Reset selection and copy feedback when the source or options change.
+
 ## Sidebar policy
 Sidebars should not appear everywhere.
 

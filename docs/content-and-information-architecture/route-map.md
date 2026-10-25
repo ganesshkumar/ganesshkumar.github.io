@@ -31,6 +31,8 @@ If this contract conflicts with those documents, resolve the conflict there firs
 | `/articles` | Primary discoverability and archive | Articles index | stable | static |
 | `/articles/[slug]` | Long-form reading surface | Article detail | stable | static per article |
 | `/projects` | Proof of execution quality, case detail included | Projects index | stable | static |
+| `/tools` | Discover usable browser utilities | Tools index | stable | static |
+| `/tools/ai-text-cleaner` | Clean invisible characters, spaces and punctuation | Tool detail | stable | static shell, client-side processing |
 | `/tags` | Topic entry index | Tag / topic pages | planned | static |
 | `/tags/[tag]` | Filtered topic navigation | Tag / topic pages | planned | static per tag |
 | `/series/[series]` | Ordered multi-part learning | Series pages | planned | static per series |
@@ -74,7 +76,7 @@ Rules:
 - Depth grows through secondary surfaces and in-content links, not by adding top-nav items.
 
 ### Secondary surface navigation
-Secondary surfaces (Newsletter, Papershelf, Talks, Collaborate, Uses) are reached through:
+Secondary surfaces (Tools, Newsletter, Papershelf, Talks, Collaborate, Uses) are reached through:
 - contextual links inside relevant pages,
 - footer navigation,
 - and related-content modules.

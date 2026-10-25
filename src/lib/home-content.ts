@@ -149,6 +149,16 @@ const RECENT_PROJECTS: ProjectSummary[] = [
     status: "shipped",
     repoUrl: "https://github.com/TeamSven/nathas",
   },
+  {
+    slug: "exort",
+    title: "Exort / AI Text Cleaner",
+    description: "Clean invisible characters, special spaces, dashes and quotes in your browser.",
+    problem: "Copied text can contain hidden characters and punctuation that need cleanup before reuse.",
+    outcome: "A browser-only text cleaner with selectable rules and a before-and-after view.",
+    stack: ["Next.js", "TypeScript"],
+    status: "shipped",
+    liveUrl: "/tools/ai-text-cleaner/",
+  },
 ];
 
 export function getRecentArticles(

@@ -119,6 +119,29 @@ Each project should answer, inline:
 
 Deeper case-study writing lives in related articles, cross-linked from the row. A dedicated `/projects/[slug]` route can return later if a single project needs a full write-up.
 
+### Tools
+The `/tools/` index links to usable browser utilities. Tool pages live at descriptive
+`/tools/<name>/` routes. They are working interfaces, not project case studies.
+Projects and the footer provide discovery; the fixed top navigation stays unchanged.
+Text cleanup runs locally without storing or uploading input. Explain the exact
+character rules and limitations. Do not claim guaranteed AI watermark removal.
+The AI Text Cleaner builds on Exort's character rules. Special spaces become
+ordinary spaces instead of being deleted, so words do not join. Conservative
+cleanup is the default: C0 controls except tab, LF and CR, plus DEL and special spaces.
+The plain-text preset also replaces dash variations and curly quotes. Removing
+zero-width spaces, BOM, joiners, prime symbols, word joiners, soft hyphens,
+text-direction controls and emoji requires separate opt-ins. Detection does not
+imply removal. Recognized emoji are complete sequences and remain intact unless
+emoji removal is selected. No blanket Unicode format-character deletion is allowed.
+
+Use native text areas, not Monaco. The inspection view exposes names, code points,
+original positions and selected actions without inserting markers into the actual
+text. The change report groups actual edits and provides occurrence-based highlights
+and previous/next navigation. Preserve source and output offsets for deletions,
+repeated text and multi-code-point sequences. Invalidate stale reports when input
+or options change. Markdown/code protection is not part of this tool's current
+contract: selected rules apply inside code too. Pasted text is never persisted.
+
 ### About
 Purpose:
 - trust and orientation.

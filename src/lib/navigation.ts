@@ -52,8 +52,9 @@ export const SOCIAL_NAV: NavLink[] = [
   { label: "Email", href: "mailto:rpganesshkumar@gmail.com", external: true },
 ];
 
-/** Footer: quick links to the primary destinations. */
+/** Footer: primary destinations and useful secondary surfaces. */
 export const FOOTER_QUICK_LINKS: NavLink[] = [
+  { label: "Tools", href: "/tools/" },
   { label: "Home", href: "/" },
   { label: "Articles", href: "/articles" },
   { label: "Projects", href: "/projects" },
