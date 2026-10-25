@@ -142,6 +142,13 @@ repeated text and multi-code-point sequences. Invalidate stale reports when inpu
 or options change. Markdown/code protection is not part of this tool's current
 contract: selected rules apply inside code too. Pasted text is never persisted.
 
+Tool detail SEO must name the actual tasks and keep the canonical route stable.
+Use a descriptive title, a task-specific description and a dedicated social image.
+Connect the WebPage, WebApplication, breadcrumbs and author with stable JSON-LD
+identifiers. Describe only real features and the actual free price. AI Text Cleaner
+does not use rating or review markup. Include short instructions and cleanup
+examples in static HTML. Verify example outputs against the real cleanup engine.
+
 ### About
 Purpose:
 - trust and orientation.
