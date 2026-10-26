@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { getAllArticles } from "@/lib/articles";
 import { getAllSeries } from "@/lib/series";
 import { SITE } from "@/lib/navigation";
+import { getTools } from "@/lib/tools";
 
 /**
  * Static sitemap generated at build time. Static export cannot run a route
@@ -22,11 +23,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: url("/articles/"), changeFrequency: "weekly", priority: 0.9 },
     { url: url("/projects/"), changeFrequency: "monthly", priority: 0.8 },
     { url: url("/tools/"), changeFrequency: "monthly", priority: 0.6 },
-    { url: url("/tools/ai-text-cleaner/"), changeFrequency: "monthly", priority: 0.7 },
     { url: url("/bookshelf/"), changeFrequency: "monthly", priority: 0.6 },
     { url: url("/about/"), changeFrequency: "monthly", priority: 0.5 },
     { url: url("/contact/"), changeFrequency: "yearly", priority: 0.5 },
   ];
+
+  const toolEntries: MetadataRoute.Sitemap = getTools().map((tool) => ({
+    url: url(tool.href),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
 
   const articleEntries: MetadataRoute.Sitemap = getAllArticles().map(
     (article) => ({
@@ -47,5 +53,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
-  return [...staticEntries, ...seriesEntries, ...articleEntries];
+  return [...staticEntries, ...toolEntries, ...seriesEntries, ...articleEntries];
 }

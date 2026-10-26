@@ -41,6 +41,12 @@ Use this skill for questions such as:
 5. If the page affects reading flow, sidebar behavior, or monetization placement, coordinate with `docs/quality-and-growth/content-and-sidebar-strategy.md` and `docs/design-system/ux-patterns.md`.
 
 ## Decision rules
+For a new `/tools/` page, add its title, description and concrete slug to
+`TOOL_CATALOG` in `src/lib/tools.ts`. Both the tools index and sitemap use
+`getTools()`. Do not add individual tool URLs to the sitemap or hardcode index
+rows. The build validates the catalog against public tool pages. Verify the
+exported sitemap contains every tool exactly once.
+
 If the question is "should we create this page and what must it do," start here.
 
 If the question is "how does this page fit the site architecture," coordinate with `system-design`.

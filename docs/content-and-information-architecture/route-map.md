@@ -53,6 +53,15 @@ If this contract conflicts with those documents, resolve the conflict there firs
 
 Projects have no per-project detail route. The `/projects` index is the terminal proof surface: each project renders as a case row (problem, outcome, stack) that links out to its live site or source repository. A dedicated `/projects/[slug]` route can return later if a single project needs a full write-up, but it is deliberately not part of the current contract.
 
+## Tools catalog and sitemap
+- Register every published tool in `TOOL_CATALOG` in `src/lib/tools.ts`.
+- The tools index and sitemap consume the same validated `getTools()` result.
+- Adding a tool does not require a separate sitemap entry or a hardcoded index row.
+- The static build checks public tool pages against the catalog. Missing registrations,
+  duplicate slugs and catalog entries without pages must fail the build.
+- Use concrete canonical paths. Route groups do not enter URLs; private folders and
+  parallel slots do not create independent sitemap entries.
+
 ## Canonical URL rules
 - Trailing slash is required for content routes, matching the current build convention (`trailingSlash: true`).
 - Every content route resolves to exactly one canonical URL.
